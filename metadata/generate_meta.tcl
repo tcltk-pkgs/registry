@@ -11,9 +11,34 @@ array set FOSSIL_MIRRORS {
     "https://core.tcl-lang.org/tk"     "https://github.com/tcltk/tk"
 }
 
-
 set github_cache [dict create]
 set fossil_cache [dict create]
+
+
+proc version_compare {a b} {
+    set na [regexp -all -inline {\d+} $a]
+    set nb [regexp -all -inline {\d+} $b]
+    set len [expr {max([llength $na],[llength $nb])}]
+    for {set i 0} {$i < $len} {incr i} {
+        set va [expr {$i < [llength $na] ? [lindex $na $i] : 0}]
+        set vb [expr {$i < [llength $nb] ? [lindex $nb $i] : 0}]
+        if {$va < $vb} { return -1 }
+        if {$va > $vb} { return  1 }
+    }
+    return 0
+}
+
+proc get_latest_tag {tag_list} {
+    set skip {trunk tip release branch main HEAD}
+    set filtered [list]
+    foreach tag $tag_list {
+        set tag [string trim $tag]
+        if {$tag eq "" || [lsearch -nocase $skip $tag] >= 0} continue
+        if {[regexp {\d} $tag]} { lappend filtered $tag }
+    }
+    if {[llength $filtered] == 0} { return "" }
+    return [lindex [lsort -command version_compare $filtered] end]
+}
 
 proc http_get {url {type "raw"}} {
     global env TIMEOUT
@@ -42,16 +67,13 @@ proc parse_github_repo {url} {
     return ""
 }
 
-# --- GitHub API Backend with Cache ---
 proc fetch_github_data {url {module_path ""}} {
     global github_cache
     set repo [parse_github_repo $url]
     if {$repo eq ""} { return {} }
 
-    # Unique key for commit data (depends on repo + path)
     set commit_key "${repo}:${module_path}"
 
-    # 1. Check if we already have general info for this repo
     if {![dict exists $github_cache $repo]} {
         set info [dict create archived "" latest_release ""]
         set r [http_get "https://api.github.com/repos/$repo" "json"]
@@ -65,7 +87,6 @@ proc fetch_github_data {url {module_path ""}} {
         dict set github_cache $repo $info
     }
 
-    # 2. Check if we already have commit info for this specific path
     if {![dict exists $github_cache $commit_key]} {
         set cdata [dict create last_commit "" last_commit_sha ""]
         set api_url "https://api.github.com/repos/$repo/commits?per_page=1"
@@ -80,31 +101,25 @@ proc fetch_github_data {url {module_path ""}} {
         dict set github_cache $commit_key $cdata
     }
 
-    # Merge general info and specific commit data
     return [dict merge [dict get $github_cache $repo] [dict get $github_cache $commit_key]]
 }
 
-# --- Fossil Strategy with Cache ---
 proc process_fossil {url} {
     global FOSSIL_MIRRORS fossil_cache
     
-    if {[dict exists $fossil_cache $url]} {
-        puts "    \[fossil\] cache hit for $url"
-        return [dict get $fossil_cache $url]
-    }
+    if {[dict exists $fossil_cache $url]} { return [dict get $fossil_cache $url] }
 
     set base [lindex [split $url ?] 0]
     foreach p {/dir /file /timeline /info /json} {
         if {[set idx [string first $p $base]] >= 0} { set base [string range $base 0 $idx-1] }
     }
     set base [string trimright $base "/"]
-    
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
 
-    # 1. Primary: Fossil JSON API
+    # 1. Fossil JSON API
     set api_url "$base/json/timeline?type=ci&limit=1"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
     
@@ -118,7 +133,6 @@ proc process_fossil {url} {
         }
     }
 
-    # 2. Secondary: GitHub Mirror Backend
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
         set gh [fetch_github_data $mirror $module_path]
@@ -129,12 +143,14 @@ proc process_fossil {url} {
         }
         dict set meta archived [dict get $gh archived]
         dict set meta latest_release [dict get $gh latest_release]
-        
-        if {[dict get $meta last_tag] eq ""} {
-            catch {
-                set tline [exec git ls-remote --tags --refs --sort=-v:refname $mirror | head -n1]
-                if {[regexp {refs/tags/(.*)} $tline -> tag]} { dict set meta last_tag $tag }
+
+        catch {
+            set raw_tags [exec git ls-remote --tags --refs $mirror]
+            set tag_list [list]
+            foreach line [split $raw_tags "\n"] {
+                if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
             }
+            dict set meta last_tag [get_latest_tag $tag_list]
         }
     }
 
@@ -142,14 +158,24 @@ proc process_fossil {url} {
     return $meta
 }
 
-# --- Git Strategy ---
 proc process_git {url} {
     global env
     set repo [parse_github_repo $url]
     
     if {$repo ne ""} {
         set gh [fetch_github_data $url]
-        return [dict merge $gh [dict create last_tag [dict get $gh latest_release]]]
+        set meta [dict merge $gh [dict create last_tag [dict get $gh latest_release]]]
+        if {[dict get $meta last_tag] eq ""} {
+             catch {
+                set raw_tags [exec git ls-remote --tags --refs $url]
+                set tag_list [list]
+                foreach line [split $raw_tags "\n"] {
+                    if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
+                }
+                dict set meta last_tag [get_latest_tag $tag_list]
+            }
+        }
+        return $meta
     }
 
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
@@ -159,14 +185,14 @@ proc process_git {url} {
         exec git clone --depth 1 --filter=blob:none --no-checkout $url $tmp 2>@1
         dict set meta last_commit     [exec git -C $tmp log -1 --format=%ci]
         dict set meta last_commit_sha [exec git -C $tmp rev-parse --short HEAD]
-        dict set meta last_tag        [exec git -C $tmp tag --sort=-creatordate | head -n1]
+        set t_out [exec git -C $tmp tag]
+        dict set meta last_tag [get_latest_tag [split $t_out "\n"]]
     } finally {
         file delete -force $tmp
     }
     return $meta
 }
 
-# --- Main Logic ---
 proc to_huddle {val type} {
     if {$val eq ""} { return [huddle null] }
     if {$type eq "bool"} { return [huddle boolean $val] }
@@ -178,7 +204,6 @@ proc main {} {
     
     set fh [open $INPUT_FILE r]; fconfigure $fh -encoding utf-8; set data [read $fh]; close $fh
     set packages [::json::json2dict $data]
-    
     set out_list [huddle list]
     huddle append out_list [huddle create generated_at [huddle string [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]]]
 
