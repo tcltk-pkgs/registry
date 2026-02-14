@@ -7,6 +7,7 @@ set TIMEOUT 12
 
 array set FOSSIL_MIRRORS {
     "https://core.tcl-lang.org/tcllib" "https://github.com/tcltk/tcllib"
+    "https://core.tcl-lang.org/tklib"  "https://github.com/tcltk/tklib"
     "https://core.tcl-lang.org/tcl"    "https://github.com/tcltk/tcl"
     "https://core.tcl-lang.org/tk"     "https://github.com/tcltk/tk"
 }
