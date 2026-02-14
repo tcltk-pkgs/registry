@@ -55,43 +55,56 @@ proc process_git {url temp_base} {
     return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Process Fossil source with shallow clone
+# Process Fossil source - fast version using HTTP timeline (no clone)
 proc process_fossil {url temp_base} {
-    set dbname "fossil-[clock seconds]-[expr {int(rand()*1000)}].fossil"
-    set db [file join $temp_base $dbname]
+    # Clean URL for timeline access
+    set base_url [string trimright $url "/"]
+    set timeline_url "$base_url/timeline"
     
-    # Try shallow clone first (faster), fallback to full clone if not supported
+    puts "  Fetching timeline: $timeline_url"
+    
+    # Fetch timeline page (lightweight, just HTML)
     if {[catch {
-        exec fossil clone --depth 1 $url $db 2>@ stderr
+        set html [exec curl -s -L --max-time 15 $timeline_url]
     } err]} {
-        puts stderr "⚠️  Shallow clone failed, trying full clone: $url"
-        if {[catch {
-            exec fossil clone $url $db 2>@ stderr
-        } err2]} {
-            puts stderr "⚠️  Fossil clone error: $url"
-            catch {file delete -force $db}
-            return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "clone_failed"]
-        }
+        puts stderr "Failed to fetch timeline: $err"
+        return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "fetch_failed"]
     }
     
     set commit_date "null"
+    set commit_sha "null"
     set tag "null"
     
-    # Get last check-in date
-    catch {
-        set commit_date [string trim [exec fossil sql -R $db {SELECT datetime(mtime) FROM event WHERE type='ci' ORDER BY mtime DESC LIMIT 1;}]]
-        if {$commit_date eq ""} {set commit_date "null"}
+    # Extract last commit date from timeline HTML
+    # Fossil timeline format: datetime="2024-02-14 15:30:00" or similar patterns
+    if {[regexp {datetime="(\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2})"} $html -> date]} {
+        set commit_date $date
+    } elseif {[regexp {(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2})} $html -> d t]} {
+        set commit_date "$d $t"
     }
     
-    # Get last tag (sym-* format in fossil)
-    catch {
-        set tag [string trim [exec fossil sql -R $db {SELECT substr(tagname, 10) FROM tag WHERE tagname LIKE 'sym-release%' OR tagname LIKE 'sym-v%' OR tagname LIKE 'sym-%' ORDER BY tagname DESC LIMIT 1;}]]
-        if {$tag eq ""} {set tag "null"}
+    # Extract short SHA from timeline (first hex sequence of 10+ chars)
+    if {[regexp {href="/timeline\?c=([0-9a-f]{10,})"} $html -> sha]} {
+        set commit_sha [string range $sha 0 9]
     }
     
-    catch {file delete -force $db}
+    # Try to get last tag from tags page
+    set tags_url "$base_url/taglist"
+    if {![catch {
+        set tags_html [exec curl -s -L --max-time 10 $tags_url]
+    } err]} {
+        # Look for version-like tags (v1.0, release-1.0, etc.)
+        if {[regexp -nocase {>(v?\d+\.\d+[^<]*)</} $tags_html -> found_tag]} {
+            set tag $found_tag
+        } elseif {[regexp {>(release[^<]+)</} $tags_html -> found_tag]} {
+            set tag $found_tag
+        }
+    }
     
-    return [dict create last_commit $commit_date last_tag $tag last_commit_sha "null"]
+    return [dict create \
+        last_commit $commit_date \
+        last_commit_sha $commit_sha \
+        last_tag $tag]
 }
 
 # Convert dict to JSON string
@@ -124,7 +137,7 @@ foreach package $packages {
         set method [dict get $source method]
         set url [dict get $source url]
         
-        puts "  → $method: $url"
+        puts "  -> $method: $url"
         
         switch -exact -- $method {
             "git" { set meta [process_git $url $temp_base] }
