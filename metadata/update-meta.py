@@ -182,6 +182,24 @@ def parse_fossil_date_from_html(html):
     return date, sha
 
 
+def _pick_version_tag(html):
+    """
+    Extract the most recent version tag from a Fossil /taglist or /brlist HTML page.
+    Skips pseudo-tags like 'trunk', 'branch-*', 'tip', etc.
+    Returns the first tag containing a digit, or None.
+    """
+    SKIP = re.compile(r'^(trunk|tip|release|branch|main|HEAD)$', re.IGNORECASE)
+    # /taglist: href="...?t=tcllib-1-21-0"  /brlist: href="...?r=tcllib-1-21-0"
+    candidates = re.findall(r"timeline\?[tr]=([^\"'&>\s]+)", html)
+    for tag in candidates:
+        tag = tag.strip()
+        if SKIP.match(tag):
+            continue
+        if re.search(r'\d', tag):  # version tags contain at least one digit
+            return tag
+    return None
+
+
 # Cache for Fossil repos: base_url -> meta dict
 # BUG FIX #4: many packages share the same repo (e.g. all of tcllib).
 # Without a cache, the same URL gets fetched once per package -> infinite-looking loop.
@@ -260,19 +278,31 @@ def process_fossil(url, temp_base):
             )
             meta["error"] = f"http_{http_code}"
 
-    # --- 3. Tags (JSON API optional) ---
+    # --- 3. Tags ---
+    # JSON API first, then HTML /taglist, then /brlist (core.tcl-lang.org has 404 on JSON)
+    tag = None
+
     tags_body, tags_code = run_curl(f"{base}/json/taglist", timeout=15)
     if tags_body and tags_code == 200:
         try:
             data = json.loads(tags_body)
-            tags = data.get('payload', {}).get('tags') or data.get('tags', [])
-            if tags:
-                tag_name = tags[0].get('name') or tags[0].get('tagname')
-                if tag_name:
-                    meta["last_tag"] = tag_name
-                    print(f"    [fossil] tag: {tag_name}")
+            raw_tags = data.get('payload', {}).get('tags') or data.get('tags', [])
+            if raw_tags:
+                tag = raw_tags[0].get('name') or raw_tags[0].get('tagname')
         except json.JSONDecodeError:
             pass
+
+    if not tag:
+        for endpoint in (f"{base}/taglist", f"{base}/brlist"):
+            body, code = run_curl(endpoint, timeout=15)
+            if body and code == 200:
+                tag = _pick_version_tag(body)
+                if tag:
+                    break
+
+    if tag:
+        meta["last_tag"] = tag
+        print(f"    [fossil] tag: {tag}")
 
     # Store in cache so sibling packages skip the network round-trip
     _fossil_cache[base] = meta
