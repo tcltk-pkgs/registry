@@ -327,13 +327,12 @@ def _github_api_commit(git_url, module_path):
 def _fetch_fossil_date(base, module_path, meta):
     """
     Populate meta['last_commit'] and meta['last_commit_sha'].
-    If module_path is given, filters the timeline to that subdirectory
-    so we get the last commit that actually touched this module.
-    Falls back to whole-repo timeline if the filtered request fails.
+    Queries GitHub API and Fossil HTML independently, keeps the most recent date.
     """
-    # --- 0. GitHub mirror API + Fossil HTML: take the most recent date ---
-    # The GitHub mirror may lag behind Fossil. We query both and keep the max.
     github_date, github_sha = None, None
+    fossil_date, fossil_sha = None, None
+
+    # --- 0. GitHub mirror API (per-module path) ---
     if base in FOSSIL_GIT_MIRRORS:
         mirror = FOSSIL_GIT_MIRRORS[base]
         print(f"    [fossil] trying GitHub API: {mirror} path={module_path}")
@@ -341,11 +340,10 @@ def _fetch_fossil_date(base, module_path, meta):
         if github_date:
             print(f"    [fossil] GitHub API: {github_date}")
 
-    # --- 1. JSON API (often 404 on core.tcl-lang.org) ---
+    # --- 1. Fossil JSON API ---
     timeline_url = f"{base}/json/timeline?type=ci&limit=1"
     if module_path:
         timeline_url += f"&p={module_path}"
-    print(f"    [fossil] trying API: {timeline_url}")
     body, http_code = run_curl(timeline_url, timeout=20)
     if body and http_code == 200:
         try:
@@ -353,65 +351,59 @@ def _fetch_fossil_date(base, module_path, meta):
             timeline = data.get('payload', {}).get('timeline') or data.get('timeline', [])
             if timeline:
                 entry = timeline[0]
-                meta["last_commit"] = entry.get('timestamp') or entry.get('mtime')
+                fossil_date = entry.get('timestamp') or entry.get('mtime')
                 sha = entry.get('uuid') or entry.get('hash')
-                if sha:
-                    meta["last_commit_sha"] = sha[:10]
-                print(f"    [fossil] API OK: commit={meta['last_commit']}")
-                return
+                fossil_sha = sha[:10] if sha else None
+                print(f"    [fossil] JSON API: {fossil_date}")
         except json.JSONDecodeError as e:
             print(f"    [fossil] JSON parse error: {e}", file=sys.stderr)
     elif http_code == 404:
         print(f"    [fossil] JSON API not available (404), using HTML")
     else:
-        print(f"    [fossil] API failed (http={http_code})", file=sys.stderr)
+        print(f"    [fossil] JSON API failed (http={http_code})", file=sys.stderr)
 
-    # --- 2. HTML timeline filtered by module path ---
-    timeline_html_url = f"{base}/timeline?n=1"
-    if module_path:
-        timeline_html_url += f"&p={module_path}"
-    print(f"    [fossil] fetching HTML: {timeline_html_url}")
-    html, http_code = run_curl(timeline_html_url, timeout=20)
-    if html and http_code == 200:
-        date, sha = parse_fossil_date_from_html(html)
-        if date:
-            meta["last_commit"] = date
-            if sha:
-                meta["last_commit_sha"] = sha
-            print(f"    [fossil] HTML OK: commit={meta['last_commit']}")
-            return
-        else:
-            snippet = re.sub(r'\s+', ' ', html[:300])
-            print(f"    [fossil] HTML: no date in {len(html)} bytes. Snippet: {snippet}", file=sys.stderr)
-    else:
-        print(f"    [fossil] HTML failed (http={http_code})", file=sys.stderr)
-
-    # --- 3. Fallback: whole-repo timeline (no path filter) ---
-    if module_path:
-        print(f"    [fossil] falling back to whole-repo timeline")
-        html, http_code = run_curl(f"{base}/timeline?n=1", timeout=20)
+    # --- 2. Fossil HTML timeline (filtered by module path) ---
+    if not fossil_date:
+        timeline_html_url = f"{base}/timeline?n=1"
+        if module_path:
+            timeline_html_url += f"&p={module_path}"
+        print(f"    [fossil] fetching HTML: {timeline_html_url}")
+        html, http_code = run_curl(timeline_html_url, timeout=20)
         if html and http_code == 200:
-            date, sha = parse_fossil_date_from_html(html)
-            if date:
-                meta["last_commit"] = date
-                if sha:
-                    meta["last_commit_sha"] = sha
-                print(f"    [fossil] fallback OK: commit={meta['last_commit']}")
+            fossil_date, fossil_sha = parse_fossil_date_from_html(html)
+            if fossil_date:
+                print(f"    [fossil] HTML: {fossil_date}")
+            else:
+                # --- 3. Fallback: whole-repo timeline ---
+                if module_path:
+                    print(f"    [fossil] no date in filtered HTML, trying whole-repo")
+                    html, http_code = run_curl(f"{base}/timeline?n=1", timeout=20)
+                    if html and http_code == 200:
+                        fossil_date, fossil_sha = parse_fossil_date_from_html(html)
+                        if fossil_date:
+                            print(f"    [fossil] whole-repo HTML: {fossil_date}")
+        else:
+            print(f"    [fossil] HTML failed (http={http_code})", file=sys.stderr)
 
     # --- 4. Keep the most recent date between GitHub and Fossil ---
-    fossil_date = meta.get("last_commit")
     if github_date and fossil_date:
-        if github_date > fossil_date:
+        if github_date >= fossil_date:
             meta["last_commit"] = github_date
             meta["last_commit_sha"] = github_sha
-            print(f"    [fossil] using GitHub date (more recent): {github_date}")
+            print(f"    [fossil] winner=GitHub: {github_date}")
         else:
-            print(f"    [fossil] using Fossil date (more recent): {fossil_date}")
+            meta["last_commit"] = fossil_date
+            meta["last_commit_sha"] = fossil_sha
+            print(f"    [fossil] winner=Fossil: {fossil_date}")
     elif github_date:
         meta["last_commit"] = github_date
         meta["last_commit_sha"] = github_sha
-        print(f"    [fossil] using GitHub date (only source): {github_date}")
-    elif not fossil_date:
+        print(f"    [fossil] winner=GitHub (only): {github_date}")
+    elif fossil_date:
+        meta["last_commit"] = fossil_date
+        meta["last_commit_sha"] = fossil_sha
+        print(f"    [fossil] winner=Fossil (only): {fossil_date}")
+    else:
         meta["error"] = "date_not_found"
 
 
