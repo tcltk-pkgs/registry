@@ -48,7 +48,6 @@ proc process_git {url temp_base} {
 }
 
 proc process_fossil {url temp_base} {
-    # Extraire la base du repo fossil (avant /dir? ou /tree? ou /file?)
     if {[regexp {^(https?://[^/]+/[^/]+)} $url -> base]} {
         set api_base $base
     } else {
@@ -60,7 +59,6 @@ proc process_fossil {url temp_base} {
     set commit_sha "null"
     set tag "null"
     
-    # Essayer l'API JSON
     set timeline_url "$api_base/json/timeline?type=ci&limit=1"
     puts "  Trying API: $timeline_url"
     
@@ -95,7 +93,6 @@ proc process_fossil {url temp_base} {
         } err2]}
     }
     
-    # Récupérer les tags
     set tags_url "$api_base/json/taglist"
     if {![catch {
         set json [exec curl -s -L --max-time 10 $tags_url]
@@ -114,33 +111,45 @@ proc process_fossil {url temp_base} {
     return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Sérialisation JSON récursive propre
+proc to_json_value {v} {
+    if {$v eq "null"} {
+        return "null"
+    } elseif {[string is integer -strict $v] || [string is double -strict $v]} {
+        return $v
+    } else {
+        return [json::write string $v]
+    }
+}
+
 proc to_json {value} {
     if {$value eq "null"} {
         return "null"
-    } elseif {[string is integer -strict $value]} {
+    } elseif {[string is integer -strict $value] || [string is double -strict $value]} {
         return $value
-    } elseif {[string is double -strict $value]} {
-        return $value
-    } elseif {[llength $value] == 0} {
-        return "\"\""
-    } elseif {[llength $value] > 1 || [string match "\[*" $value]} {
-        # C'est une liste (tableau)
-        set items [list]
-        foreach item $value {
-            lappend items [to_json $item]
-        }
-        return "\[[join $items ,]\]"
-    } elseif {[catch {dict size $value} sz] == 0 && $sz > 0} {
-        # C'est un dictionnaire (objet)
+    } elseif {![catch {dict size $value} sz] && $sz > 0} {
         set pairs [list]
         dict for {k v} $value {
             lappend pairs "\"$k\":[to_json $v]"
         }
         return "{[join $pairs ,]}"
+    } elseif {[llength $value] > 1} {
+        set first [lindex $value 0]
+        if {![catch {dict size $first} sz] && $sz > 0} {
+            # Liste d'objets
+            set items [list]
+            foreach item $value {
+                lappend items [to_json $item]
+            }
+            return "\[[join $items ,]\]"
+        } else {
+            set items [list]
+            foreach item $value {
+                lappend items [to_json_value $item]
+            }
+            return "\[[join $items ,]\]"
+        }
     } else {
-        # Chaîne simple
-        return "\"[string map {\" \\\\\" \\ \\\\ \n \\n \r \\r / \\/} $value]\""
+        return [to_json_value $value]
     }
 }
 
@@ -166,12 +175,11 @@ foreach package $packages {
             "fossil" { set meta [process_fossil $url $temp_base] }
             default { set meta [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "unknown_method"] }
         }
-        
-        # Fusionner et ajouter à la liste
+
         lappend enriched_sources [dict merge $source $meta]
     }
     
-    # Créer le package enrichi
+
     set new_package [dict create \
         name [dict get $package name] \
         sources $enriched_sources \
@@ -181,10 +189,10 @@ foreach package $packages {
     lappend enriched_packages [to_json $new_package]
 }
 
-# Créer l'en-tête avec metadata
+
 set meta [dict create packages "Tcl/Tk" generated_at [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt true]]
 
-# Assembler le tableau final
+
 set json_out "\[[to_json $meta],[join $enriched_packages ,]\]"
 
 set fh [open $output w]
