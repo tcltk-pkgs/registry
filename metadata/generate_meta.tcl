@@ -105,7 +105,7 @@ proc process_fossil {url} {
     set base [extract_fossil_base $url]
     set meta [dict create last_commit "" last_commit_sha "" last_tag "" last_commit_approximate false]
 
-    puts "    [fossil] trying JSON API..."
+    puts "    \[fossil\] trying JSON API..."
     set r [http_get "$base/json/timeline?type=ci&limit=1" "json"]
     if {[dict get $r code] == 200} {
         set tl [dict get $r json payload timeline]
@@ -124,7 +124,7 @@ proc process_fossil {url} {
     }
 
     if {[info exists FOSSIL_MIRRORS($base)]} {
-        puts "    [fossil] trying GitHub mirror..."
+        puts "    \[fossil\] trying GitHub mirror..."
         set gh_meta [process_github_api $FOSSIL_MIRRORS($base)]
         if {[dict exists $gh_meta last_commit]} {
             dict set meta last_commit [dict get $gh_meta last_commit]
@@ -138,7 +138,7 @@ proc process_fossil {url} {
         }
     }
 
-    puts "    [fossil] fallback to HTML..."
+    puts "    \[fossil\] fallback to HTML..."
     set r [http_get "$base/timeline?n=1"]
     if {[dict get $r code] == 200} {
         set html [dict get $r body]
