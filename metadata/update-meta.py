@@ -182,6 +182,46 @@ def parse_fossil_date_from_html(html):
     return date, sha
 
 
+# Fossil repos that have a Git mirror.
+# Used as fallback to fetch tags when the Fossil tag API is unavailable.
+# key   = Fossil base URL (as returned by extract_fossil_base)
+# value = Git mirror URL
+FOSSIL_GIT_MIRRORS = {
+    "https://core.tcl-lang.org/tcllib":  "https://github.com/tcltk/tcllib",
+    "https://core.tcl-lang.org/tcl":     "https://github.com/tcltk/tcl",
+    "https://core.tcl-lang.org/tk":      "https://github.com/tcltk/tk",
+}
+
+
+def _latest_tag_from_git_mirror(git_url):
+    """
+    Fetch tags from a Git mirror using ls-remote (no clone needed).
+    Returns the most recent version tag, or None on failure.
+    """
+    output = run_cmd(
+        f'git ls-remote --tags --refs "{git_url}"',
+        timeout=30
+    )
+    if not output:
+        return None
+
+    tags = []
+    for line in output.splitlines():
+        if m := re.match(r'[0-9a-f]+\s+refs/tags/(.+)', line.strip()):
+            tag = m.group(1).strip()
+            if re.search(r'\d', tag):   # skip tags with no digits
+                tags.append(tag)
+
+    if not tags:
+        return None
+
+    # Sort by numeric components so 1-21-0 > 1-20-1 > 1-9-0
+    def version_key(t):
+        return [int(n) for n in re.findall(r'\d+', t)]
+
+    return sorted(tags, key=version_key, reverse=True)[0]
+
+
 def _pick_version_tag(html):
     """
     Extract the most recent version tag from a Fossil /taglist or /brlist HTML page.
@@ -279,7 +319,7 @@ def process_fossil(url, temp_base):
             meta["error"] = f"http_{http_code}"
 
     # --- 3. Tags ---
-    # JSON API first, then HTML /taglist, then /brlist (core.tcl-lang.org has 404 on JSON)
+    # Try in order: JSON API -> HTML /taglist -> HTML /brlist -> Git mirror
     tag = None
 
     tags_body, tags_code = run_curl(f"{base}/json/taglist", timeout=15)
@@ -300,9 +340,17 @@ def process_fossil(url, temp_base):
                 if tag:
                     break
 
+    if not tag and base in FOSSIL_GIT_MIRRORS:
+        mirror = FOSSIL_GIT_MIRRORS[base]
+        print(f"    [fossil] trying Git mirror for tags: {mirror}")
+        tag = _latest_tag_from_git_mirror(mirror)
+        if tag:
+            print(f"    [fossil] tag from Git mirror: {tag}")
+
     if tag:
         meta["last_tag"] = tag
-        print(f"    [fossil] tag: {tag}")
+    else:
+        print(f"    [fossil] no tag found", file=sys.stderr)
 
     # Store in cache so sibling packages skip the network round-trip
     _fossil_cache[base] = meta
