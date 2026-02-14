@@ -1860,5 +1860,19 @@
     ],
     "tags": ["tcllib", "archive", "zip"],
     "description": "Build a zip archive"
+  },
+  {
+    "name": "ticklecharts",
+    "sources": [
+      {
+        "url": "https://github.com/nico-robert/ticklecharts",
+        "method": "git",
+        "web": "https://github.com/nico-robert/ticklecharts/README.md",
+        "author": "Nicolas ROBERT",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["web", "charts"],
+    "description": "Tcl wrapper around Apache ECharts."
   }
 ]
