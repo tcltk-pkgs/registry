@@ -55,54 +55,97 @@ proc process_git {url temp_base} {
     return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Process Fossil source - fast version using HTTP timeline (no clone)
+# Process Fossil source using native JSON API
 proc process_fossil {url temp_base} {
-    # Clean URL for timeline access
     set base_url [string trimright $url "/"]
-    set timeline_url "$base_url/timeline"
     
-    puts "  Fetching timeline: $timeline_url"
-    
-    # Fetch timeline page (lightweight, just HTML)
-    if {[catch {
-        set html [exec curl -s -L --max-time 15 $timeline_url]
-    } err]} {
-        puts stderr "Failed to fetch timeline: $err"
-        return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "fetch_failed"]
-    }
+    # Remove query parameters from base URL for API calls
+    set api_base [regexp -inline {^[^?]+} $base_url]
     
     set commit_date "null"
     set commit_sha "null"
     set tag "null"
     
-    # Extract last commit date from timeline HTML
-    if {[regexp {datetime="(\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2})"} $html -> date]} {
-        set commit_date $date
-    } elseif {[regexp {(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2})} $html -> d t]} {
-        set commit_date "$d $t"
-    }
+    # 1. Get last commit via JSON API
+    set timeline_url "$api_base/json/timeline?type=ci&limit=1"
+    puts "  Fetching JSON: $timeline_url"
     
-    # Extract short SHA from timeline (first hex sequence of 10+ chars)
-    if {[regexp {href="/timeline\?c=([0-9a-f]{10,})"} $html -> sha]} {
-        set commit_sha [string range $sha 0 9]
-    }
-    
-    # Try to get last tag from tags page
-    set tags_url "$base_url/taglist"
     if {![catch {
-        set tags_html [exec curl -s -L --max-time 10 $tags_url]
-    } err]} {
-        if {[regexp -nocase {>(v?\d+\.\d+[^<]*)</} $tags_html -> found_tag]} {
-            set tag $found_tag
-        } elseif {[regexp {>(release[^<]+)</} $tags_html -> found_tag]} {
-            set tag $found_tag
+        set json [exec curl -s -L --max-time 15 $timeline_url]
+        set data [::json::json2dict $json]
+        
+        # Fossil JSON structure: {"timeline": [{"uuid": "...", "timestamp": "...", ...}]}
+        if {[dict exists $data timeline]} {
+            set entries [dict get $data timeline]
+            if {[llength $entries] > 0} {
+                set entry [lindex $entries 0]
+                
+                if {[dict exists $entry timestamp]} {
+                    set commit_date [dict get $entry timestamp]
+                }
+                if {[dict exists $entry uuid]} {
+                    set sha [dict get $entry uuid]
+                    set commit_sha [string range $sha 0 9]
+                }
+            }
         }
+    } err]} {
+        puts stderr "  JSON API failed, falling back to HTML: $err"
+        # Fallback to HTML scraping if JSON unavailable
+        return [process_fossil_html $url]
+    }
+    
+    # 2. Get tags via JSON API
+    set tags_url "$api_base/json/taglist"
+    if {![catch {
+        set json [exec curl -s -L --max-time 10 $tags_url]
+        set data [::json::json2dict $json]
+        
+        # Structure: {"tags": [{"tagname": "v1.0", ...}, ...]}
+        if {[dict exists $data tags]} {
+            set tags [dict get $data tags]
+            if {[llength $tags] > 0} {
+                # Get first tag (most recent)
+                set first_tag [lindex $tags 0]
+                if {[dict exists $first_tag tagname]} {
+                    set tag [dict get $first_tag tagname]
+                }
+            }
+        }
+    } err]} {
+        puts stderr "  Tag JSON failed: $err"
     }
     
     return [dict create \
         last_commit $commit_date \
         last_commit_sha $commit_sha \
         last_tag $tag]
+}
+
+# Fallback HTML scraping (if JSON API unavailable)
+proc process_fossil_html {url} {
+    set base_url [string trimright $url "/"]
+    set timeline_url "$base_url/timeline"
+    
+    puts "  Falling back to HTML: $timeline_url"
+    
+    if {[catch {
+        set html [exec curl -s -L --max-time 15 $timeline_url]
+    } err]} {
+        return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "fetch_failed"]
+    }
+    
+    set commit_date "null"
+    set commit_sha "null"
+    
+    if {[regexp {datetime="(\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2})"} $html -> date]} {
+        set commit_date $date
+    }
+    if {[regexp {href="/timeline\?c=([0-9a-f]{10,})"} $html -> sha]} {
+        set commit_sha [string range $sha 0 9]
+    }
+    
+    return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag "null"]
 }
 
 # Convert dict to JSON string
