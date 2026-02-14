@@ -240,39 +240,90 @@ def _pick_version_tag(html):
     return None
 
 
-# Cache for Fossil repos: base_url -> meta dict
-# BUG FIX #4: many packages share the same repo (e.g. all of tcllib).
-# Without a cache, the same URL gets fetched once per package -> infinite-looking loop.
-_fossil_cache: dict = {}
+# Two-level cache for Fossil repos:
+#   _fossil_repo_cache : base_url  -> {last_tag}                  (one fetch per repo)
+#   _fossil_date_cache : source_url -> {last_commit, last_commit_sha}  (one fetch per module path)
+_fossil_repo_cache: dict = {}
+_fossil_date_cache: dict = {}
 
 
-def process_fossil(url, temp_base):
-    base = extract_fossil_base(url)
-    print(f"    [fossil] base URL: {base}")
 
-    # Return cached result immediately if we already fetched this repo
-    if base in _fossil_cache:
-        print(f"    [fossil] cache hit")
-        return dict(_fossil_cache[base])  # return a copy
+def _extract_module_path(source_url):
+    """Extract 'modules/textutil' from a Fossil dir URL like
+    https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk
+    Returns None if no name param found (= whole-repo URL)."""
+    if m := re.search(r'[?&]name=([^&]+)', source_url):
+        return m.group(1)
+    return None
 
-    meta = {
-        "last_commit": None,
-        "last_commit_sha": None,
-        "last_tag": None,
-    }
 
-    # --- 1. Try JSON API ---
-    # Note: core.tcl-lang.org returns HTTP 404 for /json/timeline (API disabled).
-    # We detect this and skip straight to HTML instead of logging a noisy error.
+def _github_api_commit(git_url, module_path):
+    """
+    Query the GitHub API for the last commit on a specific path.
+    Returns (iso_date, sha_short) or (None, None).
+    No auth needed for public repos (60 req/h unauthenticated).
+    """
+    m = re.match(r'https://github\.com/([^/]+/[^/.]+)', git_url)
+    if not m:
+        return None, None
+    repo = m.group(1)
+    path = module_path or ""
+    api_url = f"https://api.github.com/repos/{repo}/commits?per_page=1"
+    if path:
+        api_url += f"&path={path}"
+    body, code = run_curl(api_url, timeout=20)
+    if not body or code != 200:
+        print(f"    [github] API failed (http={code})", file=sys.stderr)
+        return None, None
+    try:
+        data = json.loads(body)
+        if not data:
+            return None, None
+        commit = data[0]
+        sha = commit.get("sha", "")[:7]
+        date = (commit.get("commit", {})
+                      .get("committer", {})
+                      .get("date") or
+                commit.get("commit", {})
+                      .get("author", {})
+                      .get("date"))
+        # Normalize ISO 8601: "2026-01-12T19:51:13Z" -> "2026-01-12 19:51:13"
+        if date:
+            date = date.replace("T", " ").rstrip("Z")
+        return date, sha
+    except (json.JSONDecodeError, KeyError, IndexError) as e:
+        print(f"    [github] parse error: {e}", file=sys.stderr)
+        return None, None
+
+
+def _fetch_fossil_date(base, module_path, meta):
+    """
+    Populate meta['last_commit'] and meta['last_commit_sha'].
+    If module_path is given, filters the timeline to that subdirectory
+    so we get the last commit that actually touched this module.
+    Falls back to whole-repo timeline if the filtered request fails.
+    """
+    # --- 0. GitHub mirror API (most reliable for per-module dates) ---
+    if base in FOSSIL_GIT_MIRRORS:
+        mirror = FOSSIL_GIT_MIRRORS[base]
+        print(f"    [fossil] trying GitHub API: {mirror} path={module_path}")
+        date, sha = _github_api_commit(mirror, module_path)
+        if date:
+            meta["last_commit"] = date
+            if sha:
+                meta["last_commit_sha"] = sha
+            print(f"    [fossil] GitHub API OK: commit={date}")
+            return
+
+    # --- 1. JSON API (often 404 on core.tcl-lang.org) ---
     timeline_url = f"{base}/json/timeline?type=ci&limit=1"
+    if module_path:
+        timeline_url += f"&p={module_path}"
     print(f"    [fossil] trying API: {timeline_url}")
-
     body, http_code = run_curl(timeline_url, timeout=20)
-
     if body and http_code == 200:
         try:
             data = json.loads(body)
-            # Fossil JSON API v2 wraps results in 'payload'
             timeline = data.get('payload', {}).get('timeline') or data.get('timeline', [])
             if timeline:
                 entry = timeline[0]
@@ -281,45 +332,54 @@ def process_fossil(url, temp_base):
                 if sha:
                     meta["last_commit_sha"] = sha[:10]
                 print(f"    [fossil] API OK: commit={meta['last_commit']}")
+                return
         except json.JSONDecodeError as e:
             print(f"    [fossil] JSON parse error: {e}", file=sys.stderr)
     elif http_code == 404:
-        # JSON API not enabled on this server — go straight to HTML, no noise
         print(f"    [fossil] JSON API not available (404), using HTML")
     else:
-        print(
-            f"    [fossil] API failed (http={http_code}, body_len={len(body) if body else 0})",
-            file=sys.stderr
-        )
+        print(f"    [fossil] API failed (http={http_code})", file=sys.stderr)
 
-    # --- 2. HTML fallback ---
-    if not meta["last_commit"]:
-        print(f"    [fossil] fetching HTML timeline")
-        html, http_code = run_curl(f"{base}/timeline", timeout=20)
+    # --- 2. HTML timeline filtered by module path ---
+    timeline_html_url = f"{base}/timeline?n=1"
+    if module_path:
+        timeline_html_url += f"&p={module_path}"
+    print(f"    [fossil] fetching HTML: {timeline_html_url}")
+    html, http_code = run_curl(timeline_html_url, timeout=20)
+    if html and http_code == 200:
+        date, sha = parse_fossil_date_from_html(html)
+        if date:
+            meta["last_commit"] = date
+            if sha:
+                meta["last_commit_sha"] = sha
+            print(f"    [fossil] HTML OK: commit={meta['last_commit']}")
+            return
+        else:
+            snippet = re.sub(r'\s+', ' ', html[:300])
+            print(f"    [fossil] HTML: no date in {len(html)} bytes. Snippet: {snippet}", file=sys.stderr)
+    else:
+        print(f"    [fossil] HTML failed (http={http_code})", file=sys.stderr)
+
+    # --- 3. Fallback: whole-repo timeline (no path filter) ---
+    if module_path:
+        print(f"    [fossil] falling back to whole-repo timeline")
+        html, http_code = run_curl(f"{base}/timeline?n=1", timeout=20)
         if html and http_code == 200:
             date, sha = parse_fossil_date_from_html(html)
             if date:
                 meta["last_commit"] = date
-                if sha and not meta["last_commit_sha"]:
+                if sha:
                     meta["last_commit_sha"] = sha
-                print(f"    [fossil] HTML OK: commit={meta['last_commit']}")
-            else:
-                # Dump a snippet to help debug future regex failures
-                snippet = re.sub(r'\s+', ' ', html[:300])
-                print(
-                    f"    [fossil] HTML: no date in {len(html)} bytes. Snippet: {snippet}",
-                    file=sys.stderr
-                )
-                meta["error"] = "date_not_found"
-        else:
-            print(
-                f"    [fossil] HTML also failed (http={http_code})",
-                file=sys.stderr
-            )
-            meta["error"] = f"http_{http_code}"
+                print(f"    [fossil] fallback OK: commit={meta['last_commit']}")
+                return
+    meta["error"] = "date_not_found"
 
-    # --- 3. Tags ---
-    # Try in order: JSON API -> HTML /taglist -> HTML /brlist -> Git mirror
+
+def _fetch_fossil_tag(base, meta):
+    """
+    Populate meta['last_tag'].
+    Tries: JSON API -> /taglist HTML -> /brlist HTML -> Git mirror.
+    """
     tag = None
 
     tags_body, tags_code = run_curl(f"{base}/json/taglist", timeout=15)
@@ -352,9 +412,31 @@ def process_fossil(url, temp_base):
     else:
         print(f"    [fossil] no tag found", file=sys.stderr)
 
-    # Store in cache so sibling packages skip the network round-trip
-    _fossil_cache[base] = meta
-    return dict(meta)
+
+def process_fossil(url, temp_base):
+    base = extract_fossil_base(url)
+    module_path = _extract_module_path(url)
+    print(f"    [fossil] base={base}  module={module_path or '(whole repo)'}")
+
+    # --- Date: per-module cache (same module can appear in multiple packages) ---
+    if url in _fossil_date_cache:
+        print(f"    [fossil] date cache hit")
+        date_meta = _fossil_date_cache[url]
+    else:
+        date_meta = {"last_commit": None, "last_commit_sha": None}
+        _fetch_fossil_date(base, module_path, date_meta)
+        _fossil_date_cache[url] = date_meta
+
+    # --- Tags: per-repo cache ---
+    if base in _fossil_repo_cache:
+        print(f"    [fossil] tag cache hit")
+        tag_meta = _fossil_repo_cache[base]
+    else:
+        tag_meta = {"last_tag": None}
+        _fetch_fossil_tag(base, tag_meta)
+        _fossil_repo_cache[base] = tag_meta
+
+    return {**date_meta, **tag_meta}
 
 
 def main():
