@@ -137,70 +137,130 @@ def process_git(url, temp_base):
     return meta
 
 
+def parse_fossil_date_from_html(html):
+    """
+    Extract the most recent commit date and SHA from a Fossil /timeline HTML page.
+
+    Fossil does NOT use HTML5 datetime= attributes. It embeds dates in several ways
+    depending on the version and skin. We try them all, most specific first.
+    """
+    date = None
+    sha = None
+
+    # --- Date extraction (try patterns in order of specificity) ---
+
+    # Pattern A: <span class='timelineHistDsp'>2024-01-15 14:23:07</span>
+    # Used by most Fossil skins including the default one on core.tcl-lang.org
+    if m := re.search(
+        r"timelineHistDsp[^>]*>\s*(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})",
+        html
+    ):
+        date = m.group(1)
+
+    # Pattern B: <td class="timelineDateCell">2024-01-15</td> (date-only cell)
+    # Combined with nearby time. Less precise but better than nothing.
+    if not date:
+        if m := re.search(
+            r'timelineDateCell[^>]*>\s*<[^>]*>\s*(\d{4}-\d{2}-\d{2})',
+            html
+        ):
+            date = m.group(1)
+
+    # Pattern C: Generic ISO datetime anywhere in the page (last resort)
+    # Matches "2024-01-15 14:23:07" or "2024-01-15T14:23:07"
+    if not date:
+        if m := re.search(r'(\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2})', html):
+            date = m.group(1)
+
+    # --- SHA extraction ---
+    # Fossil timeline links: href="/repo/info/a1b2c3d4e5f6" or ?c=a1b2c3d4e5
+    if m := re.search(r'/info/([0-9a-f]{10,40})', html):
+        sha = m.group(1)[:10]
+    elif m := re.search(r'[?&]c=([0-9a-f]{10,40})', html):
+        sha = m.group(1)[:10]
+
+    return date, sha
+
+
+# Cache for Fossil repos: base_url -> meta dict
+# BUG FIX #4: many packages share the same repo (e.g. all of tcllib).
+# Without a cache, the same URL gets fetched once per package -> infinite-looking loop.
+_fossil_cache: dict = {}
+
+
 def process_fossil(url, temp_base):
+    base = extract_fossil_base(url)
+    print(f"    [fossil] base URL: {base}")
+
+    # Return cached result immediately if we already fetched this repo
+    if base in _fossil_cache:
+        print(f"    [fossil] cache hit")
+        return dict(_fossil_cache[base])  # return a copy
+
     meta = {
         "last_commit": None,
         "last_commit_sha": None,
         "last_tag": None,
     }
 
-    # BUG FIX #3: use improved base URL extraction
-    base = extract_fossil_base(url)
-    print(f"    [fossil] base URL: {base}")
-
     # --- 1. Try JSON API ---
+    # Note: core.tcl-lang.org returns HTTP 404 for /json/timeline (API disabled).
+    # We detect this and skip straight to HTML instead of logging a noisy error.
     timeline_url = f"{base}/json/timeline?type=ci&limit=1"
     print(f"    [fossil] trying API: {timeline_url}")
 
     body, http_code = run_curl(timeline_url, timeout=20)
 
-    # BUG FIX #2: check HTTP code, not just emptiness
     if body and http_code == 200:
         try:
             data = json.loads(body)
+            # Fossil JSON API v2 wraps results in 'payload'
             timeline = data.get('payload', {}).get('timeline') or data.get('timeline', [])
             if timeline:
                 entry = timeline[0]
-                if 'timestamp' in entry:
-                    meta["last_commit"] = entry['timestamp']
-                elif 'mtime' in entry:
-                    meta["last_commit"] = entry['mtime']
-                if 'uuid' in entry:
-                    meta["last_commit_sha"] = entry['uuid'][:10]
-                elif 'hash' in entry:
-                    meta["last_commit_sha"] = entry['hash'][:10]
+                meta["last_commit"] = entry.get('timestamp') or entry.get('mtime')
+                sha = entry.get('uuid') or entry.get('hash')
+                if sha:
+                    meta["last_commit_sha"] = sha[:10]
                 print(f"    [fossil] API OK: commit={meta['last_commit']}")
         except json.JSONDecodeError as e:
             print(f"    [fossil] JSON parse error: {e}", file=sys.stderr)
+    elif http_code == 404:
+        # JSON API not enabled on this server — go straight to HTML, no noise
+        print(f"    [fossil] JSON API not available (404), using HTML")
     else:
         print(
             f"    [fossil] API failed (http={http_code}, body_len={len(body) if body else 0})",
             file=sys.stderr
         )
 
-    # --- 2. HTML fallback if API didn't give us the commit ---
+    # --- 2. HTML fallback ---
     if not meta["last_commit"]:
-        print(f"    [fossil] falling back to HTML timeline")
+        print(f"    [fossil] fetching HTML timeline")
         html, http_code = run_curl(f"{base}/timeline", timeout=20)
         if html and http_code == 200:
-            # datetime attribute (most Fossil versions)
-            if m := re.search(r'datetime=["\'](\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2})', html):
-                meta["last_commit"] = m.group(1)
-            # SHA in timeline links
-            if m := re.search(r'href=["\'][^"\']*[?&]c=([0-9a-f]{10,40})', html):
-                meta["last_commit_sha"] = m.group(1)[:10]
-            if meta["last_commit"]:
-                print(f"    [fossil] HTML fallback OK: {meta['last_commit']}")
+            date, sha = parse_fossil_date_from_html(html)
+            if date:
+                meta["last_commit"] = date
+                if sha and not meta["last_commit_sha"]:
+                    meta["last_commit_sha"] = sha
+                print(f"    [fossil] HTML OK: commit={meta['last_commit']}")
             else:
-                print(f"    [fossil] HTML fallback: no date found in {len(html)} bytes", file=sys.stderr)
+                # Dump a snippet to help debug future regex failures
+                snippet = re.sub(r'\s+', ' ', html[:300])
+                print(
+                    f"    [fossil] HTML: no date in {len(html)} bytes. Snippet: {snippet}",
+                    file=sys.stderr
+                )
+                meta["error"] = "date_not_found"
         else:
             print(
-                f"    [fossil] HTML fallback also failed (http={http_code})",
+                f"    [fossil] HTML also failed (http={http_code})",
                 file=sys.stderr
             )
             meta["error"] = f"http_{http_code}"
 
-    # --- 3. Tags ---
+    # --- 3. Tags (JSON API optional) ---
     tags_body, tags_code = run_curl(f"{base}/json/taglist", timeout=15)
     if tags_body and tags_code == 200:
         try:
@@ -214,7 +274,9 @@ def process_fossil(url, temp_base):
         except json.JSONDecodeError:
             pass
 
-    return meta
+    # Store in cache so sibling packages skip the network round-trip
+    _fossil_cache[base] = meta
+    return dict(meta)
 
 
 def main():
