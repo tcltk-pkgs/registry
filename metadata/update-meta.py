@@ -582,37 +582,55 @@ def main():
                 reachable, http_code = check_url_reachable(url)
                 print(f"    [check] reachable={reachable} (http={http_code})")
 
-                if method == 'git':
-                    meta = process_git(url, temp_base)
-                elif method == 'fossil':
-                    meta = process_fossil(url, temp_base)
-                else:
-                    meta = {
+                # Null-out everything if URL is unreachable — no stale/misleading data
+                if not reachable:
+                    print(f"    [skip] URL unreachable, skipping all fetches", file=sys.stderr)
+                    enriched_source = {
+                        **source,
+                        "reachable": False,
+                        "archived": None,
+                        "latest_release": None,
                         "last_commit": None,
                         "last_commit_sha": None,
                         "last_tag": None,
-                        "error": "unknown_method",
+                        "error": f"unreachable_http_{http_code}",
                     }
+                elif method not in ("git", "fossil"):
+                    print(f"    [skip] unknown method '{method}'", file=sys.stderr)
+                    enriched_source = {
+                        **source,
+                        "reachable": reachable,
+                        "archived": None,
+                        "latest_release": None,
+                        "last_commit": None,
+                        "last_commit_sha": None,
+                        "last_tag": None,
+                        "error": f"unknown_method_{method}",
+                    }
+                else:
+                    if method == 'git':
+                        meta = process_git(url, temp_base)
+                    else:
+                        meta = process_fossil(url, temp_base)
 
-                # GitHub repo metadata (archived, latest_release) for any GitHub URL
-                # Works for native git sources AND Fossil mirrors
-                # Returns None values for non-GitHub URLs
-                gh_info = _fetch_github_repo_info(url)
-                if gh_info["archived"] is None and method == "fossil":
-                    # For Fossil sources, check if there's a known GitHub mirror
-                    fossil_base = extract_fossil_base(url)
-                    if fossil_base in FOSSIL_GIT_MIRRORS:
-                        gh_info = _fetch_github_repo_info(FOSSIL_GIT_MIRRORS[fossil_base])
-                if gh_info["archived"] is not None:
-                    print(f"    [github] archived={gh_info['archived']}  release={gh_info['latest_release']}")
+                    # GitHub repo metadata (archived, latest_release)
+                    # Works for native git sources AND Fossil mirrors
+                    gh_info = _fetch_github_repo_info(url)
+                    if gh_info["archived"] is None and method == "fossil":
+                        fossil_base = extract_fossil_base(url)
+                        if fossil_base in FOSSIL_GIT_MIRRORS:
+                            gh_info = _fetch_github_repo_info(FOSSIL_GIT_MIRRORS[fossil_base])
+                    if gh_info["archived"] is not None:
+                        print(f"    [github] archived={gh_info['archived']}  release={gh_info['latest_release']}")
 
-                enriched_source = {
-                    **source,
-                    "reachable": reachable,
-                    "archived": gh_info["archived"],
-                    "latest_release": gh_info["latest_release"],
-                    **meta,
-                }
+                    enriched_source = {
+                        **source,
+                        "reachable": reachable,
+                        "archived": gh_info["archived"],
+                        "latest_release": gh_info["latest_release"],
+                        **meta,
+                        "error": meta.get("error", "none"),
+                    }
                 enriched_sources.append(enriched_source)
 
             new_package = {
