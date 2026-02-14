@@ -14,7 +14,6 @@ array set FOSSIL_MIRRORS {
 set github_cache [dict create]
 set fossil_cache [dict create]
 
-
 proc version_compare {a b} {
     set na [regexp -all -inline {\d+} $a]
     set nb [regexp -all -inline {\d+} $b]
@@ -40,6 +39,17 @@ proc get_latest_tag {tag_list} {
     return [lindex [lsort -command version_compare $filtered] end]
 }
 
+proc to_huddle {val type} {
+    if {$val eq ""} { return [huddle null] }
+    if {$type eq "bool"} { return [huddle boolean $val] }
+    return [huddle string $val]
+}
+
+proc parse_github_repo {url} {
+    if {[regexp {github\.com/([^/]+/[^/.]+)} $url -> repo]} { return [string trimright $repo "/"] }
+    return ""
+}
+
 proc http_get {url {type "raw"}} {
     global env TIMEOUT
     set hdrs [list -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"]
@@ -50,30 +60,25 @@ proc http_get {url {type "raw"}} {
     if {[catch {exec -ignorestderr {*}$cmd} response]} {
         return [dict create code 0 body "" json {} error "curl_fail"]
     }
-
+    
     set lines [split $response "\n"]
     set code [string trim [lindex $lines end]]
     set body [string trim [join [lrange $lines 0 end-1] "\n"]]
     set json {}
-
+    
     if {$type eq "json" && $code == 200} {
         catch {set json [::json::json2dict $body]}
     }
     return [dict create code $code body $body json $json error ""]
 }
 
-proc parse_github_repo {url} {
-    if {[regexp {github\.com/([^/]+/[^/.]+)} $url -> repo]} { return [string trimright $repo "/"] }
-    return ""
-}
-
 proc fetch_github_data {url {module_path ""}} {
     global github_cache
     set repo [parse_github_repo $url]
     if {$repo eq ""} { return {} }
-
+    
     set commit_key "${repo}:${module_path}"
-
+    
     if {![dict exists $github_cache $repo]} {
         set info [dict create archived "" latest_release ""]
         set r [http_get "https://api.github.com/repos/$repo" "json"]
@@ -86,7 +91,7 @@ proc fetch_github_data {url {module_path ""}} {
         }
         dict set github_cache $repo $info
     }
-
+    
     if {![dict exists $github_cache $commit_key]} {
         set cdata [dict create last_commit "" last_commit_sha ""]
         set api_url "https://api.github.com/repos/$repo/commits?per_page=1"
@@ -100,26 +105,30 @@ proc fetch_github_data {url {module_path ""}} {
         }
         dict set github_cache $commit_key $cdata
     }
-
+    
     return [dict merge [dict get $github_cache $repo] [dict get $github_cache $commit_key]]
 }
 
 proc process_fossil {url} {
     global FOSSIL_MIRRORS fossil_cache
     
-    if {[dict exists $fossil_cache $url]} { return [dict get $fossil_cache $url] }
-
+    if {[dict exists $fossil_cache $url]} {
+        puts "    \[fossil\] cache hit"
+        return [dict get $fossil_cache $url]
+    }
+    
     set base [lindex [split $url ?] 0]
     foreach p {/dir /file /timeline /info /json} {
         if {[set idx [string first $p $base]] >= 0} { set base [string range $base 0 $idx-1] }
     }
     set base [string trimright $base "/"]
+    
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
-
+    
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
-
-    # 1. Fossil JSON API
+    
+    puts "    \[fossil\] checking Fossil API..."
     set api_url "$base/json/timeline?type=ci&limit=1"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
     
@@ -132,9 +141,10 @@ proc process_fossil {url} {
             dict set meta last_commit_sha [string range [dict get $entry uuid] 0 9]
         }
     }
-
+    
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
+        puts "    \[fossil\] checking GitHub backend mirror..."
         set gh [fetch_github_data $mirror $module_path]
         
         if {[dict get $meta last_commit] eq ""} {
@@ -143,7 +153,7 @@ proc process_fossil {url} {
         }
         dict set meta archived [dict get $gh archived]
         dict set meta latest_release [dict get $gh latest_release]
-
+        
         catch {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
             set tag_list [list]
@@ -153,7 +163,7 @@ proc process_fossil {url} {
             dict set meta last_tag [get_latest_tag $tag_list]
         }
     }
-
+    
     dict set fossil_cache $url $meta
     return $meta
 }
@@ -163,8 +173,10 @@ proc process_git {url} {
     set repo [parse_github_repo $url]
     
     if {$repo ne ""} {
+        puts "    \[git\] checking GitHub API..."
         set gh [fetch_github_data $url]
         set meta [dict merge $gh [dict create last_tag [dict get $gh latest_release]]]
+        
         if {[dict get $meta last_tag] eq ""} {
              catch {
                 set raw_tags [exec git ls-remote --tags --refs $url]
@@ -177,10 +189,11 @@ proc process_git {url} {
         }
         return $meta
     }
-
+    
+    puts "    \[git\] cloning repository..."
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]" ]
-
+    
     try {
         exec git clone --depth 1 --filter=blob:none --no-checkout $url $tmp 2>@1
         dict set meta last_commit     [exec git -C $tmp log -1 --format=%ci]
@@ -193,45 +206,51 @@ proc process_git {url} {
     return $meta
 }
 
-proc to_huddle {val type} {
-    if {$val eq ""} { return [huddle null] }
-    if {$type eq "bool"} { return [huddle boolean $val] }
-    return [huddle string $val]
-}
-
 proc main {} {
     global INPUT_FILE OUTPUT_FILE
     
-    set fh [open $INPUT_FILE r]; fconfigure $fh -encoding utf-8; set data [read $fh]; close $fh
+    set fh [open $INPUT_FILE r]
+    fconfigure $fh -encoding utf-8
+    set data [read $fh]
+    close $fh
+    
     set packages [::json::json2dict $data]
     set out_list [huddle list]
-    huddle append out_list [huddle create generated_at [huddle string [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]]]
-
+    
+    set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
+    huddle append out_list [huddle create generated_at [huddle string $timestamp]]
+    
     set idx 0
     set total [llength $packages]
-
+    
     foreach pkg $packages {
         incr idx
         set name [dict get $pkg name]
-        puts "\[$idx/$total\] $name"
+        puts "\[$idx/$total\] Processing: $name"
         
         set enriched_sources [list]
         foreach src [dict get $pkg sources] {
             set url [dict get $src url]
             set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
             
+            puts "  - Checking source: $url (Method: $method)"
+            
             set check [http_get $url]
-            set reachable [expr {[dict get $check code] >= 200 && [dict get $check code] < 400}]
+            set code [dict get $check code]
+            set reachable [expr {$code >= 200 && $code < 400}]
+            
             set meta [dict create reachable $reachable archived "" latest_release "" last_commit "" last_tag ""]
-
+            
             if {$reachable} {
                 if {$method eq "fossil"} {
                     set meta [dict merge $meta [process_fossil $url]]
                 } elseif {$method eq "git"} {
                     set meta [dict merge $meta [process_git $url]]
                 }
+            } else {
+                puts "    ! Source unreachable (HTTP $code)"
             }
-
+            
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
             dict for {k v} $meta {
@@ -243,26 +262,32 @@ proc main {} {
             }
             lappend enriched_sources $h_src
         }
-
+        
         set h_pkg [huddle create]
         huddle append h_pkg name [to_huddle $name str]
-        huddle append h_pkg description [to_huddle [expr {[dict exists $pkg description] ? [dict get $pkg description] : ""}] str]
+        
+        set desc ""
+        if {[dict exists $pkg description]} { set desc [dict get $pkg description] }
+        huddle append h_pkg description [to_huddle $desc str]
         
         set h_srcs [huddle list]
         foreach s $enriched_sources { huddle append h_srcs $s }
         huddle append h_pkg sources $h_srcs
         
         set h_tags [huddle list]
-        if {[dict exists $pkg tags]} { foreach t [dict get $pkg tags] { huddle append h_tags [to_huddle $t str] } }
+        if {[dict exists $pkg tags]} { 
+            foreach t [dict get $pkg tags] { huddle append h_tags [to_huddle $t str] } 
+        }
         huddle append h_pkg tags $h_tags
-
+        
         huddle append out_list $h_pkg
     }
-
+    
     file mkdir [file dirname $OUTPUT_FILE]
     set fh [open $OUTPUT_FILE w]
     puts -nonewline $fh [string map {\\/ /} [huddle jsondump $out_list "" ""]]
     close $fh
+    
     puts "Done: $OUTPUT_FILE"
 }
 
