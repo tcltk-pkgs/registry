@@ -107,11 +107,49 @@ proc process_fossil {url temp_base} {
         last_tag $tag]
 }
 
-# Convert dict to JSON string
-proc dict_to_json {d} {
+# Convert a single source dict to JSON
+proc source_to_json {source} {
     set pairs [list]
-    dict for {key value} $d {
+    dict for {key value} $source {
         if {$value eq "null"} {
+            lappend pairs "\"$key\": null"
+        } elseif {[string is integer -strict $value]} {
+            lappend pairs "\"$key\": $value"
+        } elseif {$key eq "tags"} {
+            # Handle tags array specially
+            if {[string match "\[*" $value]} {
+                # Already a JSON array string from original
+                lappend pairs "\"$key\": $value"
+            } else {
+                lappend pairs "\"$key\": [list_to_json $value]"
+            }
+        } else {
+            lappend pairs "\"$key\": \"[string map {\" \\\\\" \\ \\\\ \n \\n \r \\r} $value]\""
+        }
+    }
+    return "{[join $pairs ,]}"
+}
+
+# Convert list to JSON array
+proc list_to_json {lst} {
+    set items [list]
+    foreach item $lst {
+        lappend items "\"[string map {\" \\\\\" \\ \\\\ \n \\n \r \\r} $item]\""
+    }
+    return "\[[join $items ,]\]"
+}
+
+# Convert package dict to JSON
+proc package_to_json {package} {
+    set pairs [list]
+    dict for {key value} $package {
+        if {$key eq "sources"} {
+            # Sources is already a list of JSON strings
+            lappend pairs "\"$key\": \[$value\]"
+        } elseif {$key eq "tags"} {
+            # Tags is a list
+            lappend pairs "\"$key\": [list_to_json $value]"
+        } elseif {$value eq "null"} {
             lappend pairs "\"$key\": null"
         } elseif {[string is integer -strict $value]} {
             lappend pairs "\"$key\": $value"
@@ -147,11 +185,17 @@ foreach package $packages {
         
         # Merge source and metadata
         set enriched [dict merge $source $meta]
-        lappend enriched_sources [dict_to_json $enriched]
+        lappend enriched_sources [source_to_json $enriched]
     }
     
-    dict set package sources "\[[join $enriched_sources ,]\]"
-    lappend enriched_packages [dict_to_json $package]
+    # Create new package dict with enriched sources as JSON array string
+    set new_package [dict create \
+        name [dict get $package name] \
+        sources [join $enriched_sources ,] \
+        tags [dict get $package tags] \
+        description [dict get $package description]]
+    
+    lappend enriched_packages [package_to_json $new_package]
 }
 
 set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt true]
