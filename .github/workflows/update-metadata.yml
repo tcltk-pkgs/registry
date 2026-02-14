@@ -2,7 +2,7 @@ name: Update Metadata
 
 on:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,22 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git fossil curl
-      
+          sudo apt-get install -y git curl tcl tcllib
+
       - name: Run update script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          chmod +x metadata/update-meta.py
-          python3 metadata/update-meta.py
-      
+          tclsh metadata/generate_meta.tcl
+
       - name: Commit changes
         run: |
           git config user.name 'GitHub Action'
