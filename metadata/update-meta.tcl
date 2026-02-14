@@ -55,17 +55,23 @@ proc process_git {url temp_base} {
     return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Process Fossil source
+# Process Fossil source with shallow clone
 proc process_fossil {url temp_base} {
     set dbname "fossil-[clock seconds]-[expr {int(rand()*1000)}].fossil"
     set db [file join $temp_base $dbname]
     
+    # Try shallow clone first (faster), fallback to full clone if not supported
     if {[catch {
-        exec fossil clone $url $db 2>@ stderr
+        exec fossil clone --depth 1 $url $db 2>@ stderr
     } err]} {
-        puts stderr "Fossil clone error: $url"
-        catch {file delete -force $db}
-        return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "clone_failed"]
+        puts stderr "⚠️  Shallow clone failed, trying full clone: $url"
+        if {[catch {
+            exec fossil clone $url $db 2>@ stderr
+        } err2]} {
+            puts stderr "⚠️  Fossil clone error: $url"
+            catch {file delete -force $db}
+            return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "clone_failed"]
+        }
     }
     
     set commit_date "null"
