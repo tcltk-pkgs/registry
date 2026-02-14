@@ -17,12 +17,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y tcl tcllib git fossil
+          sudo apt-get install -y git fossil curl
       
       - name: Run update script
         run: |
-          chmod +x metadata/update-meta.tcl
-          tclsh metadata/update-meta.tcl
+          chmod +x metadata/update-meta.py
+          python3 metadata/update-meta.py
       
       - name: Commit changes
         run: |
