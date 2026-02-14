@@ -177,7 +177,8 @@ def main():
     final_output = [meta_header] + enriched_packages
     
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(final_output, f, indent=2, ensure_ascii=False)
+        json.dump(final_output, f, separators=(',',':'), ensure_ascii=False)
+        # json.dump(final_output, f, indent=2, ensure_ascii=False)
     
     file_size = os.path.getsize(OUTPUT_FILE)
     print(f"File generated: {OUTPUT_FILE} ({file_size} bytes)")
