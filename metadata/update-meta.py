@@ -328,24 +328,18 @@ def _fetch_fossil_date(base, module_path, meta):
     """
     Populate meta['last_commit'] and meta['last_commit_sha'].
 
-    Source priority:
-      1. GitHub API  — exact per-module date, always trusted when available
-      2. Fossil JSON — exact per-module date (when API is enabled on server)
-      3. Fossil HTML — WHOLE-REPO date only (path filter ignored by most servers)
-                       used only when no mirror exists, flagged as approximate
+    Strategy:
+      1. Fossil JSON API — queried first (canonical source)
+      2. GitHub mirror   — queried second (trusted for per-module accuracy)
+      When both succeed: GitHub wins (more precise per-module granularity)
+      When only one succeeds: use it
+      3. Fossil HTML     — last resort only when 1 and 2 both fail,
+                           whole-repo date, marked approximate
     """
-    # --- 1. GitHub mirror API (trusted, per-module) ---
-    if base in FOSSIL_GIT_MIRRORS:
-        mirror = FOSSIL_GIT_MIRRORS[base]
-        print(f"    [fossil] trying GitHub API: {mirror} path={module_path}")
-        date, sha = _github_api_commit(mirror, module_path)
-        if date:
-            meta["last_commit"] = date
-            meta["last_commit_sha"] = sha
-            print(f"    [fossil] GitHub API OK: {date}")
-            return  # GitHub is authoritative, no need to check Fossil
+    fossil_date, fossil_sha = None, None
+    github_date, github_sha = None, None
 
-    # --- 2. Fossil JSON API (per-module when ?p= is supported) ---
+    # --- 1. Fossil JSON API ---
     timeline_url = f"{base}/json/timeline?type=ci&limit=1"
     if module_path:
         timeline_url += f"&p={module_path}"
@@ -356,13 +350,10 @@ def _fetch_fossil_date(base, module_path, meta):
             timeline = data.get('payload', {}).get('timeline') or data.get('timeline', [])
             if timeline:
                 entry = timeline[0]
-                date = entry.get('timestamp') or entry.get('mtime')
+                fossil_date = entry.get('timestamp') or entry.get('mtime')
                 sha = entry.get('uuid') or entry.get('hash')
-                if date:
-                    meta["last_commit"] = date
-                    meta["last_commit_sha"] = sha[:10] if sha else None
-                    print(f"    [fossil] JSON API OK: {date}")
-                    return
+                fossil_sha = sha[:10] if sha else None
+                print(f"    [fossil] JSON API: {fossil_date}")
         except json.JSONDecodeError as e:
             print(f"    [fossil] JSON parse error: {e}", file=sys.stderr)
     elif http_code == 404:
@@ -370,24 +361,43 @@ def _fetch_fossil_date(base, module_path, meta):
     else:
         print(f"    [fossil] JSON API failed (http={http_code})", file=sys.stderr)
 
-    # --- 3. Fossil HTML (whole-repo only — path filter unreliable) ---
-    # NOTE: ?p=module_path is NOT used here because most Fossil servers ignore it
-    # and return the global last commit date, which is misleading.
-    # This date is approximate (repo-wide) and only used as last resort.
-    print(f"    [fossil] fetching HTML (whole-repo, approximate)")
+    # --- 2. GitHub mirror ---
+    if base in FOSSIL_GIT_MIRRORS:
+        mirror = FOSSIL_GIT_MIRRORS[base]
+        print(f"    [fossil] trying GitHub mirror: {mirror} path={module_path}")
+        github_date, github_sha = _github_api_commit(mirror, module_path)
+        if github_date:
+            print(f"    [fossil] GitHub mirror: {github_date}")
+
+    # --- Decision: GitHub trusted over Fossil when both present ---
+    if github_date:
+        meta["last_commit"] = github_date
+        meta["last_commit_sha"] = github_sha
+        if fossil_date:
+            print(f"    [fossil] winner=GitHub: {github_date} (fossil={fossil_date})")
+        else:
+            print(f"    [fossil] winner=GitHub: {github_date}")
+        return
+    if fossil_date:
+        meta["last_commit"] = fossil_date
+        meta["last_commit_sha"] = fossil_sha
+        print(f"    [fossil] winner=Fossil: {fossil_date}")
+        return
+
+    # --- 3. Fossil HTML — last resort, whole-repo, approximate ---
+    print(f"    [fossil] trying HTML (whole-repo, approximate)")
     html, http_code = run_curl(f"{base}/timeline?n=1", timeout=20)
     if html and http_code == 200:
         date, sha = parse_fossil_date_from_html(html)
         if date:
             meta["last_commit"] = date
             meta["last_commit_sha"] = sha
-            meta["last_commit_approximate"] = True  # signals: repo-wide, not module-specific
+            meta["last_commit_approximate"] = True
             print(f"    [fossil] HTML (approximate): {date}")
-        else:
-            meta["error"] = "date_not_found"
-    else:
-        print(f"    [fossil] HTML failed (http={http_code})", file=sys.stderr)
-        meta["error"] = f"http_{http_code}"
+            return
+
+    meta["error"] = "date_not_found"
+
 
 
 def _fetch_fossil_tag(base, meta):
