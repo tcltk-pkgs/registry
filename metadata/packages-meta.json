@@ -1,16 +1,16 @@
 [
   {
-    "packages": "Tcl\/Tk",
-    "generated_at": "2026-02-14T13:28:02Z"
+    "packages": "Tcl/Tk",
+    "generated_at": "2026-02-14T13:32:26Z"
   },
   {
     "name": "aes",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/aes&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/aes&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/aes\/aes.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/aes/aes.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -29,11 +29,11 @@
   {
     "name": "amazon-s3",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/amazon-s3&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/amazon-s3&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/amazon-s3\/s3.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/amazon-s3/s3.md",
         "author": "Darren New",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -53,11 +53,11 @@
   {
     "name": "amazon-xsxp",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/amazon-s3&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/amazon-s3&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/amazon-s3\/xsxp.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/amazon-s3/xsxp.md",
         "author": "Darren New",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -76,11 +76,11 @@
   {
     "name": "asn",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/asn&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/asn&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/asn\/asn.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/asn/asn.md",
         "author": "Michael Schlenker",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -95,16 +95,16 @@
       "protocol",
       "encoding"
     ],
-    "description": "ASN.1 BER encoder\/decoder"
+    "description": "ASN.1 BER encoder/decoder"
   },
   {
     "name": "base32",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/base32&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/base32&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/base32\/base32.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/base32/base32.md",
         "author": "Public domain",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -122,11 +122,11 @@
   {
     "name": "base64",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/base64&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/base64&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/base64\/base64.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/base64/base64.md",
         "author": "Miguel Sofer",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -139,16 +139,16 @@
       "tcllib",
       "encoding"
     ],
-    "description": "base64-encode\/decode binary data"
+    "description": "base64-encode/decode binary data"
   },
   {
     "name": "base64::ascii85",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/base64&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/base64&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/base64\/ascii85.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/base64/ascii85.md",
         "author": "Emiliano Gavilán",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -161,16 +161,16 @@
       "tcllib",
       "encoding"
     ],
-    "description": "ascii85-encode\/decode binary data"
+    "description": "ascii85-encode/decode binary data"
   },
   {
     "name": "base64::uuencode",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/base64&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/base64&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/base64\/uuencode.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/base64/uuencode.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -183,16 +183,16 @@
       "tcllib",
       "encoding"
     ],
-    "description": "UU-encode\/decode binary data"
+    "description": "UU-encode/decode binary data"
   },
   {
     "name": "base64::yencode",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/base64&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/base64&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/base64\/yencode.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/base64/yencode.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -205,16 +205,16 @@
       "tcllib",
       "encoding"
     ],
-    "description": "Y-encode\/decode binary data"
+    "description": "Y-encode/decode binary data"
   },
   {
     "name": "bee",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bee&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bee&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/bee\/bee.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/bee/bee.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -228,16 +228,16 @@
       "serialization",
       "bittorrent"
     ],
-    "description": "BitTorrent Serialization Format Encoder\/Decoder"
+    "description": "BitTorrent Serialization Format Encoder/Decoder"
   },
   {
     "name": "bench",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bench&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bench&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/bench\/bench.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/bench/bench.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -256,11 +256,11 @@
   {
     "name": "bench::in",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bench&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bench&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/bench\/bench_read.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/bench/bench_read.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -279,11 +279,11 @@
   {
     "name": "bench::out::csv",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bench&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bench&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/bench\/bench_wcsv.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/bench/bench_wcsv.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -302,11 +302,11 @@
   {
     "name": "bench::out::text",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bench&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bench&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/bench\/bench_wcsv.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/bench/bench_wcsv.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -325,11 +325,11 @@
   {
     "name": "bibtex",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/bibtex&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/bibtex&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/bibtex\/bibtex.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/bibtex/bibtex.md",
         "author": "Neil Madden",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -348,11 +348,11 @@
   {
     "name": "blowfish",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/blowfish&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/blowfish&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/blowfish\/blowfish.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/blowfish/blowfish.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -371,11 +371,11 @@
   {
     "name": "cache::async",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/cache&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/cache&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/cache\/async.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/cache/async.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -394,11 +394,11 @@
   {
     "name": "clay",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/clay&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/clay&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/clay\/clay.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/clay/clay.md",
         "author": "Sean Woods",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -417,11 +417,11 @@
   {
     "name": "clock::iso8601",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/clock&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/clock&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/clock\/iso8601.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/clock/iso8601.md",
         "author": "tcllib",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -435,16 +435,16 @@
       "time",
       "date"
     ],
-    "description": "Parsing ISO 8601 dates\/times"
+    "description": "Parsing ISO 8601 dates/times"
   },
   {
     "name": "clock::rfc2822",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/clock&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/clock&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/clock\/rfc2822.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/clock/rfc2822.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -459,16 +459,16 @@
       "date",
       "email"
     ],
-    "description": "Parsing RFC 2822 dates\/times"
+    "description": "Parsing RFC 2822 dates/times"
   },
   {
     "name": "cmdline",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/cmdline&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/cmdline&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/cmdline\/cmdline.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/cmdline/cmdline.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -487,11 +487,11 @@
   {
     "name": "comm",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/comm&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/comm&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/comm\/comm.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/comm/comm.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -510,11 +510,11 @@
   {
     "name": "control",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/control&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/control&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/control\/control.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/control/control.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -533,11 +533,11 @@
   {
     "name": "coroutine",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/coroutine&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/coroutine&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/coroutine\/tcllib_coroutine.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/coroutine/tcllib_coroutine.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -556,11 +556,11 @@
   {
     "name": "coroutine::auto",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/coroutine&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/coroutine&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/coroutine\/coro_auto.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/coroutine/coro_auto.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -579,11 +579,11 @@
   {
     "name": "counter",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/counter&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/counter&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/counter\/counter.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/counter/counter.md",
         "author": "Ajuba Solutions",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -601,11 +601,11 @@
   {
     "name": "crc::cksum",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/crc&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/crc&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/crc\/cksum.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/crc/cksum.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -623,11 +623,11 @@
   {
     "name": "crc::crc16",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/crc&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/crc&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/crc\/crc16.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/crc/crc16.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -646,11 +646,11 @@
   {
     "name": "crc::crc32",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/crc&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/crc&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/crc\/crc32.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/crc/crc32.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -669,11 +669,11 @@
   {
     "name": "crc::sum",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/crc&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/crc&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/crc\/sum.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/crc/sum.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -691,11 +691,11 @@
   {
     "name": "cron",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/cron&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/cron&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/cron\/cron.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/cron/cron.md",
         "author": "Sean Woods",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -714,11 +714,11 @@
   {
     "name": "csv",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/csv&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/csv&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/csv\/csv.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/csv/csv.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -737,11 +737,11 @@
   {
     "name": "debug",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/debug&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/debug&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/debug\/debug.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/debug/debug.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -760,11 +760,11 @@
   {
     "name": "debug::caller",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/debug&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/debug&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/debug\/debug_caller.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/debug/debug_caller.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -784,11 +784,11 @@
   {
     "name": "debug::heartbeat",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/debug&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/debug&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/debug\/debug_heartbeat.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/debug/debug_heartbeat.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -808,11 +808,11 @@
   {
     "name": "debug::timestamp ",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/debug&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/debug&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/debug\/debug_timestamp.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/debug/debug_timestamp.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -833,11 +833,11 @@
   {
     "name": "defer",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/defer&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/defer&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/defer\/defer.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/defer/defer.md",
         "author": "Roy Keene",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -855,11 +855,11 @@
   {
     "name": "des",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/des&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/des&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/des\/des.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/des/des.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -878,11 +878,11 @@
   {
     "name": "dicttool",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/dicttool&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/dicttool&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/dicttool\/dicttool.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/dicttool/dicttool.md",
         "author": "Sean Woods",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -901,11 +901,11 @@
   {
     "name": "dns",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/dns&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/dns&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/dns\/tcllib_dns.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/dns/tcllib_dns.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -924,11 +924,11 @@
   {
     "name": "dns::ip",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/dns&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/dns&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/dns\/tcllib_ip.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/dns/tcllib_ip.md",
         "author": "Aamer Akhter",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -947,11 +947,11 @@
   {
     "name": "docstrip",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/docstrip&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/docstrip&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/docstrip\/docstrip.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/docstrip/docstrip.md",
         "author": "Lars Hellström",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -969,11 +969,11 @@
   {
     "name": "doctools",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/doctools&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/doctools&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/doctools\/doctools.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/doctools/doctools.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -991,11 +991,11 @@
   {
     "name": "dtplite",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/dtplite&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/dtplite&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/dtplite\/pkg_dtplite.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/dtplite/pkg_dtplite.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1013,11 +1013,11 @@
   {
     "name": "fileutil",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/fileutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/fileutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/fileutil\/fileutil.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/fileutil/fileutil.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1036,11 +1036,11 @@
   {
     "name": "ftp",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/ftp&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/ftp&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/ftp\/ftp.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/ftp/ftp.md",
         "author": "Steve Ball",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1060,11 +1060,11 @@
   {
     "name": "ftpd",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/ftpd&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/ftpd&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/ftpd\/ftpd.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/ftpd/ftpd.md",
         "author": "Dan Kuchler",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1084,11 +1084,11 @@
   {
     "name": "fileutil::magic::cfront",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/fumagic&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/fumagic&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/fumagic\/cfront.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/fumagic/cfront.md",
         "author": "Poor Yorick",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1107,11 +1107,11 @@
   {
     "name": "fileutil::magic::cgen",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/fumagic&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/fumagic&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/fumagic\/cgen.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/fumagic/cgen.md",
         "author": "Poor Yorick",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1130,11 +1130,11 @@
   {
     "name": "fileutil::magic::filetype",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/fumagic&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/fumagic&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/fumagic\/filetypes.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/fumagic/filetypes.md",
         "author": "Poor Yorick",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1153,11 +1153,11 @@
   {
     "name": "fileutil::magic::rt",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/fumagic&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/fumagic&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/fumagic\/rtcore.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/fumagic/rtcore.md",
         "author": "Poor Yorick",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1176,11 +1176,11 @@
   {
     "name": "generator",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/generator&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/generator&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/generator\/generator.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/generator/generator.md",
         "author": "Neil Madden",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1199,11 +1199,11 @@
   {
     "name": "gpx",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/generator&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/generator&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/generator\/generator.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/generator/generator.md",
         "author": "Keith Vetter",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1222,11 +1222,11 @@
   {
     "name": "grammar::aycock",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/grammar_aycock&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/grammar_aycock&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/grammar_aycock\/aycock.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/grammar_aycock/aycock.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1244,11 +1244,11 @@
   {
     "name": "grammar::fa",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/grammar_fa&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/grammar_fa&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/grammar_fa\/fa.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/grammar_fa/fa.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1266,11 +1266,11 @@
   {
     "name": "grammar::fa::dacceptor",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/grammar_fa&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/grammar_fa&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/grammar_fa\/dacceptor.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/grammar_fa/dacceptor.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1288,11 +1288,11 @@
   {
     "name": "grammar::fa::dexec",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/grammar_fa&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/grammar_fa&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/grammar_fa\/dexec.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/grammar_fa/dexec.md",
         "author": "Bogdan",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1310,11 +1310,11 @@
   {
     "name": "grammar::fa::op",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/grammar_fa&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/grammar_fa&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/grammar_fa\/faop.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/grammar_fa/faop.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1332,11 +1332,11 @@
   {
     "name": "hook",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/hook&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/hook&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/hook\/hook.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/hook/hook.md",
         "author": "William H. Duquette",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1354,11 +1354,11 @@
   {
     "name": "html",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/html&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/html&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/html\/html.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/html/html.md",
         "author": "Michael Schlenker",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1377,11 +1377,11 @@
   {
     "name": "htmlparse",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/htmlparse&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/htmlparse&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/htmlparse\/htmlparse.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/htmlparse/htmlparse.md",
         "author": "ActiveState",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1401,11 +1401,11 @@
   {
     "name": "autoproxy",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/http&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/http&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/http\/autoproxy.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/http/autoproxy.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1425,11 +1425,11 @@
   {
     "name": "httpd",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/httpd&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/httpd&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/httpd\/httpd.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/httpd/httpd.md",
         "author": "Sean Woods",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1449,11 +1449,11 @@
   {
     "name": "json",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/json&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/json&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/json\/json.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/json/json.md",
         "author": "Thomas Maeder",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1472,11 +1472,11 @@
   {
     "name": "json::write",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/json&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/json&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/json\/json_write.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/json/json_write.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1495,11 +1495,11 @@
   {
     "name": "ldap",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/ldap&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/ldap&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/ldap\/ldap.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/ldap/ldap.md",
         "author": "Michael Schlenker",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1519,11 +1519,11 @@
   {
     "name": "log",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/log&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/log&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/log\/log.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/log/log.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1542,11 +1542,11 @@
   {
     "name": "logger",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/log&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/log&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/log\/logger.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/log/logger.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1564,11 +1564,11 @@
   {
     "name": "math",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/math.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/math.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1586,11 +1586,11 @@
   {
     "name": "math::bigfloat",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/bigfloat.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/bigfloat.md",
         "author": "Stephane Arnold",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1611,11 +1611,11 @@
   {
     "name": "math::bignum",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/bignum.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/bignum.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1635,11 +1635,11 @@
   {
     "name": "math::statistics",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/statistics.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/statistics.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1661,11 +1661,11 @@
   {
     "name": "math::calculus",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/calculus.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/calculus.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1687,11 +1687,11 @@
   {
     "name": "math::calculus::romberg",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/romberg.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/romberg.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1713,11 +1713,11 @@
   {
     "name": "math::calculus::symdiff",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/symdiff.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/symdiff.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1739,11 +1739,11 @@
   {
     "name": "math::changepoint",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/changepoint.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/changepoint.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1765,11 +1765,11 @@
   {
     "name": "math::combinatorics",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/combinatorics.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/combinatorics.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1791,11 +1791,11 @@
   {
     "name": "math::complexnumbers",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/qcomplex.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/qcomplex.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1817,11 +1817,11 @@
   {
     "name": "math::constants",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/constants.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/constants.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1843,11 +1843,11 @@
   {
     "name": "math::decimal",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/decimal.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/decimal.md",
         "author": "Mark Alston",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1869,11 +1869,11 @@
   {
     "name": "math::exact",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/exact.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/exact.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1896,11 +1896,11 @@
   {
     "name": "math::figurate",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/figurate.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/figurate.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1922,11 +1922,11 @@
   {
     "name": "math::filters",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/filtergen.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/filtergen.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1948,11 +1948,11 @@
   {
     "name": "math::fourier",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/fourier.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/fourier.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -1975,11 +1975,11 @@
   {
     "name": "math::fuzzy",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/fuzzy.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/fuzzy.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2001,11 +2001,11 @@
   {
     "name": "math::geometry",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/math_geometry.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/math_geometry.md",
         "author": "Manfred Rosenberger",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2026,11 +2026,11 @@
   {
     "name": "math::interpolate",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/interpolate.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/interpolate.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2052,11 +2052,11 @@
   {
     "name": "math::linearalgebra",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/linalg.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/linalg.md",
         "author": "Michael Buadin",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2078,11 +2078,11 @@
   {
     "name": "math::machineparameters",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/machineparameters.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/machineparameters.md",
         "author": "Michael Baudin",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2103,11 +2103,11 @@
   {
     "name": "math::numtheory",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/numtheory.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/numtheory.md",
         "author": "Lars Hellström",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2128,11 +2128,11 @@
   {
     "name": "math::optimize",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/optimize.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/optimize.md",
         "author": "Kevin B. Kenny",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2154,11 +2154,11 @@
   {
     "name": "math::PCA",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/pca.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/pca.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2180,11 +2180,11 @@
   {
     "name": "math::polynomials",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/polynomials.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/polynomials.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2206,11 +2206,11 @@
   {
     "name": "math::probopt",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/probopt.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/probopt.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2230,11 +2230,11 @@
   {
     "name": "math::quasirandom",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/quasirandom.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/quasirandom.md",
         "author": "Tcllib Contributors",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2256,11 +2256,11 @@
   {
     "name": "math::rationalfunctions",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/rational_funcs.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/rational_funcs.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2281,11 +2281,11 @@
   {
     "name": "math::roman",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/roman.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/roman.md",
         "author": "Kenneth Green",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2307,11 +2307,11 @@
   {
     "name": "math::special",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/special.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/special.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2330,11 +2330,11 @@
   {
     "name": "math::trig",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/math&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/math&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/math\/trig.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/math/trig.md",
         "author": "Arjen Markus",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2357,11 +2357,11 @@
   {
     "name": "md5",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/md5&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/md5&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/md5\/md5.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/md5/md5.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2381,11 +2381,11 @@
   {
     "name": "md5crypt",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/md5crypt&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/md5crypt&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/md5crypt\/md5crypt.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/md5crypt/md5crypt.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2404,11 +2404,11 @@
   {
     "name": "mime",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/mime&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/mime&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/mime\/mime.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/mime/mime.md",
         "author": "Marshall T. Rose",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2427,11 +2427,11 @@
   {
     "name": "smtp",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/mime&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/mime&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/mime\/smtp.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/mime/smtp.md",
         "author": "Marshall T. Rose and others",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2451,11 +2451,11 @@
   {
     "name": "ntp_time",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/ntp&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/ntp&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/tcllib-2-0\/embedded\/md\/tcllib\/files\/modules\/ntp\/ntp_time.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/tcllib-2-0/embedded/md/tcllib/files/modules/ntp/ntp_time.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2475,11 +2475,11 @@
   {
     "name": "pop3",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/pop3&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/pop3&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/pop3\/pop3.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/pop3/pop3.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2499,11 +2499,11 @@
   {
     "name": "pop3d",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/pop3d&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/pop3d&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/pop3d\/pop3d.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/pop3d/pop3d.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2523,11 +2523,11 @@
   {
     "name": "sha1",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/sha1&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/sha1&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/sha1\/sha1.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/sha1/sha1.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2547,11 +2547,11 @@
   {
     "name": "sha256",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/sha1&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/sha1&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/sha1\/sha256.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/sha1/sha256.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2571,11 +2571,11 @@
   {
     "name": "struct::list",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/struct_list.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/struct_list.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2594,11 +2594,11 @@
   {
     "name": "struct::graph",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/graph.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/graph.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2617,11 +2617,11 @@
   {
     "name": "struct::tree",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/struct_tree.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/struct_tree.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2640,11 +2640,11 @@
   {
     "name": "struct::matrix",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/matrix.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/matrix.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2663,11 +2663,11 @@
   {
     "name": "struct::queue",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/queue.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/queue.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2686,11 +2686,11 @@
   {
     "name": "struct::stack",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/stack.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/stack.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2709,11 +2709,11 @@
   {
     "name": "struct::set",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/struct&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/struct&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/struct\/struct_set.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/struct/struct_set.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2732,11 +2732,11 @@
   {
     "name": "tar",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/tar&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/tar&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/tar\/tar.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/tar/tar.md",
         "author": "Christian Werner",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2755,11 +2755,11 @@
   {
     "name": "textutil",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/textutil.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/textutil.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2778,11 +2778,11 @@
   {
     "name": "textutil::adjust",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/adjust.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/adjust.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2801,11 +2801,11 @@
   {
     "name": "textutil::split",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/split.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/split.md",
         "author": "Andreas Kuprie",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2824,11 +2824,11 @@
   {
     "name": "textutil::trim",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/trim.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/trim.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2847,11 +2847,11 @@
   {
     "name": "textutil::tabify",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/tabify.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/tabify.md",
         "author": "Helmut Giese",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2869,11 +2869,11 @@
   {
     "name": "textutil::repeat",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/repeat.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/repeat.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2892,11 +2892,11 @@
   {
     "name": "textutil::string",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/textutil_string.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/textutil_string.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2915,11 +2915,11 @@
   {
     "name": "textutil::expander",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/textutil&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/textutil&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/textutil\/expander.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/textutil/expander.md",
         "author": "William H. Duquette",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2938,11 +2938,11 @@
   {
     "name": "tie",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/tie&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/tie&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/tie\/tie.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/tie/tie.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2961,11 +2961,11 @@
   {
     "name": "uri",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/uri&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/uri&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/uri\/uri.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/uri/uri.md",
         "author": "Keith Nash",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -2985,11 +2985,11 @@
   {
     "name": "uuid",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/uuid&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/uuid&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/uuid\/uuid.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/uuid/uuid.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3008,11 +3008,11 @@
   {
     "name": "websocket",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/websocket&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/websocket&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/websocket\/websocket.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/websocket/websocket.md",
         "author": "Emmanuel Frecon",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3032,11 +3032,11 @@
   {
     "name": "yaml",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/yaml&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/yaml&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/yaml\/yaml.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/yaml/yaml.md",
         "author": "KATO Kanryu",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3050,16 +3050,16 @@
       "yaml",
       "parser"
     ],
-    "description": "YAML Format Encoder\/Decoder"
+    "description": "YAML Format Encoder/Decoder"
   },
   {
     "name": "huddle",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/yaml&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/yaml&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/yaml\/huddle.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/yaml/huddle.md",
         "author": "Miguel Martínez López",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3079,11 +3079,11 @@
   {
     "name": "zipfile::decode",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/zip&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/zip&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/zip\/decode.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/zip/decode.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3102,11 +3102,11 @@
   {
     "name": "zipfile::encode",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/zip&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/zip&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/zip\/encode.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/zip/encode.md",
         "author": "Andreas Kupries",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3125,11 +3125,11 @@
   {
     "name": "zipfile::mkzip",
     "sources": [{
-        "url": "https:\/\/core.tcl-lang.org\/tcllib\/dir?name=modules\/zip&ci=trunk",
+        "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/zip&ci=trunk",
         "method": "fossil",
-        "web": "https:\/\/core.tcl-lang.org\/tcllib\/doc\/trunk\/embedded\/md\/tcllib\/files\/modules\/zip\/mkzip.md",
+        "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/zip/mkzip.md",
         "author": "Pat Thoyts",
-        "license": "Tcl\/Tk License",
+        "license": "Tcl/Tk License",
         "reachable": true,
         "archived": false,
         "latest_release": null,
@@ -3148,16 +3148,16 @@
   {
     "name": "ticklecharts",
     "sources": [{
-        "url": "https:\/\/github.com\/nico-robert\/ticklecharts",
+        "url": "https://github.com/nico-robert/ticklecharts",
         "method": "git",
-        "web": "https:\/\/github.com\/nico-robert\/ticklecharts\/README.md",
+        "web": "https://github.com/nico-robert/ticklecharts/README.md",
         "author": "Nicolas ROBERT",
         "license": "MIT",
         "reachable": true,
         "archived": false,
         "latest_release": "v3.2.8",
-        "last_commit": "2026-02-14 14:27:23 +0100",
-        "last_commit_sha": "639b364",
+        "last_commit": "2026-02-14 14:31:50 +0100",
+        "last_commit_sha": "8581135",
         "last_tag": null,
         "error": "none"
       }],
