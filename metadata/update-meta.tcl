@@ -17,10 +17,10 @@ set fh [open $input r]
 set content [read $fh]
 close $fh
 
-set data [::json::json2dict $content]
-set packages [dict get $data packages]
+# Parse JSON - input is an array of packages
+set packages [::json::json2dict $content]
 set total [llength $packages]
-puts "📊 $total packages to process"
+puts "$total packages to process"
 
 # Process Git source (shallow clone)
 proc process_git {url temp_base} {
