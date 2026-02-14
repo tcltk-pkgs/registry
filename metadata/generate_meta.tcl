@@ -564,7 +564,8 @@ proc main {} {
         huddle append out_list [build_package_huddle $pkg_out]
     }
 
-    set json_str [huddle jsondump $out_list]
+    set dump [huddle jsondump $out_list "" ""]
+    set json_str [string map {\/ /} $dump]
 
     set fh [open $OUTPUT_FILE w]
     fconfigure $fh -encoding utf-8
