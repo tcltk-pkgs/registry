@@ -378,7 +378,7 @@ proc process_fossil {url} {
 }
 
 proc process_git {url} {
-    set tmpdir [file join [file tempdir] "git-[clock seconds]-[expr {int(rand()*9999)}]"]
+    set tmpdir [file join [expr {[info exists ::env(TMPDIR)] ? $::env(TMPDIR) : "/tmp"}] "git-[clock seconds]-[expr {int(rand()*9999)}]"]
     set meta   [dict create last_commit "" last_commit_sha "" last_tag ""]
 
     if {[catch {
