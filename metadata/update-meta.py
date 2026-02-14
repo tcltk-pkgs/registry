@@ -34,13 +34,12 @@ def run_cmd(cmd, cwd=None, timeout=15):
         return None
 
 
-def run_curl(url, timeout=20):
+def run_curl(url, timeout=20, extra_headers=""):
     """
     Run curl and return (body, http_code).
-    BUG FIX #2: curl -s exits 0 even on HTTP 4xx/5xx.
-    We capture the HTTP status separately to detect real failures.
+    Captures HTTP status code separately (-w) to detect 4xx/5xx failures.
     """
-    cmd = f'curl -s -L --max-time {timeout} -w "\\n__HTTP_CODE__%{{http_code}}" "{url}"'
+    cmd = f'curl -s -L --max-time {timeout} {extra_headers} -w "\\n__HTTP_CODE__%{{http_code}}" "{url}"'
     try:
         result = subprocess.run(
             cmd, shell=True, capture_output=True, text=True, timeout=timeout + 5
@@ -61,6 +60,96 @@ def run_curl(url, timeout=20):
     except Exception as e:
         print(f"    [curl error] {e}", file=sys.stderr)
         return None, 0
+
+
+def check_url_reachable(url, timeout=10):
+    """
+    Check if a URL is reachable using a HEAD request.
+    Returns (reachable: bool, http_code: int).
+    Uses HEAD to avoid downloading the full body.
+    Follows redirects (-L) so 301/302 to valid pages counts as reachable.
+    """
+    cmd = (
+        f'curl -s -I -L --max-time {timeout} '
+        f'-o /dev/null -w "%{{http_code}}" "{url}"'
+    )
+    try:
+        result = subprocess.run(
+            cmd, shell=True, capture_output=True, text=True, timeout=timeout + 5
+        )
+        code_str = result.stdout.strip()
+        http_code = int(code_str) if code_str.isdigit() else 0
+        reachable = 200 <= http_code < 400
+        return reachable, http_code
+    except subprocess.TimeoutExpired:
+        return False, 0
+    except Exception:
+        return False, 0
+
+
+# Cache for GitHub repo metadata: "owner/repo" -> {archived, latest_release}
+_github_repo_cache: dict = {}
+
+
+def _parse_github_repo(url):
+    """Extract 'owner/repo' from a GitHub URL, or None if not GitHub."""
+    if m := re.match(r'https://github\.com/([^/]+/[^/.]+)', url):
+        return m.group(1).rstrip('/')
+    return None
+
+
+def _fetch_github_repo_info(github_url):
+    """
+    Query GitHub API for repo metadata and latest release.
+    Returns dict with keys: archived (bool), latest_release (str|None).
+    Results are cached per repo to avoid duplicate API calls.
+    """
+    repo = _parse_github_repo(github_url)
+    if not repo:
+        return {"archived": None, "latest_release": None}
+
+    if repo in _github_repo_cache:
+        return _github_repo_cache[repo]
+
+    token = os.environ.get("GITHUB_TOKEN", "")
+    auth_header = f'-H "Authorization: Bearer {token}"' if token else ""
+    base_headers = (
+        f'{auth_header} '
+        f'-H "Accept: application/vnd.github+json" '
+        f'-H "X-GitHub-Api-Version: 2022-11-28"'
+    )
+
+    result = {"archived": None, "latest_release": None}
+
+    # --- Repo info (archived status) ---
+    body, code = run_curl(
+        f"https://api.github.com/repos/{repo}",
+        timeout=15,
+        extra_headers=base_headers
+    )
+    if body and code == 200:
+        try:
+            data = json.loads(body)
+            result["archived"] = data.get("archived", False)
+        except json.JSONDecodeError:
+            pass
+
+    # --- Latest release ---
+    body, code = run_curl(
+        f"https://api.github.com/repos/{repo}/releases/latest",
+        timeout=15,
+        extra_headers=base_headers
+    )
+    if body and code == 200:
+        try:
+            data = json.loads(body)
+            result["latest_release"] = data.get("tag_name")
+        except json.JSONDecodeError:
+            pass
+    # 404 = no releases published, that's normal
+
+    _github_repo_cache[repo] = result
+    return result
 
 
 def extract_fossil_base(url):
@@ -489,6 +578,10 @@ def main():
                 url = source.get('url', '')
                 print(f"  -> {method}: {url[:70]}...")
 
+                # Check URL reachability first
+                reachable, http_code = check_url_reachable(url)
+                print(f"    [check] reachable={reachable} (http={http_code})")
+
                 if method == 'git':
                     meta = process_git(url, temp_base)
                 elif method == 'fossil':
@@ -501,7 +594,25 @@ def main():
                         "error": "unknown_method",
                     }
 
-                enriched_source = {**source, **meta}
+                # GitHub repo metadata (archived, latest_release) for any GitHub URL
+                # Works for native git sources AND Fossil mirrors
+                # Returns None values for non-GitHub URLs
+                gh_info = _fetch_github_repo_info(url)
+                if gh_info["archived"] is None and method == "fossil":
+                    # For Fossil sources, check if there's a known GitHub mirror
+                    fossil_base = extract_fossil_base(url)
+                    if fossil_base in FOSSIL_GIT_MIRRORS:
+                        gh_info = _fetch_github_repo_info(FOSSIL_GIT_MIRRORS[fossil_base])
+                if gh_info["archived"] is not None:
+                    print(f"    [github] archived={gh_info['archived']}  release={gh_info['latest_release']}")
+
+                enriched_source = {
+                    **source,
+                    "reachable": reachable,
+                    "archived": gh_info["archived"],
+                    "latest_release": gh_info["latest_release"],
+                    **meta,
+                }
                 enriched_sources.append(enriched_source)
 
             new_package = {
