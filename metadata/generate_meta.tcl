@@ -236,7 +236,7 @@ proc main {} {
 
     file mkdir [file dirname $OUTPUT_FILE]
     set fh [open $OUTPUT_FILE w]
-    puts -nonewline $fh [string map {\\/ /} [huddle jsondump $out_list "" "  "]]
+    puts -nonewline $fh [string map {\\/ /} [huddle jsondump $out_list "" ""]]
     close $fh
     puts "Done: $OUTPUT_FILE"
 }
