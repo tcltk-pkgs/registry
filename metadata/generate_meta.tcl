@@ -14,7 +14,7 @@ array set FOSSIL_MIRRORS {
 
 set github_cache [dict create]
 set fossil_cache [dict create]
--
+
 proc http_get {url {type "raw"}} {
     global env TIMEOUT
     set hdrs [list -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"]
