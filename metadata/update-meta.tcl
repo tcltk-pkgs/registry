@@ -7,7 +7,6 @@ set input "packages.json"
 set output "metadata/packages-meta.json"
 set temp_base [file join /tmp registry-meta-[pid]-[clock seconds]]
 
-# Create directory structure
 file mkdir [file dirname $output]
 file mkdir $temp_base
 
@@ -17,12 +16,10 @@ set fh [open $input r]
 set content [read $fh]
 close $fh
 
-# Parse JSON - input is an array of packages
 set packages [::json::json2dict $content]
 set total [llength $packages]
 puts "$total packages to process"
 
-# Process Git source (shallow clone)
 proc process_git {url temp_base} {
     set tmpdir [file join $temp_base "git-[clock seconds]-[expr {int(rand()*1000)}]"]
     
@@ -38,12 +35,8 @@ proc process_git {url temp_base} {
     set commit_sha "null"
     set tag "null"
     
-    catch {
-        set commit_date [string trim [exec git -C $tmpdir log -1 --format=%ci]]
-    }
-    catch {
-        set commit_sha [string trim [exec git -C $tmpdir rev-parse --short HEAD]]
-    }
+    catch {set commit_date [string trim [exec git -C $tmpdir log -1 --format=%ci]]}
+    catch {set commit_sha [string trim [exec git -C $tmpdir rev-parse --short HEAD]]}
     catch {
         set tags [exec git -C $tmpdir tag --sort=-creatordate]
         set tag [lindex [split $tags \n] 0]
@@ -51,35 +44,34 @@ proc process_git {url temp_base} {
     }
     
     catch {file delete -force $tmpdir}
-    
     return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Process Fossil source using native JSON API
 proc process_fossil {url temp_base} {
-    set base_url [string trimright $url "/"]
-    
-    # Remove query parameters from base URL for API calls
-    set api_base [regexp -inline {^[^?]+} $base_url]
+    # Extraire la base du repo fossil (avant /dir? ou /tree? ou /file?)
+    if {[regexp {^(https?://[^/]+/[^/]+)} $url -> base]} {
+        set api_base $base
+    } else {
+        set base_url [string trimright $url "/"]
+        regexp {^([^?]+)} $base_url -> api_base
+    }
     
     set commit_date "null"
     set commit_sha "null"
     set tag "null"
     
-    # 1. Get last commit via JSON API
+    # Essayer l'API JSON
     set timeline_url "$api_base/json/timeline?type=ci&limit=1"
-    puts "  Fetching JSON: $timeline_url"
+    puts "  Trying API: $timeline_url"
     
     if {![catch {
         set json [exec curl -s -L --max-time 15 $timeline_url]
         set data [::json::json2dict $json]
         
-        # Fossil JSON structure: {"timeline": [{"uuid": "...", "timestamp": "...", ...}]}
         if {[dict exists $data timeline]} {
             set entries [dict get $data timeline]
             if {[llength $entries] > 0} {
                 set entry [lindex $entries 0]
-                
                 if {[dict exists $entry timestamp]} {
                     set commit_date [dict get $entry timestamp]
                 }
@@ -90,77 +82,66 @@ proc process_fossil {url temp_base} {
             }
         }
     } err]} {
-        puts stderr "  JSON API failed, falling back to HTML: $err"
-        # Fallback to HTML scraping if JSON unavailable
-        return [process_fossil_html $url]
+        puts "  API success: $commit_date"
+    } else {
+        puts stderr "  API failed, using HTML fallback"
+        # Fallback HTML
+        set timeline_url "$api_base/timeline"
+        if {![catch {
+            set html [exec curl -s -L --max-time 15 $timeline_url]
+            regexp {datetime="(\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2})"} $html -> commit_date
+            regexp {href="/timeline\?c=([0-9a-f]{10,})"} $html -> sha
+            if {[info exists sha]} {set commit_sha [string range $sha 0 9]}
+        } err2]}
     }
     
-    # 2. Get tags via JSON API
+    # Récupérer les tags
     set tags_url "$api_base/json/taglist"
     if {![catch {
         set json [exec curl -s -L --max-time 10 $tags_url]
         set data [::json::json2dict $json]
-        
-        # Structure: {"tags": [{"tagname": "v1.0", ...}, ...]}
         if {[dict exists $data tags]} {
             set tags [dict get $data tags]
             if {[llength $tags] > 0} {
-                # Get first tag (most recent)
-                set first_tag [lindex $tags 0]
-                if {[dict exists $first_tag tagname]} {
-                    set tag [dict get $first_tag tagname]
-                }
+                set first [lindex $tags 0]
+                if {[dict exists $first tagname]} {set tag [dict get $first tagname]}
             }
         }
     } err]} {
-        puts stderr "  Tag JSON failed: $err"
+        if {$tag ne "null"} {puts "  Found tag: $tag"}
     }
     
-    return [dict create \
-        last_commit $commit_date \
-        last_commit_sha $commit_sha \
-        last_tag $tag]
+    return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag $tag]
 }
 
-# Fallback HTML scraping (if JSON API unavailable)
-proc process_fossil_html {url} {
-    set base_url [string trimright $url "/"]
-    set timeline_url "$base_url/timeline"
-    
-    puts "  Falling back to HTML: $timeline_url"
-    
-    if {[catch {
-        set html [exec curl -s -L --max-time 15 $timeline_url]
-    } err]} {
-        return [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "fetch_failed"]
-    }
-    
-    set commit_date "null"
-    set commit_sha "null"
-    
-    if {[regexp {datetime="(\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2})"} $html -> date]} {
-        set commit_date $date
-    }
-    if {[regexp {href="/timeline\?c=([0-9a-f]{10,})"} $html -> sha]} {
-        set commit_sha [string range $sha 0 9]
-    }
-    
-    return [dict create last_commit $commit_date last_commit_sha $commit_sha last_tag "null"]
-}
-
-# Convert dict to JSON string
-proc dict_to_json {d} {
-    set pairs [list]
-    dict for {key value} $d {
-        if {$value eq "null"} {
-            lappend pairs "\"$key\": null"
-        } elseif {[string is integer -strict $value]} {
-            lappend pairs "\"$key\": $value"
-        } else {
-            lappend pairs "\"$key\": \"[string map {\" \\\\\" \\ \\\\ \n \\n \r \\r} $value]\""
+# Sérialisation JSON récursive propre
+proc to_json {value} {
+    if {$value eq "null"} {
+        return "null"
+    } elseif {[string is integer -strict $value]} {
+        return $value
+    } elseif {[string is double -strict $value]} {
+        return $value
+    } elseif {[llength $value] == 0} {
+        return "\"\""
+    } elseif {[llength $value] > 1 || [string match "\[*" $value]} {
+        # C'est une liste (tableau)
+        set items [list]
+        foreach item $value {
+            lappend items [to_json $item]
         }
+        return "\[[join $items ,]\]"
+    } elseif {[catch {dict size $value} sz] == 0 && $sz > 0} {
+        # C'est un dictionnaire (objet)
+        set pairs [list]
+        dict for {k v} $value {
+            lappend pairs "\"$k\":[to_json $v]"
+        }
+        return "{[join $pairs ,]}"
+    } else {
+        # Chaîne simple
+        return "\"[string map {\" \\\\\" \\ \\\\ \n \\n \r \\r / \\/} $value]\""
     }
-    return "{[join $pairs ,]}"
 }
 
 set enriched_packages [list]
@@ -178,7 +159,7 @@ foreach package $packages {
         set method [dict get $source method]
         set url [dict get $source url]
         
-        puts "  -> $method: $url"
+        puts "  -> $method: [string range $url 0 60]..."
         
         switch -exact -- $method {
             "git" { set meta [process_git $url $temp_base] }
@@ -186,32 +167,25 @@ foreach package $packages {
             default { set meta [dict create last_commit "null" last_tag "null" last_commit_sha "null" error "unknown_method"] }
         }
         
-        # Merge source and metadata
-        set enriched [dict merge $source $meta]
-        lappend enriched_sources [dict_to_json $enriched]
+        # Fusionner et ajouter à la liste
+        lappend enriched_sources [dict merge $source $meta]
     }
     
-    # Rebuild package with enriched sources
+    # Créer le package enrichi
     set new_package [dict create \
         name [dict get $package name] \
-        sources "\[[join $enriched_sources ,]\]" \
+        sources $enriched_sources \
         tags [dict get $package tags] \
         description [dict get $package description]]
     
-    lappend enriched_packages [dict_to_json $new_package]
+    lappend enriched_packages [to_json $new_package]
 }
 
-# Create metadata object as first element
-set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt true]
-set meta_obj [dict create packages "Tcl/Tk" generated_at $timestamp]
+# Créer l'en-tête avec metadata
+set meta [dict create packages "Tcl/Tk" generated_at [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt true]]
 
-# Build final array: [metadata, package1, package2, ...]
-set all_items [list [dict_to_json $meta_obj]]
-foreach pkg $enriched_packages {
-    lappend all_items $pkg
-}
-
-set json_out "\[[join $all_items ,]\]"
+# Assembler le tableau final
+set json_out "\[[to_json $meta],[join $enriched_packages ,]\]"
 
 set fh [open $output w]
 puts $fh $json_out
