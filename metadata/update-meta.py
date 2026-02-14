@@ -261,33 +261,61 @@ def _github_api_commit(git_url, module_path):
     """
     Query the GitHub API for the last commit on a specific path.
     Returns (iso_date, sha_short) or (None, None).
-    No auth needed for public repos (60 req/h unauthenticated).
+
+    Auth: reads GITHUB_TOKEN env var (auto-injected by GitHub Actions).
+    Without token: 60 req/h. With token: 5000 req/h.
     """
     m = re.match(r'https://github\.com/([^/]+/[^/.]+)', git_url)
     if not m:
         return None, None
     repo = m.group(1)
-    path = module_path or ""
     api_url = f"https://api.github.com/repos/{repo}/commits?per_page=1"
-    if path:
-        api_url += f"&path={path}"
-    body, code = run_curl(api_url, timeout=20)
-    if not body or code != 200:
-        print(f"    [github] API failed (http={code})", file=sys.stderr)
+    if module_path:
+        api_url += f"&path={module_path}"
+
+    # Use GITHUB_TOKEN if available (GitHub Actions injects it automatically)
+    token = os.environ.get("GITHUB_TOKEN", "")
+    auth_header = f'-H "Authorization: Bearer {token}"' if token else ""
+    cmd = (
+        f'curl -s -L --max-time 20 {auth_header} '
+        f'-H "Accept: application/vnd.github+json" '
+        f'-H "X-GitHub-Api-Version: 2022-11-28" '
+        f'-w "\n__HTTP_CODE__%{{http_code}}" '
+        f'"{api_url}"'
+    )
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=25)
+        output = result.stdout
+        if "__HTTP_CODE__" in output:
+            body, code_str = output.rsplit("__HTTP_CODE__", 1)
+            http_code = int(code_str.strip()) if code_str.strip().isdigit() else 0
+        else:
+            body, http_code = output, 0
+        body = body.strip()
+    except Exception as e:
+        print(f"    [github] curl error: {e}", file=sys.stderr)
         return None, None
+
+    if http_code == 403:
+        # Parse rate limit info if available
+        try:
+            msg = json.loads(body).get("message", "")
+            print(f"    [github] rate limited: {msg[:80]}", file=sys.stderr)
+        except Exception:
+            print(f"    [github] HTTP 403 (rate limited?)", file=sys.stderr)
+        return None, None
+    if not body or http_code != 200:
+        print(f"    [github] API failed (http={http_code})", file=sys.stderr)
+        return None, None
+
     try:
         data = json.loads(body)
         if not data:
             return None, None
         commit = data[0]
         sha = commit.get("sha", "")[:7]
-        date = (commit.get("commit", {})
-                      .get("committer", {})
-                      .get("date") or
-                commit.get("commit", {})
-                      .get("author", {})
-                      .get("date"))
-        # Normalize ISO 8601: "2026-01-12T19:51:13Z" -> "2026-01-12 19:51:13"
+        date = (commit.get("commit", {}).get("committer", {}).get("date") or
+                commit.get("commit", {}).get("author",    {}).get("date"))
         if date:
             date = date.replace("T", " ").rstrip("Z")
         return date, sha
@@ -303,17 +331,15 @@ def _fetch_fossil_date(base, module_path, meta):
     so we get the last commit that actually touched this module.
     Falls back to whole-repo timeline if the filtered request fails.
     """
-    # --- 0. GitHub mirror API (most reliable for per-module dates) ---
+    # --- 0. GitHub mirror API + Fossil HTML: take the most recent date ---
+    # The GitHub mirror may lag behind Fossil. We query both and keep the max.
+    github_date, github_sha = None, None
     if base in FOSSIL_GIT_MIRRORS:
         mirror = FOSSIL_GIT_MIRRORS[base]
         print(f"    [fossil] trying GitHub API: {mirror} path={module_path}")
-        date, sha = _github_api_commit(mirror, module_path)
-        if date:
-            meta["last_commit"] = date
-            if sha:
-                meta["last_commit_sha"] = sha
-            print(f"    [fossil] GitHub API OK: commit={date}")
-            return
+        github_date, github_sha = _github_api_commit(mirror, module_path)
+        if github_date:
+            print(f"    [fossil] GitHub API: {github_date}")
 
     # --- 1. JSON API (often 404 on core.tcl-lang.org) ---
     timeline_url = f"{base}/json/timeline?type=ci&limit=1"
@@ -371,8 +397,22 @@ def _fetch_fossil_date(base, module_path, meta):
                 if sha:
                     meta["last_commit_sha"] = sha
                 print(f"    [fossil] fallback OK: commit={meta['last_commit']}")
-                return
-    meta["error"] = "date_not_found"
+
+    # --- 4. Keep the most recent date between GitHub and Fossil ---
+    fossil_date = meta.get("last_commit")
+    if github_date and fossil_date:
+        if github_date > fossil_date:
+            meta["last_commit"] = github_date
+            meta["last_commit_sha"] = github_sha
+            print(f"    [fossil] using GitHub date (more recent): {github_date}")
+        else:
+            print(f"    [fossil] using Fossil date (more recent): {fossil_date}")
+    elif github_date:
+        meta["last_commit"] = github_date
+        meta["last_commit_sha"] = github_sha
+        print(f"    [fossil] using GitHub date (only source): {github_date}")
+    elif not fossil_date:
+        meta["error"] = "date_not_found"
 
 
 def _fetch_fossil_tag(base, meta):
