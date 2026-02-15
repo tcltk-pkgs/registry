@@ -1860,5 +1860,19 @@
     ],
     "tags": ["tcllib", "archive", "zip"],
     "description": "Build a zip archive"
+  },
+  {
+    "name": "test-package-verification",
+    "sources": [
+      {
+        "url": "https://github.com/test/test",
+        "method": "fossil",
+        "web": "https://github.com/test/test/README.md",
+        "author": "tctk-pkgs",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["test"],
+    "description": "Temporary package for testing the date system"
   }
 ]
