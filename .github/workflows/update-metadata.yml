@@ -1,6 +1,11 @@
 name: Update Metadata
 
 on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages.json'
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -13,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
