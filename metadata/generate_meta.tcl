@@ -220,8 +220,6 @@ proc main {} {
     
     set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
     huddle append out_list [huddle create generated_at [huddle string $timestamp]]
-
-    set init_date "2026-02-14 00:00:00"
     
     set idx 0
     set total [llength $packages]
@@ -255,9 +253,7 @@ proc main {} {
             }
             
             set h_src [huddle create]
-            
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
-
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
@@ -265,9 +261,6 @@ proc main {} {
                     huddle append h_src $k [to_huddle $v str]
                 }
             }
-
-            huddle append h_src added_at [huddle string $init_date]
-            
             lappend enriched_sources $h_src
         }
         
