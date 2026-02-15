@@ -1874,5 +1874,19 @@
     ],
     "tags": ["test"],
     "description": "Temporary package for testing the date system"
+  },
+  {
+    "name": "test-package-verification-2",
+    "sources": [
+      {
+        "url": "https://github.com/test/test2",
+        "method": "fossil",
+        "web": "https://github.com/test/test/README.md",
+        "author": "tctk-pkgs",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["test2"],
+    "description": "Second test"
   }
 ]
