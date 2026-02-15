@@ -218,7 +218,7 @@ proc get_package_add_date {name input_file} {
     set patterns [list "\"name\": \"$name\"" "\"name\":\"$name\"" "\"name\" : \"$name\""]
 
     foreach pattern $patterns {
-        set cmd [list git log --format=%aI --diff-filter=A -S $pattern --reverse -- $input_file]
+        set cmd [list git log --first-parent --format=%aI --diff-filter=A -S $pattern --reverse -- $input_file]
 
         if {![catch {exec -ignorestderr {*}$cmd} result]} {
             set result [string trim $result]
