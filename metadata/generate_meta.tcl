@@ -290,7 +290,7 @@ proc main {} {
             if {$git_date ne ""} {
                 set pkg_date $git_date
                 puts "    -> NEW PACKAGE (commit date): $pkg_date"
-            } else {e
+            } else {
                 set pkg_date [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
                 puts "    -> NEW PACKAGE (current date fallback): $pkg_date"
             }
