@@ -1,0 +1,60 @@
+name: Validate JSON
+
+on:
+  pull_request:
+    paths:
+      - 'packages.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate packages.json
+        id: validate
+        run: |
+          if ! jq empty packages.json 2>/dev/null; then
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "message=❌ Syntax error: $(jq empty packages.json 2>&1)" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          errors=$(jq -r '
+            . as $pkg | range(length) as $i | $pkg[$i] |
+            if has("name") | not then "Package #\($i): missing name" else empty end,
+            if has("sources") | not then "Package #\($i): missing sources" else empty end,
+            ((.sources // []) | to_entries[] |
+              if (.value | has("url") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing url" else empty end,
+              if (.value | has("method") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing method" else empty end
+            )
+          ' packages.json)
+
+          if [ -n "$errors" ]; then
+            echo "status=failure" >> $GITHUB_OUTPUT
+            printf "message=❌ Structure errors:\n%s" "$errors" >> $GITHUB_OUTPUT
+          else
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "message=✅ packages.json is valid" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment PR
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `## JSON Validation\n${{ steps.validate.outputs.message }}`;
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo, issue_number: context.issue.number
+            });
+            const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes('JSON Validation'));
+            const method = existing ? 'updateComment' : 'createComment';
+            const params = existing
+              ? { ...context.repo, comment_id: existing.id, body }
+              : { ...context.repo, issue_number: context.issue.number, body };
+            await github.rest.issues[method](params);
+            if ('${{ steps.validate.outputs.status }}' === 'failure') process.exit(1);
