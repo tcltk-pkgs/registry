@@ -119,7 +119,7 @@ proc process_fossil {url} {
     global FOSSIL_MIRRORS fossil_cache
 
     if {[dict exists $fossil_cache $url]} {
-        puts "    [fossil] cache hit"
+        puts "    \[fossil\] cache hit"
         return [dict get $fossil_cache $url]
     }
 
@@ -136,7 +136,7 @@ proc process_fossil {url} {
 
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
 
-    puts "    [fossil] checking Fossil API..."
+    puts "    \[fossil\] checking Fossil API..."
     set api_url "$base/json/timeline?type=ci&limit=1"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
 
@@ -152,7 +152,7 @@ proc process_fossil {url} {
 
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
-        puts "    [fossil] checking GitHub backend mirror..."
+        puts "    \[fossil\] checking GitHub backend mirror..."
         set gh [fetch_github_data $mirror $module_path]
 
         if {[dict get $meta last_commit] eq ""} {
@@ -181,7 +181,7 @@ proc process_git {url} {
     set repo [parse_github_repo $url]
 
     if {$repo ne ""} {
-        puts "    [git] checking GitHub API..."
+        puts "    \[git\] checking GitHub API..."
         set gh [fetch_github_data $url]
         set meta [dict merge $gh [dict create last_tag [dict get $gh latest_release]]]
 
@@ -198,7 +198,7 @@ proc process_git {url} {
         return $meta
     }
 
-    puts "    [git] cloning repository..."
+    puts "    \[git\] cloning repository..."
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
