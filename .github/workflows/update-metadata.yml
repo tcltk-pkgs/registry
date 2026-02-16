@@ -32,12 +32,13 @@ jobs:
         run: |
           tclsh metadata/generate_meta.tcl
 
-      - name: Commit changes
+      - name: Commit and push
         run: |
-          git config user.name 'GitHub Action'
-          git config user.email 'action@github.com'
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add metadata/packages-meta.json
-          git diff --staged --quiet || (git commit -m "Update metadata $(date +%Y-%m-%d)" && git push)
+          git commit -m "Update metadata v$(grep -o '"version":"[^"]*"' metadata/packages-meta.json | head -1 | cut -d'"' -f4)" || echo "No changes"
+          git push
 
       - name: Purge and notify
         run: |
