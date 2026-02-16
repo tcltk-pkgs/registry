@@ -43,15 +43,18 @@ proc get_latest_tag {tag_list} {
 }
 
 proc to_huddle {val type} {
-    if {$val eq ""} { return [huddle create] }
     if {$type eq "bool"} { return [huddle boolean $val] }
     if {$type eq "list"} {
         set hlist [huddle list]
         foreach item $val {
-            huddle append hlist [huddle string $item]
+            if {$item ne ""} {
+                huddle append hlist [huddle string $item]
+            }
         }
         return $hlist
     }
+    if {$val eq ""} {return [huddle string ""]}
+
     return [huddle string $val]
 }
 
@@ -361,11 +364,7 @@ proc main {} {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
                 } elseif {$k in {last_commit last_commit_sha}} {
-                    if {[llength $v] > 1} {
-                        huddle append h_src $k [to_huddle $v list]
-                    } else {
-                        huddle append h_src $k [to_huddle $v list]
-                    }
+                    huddle append h_src $k [to_huddle $v list]
                 } else {
                     huddle append h_src $k [to_huddle $v str]
                 }
