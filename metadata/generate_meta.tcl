@@ -95,6 +95,7 @@ proc fetch_github_data {url {module_path ""}} {
     if {$repo eq ""} { return {} }
 
     set commit_key "${repo}:${module_path}"
+    dict set info archived 0
 
     if {![dict exists $github_cache $repo]} {
         set info [dict create archived "" latest_release "none"]
@@ -153,7 +154,7 @@ proc process_fossil {url} {
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
-    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag "" archived 0]
 
     puts "    \[fossil\] checking Fossil API..."
     set api_url "$base/json/timeline?type=ci&limit=$MAX_COMMITS"
