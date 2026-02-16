@@ -6,10 +6,10 @@ set OUTPUT_FILE "metadata/packages-meta.json"
 set TIMEOUT 12
 
 array set FOSSIL_MIRRORS {
-    "https://core.tcl-lang.org/tcllib" "https://github.com/tcltk/tcllib"
-    "https://core.tcl-lang.org/tklib"  "https://github.com/tcltk/tklib"
-    "https://core.tcl-lang.org/tcl"    "https://github.com/tcltk/tcl"
-    "https://core.tcl-lang.org/tk"     "https://github.com/tcltk/tk"
+    "https://core.tcl-lang.org/tcllib " "https://github.com/tcltk/tcllib "
+    "https://core.tcl-lang.org/tklib "  "https://github.com/tcltk/tklib "
+    "https://core.tcl-lang.org/tcl "    "https://github.com/tcltk/tcl "
+    "https://core.tcl-lang.org/tk "     "https://github.com/tcltk/tk "
 }
 
 set github_cache [dict create]
