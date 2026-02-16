@@ -301,10 +301,82 @@ proc load_existing_dates {} {
     }
 }
 
+proc strip_package_metadata {pkg} {
+    set clean $pkg
+    set clean [dict remove $clean added_at]
+
+    if {[dict exists $clean sources]} {
+        set new_sources {}
+        foreach src [dict get $clean sources] {
+            lappend new_sources [dict remove $src added_at]
+        }
+        set clean [dict replace $clean sources $new_sources]
+    }
+    return $clean
+}
+
+proc packages_content_equal {old_json new_packages} {
+    if {$old_json eq ""} { return 0 }
+
+    if {[catch {
+        set old_data [::json::json2dict $old_json]
+        set old_packages {}
+
+        if {[llength $old_data] > 0} {
+            set first [lindex $old_data 0]
+            if {[dict exists $first version] && [dict exists $first generated_at]} {
+                set old_packages [lrange $old_data 1 end]
+            } else {
+                set old_packages $old_data
+            }
+        }
+
+        if {[llength $old_packages] != [llength $new_packages]} {
+            return 0
+        }
+
+        for {set i 0} {$i < [llength $old_packages]} {incr i} {
+            set old_pkg [strip_package_metadata [lindex $old_packages $i]]
+            set new_pkg [strip_package_metadata [lindex $new_packages $i]]
+
+            if {$old_pkg ne $new_pkg} {
+                return 0
+            }
+        }
+
+        return 1
+
+    } err]} {
+        puts "Comparison error: $err"
+        return 0
+    }
+}
+
 proc main {} {
     global INPUT_FILE OUTPUT_FILE existing_dates MAX_COMMITS
 
     load_existing_dates
+
+    set old_content ""
+    set current_version 0
+
+    if {[file exists $OUTPUT_FILE]} {
+        set fh [open $OUTPUT_FILE r]
+        set old_content [read $fh]
+        close $fh
+
+        catch {
+            set old_data [::json::json2dict $old_content]
+            if {[llength $old_data] > 0} {
+                set first [lindex $old_data 0]
+                if {[dict exists $first version]} {
+                    set current_version [dict get $first version]
+                }
+            }
+        }
+    }
+
+    puts "Current version: $current_version"
 
     set fh [open $INPUT_FILE r]
     fconfigure $fh -encoding utf-8
@@ -312,10 +384,8 @@ proc main {} {
     close $fh
 
     set packages [::json::json2dict $data]
-    set out_list [huddle list]
-
-    set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
-    huddle append out_list [huddle create generated_at [huddle string $timestamp]]
+    set packages_for_comparison {}
+    set huddle_packages {}
 
     set idx 0
     set total [llength $packages]
@@ -364,19 +434,16 @@ proc main {} {
                 puts "    ! Source unreachable (HTTP $code)"
             }
 
-
             set nb_commits [llength [dict get $meta last_commit]]
             puts "    -> Found $nb_commits commit(s)"
 
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
 
-
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
                 } elseif {$k in {last_commit last_commit_sha}} {
-
                     huddle append h_src $k [to_huddle $v list]
                 } else {
                     huddle append h_src $k [to_huddle $v str]
@@ -384,7 +451,6 @@ proc main {} {
             }
 
             huddle append h_src added_at [huddle string $pkg_date]
-
             lappend enriched_sources $h_src
         }
 
@@ -405,7 +471,50 @@ proc main {} {
         }
         huddle append h_pkg tags $h_tags
 
-        huddle append out_list $h_pkg
+
+        set compare_pkg [dict create \
+            name $name \
+            description $desc \
+            sources {} \
+            tags [expr {[dict exists $pkg tags] ? [dict get $pkg tags] : {}}]
+        ]
+
+
+        foreach src [dict get $pkg sources] {
+            set clean_src $src
+            dict set clean_src reachable [dict get $meta reachable]
+            dict set clean_src archived [dict get $meta archived]
+            dict set clean_src latest_release [dict get $meta latest_release]
+            dict set clean_src last_commit [dict get $meta last_commit]
+            dict set clean_src last_commit_sha [dict get $meta last_commit_sha]
+            dict set clean_src last_tag [dict get $meta last_tag]
+            lappend compare_pkg [dict get $compare_pkg sources] $clean_src
+        }
+
+        lappend packages_for_comparison $compare_pkg
+        lappend huddle_packages $h_pkg
+    }
+
+    if {[packages_content_equal $old_content $packages_for_comparison]} {
+        puts "\n✓ No changes detected. Keeping version $current_version."
+        set new_version $current_version
+    } else {
+        set new_version [expr {$current_version + 1}]
+        puts "\n✗ Changes detected! Bumping to version $new_version."
+    }
+
+    set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
+
+    set out_list [huddle list]
+
+    huddle append out_list [huddle create \
+        version [huddle string $new_version] \
+        generated_at [huddle string $timestamp] \
+        total_packages [huddle string [llength $huddle_packages]]
+    ]
+
+    foreach pkg $huddle_packages {
+        huddle append out_list $pkg
     }
 
     file mkdir [file dirname $OUTPUT_FILE]
@@ -414,8 +523,8 @@ proc main {} {
     close $fh
 
     puts "\nDone: $OUTPUT_FILE"
-    puts "Total: $total packages ($new_count new)"
-    puts "Commits per package: up to $MAX_COMMITS"
+    puts "Version: $new_version"
+    puts "Total: [llength $huddle_packages] packages ($new_count new)"
 }
 
 main
