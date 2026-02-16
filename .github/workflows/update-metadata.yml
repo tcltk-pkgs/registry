@@ -38,3 +38,7 @@ jobs:
           git config user.email 'action@github.com'
           git add metadata/packages-meta.json
           git diff --staged --quiet || (git commit -m "Update metadata $(date +%Y-%m-%d)" && git push)
+
+      - name: Purge and notify
+        run: |
+          curl "https://purge.jsdelivr.net/gh/${{ github.repository }}@master/metadata/packages-meta.json"
