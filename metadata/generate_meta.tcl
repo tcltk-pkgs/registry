@@ -43,7 +43,11 @@ proc get_latest_tag {tag_list} {
 }
 
 proc to_huddle {val type} {
-    if {$type eq "bool"} { return [huddle boolean $val] }
+    if {$val eq ""} {
+        return [huddle string ""]
+    }
+
+    if {$type eq "bool"} {return [huddle boolean $val]}
     if {$type eq "list"} {
         set hlist [huddle list]
         foreach item $val {
@@ -53,7 +57,6 @@ proc to_huddle {val type} {
         }
         return $hlist
     }
-    if {$val eq ""} {return [huddle string ""]}
 
     return [huddle string $val]
 }
