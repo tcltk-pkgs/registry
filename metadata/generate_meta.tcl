@@ -18,7 +18,7 @@ set fossil_cache [dict create]
 array set existing_dates {}
 
 proc to_huddle {val type} {
-    if {$type eq "bool"} { 
+    if {$type eq "bool"} {
         if {$val eq "" || $val == 0 || [string tolower $val] eq "false"} {
             return [huddle boolean false]
         } else {
@@ -47,14 +47,14 @@ proc parse_github_repo {url} {
 
 proc http_get {url {type "raw"}} {
     global env TIMEOUT
-    
+
     set hdrs [list -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"]
     if {[info exists env(GITHUB_TOKEN)]} {
         lappend hdrs -H "Authorization: Bearer $env(GITHUB_TOKEN)"
     }
 
     set cmd [list curl -s -L --no-keepalive --max-time $TIMEOUT {*}$hdrs -w "\n%{http_code}" $url]
-    
+
     if {[catch {exec -ignorestderr {*}$cmd} response]} {
         return [dict create code 0 body "" json {}]
     }
@@ -62,7 +62,7 @@ proc http_get {url {type "raw"}} {
     set lines [split $response "\n"]
     set code [string trim [lindex $lines end]]
     set body [string trim [join [lrange $lines 0 end-1] "\n"]]
-    
+
     set json {}
     if {$type eq "json" && $code == 200} {
         catch {set json [::json::json2dict $body]}
@@ -79,16 +79,16 @@ proc fetch_github_data {url {module_path ""}} {
 
     if {![dict exists $github_cache $repo]} {
         set info [dict create archived 0 latest_release "none"]
-        
+
         set r [http_get "https://api.github.com/repos/$repo" "json"]
-        
+
         if {[dict get $r code] == 200} {
             set json [dict get $r json]
             if {[dict exists $json archived]} {
                 dict set info archived [dict get $json archived]
             }
         }
-        
+
         set r_rel [http_get "https://api.github.com/repos/$repo/releases/latest" "json"]
         if {[dict get $r_rel code] == 200} {
             set json [dict get $r_rel json]
@@ -100,18 +100,15 @@ proc fetch_github_data {url {module_path ""}} {
     }
 
     if {![dict exists $github_cache $commit_key]} {
-        # Initialisation avec des listes vides pour les commits multiples
-        set cdata [dict create last_commit [list] last_commit_sha [list]]
-        
-        # Récupère jusqu'à MAX_COMMITS commits
+        set cdata [dict create last_commit {} last_commit_sha {}]
+
         set api_url "https://api.github.com/repos/$repo/commits?per_page=$MAX_COMMITS"
         if {$module_path ne ""} { append api_url "&path=$module_path" }
 
         set r [http_get $api_url "json"]
-        
+
         if {[dict get $r code] == 200} {
             set commits [dict get $r json]
-            # Itère sur tous les commits récupérés (max 5)
             if {[llength $commits] > 0} {
                 foreach c $commits {
                     if {[dict exists $c sha] && [dict exists $c commit committer date]} {
@@ -147,19 +144,17 @@ proc process_fossil {url} {
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
-    # Initialisation avec des listes vides
-    set meta [dict create last_commit [list] last_commit_sha [list] last_tag ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
 
     set api_url "$base/json/timeline?type=ci&limit=$MAX_COMMITS"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
 
     set r [http_get $api_url "json"]
-    
+
     if {[dict get $r code] == 200} {
         set json [dict get $r json]
         if {[dict exists $json payload] && [dict exists $json payload timeline]} {
             set tl [dict get $json payload timeline]
-            # Itère sur tous les commits retournés
             foreach entry $tl {
                 set ts [expr {[dict exists $entry timestamp] ? [dict get $entry timestamp] : [dict get $entry mtime]}]
                 dict lappend meta last_commit $ts
@@ -172,18 +167,17 @@ proc process_fossil {url} {
         set mirror $FOSSIL_MIRRORS($base)
         set gh [fetch_github_data $mirror $module_path]
 
-        # Si Fossil n'a pas de commits mais GitHub oui, on prend ceux de GitHub
         if {[llength [dict get $meta last_commit]] == 0} {
             dict set meta last_commit [dict get $gh last_commit]
             dict set meta last_commit_sha [dict get $gh last_commit_sha]
         }
-        
+
         dict set meta archived [dict get $gh archived]
         dict set meta latest_release [dict get $gh latest_release]
 
         catch {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
-            set tag_list [list]
+            set tag_list {}
             foreach line [split $raw_tags "\n"] {
                 if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
             }
@@ -202,11 +196,11 @@ proc process_git {url} {
     if {$repo ne ""} {
         set meta [fetch_github_data $url]
         dict set meta last_tag [dict get $meta latest_release]
-        
+
         if {[dict get $meta last_tag] eq ""} {
              catch {
                 set raw_tags [exec git ls-remote --tags --refs $url]
-                set tag_list [list]
+                set tag_list {}
                 foreach line [split $raw_tags "\n"] {
                     if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
                 }
@@ -216,22 +210,19 @@ proc process_git {url} {
         return $meta
     }
 
-    # Fallback pour les repos non-GitHub
-    set meta [dict create last_commit [list] last_commit_sha [list] last_tag ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
     try {
-        # Clone avec --depth 5 pour avoir l'historique nécessaire
         exec git clone --depth $MAX_COMMITS --filter=blob:none --no-checkout $url $tmp 2>@1
-        
-        # Récupère jusqu'à MAX_COMMITS commits
+
         set log_output [exec git -C $tmp log -$MAX_COMMITS --format=%ci|%h 2>@1]
-        
+
         if {[string trim $log_output] ne ""} {
             foreach line [split $log_output "\n"] {
                 set line [string trim $line]
                 if {$line eq ""} continue
-                
+
                 set sep [string first "|" $line]
                 if {$sep > 0} {
                     set date [string range $line 0 $sep-1]
@@ -241,7 +232,7 @@ proc process_git {url} {
                 }
             }
         }
-        
+
         set t_out [exec git -C $tmp tag]
         dict set meta last_tag [get_latest_tag [split $t_out "\n"]]
     } finally {
@@ -252,7 +243,7 @@ proc process_git {url} {
 
 proc get_latest_tag {tag_list} {
     set skip {trunk tip release branch main HEAD}
-    set filtered [list]
+    set filtered {}
     foreach tag $tag_list {
         set tag [string trim $tag]
         if {$tag eq "" || [lsearch -nocase $skip $tag] >= 0} continue
@@ -350,7 +341,7 @@ proc main {} {
             incr new_count
         }
 
-        set enriched_sources [list]
+        set enriched_sources {}
         foreach src [dict get $pkg sources] {
             set url [dict get $src url]
             set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
@@ -361,7 +352,7 @@ proc main {} {
             set code [dict get $check code]
             set reachable [expr {$code >= 200 && $code < 400}]
 
-            set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit [list] last_tag "" last_commit_sha [list]]
+            set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit {} last_tag "" last_commit_sha {}]
 
             if {$reachable} {
                 if {$method eq "fossil"} {
@@ -373,19 +364,19 @@ proc main {} {
                 puts "    ! Source unreachable (HTTP $code)"
             }
 
-            # Affiche combien de commits ont été trouvés
+
             set nb_commits [llength [dict get $meta last_commit]]
             puts "    -> Found $nb_commits commit(s)"
 
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
-            
-            # Traitement des champs avec gestion des listes pour les commits
+
+
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
                 } elseif {$k in {last_commit last_commit_sha}} {
-                    # Force le type liste pour les commits multiples
+
                     huddle append h_src $k [to_huddle $v list]
                 } else {
                     huddle append h_src $k [to_huddle $v str]
