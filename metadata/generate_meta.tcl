@@ -5,45 +5,43 @@ set INPUT_FILE  "packages.json"
 set OUTPUT_FILE "metadata/packages-meta.json"
 set TIMEOUT 12
 
+# DEBUG MODE - Affiche tout
+set DEBUG 1
+
+proc debug {msg} {
+    global DEBUG
+    if {$DEBUG} { puts "DEBUG: $msg" }
+}
+
 array set FOSSIL_MIRRORS {
-    "https://core.tcl-lang.org/tcllib " "https://github.com/tcltk/tcllib "
-    "https://core.tcl-lang.org/tklib "  "https://github.com/tcltk/tklib "
-    "https://core.tcl-lang.org/tcl "    "https://github.com/tcltk/tcl "
-    "https://core.tcl-lang.org/tk "     "https://github.com/tcltk/tk "
+    "https://core.tcl-lang.org/tcllib" "https://github.com/tcltk/tcllib"
+    "https://core.tcl-lang.org/tklib"  "https://github.com/tcltk/tklib"
+    "https://core.tcl-lang.org/tcl"    "https://github.com/tcltk/tcl"
+    "https://core.tcl-lang.org/tk"     "https://github.com/tcltk/tk"
 }
 
 set github_cache [dict create]
 set fossil_cache [dict create]
 array set existing_dates {}
 
-proc version_compare {a b} {
-    set na [regexp -all -inline {\d+} $a]
-    set nb [regexp -all -inline {\d+} $b]
-    set len [expr {max([llength $na],[llength $nb])}]
-    for {set i 0} {$i < $len} {incr i} {
-        set va [expr {$i < [llength $na] ? [lindex $na $i] : 0}]
-        set vb [expr {$i < [llength $nb] ? [lindex $nb $i] : 0}]
-        if {$va < $vb} { return -1 }
-        if {$va > $vb} { return  1 }
-    }
-    return 0
-}
-
-proc get_latest_tag {tag_list} {
-    set skip {trunk tip release branch main HEAD}
-    set filtered [list]
-    foreach tag $tag_list {
-        set tag [string trim $tag]
-        if {$tag eq "" || [lsearch -nocase $skip $tag] >= 0} continue
-        if {[regexp {\d} $tag]} { lappend filtered $tag }
-    }
-    if {[llength $filtered] == 0} { return "" }
-    return [lindex [lsort -command version_compare $filtered] end]
-}
-
 proc to_huddle {val type} {
-    if {$val eq ""} { return [huddle create] }
-    if {$type eq "bool"} { return [huddle boolean $val] }
+    if {$type eq "bool"} { 
+        if {$val eq "" || $val == 0 || [string tolower $val] eq "false"} {
+            return [huddle boolean false]
+        } else {
+            return [huddle boolean true]
+        }
+    }
+    if {$type eq "list"} {
+        set hlist [huddle list]
+        foreach item $val {
+            if {$item ne ""} {
+                huddle append hlist [huddle string $item]
+            }
+        }
+        return $hlist
+    }
+    if {$val eq ""} { return [huddle string ""] }
     return [huddle string $val]
 }
 
@@ -56,72 +54,121 @@ proc parse_github_repo {url} {
 
 proc http_get {url {type "raw"}} {
     global env TIMEOUT
+    debug "HTTP GET: $url"
+    
     set hdrs [list -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"]
     if {[info exists env(GITHUB_TOKEN)]} {
         lappend hdrs -H "Authorization: Bearer $env(GITHUB_TOKEN)"
+        debug "Using GITHUB_TOKEN"
     }
 
     set cmd [list curl -s -L --no-keepalive --max-time $TIMEOUT {*}$hdrs -w "\n%{http_code}" $url]
-
+    
     if {[catch {exec -ignorestderr {*}$cmd} response]} {
-        return [dict create code 0 body "" json {} error "curl_fail"]
+        debug "CURL FAILED: $response"
+        return [dict create code 0 body "" json {}]
     }
 
     set lines [split $response "\n"]
     set code [string trim [lindex $lines end]]
     set body [string trim [join [lrange $lines 0 end-1] "\n"]]
+    
+    debug "HTTP CODE: $code"
+    
     set json {}
-
     if {$type eq "json" && $code == 200} {
-        catch {set json [::json::json2dict $body]}
+        if {[catch {set json [::json::json2dict $body]} err]} {
+            debug "JSON PARSE ERROR: $err"
+        } else {
+            debug "JSON OK, keys: [dict keys $json]"
+        }
     }
-    return [dict create code $code body $body json $json error ""]
+    return [dict create code $code body $body json $json]
 }
 
 proc fetch_github_data {url {module_path ""}} {
     global github_cache
     set repo [parse_github_repo $url]
-    if {$repo eq ""} { return {} }
+    if {$repo eq ""} { 
+        debug "No repo parsed from URL: $url"
+        return {} 
+    }
+    
+    debug "Processing repo: $repo"
 
     set commit_key "${repo}:${module_path}"
 
     if {![dict exists $github_cache $repo]} {
-        set info [dict create archived "" latest_release "none"]
-        set r [http_get "https://api.github.com/repos/ $repo" "json"]
+        debug "Cache miss for repo info: $repo"
+        set info [dict create archived 0 latest_release "none"]
+        
+        # CORRECTION: Pas d'espace dans l'URL!
+        set api_url "https://api.github.com/repos/$repo"
+        debug "API URL: $api_url"
+        
+        set r [http_get $api_url "json"]
+        debug "Repo info response code: [dict get $r code]"
+        
         if {[dict get $r code] == 200} {
-            dict set info archived [dict get [dict get $r json] archived]
+            set json [dict get $r json]
+            if {[dict exists $json archived]} {
+                dict set info archived [dict get $json archived]
+                debug "Archived status: [dict get $json archived]"
+            }
         }
-        set r_rel [http_get "https://api.github.com/repos/ $repo/releases/latest" "json"]
+        
+        set r_rel [http_get "https://api.github.com/repos/$repo/releases/latest" "json"]
         if {[dict get $r_rel code] == 200} {
-            dict set info latest_release [dict get [dict get $r_rel json] tag_name]
+            set json [dict get $r_rel json]
+            if {[dict exists $json tag_name]} {
+                dict set info latest_release [dict get $json tag_name]
+                debug "Latest release: [dict get $json tag_name]"
+            }
         }
         dict set github_cache $repo $info
+    } else {
+        debug "Cache hit for repo: $repo"
     }
 
     if {![dict exists $github_cache $commit_key]} {
+        debug "Cache miss for commits: $commit_key"
         set cdata [dict create last_commit "" last_commit_sha ""]
-        set api_url "https://api.github.com/repos/ $repo/commits?per_page=1"
+        
+        # CORRECTION: Pas d'espace!
+        set api_url "https://api.github.com/repos/$repo/commits?per_page=1"
         if {$module_path ne ""} { append api_url "&path=$module_path" }
-
+        
+        debug "Commits URL: $api_url"
         set r [http_get $api_url "json"]
-        if {[dict get $r code] == 200 && [llength [dict get $r json]] > 0} {
-            set c [lindex [dict get $r json] 0]
-            dict set cdata last_commit_sha [string range [dict get $c sha] 0 6]
-            dict set cdata last_commit [string map {T " " Z ""} [dict get $c commit committer date]]
+        
+        if {[dict get $r code] == 200} {
+            set commits [dict get $r json]
+            debug "Found [llength $commits] commits"
+            if {[llength $commits] > 0} {
+                set c [lindex $commits 0]
+                set sha [string range [dict get $c sha] 0 6]
+                set date [string map {T " " Z ""} [dict get $c commit committer date]]
+                debug "Commit: $sha @ $date"
+                
+                dict set cdata last_commit_sha $sha
+                dict set cdata last_commit $date
+            }
+        } else {
+            debug "Failed to get commits: [dict get $r code]"
         }
         dict set github_cache $commit_key $cdata
+    } else {
+        debug "Cache hit for commits"
     }
 
-    return [dict merge [dict get $github_cache $repo] [dict get $github_cache $commit_key]]
+    set result [dict merge [dict get $github_cache $repo] [dict get $github_cache $commit_key]]
+    debug "Final result keys: [dict keys $result]"
+    return $result
 }
 
 proc process_fossil {url} {
     global FOSSIL_MIRRORS fossil_cache
-
-    if {[dict exists $fossil_cache $url]} {
-        puts "    \[fossil\] cache hit"
-        return [dict get $fossil_cache $url]
-    }
+    debug "Processing fossil: $url"
 
     set base [lindex [split $url ?] 0]
     foreach p {/dir /file /timeline /info /json} {
@@ -130,37 +177,41 @@ proc process_fossil {url} {
         }
     }
     set base [string trimright $base "/"]
+    debug "Fossil base: $base"
 
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
 
-    puts "    \[fossil\] checking Fossil API..."
     set api_url "$base/json/timeline?type=ci&limit=1"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
-
+    
+    debug "Fossil API: $api_url"
     set r [http_get $api_url "json"]
+    
     if {[dict get $r code] == 200} {
         set tl [dict get $r json payload timeline]
+        debug "Fossil timeline entries: [llength $tl]"
         if {[llength $tl] > 0} {
             set entry [lindex $tl 0]
             dict set meta last_commit [expr {[dict exists $entry timestamp] ? [dict get $entry timestamp] : [dict get $entry mtime]}]
             dict set meta last_commit_sha [string range [dict get $entry uuid] 0 9]
+            debug "Fossil commit: [dict get $meta last_commit_sha]"
         }
     }
 
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
-        puts "    \[fossil\] checking GitHub backend mirror..."
+        debug "Checking mirror: $mirror"
         set gh [fetch_github_data $mirror $module_path]
-
+        
         if {[dict get $meta last_commit] eq ""} {
-            dict set meta last_commit [dict get $gh last_commit]
-            dict set meta last_commit_sha [dict get $gh last_commit_sha]
+            set meta [dict merge $meta $gh]
+        } else {
+            dict set meta archived [dict get $gh archived]
+            dict set meta latest_release [dict get $gh latest_release]
         }
-        dict set meta archived [dict get $gh archived]
-        dict set meta latest_release [dict get $gh latest_release]
 
         catch {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
@@ -172,19 +223,18 @@ proc process_fossil {url} {
         }
     }
 
-    dict set fossil_cache $url $meta
     return $meta
 }
 
 proc process_git {url} {
     global env
     set repo [parse_github_repo $url]
+    debug "Processing git: $url (repo: $repo)"
 
     if {$repo ne ""} {
-        puts "    \[git\] checking GitHub API..."
-        set gh [fetch_github_data $url]
-        set meta [dict merge $gh [dict create last_tag [dict get $gh latest_release]]]
-
+        set meta [fetch_github_data $url]
+        dict set meta last_tag [dict get $meta latest_release]
+        
         if {[dict get $meta last_tag] eq ""} {
              catch {
                 set raw_tags [exec git ls-remote --tags --refs $url]
@@ -198,16 +248,19 @@ proc process_git {url} {
         return $meta
     }
 
-    puts "    \[git\] cloning repository..."
+    debug "Fallback to git clone for: $url"
     set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
     try {
         exec git clone --depth 1 --filter=blob:none --no-checkout $url $tmp 2>@1
-        dict set meta last_commit     [exec git -C $tmp log -1 --format=%ci]
+        dict set meta last_commit [exec git -C $tmp log -1 --format=%ci]
         dict set meta last_commit_sha [exec git -C $tmp rev-parse --short HEAD]
         set t_out [exec git -C $tmp tag]
         dict set meta last_tag [get_latest_tag [split $t_out "\n"]]
+        debug "Git fallback success: [dict get $meta last_commit_sha]"
+    } on error {err} {
+        debug "Git fallback error: $err"
     } finally {
         file delete -force $tmp
     }
@@ -215,52 +268,23 @@ proc process_git {url} {
 }
 
 proc get_package_add_date {name input_file} {
-    set patterns [list "\"name\": \"$name\"" "\"name\":\"$name\"" "\"name\" : \"$name\""]
-
+    set patterns [list "\"name\": \"$name\"" "\"name\":\"$name\""]
     foreach pattern $patterns {
         set cmd [list git log --first-parent --format=%aI --diff-filter=A -S $pattern --reverse -- $input_file]
-
         if {![catch {exec -ignorestderr {*}$cmd} result]} {
             set result [string trim $result]
-            if {$result eq ""} continue
-
-            return [lindex [split $result "\n"] 0]
+            if {$result ne ""} { return [lindex [split $result "\n"] 0] }
         }
     }
     return ""
 }
 
-proc load_existing_dates {} {
-    global OUTPUT_FILE existing_dates
-
-    if {[file exists $OUTPUT_FILE]} {
-        puts "Loading existing metadata to preserve dates..."
-        set fh [open $OUTPUT_FILE r]
-        set data [read $fh]
-        close $fh
-
-        if {[catch {
-            set old_packages [::json::json2dict $data]
-            foreach pkg $old_packages {
-                if {[dict exists $pkg name] && [dict exists $pkg sources]} {
-                    set name [dict get $pkg name]
-                    set srcs [dict get $pkg sources]
-                    if {[llength $srcs] > 0 && [dict exists [lindex $srcs 0] added_at]} {
-                        set existing_dates($name) [dict get [lindex $srcs 0] added_at]
-                    }
-                }
-            }
-            puts "Found [array size existing_dates] existing packages"
-        } err]} {
-            puts "Note: Starting fresh - $err"
-        }
-    }
-}
-
 proc main {} {
-    global INPUT_FILE OUTPUT_FILE existing_dates
-
-    load_existing_dates
+    global INPUT_FILE OUTPUT_FILE existing_dates github_cache fossil_cache
+    
+    # Reset caches pour être sûr
+    set github_cache [dict create]
+    set fossil_cache [dict create]
 
     set fh [open $INPUT_FILE r]
     fconfigure $fh -encoding utf-8
@@ -275,40 +299,34 @@ proc main {} {
 
     set idx 0
     set total [llength $packages]
-    set new_count 0
-
+    
+    # Traite seulement le premier package pour le test
     foreach pkg $packages {
         incr idx
         set name [dict get $pkg name]
-        puts "\[$idx/$total\] Processing: $name"
-
-        if {[info exists existing_dates($name)]} {
-            set pkg_date $existing_dates($name)
-            puts "    -> Existing package, preserving date: $pkg_date"
-        } else {
-            set git_date [get_package_add_date $name $INPUT_FILE]
-            if {$git_date ne ""} {
-                set pkg_date $git_date
-                puts "    -> NEW PACKAGE (commit date): $pkg_date"
-            } else {
-                set pkg_date [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
-                puts "    -> NEW PACKAGE (current date fallback): $pkg_date"
-            }
-            incr new_count
+        puts "\n\[$idx/$total\] =================== $name ==================="
+        
+        if {$idx > 3} {
+            puts "STOP après 3 packages pour le debug"
+            break
         }
 
+        set pkg_date [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
         set enriched_sources [list]
+        
         foreach src [dict get $pkg sources] {
             set url [dict get $src url]
             set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
-
-            puts "  - Checking source: $url (Method: $method)"
+            puts "Source: $url"
+            puts "Method: $method"
 
             set check [http_get $url]
             set code [dict get $check code]
             set reachable [expr {$code >= 200 && $code < 400}]
+            puts "Reachable: $reachable (HTTP $code)"
 
-            set meta [dict create reachable $reachable archived "" latest_release "none" last_commit "" last_tag ""]
+            set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit "" last_tag ""]
+            debug "Meta initial: $meta"
 
             if {$reachable} {
                 if {$method eq "fossil"} {
@@ -316,52 +334,54 @@ proc main {} {
                 } elseif {$method eq "git"} {
                     set meta [dict merge $meta [process_git $url]]
                 }
-            } else {
-                puts "    ! Source unreachable (HTTP $code)"
             }
+            
+            debug "Meta final: $meta"
+            puts ">>> last_commit: '[dict get $meta last_commit]'"
+            puts ">>> last_commit_sha: '[dict get $meta last_commit_sha]'"
+            puts ">>> archived: '[dict get $meta archived]'"
 
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
+            
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
+                } elseif {$k in {last_commit last_commit_sha}} {
+                    huddle append h_src $k [to_huddle $v str]
                 } else {
                     huddle append h_src $k [to_huddle $v str]
                 }
             }
-
             huddle append h_src added_at [huddle string $pkg_date]
-
             lappend enriched_sources $h_src
         }
 
         set h_pkg [huddle create]
         huddle append h_pkg name [to_huddle $name str]
-
-        set desc ""
-        if {[dict exists $pkg description]} { set desc [dict get $pkg description] }
+        set desc [expr {[dict exists $pkg description] ? [dict get $pkg description] : ""}]
         huddle append h_pkg description [to_huddle $desc str]
-
+        
         set h_srcs [huddle list]
         foreach s $enriched_sources { huddle append h_srcs $s }
         huddle append h_pkg sources $h_srcs
-
+        
         set h_tags [huddle list]
         if {[dict exists $pkg tags]} {
             foreach t [dict get $pkg tags] { huddle append h_tags [to_huddle $t str] }
         }
         huddle append h_pkg tags $h_tags
-
+        
         huddle append out_list $h_pkg
     }
 
     file mkdir [file dirname $OUTPUT_FILE]
     set fh [open $OUTPUT_FILE w]
-    puts -nonewline $fh [string map {\\/ /} [huddle jsondump $out_list "" ""]]
+    puts -nonewline $fh [huddle jsondump $out_list]
     close $fh
-
-    puts "\nDone: $OUTPUT_FILE"
-    puts "Total: $total packages ($new_count new)"
+    
+    puts "\nFichier généré: $OUTPUT_FILE"
+    puts "Vérifiez les valeurs ci-dessus pour voir où sont les problèmes."
 }
 
 main
