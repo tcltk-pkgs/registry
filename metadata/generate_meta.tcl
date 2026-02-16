@@ -4,7 +4,6 @@ package require json
 set INPUT_FILE  "packages.json"
 set OUTPUT_FILE "metadata/packages-meta.json"
 set TIMEOUT 12
-set MAX_COMMITS 5
 
 array set FOSSIL_MIRRORS {
     "https://core.tcl-lang.org/tcllib" "https://github.com/tcltk/tcllib"
@@ -32,7 +31,7 @@ proc version_compare {a b} {
 
 proc get_latest_tag {tag_list} {
     set skip {trunk tip release branch main HEAD}
-    set filtered {}
+    set filtered [list]
     foreach tag $tag_list {
         set tag [string trim $tag]
         if {$tag eq "" || [lsearch -nocase $skip $tag] >= 0} continue
@@ -43,21 +42,8 @@ proc get_latest_tag {tag_list} {
 }
 
 proc to_huddle {val type} {
-    if {$val eq ""} {
-        return [huddle string ""]
-    }
-
-    if {$type eq "bool"} {return [huddle boolean $val]}
-    if {$type eq "list"} {
-        set hlist [huddle list]
-        foreach item $val {
-            if {$item ne ""} {
-                huddle append hlist [huddle string $item]
-            }
-        }
-        return $hlist
-    }
-
+    if {$val eq ""} { return [huddle create] }
+    if {$type eq "bool"} { return [huddle boolean $val] }
     return [huddle string $val]
 }
 
@@ -93,12 +79,11 @@ proc http_get {url {type "raw"}} {
 }
 
 proc fetch_github_data {url {module_path ""}} {
-    global github_cache MAX_COMMITS
+    global github_cache
     set repo [parse_github_repo $url]
     if {$repo eq ""} { return {} }
 
     set commit_key "${repo}:${module_path}"
-    dict set info archived 0
 
     if {![dict exists $github_cache $repo]} {
         set info [dict create archived "" latest_release "none"]
@@ -114,23 +99,15 @@ proc fetch_github_data {url {module_path ""}} {
     }
 
     if {![dict exists $github_cache $commit_key]} {
-        set cdata [dict create last_commit {} last_commit_sha {}]
-        set api_url "https://api.github.com/repos/ $repo/commits?per_page=$MAX_COMMITS"
+        set cdata [dict create last_commit "" last_commit_sha ""]
+        set api_url "https://api.github.com/repos/ $repo/commits?per_page=1"
         if {$module_path ne ""} { append api_url "&path=$module_path" }
 
         set r [http_get $api_url "json"]
-        if {[dict get $r code] == 200} {
-            set commits [dict get $r json]
-            if {[llength $commits] > 0} {
-                set dates {}
-                set shas {}
-                foreach c $commits {
-                    lappend shas [string range [dict get $c sha] 0 6]
-                    lappend dates [string map {T " " Z ""} [dict get $c commit committer date]]
-                }
-                dict set cdata last_commit_sha $shas
-                dict set cdata last_commit $dates
-            }
+        if {[dict get $r code] == 200 && [llength [dict get $r json]] > 0} {
+            set c [lindex [dict get $r json] 0]
+            dict set cdata last_commit_sha [string range [dict get $c sha] 0 6]
+            dict set cdata last_commit [string map {T " " Z ""} [dict get $c commit committer date]]
         }
         dict set github_cache $commit_key $cdata
     }
@@ -139,7 +116,7 @@ proc fetch_github_data {url {module_path ""}} {
 }
 
 proc process_fossil {url} {
-    global FOSSIL_MIRRORS fossil_cache MAX_COMMITS
+    global FOSSIL_MIRRORS fossil_cache
 
     if {[dict exists $fossil_cache $url]} {
         puts "    \[fossil\] cache hit"
@@ -157,25 +134,19 @@ proc process_fossil {url} {
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
-    set meta [dict create last_commit {} last_commit_sha {} last_tag "" archived 0]
+    set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
 
     puts "    \[fossil\] checking Fossil API..."
-    set api_url "$base/json/timeline?type=ci&limit=$MAX_COMMITS"
+    set api_url "$base/json/timeline?type=ci&limit=1"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
 
     set r [http_get $api_url "json"]
     if {[dict get $r code] == 200} {
         set tl [dict get $r json payload timeline]
         if {[llength $tl] > 0} {
-            set dates {}
-            set shas {}
-            foreach entry $tl {
-                set ts [expr {[dict exists $entry timestamp] ? [dict get $entry timestamp] : [dict get $entry mtime]}]
-                lappend dates $ts
-                lappend shas [string range [dict get $entry uuid] 0 9]
-            }
-            dict set meta last_commit $dates
-            dict set meta last_commit_sha $shas
+            set entry [lindex $tl 0]
+            dict set meta last_commit [expr {[dict exists $entry timestamp] ? [dict get $entry timestamp] : [dict get $entry mtime]}]
+            dict set meta last_commit_sha [string range [dict get $entry uuid] 0 9]
         }
     }
 
@@ -193,7 +164,7 @@ proc process_fossil {url} {
 
         catch {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
-            set tag_list {}
+            set tag_list [list]
             foreach line [split $raw_tags "\n"] {
                 if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
             }
@@ -206,7 +177,7 @@ proc process_fossil {url} {
 }
 
 proc process_git {url} {
-    global env MAX_COMMITS
+    global env
     set repo [parse_github_repo $url]
 
     if {$repo ne ""} {
@@ -217,7 +188,7 @@ proc process_git {url} {
         if {[dict get $meta last_tag] eq ""} {
              catch {
                 set raw_tags [exec git ls-remote --tags --refs $url]
-                set tag_list {}
+                set tag_list [list]
                 foreach line [split $raw_tags "\n"] {
                     if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
                 }
@@ -228,25 +199,13 @@ proc process_git {url} {
     }
 
     puts "    \[git\] cloning repository..."
-    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
+    set meta [dict create last_commit "" last_commit_sha "" last_tag ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
     try {
-        exec git clone --depth $MAX_COMMITS --filter=blob:none --no-checkout $url $tmp 2>@1
-        set log_output [exec git -C $tmp log -$MAX_COMMITS --format=%ci|%h]
-        set dates {}
-        set shas {}
-
-        foreach line [split $log_output "\n"] {
-            if {$line eq ""} continue
-            lassign [split $line "|"] date sha
-            lappend dates $date
-            lappend shas $sha
-        }
-
-        dict set meta last_commit $dates
-        dict set meta last_commit_sha $shas
-
+        exec git clone --depth 1 --filter=blob:none --no-checkout $url $tmp 2>@1
+        dict set meta last_commit     [exec git -C $tmp log -1 --format=%ci]
+        dict set meta last_commit_sha [exec git -C $tmp rev-parse --short HEAD]
         set t_out [exec git -C $tmp tag]
         dict set meta last_tag [get_latest_tag [split $t_out "\n"]]
     } finally {
@@ -338,7 +297,7 @@ proc main {} {
             incr new_count
         }
 
-        set enriched_sources {}
+        set enriched_sources [list]
         foreach src [dict get $pkg sources] {
             set url [dict get $src url]
             set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
@@ -363,12 +322,9 @@ proc main {} {
 
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
-
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
                     huddle append h_src $k [to_huddle $v bool]
-                } elseif {$k in {last_commit last_commit_sha}} {
-                    huddle append h_src $k [to_huddle $v list]
                 } else {
                     huddle append h_src $k [to_huddle $v str]
                 }
