@@ -86,7 +86,7 @@ proc fetch_github_data {url {module_path ""}} {
     set commit_key "${repo}:${module_path}"
 
     if {![dict exists $github_cache $repo]} {
-        set info [dict create archived "" latest_release ""]
+        set info [dict create archived "" latest_release "none"]
         set r [http_get "https://api.github.com/repos/$repo" "json"]
         if {[dict get $r code] == 200} {
             dict set info archived [dict get [dict get $r json] archived]
@@ -308,7 +308,7 @@ proc main {} {
             set code [dict get $check code]
             set reachable [expr {$code >= 200 && $code < 400}]
 
-            set meta [dict create reachable $reachable archived "" latest_release "" last_commit "" last_tag ""]
+            set meta [dict create reachable $reachable archived "" latest_release "none" last_commit "" last_tag ""]
 
             if {$reachable} {
                 if {$method eq "fossil"} {
