@@ -379,7 +379,6 @@ proc main {} {
     puts "Current version: $current_version"
 
     set fh [open $INPUT_FILE r]
-    fconfigure $fh -encoding utf-8
     set data [read $fh]
     close $fh
 
