@@ -8,12 +8,12 @@ Submit a PR with your package information. Simply add an entry to the `packages.
 
 ```json
 {
-  "name": "monpackage",
+  "name": "mypackage",
   "sources": [
     {
-      "url": "https://github.com/user/monpackage",
+      "url": "https://github.com/user/mypackage",
       "method": "git",
-      "web": "https://github.com/user/monpackage",
+      "web": "https://github.com/user/mypackage",
       "author": "user",
       "license": "MIT"
     }
@@ -29,24 +29,24 @@ If the package name already exists, add another source like this:
 
 ```json
 {
-  "name": "monpackage",
+  "name": "mypackage",
   "sources": [
     {
-      "url": "https://github.com/user/monpackage",
+      "url": "https://github.com/user/mypackage",
       "method": "git",
-      "web": "https://github.com/user/monpackage",
+      "web": "https://github.com/user/mypackage",
       "author": "user",
       "license": "MIT"
     },
     {
-      "url": "https://github.com/user1/monpackage",
+      "url": "https://github.com/user1/mypackage",
       "method": "git",
-      "web": "https://github.com/user1/monpackage",
+      "web": "https://github.com/user1/mypackage",
       "author": "user1",
       "license": "Apache 2.0"
     }
   ],
-  "tags": ["tcllib", "module", "category"],
+  "tags": ["tcl", "module", "category"],
   "description": "Description here"
 }
 ```
