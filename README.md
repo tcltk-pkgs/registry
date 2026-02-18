@@ -1,11 +1,33 @@
-# Tcl/Tk Packages registry
+# Tcl/Tk Packages Registry
 
-Central registry of third-party packages and extensions for `Tcl/Tk`
+Central registry of third-party packages and extensions for `Tcl/Tk`.
 
-## Adding a package :
+## Browse Packages
 
-Submit a PR with your package information. Simply add an entry to the `packages.json` file following this format:
+Visit the web interface: **[tcltk-pkgs.pages.dev](https://tcltk-pkgs.pages.dev)**
 
+Search, filter and explore all available packages with an easy-to-use interface.
+- Full-text search
+- Filter by tags
+- Sort by popularity, recent updates, or name
+- Direct links to repositories and documentation
+
+## Adding a Package
+
+Submit a PR adding your package to packages.json. The registry is automatically rebuilt daily.
+
+| Field               | Type   | Description                         |
+| ------------------- | ------ | ----------------------------------- |
+| `name`              | string | Package name (no spaces)            |
+| `sources`           | array  | Array of source objects             |
+| `sources[].url`     | string | Repository URL                      |
+| `sources[].method`  | string | `git` or `fossil` (for now)         |
+| `sources[].author`  | string | Package author/maintainer           |
+| `sources[].license` | string | SPDX license identifier             |
+| `tags`              | array  | Keywords for categorization         |
+| `description`       | string | Short description                   |
+
+### Examples:
 ```json
 {
   "name": "mypackage",
@@ -13,43 +35,47 @@ Submit a PR with your package information. Simply add an entry to the `packages.
     {
       "url": "https://github.com/user/mypackage",
       "method": "git",
-      "web": "https://github.com/user/mypackage",
-      "author": "user",
+      "web": "https://user.github.io/mypackage",
+      "author": "John Doe",
       "license": "MIT"
     }
   ],
-  "tags": ["tcllib", "module", "category"],
-  "description": "Description here"
+  "tags": ["json", "parser", "utility"],
+  "description": "Fast JSON parser for Tcl"
 }
 ```
+
+#### Multiple sources (mirrors):
+```json
+{
+  "name": "mypackage",
+  "sources": [
+    {
+      "url": "https://github.com/tcltk/mypackage",
+      "method": "git",
+      "author": "Tcl Community",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "url": "https://core.tcl-lang.org/mypackage",
+      "method": "fossil",
+      "author": "Tcl Community",
+      "license": "BSD-3-Clause"
+    }
+  ],
+  "tags": ["official", "library", "core"],
+  "description": "Standard Tcl library"
+}
+```
+
 > [!NOTE]  
 > `method` can be `git` or `fossil` for now. The `web` field is optional and points to documentation if different from the repository `URL`.
 
-If the package name already exists, add another source like this:
+## Auto-Update
 
-```json
-{
-  "name": "mypackage",
-  "sources": [
-    {
-      "url": "https://github.com/user/mypackage",
-      "method": "git",
-      "web": "https://github.com/user/mypackage",
-      "author": "user",
-      "license": "MIT"
-    },
-    {
-      "url": "https://github.com/user1/mypackage",
-      "method": "git",
-      "web": "https://github.com/user1/mypackage",
-      "author": "user1",
-      "license": "Apache 2.0"
-    }
-  ],
-  "tags": ["tcl", "module", "category"],
-  "description": "Description here"
-}
-```
+This repository uses GitHub Actions to:
+- Validate packages.json on every PR.
+- Generate packages-meta.json daily (metadata, stats, validation).
 
 ## License
 
