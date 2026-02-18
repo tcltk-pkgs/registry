@@ -305,24 +305,34 @@ proc load_existing_dates {} {
 proc compare_json_files {old_file new_file} {
     # Check if jq is available
     if {[catch {exec which jq} err]} {
-        puts "Warning: jq not found, assuming files are different > $err"
-        return 1  ;# Assume different if jq is not available
-    }
-    
-    # Extract and sort packages only (skip header at index 0)
-    # -S flag sorts keys for stable comparison
-    set cmd "jq -S '.[1:]' [file nativename $old_file] > /tmp/old_normalized.json 2>/dev/null"
-    catch {exec sh -c $cmd}
-    
-    set cmd "jq -S '.[1:]' [file nativename $new_file] > /tmp/new_normalized.json 2>/dev/null"
-    catch {exec sh -c $cmd}
-    
-    # Compare normalized files
-    if {[catch {exec diff -q /tmp/old_normalized.json /tmp/new_normalized.json} result]} {
-        puts "diff returns error code if files differ > $result"
+        puts "Warning: jq not found, assuming files are different"
         return 1
     }
-    return 0
+    
+    # Create temp files with unique names using process ID
+    set old_tmp "/tmp/old_normalized_[pid].json"
+    set new_tmp "/tmp/new_normalized_[pid].json"
+    
+    # Run jq with filter to skip header (index 0) and sort keys (-S)
+    if {[catch {
+        exec jq -S {.[1:]} $old_file > $old_tmp 2>/dev/null
+        exec jq -S {.[1:]} $new_file > $new_tmp 2>/dev/null
+    } err]} {
+        puts "Warning: jq processing error"
+        catch {file delete -force $old_tmp}
+        catch {file delete -force $new_tmp}
+        return 1
+    }
+    
+    # Compare normalized files (diff returns error if different)
+    set is_different [catch {exec diff -q $old_tmp $new_tmp}]
+    
+    # Cleanup temp files
+    catch {file delete -force $old_tmp}
+    catch {file delete -force $new_tmp}
+    
+    # Return 0 if same, 1 if different
+    return $is_different
 }
 
 proc main {} {
