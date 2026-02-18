@@ -301,55 +301,28 @@ proc load_existing_dates {} {
     }
 }
 
-proc strip_package_metadata {pkg} {
-    set clean $pkg
-    set clean [dict remove $clean added_at]
-
-    if {[dict exists $clean sources]} {
-        set new_sources {}
-        foreach src [dict get $clean sources] {
-            lappend new_sources [dict remove $src added_at]
-        }
-        set clean [dict replace $clean sources $new_sources]
+# Compare two JSON files using jq (compares only package data, excluding header)
+proc compare_json_files {old_file new_file} {
+    # Check if jq is available
+    if {[catch {exec which jq} err]} {
+        puts "Warning: jq not found, assuming files are different > $err"
+        return 1  ;# Assume different if jq is not available
     }
-    return $clean
-}
-
-proc packages_content_equal {old_json new_packages} {
-    if {$old_json eq ""} { return 0 }
-
-    if {[catch {
-        set old_data [::json::json2dict $old_json]
-        set old_packages {}
-
-        if {[llength $old_data] > 0} {
-            set first [lindex $old_data 0]
-            if {[dict exists $first version] && [dict exists $first generated_at]} {
-                set old_packages [lrange $old_data 1 end]
-            } else {
-                set old_packages $old_data
-            }
-        }
-
-        if {[llength $old_packages] != [llength $new_packages]} {
-            return 0
-        }
-
-        for {set i 0} {$i < [llength $old_packages]} {incr i} {
-            set old_pkg [strip_package_metadata [lindex $old_packages $i]]
-            set new_pkg [strip_package_metadata [lindex $new_packages $i]]
-
-            if {$old_pkg ne $new_pkg} {
-                return 0
-            }
-        }
-
+    
+    # Extract and sort packages only (skip header at index 0)
+    # -S flag sorts keys for stable comparison
+    set cmd "jq -S '.[1:]' [file nativename $old_file] > /tmp/old_normalized.json 2>/dev/null"
+    catch {exec sh -c $cmd}
+    
+    set cmd "jq -S '.[1:]' [file nativename $new_file] > /tmp/new_normalized.json 2>/dev/null"
+    catch {exec sh -c $cmd}
+    
+    # Compare normalized files
+    if {[catch {exec diff -q /tmp/old_normalized.json /tmp/new_normalized.json} result]} {
+        puts "diff returns error code if files differ > $result"
         return 1
-
-    } err]} {
-        puts "Comparison error: $err"
-        return 0
     }
+    return 0
 }
 
 proc main {} {
@@ -357,20 +330,23 @@ proc main {} {
 
     load_existing_dates
 
-    set old_content ""
     set current_version 0
+    set old_content ""
+    set has_old_file 0
 
+    # Load existing file if present
     if {[file exists $OUTPUT_FILE]} {
         set fh [open $OUTPUT_FILE r]
         set old_content [read $fh]
         close $fh
+        set has_old_file 1
 
         catch {
             set old_data [::json::json2dict $old_content]
             if {[llength $old_data] > 0} {
-                set first [lindex $old_data 0]
-                if {[dict exists $first version]} {
-                    set current_version [dict get $first version]
+                set header [lindex $old_data 0]
+                if {[dict exists $header version]} {
+                    set current_version [dict get $header version]
                 }
             }
         }
@@ -383,18 +359,20 @@ proc main {} {
     close $fh
 
     set packages [::json::json2dict $data]
-    set packages_for_comparison {}
     set huddle_packages {}
 
     set idx 0
     set total [llength $packages]
     set new_count 0
 
+    puts "Processing $total packages..."
+
     foreach pkg $packages {
         incr idx
         set name [dict get $pkg name]
         puts "\[$idx/$total\] Processing: $name"
 
+        # Handle package addition date
         if {[info exists existing_dates($name)]} {
             set pkg_date $existing_dates($name)
             puts "    -> Existing package, preserving date: $pkg_date"
@@ -411,6 +389,7 @@ proc main {} {
         }
 
         set enriched_sources {}
+        
         foreach src [dict get $pkg sources] {
             set url [dict get $src url]
             set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
@@ -436,6 +415,7 @@ proc main {} {
             set nb_commits [llength [dict get $meta last_commit]]
             puts "    -> Found $nb_commits commit(s)"
 
+            # Build huddle source for final JSON output
             set h_src [huddle create]
             dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
 
@@ -453,6 +433,7 @@ proc main {} {
             lappend enriched_sources $h_src
         }
 
+        # Build huddle package
         set h_pkg [huddle create]
         huddle append h_pkg name [to_huddle $name str]
 
@@ -470,42 +451,14 @@ proc main {} {
         }
         huddle append h_pkg tags $h_tags
 
-
-        set compare_pkg [dict create \
-            name $name \
-            description $desc \
-            sources {} \
-            tags [expr {[dict exists $pkg tags] ? [dict get $pkg tags] : {}}]
-        ]
-
-
-        foreach src [dict get $pkg sources] {
-            set clean_src $src
-            dict set clean_src reachable [dict get $meta reachable]
-            dict set clean_src archived [dict get $meta archived]
-            dict set clean_src latest_release [dict get $meta latest_release]
-            dict set clean_src last_commit [dict get $meta last_commit]
-            dict set clean_src last_commit_sha [dict get $meta last_commit_sha]
-            dict set clean_src last_tag [dict get $meta last_tag]
-            lappend compare_pkg [dict get $compare_pkg sources] $clean_src
-        }
-
-        lappend packages_for_comparison $compare_pkg
         lappend huddle_packages $h_pkg
     }
 
-    if {[packages_content_equal $old_content $packages_for_comparison]} {
-        puts "\n✓ No changes detected. Keeping version $current_version."
-        set new_version $current_version
-    } else {
-        set new_version [expr {$current_version + 1}]
-        puts "\n✗ Changes detected! Bumping to version $new_version."
-    }
-
+    # Generate new JSON content
     set timestamp [clock format [clock seconds] -format "%Y-%m-%dT%H:%M:%SZ" -gmt 1]
-
+    set new_version [expr {$current_version + 1}]
+    
     set out_list [huddle list]
-
     huddle append out_list [huddle create \
         version [huddle string $new_version] \
         generated_at [huddle string $timestamp] \
@@ -516,13 +469,43 @@ proc main {} {
         huddle append out_list $pkg
     }
 
+    set new_json [string map {\\/ /} [huddle jsondump $out_list "" ""]]
+    
+    # Write to temporary file first
     file mkdir [file dirname $OUTPUT_FILE]
-    set fh [open $OUTPUT_FILE w]
-    puts -nonewline $fh [string map {\\/ /} [huddle jsondump $out_list "" ""]]
+    set tmp_file "${OUTPUT_FILE}.tmp"
+    set fh [open $tmp_file w]
+    puts -nonewline $fh $new_json
     close $fh
 
+    # Compare with existing file (if present)
+    set final_content $new_json
+    set final_version $new_version
+    
+    if {$has_old_file} {
+        if {[compare_json_files $OUTPUT_FILE $tmp_file] == 0} {
+            puts "\n✓ No changes detected in package data. Keeping version $current_version."
+            set final_content $old_content
+            set final_version $current_version
+        } else {
+            puts "\n✗ Changes detected! Bumping to version $new_version."
+        }
+    } else {
+        puts "\n✓ Creating new file with version $new_version."
+    }
+
+    # Write final content
+    set fh [open $OUTPUT_FILE w]
+    puts -nonewline $fh $final_content
+    close $fh
+    
+    # Cleanup temporary files
+    file delete -force $tmp_file
+    catch {file delete -force /tmp/old_normalized.json}
+    catch {file delete -force /tmp/new_normalized.json}
+
     puts "\nDone: $OUTPUT_FILE"
-    puts "Version: $new_version"
+    puts "Version: $final_version"
     puts "Total: [llength $huddle_packages] packages ($new_count new)"
 }
 
