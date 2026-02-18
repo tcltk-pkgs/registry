@@ -26,20 +26,37 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y git curl tcl tcllib
 
-      - name: Run update script
+      - name: Generate metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Tcl script handles comparison logic and decides whether to 
+          # keep the old version or update to new version
           tclsh metadata/generate_meta.tcl
 
-      - name: Commit and push
+      - name: Commit and push if changed
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          
+          # Check if there are actual changes to commit
+          if git diff --quiet HEAD metadata/packages-meta.json; then
+            echo "✓ No changes to commit"
+            exit 0
+          fi
+          
+          # Extract version and date for commit message
+          VERSION=$(jq -r '.[0].version' metadata/packages-meta.json)
+          DATE=$(jq -r '.[0].generated_at' metadata/packages-meta.json | cut -d'T' -f1)
+          
           git add metadata/packages-meta.json
-          git commit -m "Update metadata v$(grep -o '"version":"[^"]*"' metadata/packages-meta.json | head -1 | cut -d'"' -f4)" || echo "No changes"
+          git commit -m "Update metadata v${VERSION} (${DATE})" || echo "No changes to commit"
           git push
 
-      - name: Purge and notify
+      - name: Purge jsDelivr cache
+        # Only run if previous steps succeeded
+        if: success()
         run: |
-          curl "https://purge.jsdelivr.net/gh/${{ github.repository }}@master/metadata/packages-meta.json"
+          REPO="${{ github.repository }}"
+          echo "Purging jsDelivr cache for $REPO..."
+          curl -s "https://purge.jsdelivr.net/gh/${REPO}@master/metadata/packages-meta.json" | jq -r '.status' || echo "Purge request sent"
