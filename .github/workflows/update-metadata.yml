@@ -53,10 +53,10 @@ jobs:
           git commit -m "Update metadata v${VERSION} (${DATE})" || echo "No changes to commit"
           git push
 
-      - name: Purge jsDelivr cache
-        # Only run if previous steps succeeded
-        if: success()
-        run: |
-          REPO="${{ github.repository }}"
-          echo "Purging jsDelivr cache for $REPO..."
-          curl -s "https://purge.jsdelivr.net/gh/${REPO}@master/metadata/packages-meta.json" | jq -r '.status' || echo "Purge request sent"
+      # - name: Purge jsDelivr cache
+      #   # Only run if previous steps succeeded
+      #   if: success()
+      #   run: |
+      #     REPO="${{ github.repository }}"
+      #     echo "Purging jsDelivr cache for $REPO..."
+      #     curl -s "https://purge.jsdelivr.net/gh/${REPO}@master/metadata/packages-meta.json" | jq -r '.status' || echo "Purge request sent"
