@@ -21,7 +21,8 @@ Submit a PR adding your package to packages.json. The registry is automatically 
 | `name`              | string | Package name (no spaces)            |
 | `sources`           | array  | Array of source objects             |
 | `sources[].url`     | string | Repository URL                      |
-| `sources[].method`  | string | `git` or `fossil` (for now)         |
+| `sources[].method`  | string | `git` or `fossil` (optional)        |
+| `sources[].web`     | string | Documentation URL (optional)        |
 | `sources[].author`  | string | Package author/maintainer           |
 | `sources[].license` | string | SPDX license identifier             |
 | `tags`              | array  | Keywords for categorization         |
