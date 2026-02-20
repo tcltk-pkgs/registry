@@ -16,17 +16,18 @@ Search, filter and explore all available packages with an easy-to-use interface.
 
 Submit a PR adding your package to packages.json. The registry is automatically rebuilt daily.
 
-| Field               | Type   | Description                         |
-| ------------------- | ------ | ----------------------------------- |
-| `name`              | string | Package name (no spaces)            |
-| `sources`           | array  | Array of source objects             |
-| `sources[].url`     | string | Repository URL                      |
-| `sources[].method`  | string | `git` or `fossil` (optional)        |
-| `sources[].web`     | string | Documentation URL (optional)        |
-| `sources[].author`  | string | Package author/maintainer           |
-| `sources[].license` | string | SPDX license identifier             |
-| `tags`              | array  | Keywords for categorization         |
-| `description`       | string | Short description                   |
+| Field                  | Type    | Description                         |
+| -------------------    | ------  | ----------------------------------- |
+| `name`                 | string  | Package name (no spaces)            |
+| `sources`              | array   | Array of source objects             |
+| `sources[].url`        | string  | Repository URL                      |
+| `sources[].method`     | string  | `git` or `fossil` (optional)        |
+| `sources[].web`        | string  | Documentation URL (optional)        |
+| `sources[].author`     | string  | Package author/maintainer           |
+| `sources[].extension`  | boolean | `true` if this is a compiled (C/C++/etc...) extension (requires build or binaries), `false` or omit for pure Tcl scripts (optional) |
+| `sources[].license`    | string  | SPDX license identifier             |
+| `tags`                 | array   | Keywords for categorization         |
+| `description`          | string  | Short description                   |
 
 ### Examples:
 ```json
