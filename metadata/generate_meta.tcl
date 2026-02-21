@@ -78,7 +78,7 @@ proc fetch_github_data {url {module_path ""}} {
     set commit_key "${repo}:${module_path}"
 
     if {![dict exists $github_cache $repo]} {
-        set info [dict create archived 0 latest_release "none"]
+        set info [dict create archived 0 latest_release "none" last_release_date ""]
 
         set r [http_get "https://api.github.com/repos/$repo" "json"]
 
@@ -94,6 +94,11 @@ proc fetch_github_data {url {module_path ""}} {
             set json [dict get $r_rel json]
             if {[dict exists $json tag_name]} {
                 dict set info latest_release [dict get $json tag_name]
+            }
+            if {[dict exists $json published_at]} {
+                set pub_date [dict get $json published_at]
+                set pub_date [string map {T " " Z ""} $pub_date]
+                dict set info last_release_date $pub_date
             }
         }
         dict set github_cache $repo $info
@@ -144,7 +149,7 @@ proc process_fossil {url} {
     set module_path ""
     if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
 
-    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag "" last_release_date ""]
 
     set api_url "$base/json/timeline?type=ci&limit=$MAX_COMMITS"
     if {$module_path ne ""} { append api_url "&p=$module_path" }
@@ -174,6 +179,7 @@ proc process_fossil {url} {
 
         dict set meta archived [dict get $gh archived]
         dict set meta latest_release [dict get $gh latest_release]
+        dict set meta last_release_date [dict get $gh last_release_date]
 
         catch {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
@@ -181,7 +187,14 @@ proc process_fossil {url} {
             foreach line [split $raw_tags "\n"] {
                 if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
             }
-            dict set meta last_tag [get_latest_tag $tag_list]
+            set latest_tag [get_latest_tag $tag_list]
+            dict set meta last_tag $latest_tag
+
+            if {[dict get $meta last_release_date] eq "" && $latest_tag ne ""} {
+                set tag_date [exec git for-each-ref --format='%(creatordate:iso8601)' refs/tags/$latest_tag]
+                set tag_date [string map {T " " Z ""} $tag_date]
+                dict set meta last_release_date $tag_date
+            }
         }
     }
 
@@ -204,13 +217,26 @@ proc process_git {url} {
                 foreach line [split $raw_tags "\n"] {
                     if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
                 }
-                dict set meta last_tag [get_latest_tag $tag_list]
+                set latest_tag [get_latest_tag $tag_list]
+                dict set meta last_tag $latest_tag
+
+                if {$latest_tag ne "" && [dict get $meta last_release_date] eq ""} {
+                    set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-tag-[expr {int(rand()*10000)}]"]
+                    try {
+                        exec git clone --depth 1 --filter=blob:none --no-checkout $url $tmp 2>@1
+                        set tag_date [exec git -C $tmp for-each-ref --format='%(creatordate:iso8601)' refs/tags/$latest_tag]
+                        set tag_date [string map {T " " Z ""} $tag_date]
+                        dict set meta last_release_date $tag_date
+                    } finally {
+                        file delete -force $tmp
+                    }
+                }
             }
         }
         return $meta
     }
 
-    set meta [dict create last_commit {} last_commit_sha {} last_tag ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag "" last_release_date ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
     try {
@@ -234,10 +260,18 @@ proc process_git {url} {
         }
 
         set t_out [exec git -C $tmp tag]
-        dict set meta last_tag [get_latest_tag [split $t_out "\n"]]
+        set latest_tag [get_latest_tag [split $t_out "\n"]]
+        dict set meta last_tag $latest_tag
+
+        if {$latest_tag ne ""} {
+            set tag_date [exec git -C $tmp for-each-ref --format='%(creatordate:iso8601)' refs/tags/$latest_tag]
+            set tag_date [string map {T " " Z ""} $tag_date]
+            dict set meta last_release_date $tag_date
+        }
     } finally {
         file delete -force $tmp
     }
+
     return $meta
 }
 
