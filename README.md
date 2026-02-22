@@ -71,13 +71,18 @@ Submit a PR adding your package to packages.json. The registry is automatically 
 ```
 
 > [!NOTE]  
-> `method` can be `git` or `fossil` for now. The `web` field is optional and points to documentation if different from the repository `URL`.
+> The `web` field is optional and points to documentation if different from the repository `URL`.
 
 ## Auto-Update
 
 This repository uses GitHub Actions to:
 - Validate packages.json on every PR.
 - Generate packages-meta.json daily (metadata, stats, validation).
+
+## Acknowledgments
+
+The registry format draws inspiration from modern package registries 
+(npm, Cargo, Nim) while being specifically adapted for the Tcl ecosystem.
 
 ## License
 
