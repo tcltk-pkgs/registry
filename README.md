@@ -4,7 +4,7 @@ Central registry of third-party packages and extensions for `Tcl/Tk`.
 
 ## Browse Packages
 
-Visit the web interface: **[tcltk-pkgs.pages.dev](https://tcltk-pkgs.pages.dev)**
+Visit the **[web](https://tcltk-pkgs.pages.dev)** interface
 
 Search, filter and explore all available packages with an easy-to-use interface.
 - Full-text search
@@ -86,7 +86,7 @@ The registry format draws inspiration from modern package registries
 
 ## See Also
 
-- **[Tcl-Related-Link](https://github.com/ray2501/Tcl-Related-Link)** — An exhaustive, well-organized collection of Tcl/Tk links including books, tools, extensions, and language bindings. A must-bookmark for any Tcl developer.
+**[Tcl-Related-Link](https://github.com/ray2501/Tcl-Related-Link)** — An exhaustive, well-organized collection of Tcl/Tk links including books, tools, extensions, and language bindings. A must-bookmark for any Tcl developer.
 
 ## License
 
