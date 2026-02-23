@@ -82,7 +82,11 @@ This repository uses GitHub Actions to:
 ## Acknowledgments
 
 The registry format draws inspiration from modern package registries 
-(npm, Cargo, Nim) while being specifically adapted for the Tcl ecosystem.
+(npm, Cargo, Nim) while being specifically adapted for the Tcl/Tk ecosystem.
+
+## See Also
+
+- **[Tcl-Related-Link](https://github.com/ray2501/Tcl-Related-Link)** — An exhaustive, well-organized collection of Tcl/Tk links including books, tools, extensions, and language bindings. A must-bookmark for any Tcl developer.
 
 ## License
 
