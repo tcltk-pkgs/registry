@@ -20,10 +20,11 @@ jobs:
         run: |
           if ! jq empty packages.json 2>/dev/null; then
             echo "status=failure" >> $GITHUB_OUTPUT
-            echo "message=❌ Syntax error: $(jq empty packages.json 2>&1)" >> $GITHUB_OUTPUT
+            echo "message=:x: Syntax error: $(jq empty packages.json 2>&1)" >> $GITHUB_OUTPUT
             exit 0
           fi
 
+          # Errors (structure)
           errors=$(jq -r '
             . as $pkg | range(length) as $i | $pkg[$i] |
             if has("name") | not then "Package #\($i): missing name" else empty end,
@@ -34,12 +35,31 @@ jobs:
             )
           ' packages.json)
 
+          # Warnings (artifacts)
+          warnings=$(jq -r '
+            . as $pkg | range(length) as $i | $pkg[$i] |
+            ((.sources // []) | to_entries[] |
+              if (.value | has("artifacts")) then
+                if (.value.artifacts | test("\\.(zip|tar\\.gz|tgz|tar\\.bz2|tbz|tar\\.xz|txz|7z|rar|exe|msi|dmg|pkg|deb|rpm|AppImage|snap|flatpak)([?#].*)?$"; "i")) then
+                  "Package #\($pkg[$i].name // $i): artifacts appears to be a direct download link (should be a release page URL)"
+                else empty end
+              else empty end
+            )
+          ' packages.json)
+
+          # Output final status
           if [ -n "$errors" ]; then
             echo "status=failure" >> $GITHUB_OUTPUT
-            printf "message=❌ Structure errors:\n%s" "$errors" >> $GITHUB_OUTPUT
+            msg=":x: Structure errors:\n$errors"
+            [ -n "$warnings" ] && msg="$msg\n\n:warning: Warnings:\n$warnings"
+            printf "message=%s" "$msg" >> $GITHUB_OUTPUT
           else
             echo "status=success" >> $GITHUB_OUTPUT
-            echo "message=✅ packages.json is valid" >> $GITHUB_OUTPUT
+            if [ -n "$warnings" ]; then
+              printf "message=:white_check_mark: packages.json is valid\n\n:warning: Warnings:\n%s" "$warnings" >> $GITHUB_OUTPUT
+            else
+              echo "message=:white_check_mark: packages.json is valid" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Comment PR
