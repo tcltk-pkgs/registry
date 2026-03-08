@@ -2485,5 +2485,61 @@
     ],
     "tags": ["variable-manipulation", "variable-management", "tcloo"],
     "description": "Advanced variable utilities for Tcl"
+  },
+  {
+    "name": "hl_tcl",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/hl_tcl",
+        "method": "git",
+        "web": "https://aplsimple.github.io/en/tcl/hl_tcl/hl_tcl.html",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/hl_tcl/releases"
+      }
+    ],
+    "tags": ["syntaxhighlighter", "tcl", "tk"],
+    "description": "Syntax highlighter of Tcl/Tk code"
+  },
+  {
+    "name": "bartabs",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/bartabs",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/bartabs/releases"
+      }
+    ],
+    "tags": ["tab", "tk-widget", "gui"],
+    "description": "tab bar widget for Tcl/Tk"
+  },
+  {
+    "name": "playtkl",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/playtkl",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["testing", "tk"],
+    "description": "Testing scenarios for Tcl/Tk applications & playing macros"
+  },
+  {
+    "name": "baltip",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/baltip",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/bartabs/releases"
+      }
+    ],
+    "tags": ["tooltip", "tk", "gui"],
+    "description": "Tcl/Tk package of tooltip and balloon"
   }
 ]
