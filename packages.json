@@ -2415,5 +2415,75 @@
     ],
     "tags": ["tcl-binding", "unix-system-calls", "bsd"],
     "description": "A Tcl package for interfacing to various BSD UNIX system calls and library routines"
+  },
+  {
+    "name": "flytrap",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/flytrap",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "MIT",
+        "artifacts": "https://github.com/ambaker1/flytrap/releases"
+      }
+    ],
+    "tags": ["debugging", "tools"],
+    "description": "Tcl debugging tools"
+  },
+  {
+    "name": "Tin",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/Tin",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ambaker1/Tin/releases"
+      }
+    ],
+    "tags": ["package-manager"],
+    "description": "Tcl package manager"
+  },
+  {
+    "name": "ooida",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/ooida",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/ambaker1/ooida/releases"
+      }
+    ],
+    "tags": ["incremental", "analysis", "parser", "oo", "ida"],
+    "description": "Object-Oriented Incremental Dynamic Analysis"
+  },
+  {
+    "name": "ndlist",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/ndlist",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ambaker1/ndlist/releases"
+      }
+    ],
+    "tags": ["tcl-tensor-library", "tensor-operations", "tensor-math"],
+    "description": "Tcl tensors"
+  },
+  {
+    "name": "vutil",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/vutil",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "MIT",
+        "artifacts": "https://github.com/ambaker1/vutil/releases"
+      }
+    ],
+    "tags": ["variable-manipulation", "variable-management", "tcloo"],
+    "description": "Advanced variable utilities for Tcl"
   }
 ]
