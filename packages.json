@@ -1867,6 +1867,7 @@
       {
         "url": "https://github.com/ray2501/tclmonetdb",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MPL-2.0",
         "artifacts": "https://github.com/ray2501/tclmonetdb/releases"
@@ -1881,6 +1882,7 @@
       {
         "url": "https://github.com/ray2501/tcl.snappy",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "BSD-2-Clause",
         "artifacts": "https://github.com/ray2501/tcl.snappy/releases"
@@ -1895,6 +1897,7 @@
       {
         "url": "https://github.com/ray2501/tcl-lmdb",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "BSD-2-Clause",
         "artifacts": "https://github.com/ray2501/tcl-lmdb/releases"
@@ -1909,6 +1912,7 @@
       {
         "url": "https://github.com/ray2501/tcljsonnet",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "Apache-2.0",
         "artifacts": "https://github.com/ray2501/tcljsonnet/releases"
@@ -1923,6 +1927,7 @@
       {
         "url": "https://github.com/ray2501/tcl-leveldb",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MIT",
         "artifacts": "https://github.com/ray2501/tcl-leveldb/releases"
@@ -1937,6 +1942,7 @@
       {
         "url": "https://github.com/ray2501/tcl-opencl",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MIT",
         "artifacts": "https://github.com/ray2501/tcl-opencl/releases"
@@ -1951,6 +1957,7 @@
       {
         "url": "https://github.com/ray2501/tcl-archive",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "BSD-2-Clause",
         "artifacts": "https://github.com/ray2501/tcl-archive/releases"
@@ -1965,6 +1972,7 @@
       {
         "url": "https://github.com/ray2501/tcl-opencc",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "Apache-2.0",
         "artifacts": "https://github.com/ray2501/tcl-opencc/releases"
@@ -1979,6 +1987,7 @@
       {
         "url": "https://github.com/ray2501/tclopenal",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "LGPL-2.1",
         "artifacts": "https://github.com/ray2501/tclopenal/releases"
@@ -1993,6 +2002,7 @@
       {
         "url": "https://github.com/ray2501/tcl-opencv",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MIT",
         "artifacts": "https://github.com/ray2501/tcl-opencv/releases"
@@ -2007,6 +2017,7 @@
       {
         "url": "https://github.com/ray2501/tcl-stbimage",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MIT",
         "artifacts": "https://github.com/ray2501/tcl-stbimage/releases"
@@ -2021,6 +2032,7 @@
       {
         "url": "https://github.com/ray2501/tclusb",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "BSD-2-Clause",
         "artifacts": "https://github.com/ray2501/tclusb/releases"
@@ -2035,6 +2047,7 @@
       {
         "url": "https://github.com/ray2501/tcl-curses",
         "method": "git",
+        "extension": true,
         "web": "https://wiki.tcl.tk/10877",
         "author": "Danilo Chang",
         "license": "Tcl/Tk License",
@@ -2050,6 +2063,7 @@
       {
         "url": "https://github.com/ray2501/tcl.mqttc",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "BSD-3-Clause",
         "artifacts": "https://github.com/ray2501/tcl.mqttc/releases"
@@ -2064,6 +2078,7 @@
       {
         "url": "https://github.com/ray2501/tkvlc",
         "method": "git",
+        "extension": true,
         "author": "Danilo Chang",
         "license": "MIT",
         "artifacts": "https://github.com/ray2501/tkvlc/releases"
