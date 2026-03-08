@@ -1860,5 +1860,216 @@
     ],
     "tags": ["tcllib", "archive", "zip"],
     "description": "Build a zip archive"
+  },
+  {
+    "name": "tclmonetdb",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tclmonetdb",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MPL-2.0",
+        "artifacts": "https://github.com/ray2501/tclmonetdb/releases"
+      }
+    ],
+    "tags": ["monetdb", "tdbc", "database"],
+    "description": "Tcl extension and TDBC driver for MonetDB"
+  },
+  {
+    "name": "tcl.snappy",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl.snappy",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ray2501/tcl.snappy/releases"
+      }
+    ],
+    "tags": ["snappy", "compression", "decompression"],
+    "description": "Tcl wrapper for snappy library"
+  },
+  {
+    "name": "tcl-lmdb",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-lmdb",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ray2501/tcl-lmdb/releases"
+      }
+    ],
+    "tags": ["mmdb", "database"],
+    "description": "The Tcl interface to the Lightning Memory-Mapped Database"
+  },
+  {
+    "name": "tcljsonnet",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcljsonnet",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "Apache-2.0",
+        "artifacts": "https://github.com/ray2501/tcljsonnet/releases"
+      }
+    ],
+    "tags": ["json", "Jsonnet", "schema", "structure"],
+    "description": "Tcl wrapper for Jsonnet library"
+  },
+  {
+    "name": "tcl-leveldb",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-leveldb",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MIT",
+        "artifacts": "https://github.com/ray2501/tcl-leveldb/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "leveldb", "db-api" , "database"],
+    "description": "The Tcl interface to the LevelDB"
+  },
+  {
+    "name": "tcl-opencl",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-opencl",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MIT",
+        "artifacts": "https://github.com/ray2501/tcl-opencl/releases"
+      }
+    ],
+    "tags": ["opencl"],
+    "description": "Tcl extension for OpenCL"
+  },
+  {
+    "name": "tcl-archive",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-archive",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ray2501/tcl-archive/releases"
+      }
+    ],
+    "tags": ["archive", "tar", "cpio", "zcat"],
+    "description": "A Tcl wrapper for LibArchive"
+  },
+  {
+    "name": "tcl-opencc",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-opencc",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "Apache-2.0",
+        "artifacts": "https://github.com/ray2501/tcl-opencc/releases"
+      }
+    ],
+    "tags": ["opencc", "library"],
+    "description": "Tcl bindings for OpenCC (libopencc)"
+  },
+  {
+    "name": "tclopenal",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tclopenal",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "LGPL-2.1",
+        "artifacts": "https://github.com/ray2501/tclopenal/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "audio", "openal"],
+    "description": "Tcl bindings for OpenAL (open audio library)"
+  },
+  {
+    "name": "tcl-opencv",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-opencv",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MIT",
+        "artifacts": "https://github.com/ray2501/tcl-opencv/releases"
+      }
+    ],
+    "tags": ["opencv", "extension", "vision-library"],
+    "description": "Tcl extension for OpenCV library"
+  },
+  {
+    "name": "tcl-stbimage",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-stbimage",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MIT",
+        "artifacts": "https://github.com/ray2501/tcl-stbimage/releases"
+      }
+    ],
+    "tags": ["image-processing", "tcl-binding", "stb"],
+    "description": "Tcl extension for stb_image"
+  },
+  {
+    "name": "tclusb",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tclusb",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ray2501/tclusb/releases"
+      }
+    ],
+    "tags": ["libusb", "tcl-binding","usb"],
+    "description": "List USB devices in Tcl via libusb"
+  },
+  {
+    "name": "tcl-curses",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl-curses",
+        "method": "git",
+        "web": "https://wiki.tcl.tk/10877",
+        "author": "Danilo Chang",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/ray2501/tcl-curses/releases"
+      }
+    ],
+    "tags": ["bindings", "curses"],
+    "description": "A 'minimalist' tcl package for interfacing to curses"
+  },
+  {
+    "name": "tcl.mqttc",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tcl.mqttc",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/ray2501/tcl.mqttc/releases"
+      }
+    ],
+    "tags": ["mqtt", "tcl-binding", "protocol", "message"],
+    "description": "MQTT Client for Tcl"
+  },
+  {
+    "name": "tkvlc",
+    "sources": [
+      {
+        "url": "https://github.com/ray2501/tkvlc",
+        "method": "git",
+        "author": "Danilo Chang",
+        "license": "MIT",
+        "artifacts": "https://github.com/ray2501/tkvlc/releases"
+      }
+    ],
+    "tags": ["tk-interface", "vlc-embedding"],
+    "description": "A demo to embed libVLC to Tk toolkit widget (Tcl version)"
   }
 ]
