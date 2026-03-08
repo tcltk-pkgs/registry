@@ -2086,5 +2086,94 @@
     ],
     "tags": ["tk-interface", "vlc-embedding"],
     "description": "A demo to embed libVLC to Tk toolkit widget (Tcl version)"
+  },
+  {
+    "name": "SpiceGenTcl",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/SpiceGenTcl",
+        "method": "git",
+        "web": "https://georgtree.github.io/SpiceGenTcl/",
+        "author": "George Yashin",
+        "license": "MIT",
+        "artifacts": "https://github.com/georgtree/SpiceGenTcl/releases"
+      }
+    ],
+    "tags": ["spice","ngspice", "simulator"],
+    "description": "Package provides Tcl interface to different SPICE and SPICE-like simulator, Ngspice, Xyce, etc"
+  },
+  {
+    "name": "NgspiceTclBridge",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/NgspiceTclBridge",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/NgspiceTclBridge/",
+        "author": "George Yashin",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tcl-binding", "ngspice", "simulator"],
+    "description": "Tcl extension for usage with dynamically loaded Ngspice simulator"
+  },
+  {
+    "name": "tclmeasure",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/tclmeasure",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/tclmeasure/",
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": [ "measure", "extension"],
+    "description": "Tcl C extension provides equivalent of `measure` command in SPICE and SPICE-like simulators to vector data processing."
+  },
+  {
+    "name": "extexpr",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/extexpr",
+        "method": "git",
+        "extension": true,
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": ["expr", "parser", "math", "vector"],
+    "description": "The extexpr package extends built-in commands used in 'expr' command."
+  },
+  {
+    "name": "argparse",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/argparse",
+        "method": "git",
+        "extension": true,
+        "author": "George Yashin",
+        "license": "MIT",
+        "artifacts": "https://github.com/georgtree/argparse/releases"
+      }
+    ],
+    "tags": ["preprocessor", "argument"],
+    "description": "Argument preprocessor for Tcl"
+  },
+  {
+    "name": "tclinterp",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/tclinterp",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/tclinterp/",
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": ["c-interpolation", "tcl-binding", "wrapper", "swig"],
+    "description": "Tcl wrapper for C interpolation routines"
   }
 ]
