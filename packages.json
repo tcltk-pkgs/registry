@@ -2175,5 +2175,245 @@
     ],
     "tags": ["c-interpolation", "tcl-binding", "wrapper", "swig"],
     "description": "Tcl wrapper for C interpolation routines"
+  },
+  {
+    "name": "tohil",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tohil",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tohil/releases"
+      }
+    ],
+    "tags": ["python-binding", "extension"],
+    "description": "A feathered serpent, delightful integration between python, the serpent, and TCL, the feather."
+  },
+  {
+    "name": "tclreadline",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclreadline",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclreadline/releases"
+      }
+    ],
+    "tags": ["readline", "interactive"],
+    "description": "GNU readline for interactive Tcl shells"
+  },
+  {
+    "name": "Pgtcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/Pgtcl",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/Pgtcl/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/Pgtcl/releases"
+      }
+    ],
+    "tags": ["postgresql", "pgtcl", "database"],
+    "description": "Tcl client side interface to PostgreSQL (libpgtcl)"
+  },
+  {
+    "name": "kafkatcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/kafkatcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/kafkatcl/releases"
+      }
+    ],
+    "tags": ["kafka", "message"],
+    "description": "Tcl interface to the Apache Kafka distributed messaging system"
+  },
+  {
+    "name": "tclsass",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclsass",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclsass/releases"
+      }
+    ],
+    "tags": ["sass", "lib"],
+    "description": "Tcl interface to the libsass library"
+  },
+  {
+    "name": "speedbag",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/speedbag",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/speedbag/releases"
+      }
+    ],
+    "tags": ["c-binding", "tcl-parser", "tsv-parser" , "array"],
+    "description": "A package for providing accelerated C-based routines for TSV parsing into an array"
+  },
+  {
+    "name": "tclcurl-fa",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclcurl-fa",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclcurl-fa/releases"
+      }
+    ],
+    "tags": ["curl", "http"],
+    "description": "TclCurl package to provide Curl support in Tcl. "
+  },
+  {
+    "name": "socketservertcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/socketservertcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/socketservertcl/releases"
+      }
+    ],
+    "tags": ["networking", "tcl-socket", "flingfd", "ancillary"],
+    "description": "Basic socketserver support in Tcl inspired by libancillary"
+  },
+  {
+    "name": "zookeepertcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/zookeepertcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/zookeepertcl/releases"
+      }
+    ],
+    "tags": ["apache","zookeeper"],
+    "description": "Tcl interface to Apache zookeeper distributed coordination system"
+  },
+  {
+    "name": "tcljs",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tcljs",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["javascript", "spidermonkey", "tcl-binding", "js"],
+    "description": "Tcl extension to execute JavaScript using the SpiderMonkey Javascript interpreter"
+  },
+  {
+    "name": "jsmin-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/jsmin-tcl",
+        "method": "git",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/jsmin-tcl/releases"
+      }
+    ],
+    "tags": ["jsmin", "parser", "javascript"],
+    "description": "A Tcl JavaScript minifier inspired by Douglas Crockford’s JSMin"
+  },
+  {
+    "name": "casstcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/casstcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/casstcl/releases"
+      }
+    ],
+    "tags": ["cassandra", "database"],
+    "description": "Tcl language interface to the Cassandra database"
+  },
+  {
+    "name": "yajl-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/yajl-tcl",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/yajl-tcl/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/yajl-tcl/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "json", "parser"],
+    "description": "Tcl bindings for Yet Another JSON Library"
+  },
+  {
+    "name": "tclspline",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclspline",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["tcl-binding", "spline", "geometry"],
+    "description": "This is tclspline, a direct Tcl interface to spline routines extracted from Tk"
+  },
+  {
+    "name": "tcllauncher",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tcllauncher",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/tcllauncher/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tcllauncher/releases"
+      }
+    ],
+    "tags": ["launcher", "server-oriented"],
+    "description": "This is tcllauncher, a launcher program for Tcl applications."
+  },
+  {
+    "name": "tclbsd",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclbsd",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclbsd/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "unix-system-calls", "bsd"],
+    "description": "A Tcl package for interfacing to various BSD UNIX system calls and library routines"
   }
 ]
