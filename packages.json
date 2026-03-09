@@ -2227,5 +2227,460 @@
     ],
     "tags": ["promise", "concurrent-programming"],
     "description": "Tcl implementation of the promise abstraction for concurrent programming."
+  },
+  {
+    "name": "SpiceGenTcl",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/SpiceGenTcl",
+        "method": "git",
+        "web": "https://georgtree.github.io/SpiceGenTcl/",
+        "author": "George Yashin",
+        "license": "MIT",
+        "artifacts": "https://github.com/georgtree/SpiceGenTcl/releases"
+      }
+    ],
+    "tags": ["spice","ngspice", "simulator"],
+    "description": "Package provides Tcl interface to different SPICE and SPICE-like simulator, Ngspice, Xyce, etc"
+  },
+  {
+    "name": "NgspiceTclBridge",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/NgspiceTclBridge",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/NgspiceTclBridge/",
+        "author": "George Yashin",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tcl-binding", "ngspice", "simulator"],
+    "description": "Tcl extension for usage with dynamically loaded Ngspice simulator"
+  },
+  {
+    "name": "tclmeasure",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/tclmeasure",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/tclmeasure/",
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": [ "measure", "extension"],
+    "description": "Tcl C extension provides equivalent of `measure` command in SPICE and SPICE-like simulators to vector data processing."
+  },
+  {
+    "name": "extexpr",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/extexpr",
+        "method": "git",
+        "extension": true,
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": ["expr", "parser", "math", "vector"],
+    "description": "The extexpr package extends built-in commands used in 'expr' command."
+  },
+  {
+    "name": "argparse",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/argparse",
+        "method": "git",
+        "extension": true,
+        "author": "George Yashin",
+        "license": "MIT",
+        "artifacts": "https://github.com/georgtree/argparse/releases"
+      }
+    ],
+    "tags": ["preprocessor", "argument"],
+    "description": "Argument preprocessor for Tcl"
+  },
+  {
+    "name": "tclinterp",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/tclinterp",
+        "method": "git",
+        "extension": true,
+        "web": "https://georgtree.github.io/tclinterp/",
+        "author": "George Yashin",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": ["c-interpolation", "tcl-binding", "wrapper", "swig"],
+    "description": "Tcl wrapper for C interpolation routines"
+  },
+  {
+    "name": "tohil",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tohil",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tohil/releases"
+      }
+    ],
+    "tags": ["python-binding", "extension"],
+    "description": "A feathered serpent, delightful integration between python, the serpent, and TCL, the feather."
+  },
+  {
+    "name": "tclreadline",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclreadline",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclreadline/releases"
+      }
+    ],
+    "tags": ["readline", "interactive"],
+    "description": "GNU readline for interactive Tcl shells"
+  },
+  {
+    "name": "Pgtcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/Pgtcl",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/Pgtcl/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/Pgtcl/releases"
+      }
+    ],
+    "tags": ["postgresql", "pgtcl", "database"],
+    "description": "Tcl client side interface to PostgreSQL (libpgtcl)"
+  },
+  {
+    "name": "kafkatcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/kafkatcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/kafkatcl/releases"
+      }
+    ],
+    "tags": ["kafka", "message"],
+    "description": "Tcl interface to the Apache Kafka distributed messaging system"
+  },
+  {
+    "name": "tclsass",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclsass",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclsass/releases"
+      }
+    ],
+    "tags": ["sass", "lib"],
+    "description": "Tcl interface to the libsass library"
+  },
+  {
+    "name": "speedbag",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/speedbag",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/speedbag/releases"
+      }
+    ],
+    "tags": ["c-binding", "tcl-parser", "tsv-parser" , "array"],
+    "description": "A package for providing accelerated C-based routines for TSV parsing into an array"
+  },
+  {
+    "name": "tclcurl-fa",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclcurl-fa",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclcurl-fa/releases"
+      }
+    ],
+    "tags": ["curl", "http"],
+    "description": "TclCurl package to provide Curl support in Tcl. "
+  },
+  {
+    "name": "socketservertcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/socketservertcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/socketservertcl/releases"
+      }
+    ],
+    "tags": ["networking", "tcl-socket", "flingfd", "ancillary"],
+    "description": "Basic socketserver support in Tcl inspired by libancillary"
+  },
+  {
+    "name": "zookeepertcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/zookeepertcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/zookeepertcl/releases"
+      }
+    ],
+    "tags": ["apache","zookeeper"],
+    "description": "Tcl interface to Apache zookeeper distributed coordination system"
+  },
+  {
+    "name": "tcljs",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tcljs",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["javascript", "spidermonkey", "tcl-binding", "js"],
+    "description": "Tcl extension to execute JavaScript using the SpiderMonkey Javascript interpreter"
+  },
+  {
+    "name": "jsmin-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/jsmin-tcl",
+        "method": "git",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/jsmin-tcl/releases"
+      }
+    ],
+    "tags": ["jsmin", "parser", "javascript"],
+    "description": "A Tcl JavaScript minifier inspired by Douglas Crockford’s JSMin"
+  },
+  {
+    "name": "casstcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/casstcl",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/casstcl/releases"
+      }
+    ],
+    "tags": ["cassandra", "database"],
+    "description": "Tcl language interface to the Cassandra database"
+  },
+  {
+    "name": "yajl-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/yajl-tcl",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/yajl-tcl/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/yajl-tcl/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "json", "parser"],
+    "description": "Tcl bindings for Yet Another JSON Library"
+  },
+  {
+    "name": "tclspline",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclspline",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["tcl-binding", "spline", "geometry"],
+    "description": "This is tclspline, a direct Tcl interface to spline routines extracted from Tk"
+  },
+  {
+    "name": "tcllauncher",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tcllauncher",
+        "method": "git",
+        "extension": true,
+        "web": "https://flightaware.github.io/tcllauncher/",
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tcllauncher/releases"
+      }
+    ],
+    "tags": ["launcher", "server-oriented"],
+    "description": "This is tcllauncher, a launcher program for Tcl applications."
+  },
+  {
+    "name": "tclbsd",
+    "sources": [
+      {
+        "url": "https://github.com/flightaware/tclbsd",
+        "method": "git",
+        "extension": true,
+        "author": "flightaware",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/flightaware/tclbsd/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "unix-system-calls", "bsd"],
+    "description": "A Tcl package for interfacing to various BSD UNIX system calls and library routines"
+  },
+  {
+    "name": "flytrap",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/flytrap",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "MIT",
+        "artifacts": "https://github.com/ambaker1/flytrap/releases"
+      }
+    ],
+    "tags": ["debugging", "tools"],
+    "description": "Tcl debugging tools"
+  },
+  {
+    "name": "Tin",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/Tin",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ambaker1/Tin/releases"
+      }
+    ],
+    "tags": ["package-manager"],
+    "description": "Tcl package manager"
+  },
+  {
+    "name": "ooida",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/ooida",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/ambaker1/ooida/releases"
+      }
+    ],
+    "tags": ["incremental", "analysis", "parser", "oo", "ida"],
+    "description": "Object-Oriented Incremental Dynamic Analysis"
+  },
+  {
+    "name": "ndlist",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/ndlist",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://github.com/ambaker1/ndlist/releases"
+      }
+    ],
+    "tags": ["tcl-tensor-library", "tensor-operations", "tensor-math"],
+    "description": "Tcl tensors"
+  },
+  {
+    "name": "vutil",
+    "sources": [
+      {
+        "url": "https://github.com/ambaker1/vutil",
+        "method": "git",
+        "author": "Alex Baker",
+        "license": "MIT",
+        "artifacts": "https://github.com/ambaker1/vutil/releases"
+      }
+    ],
+    "tags": ["variable-manipulation", "variable-management", "tcloo"],
+    "description": "Advanced variable utilities for Tcl"
+  },
+  {
+    "name": "hl_tcl",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/hl_tcl",
+        "method": "git",
+        "web": "https://aplsimple.github.io/en/tcl/hl_tcl/hl_tcl.html",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/hl_tcl/releases"
+      }
+    ],
+    "tags": ["syntaxhighlighter", "tcl", "tk"],
+    "description": "Syntax highlighter of Tcl/Tk code"
+  },
+  {
+    "name": "bartabs",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/bartabs",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/bartabs/releases"
+      }
+    ],
+    "tags": ["tab", "tk-widget", "gui"],
+    "description": "tab bar widget for Tcl/Tk"
+  },
+  {
+    "name": "playtkl",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/playtkl",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["testing", "tk"],
+    "description": "Testing scenarios for Tcl/Tk applications & playing macros"
+  },
+  {
+    "name": "baltip",
+    "sources": [
+      {
+        "url": "https://github.com/aplsimple/baltip",
+        "method": "git",
+        "author": "Alex Plotnikov",
+        "license": "MIT",
+        "artifacts": "https://github.com/aplsimple/bartabs/releases"
+      }
+    ],
+    "tags": ["tooltip", "tk", "gui"],
+    "description": "Tcl/Tk package of tooltip and balloon"
   }
 ]
