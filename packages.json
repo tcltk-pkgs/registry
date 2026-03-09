@@ -2088,6 +2088,147 @@
     "description": "A demo to embed libVLC to Tk toolkit widget (Tcl version)"
   },
   {
+    "name": "twapi",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/twapi",
+        "web": "https://twapi.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/apnadkarni/twapi/releases"
+      }
+    ],
+    "tags": ["windows", "com"],
+    "description": "Provides access to the Windows API from Tcl."
+  },
+  {
+    "name": "cffi",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tcl-cffi",
+        "web": "https://cffi.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://sourceforge.net/projects/magicsplat/files/cffi/"
+      }
+    ],
+    "tags": ["ffi", ""],
+    "description": "Permits calling C functions in shared libraries from Tcl scripts."
+  },
+  {
+    "name": "ruff",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/ruff",
+        "web": "https://ruff.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/magicsplat/files/ruff/"
+      }
+    ],
+    "tags": ["documentation-tools", "literate-programming"],
+    "description": "Documentation generator for Tcl programs."
+  },
+  {
+    "name": "iocp",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/iocp",
+        "web": "https://iocp.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/magicsplat/files/iocp/"
+      }
+    ],
+    "tags": ["windows", "bluetooth", "network", "ip"],
+    "description": "Tcl extension implementing TCP and Bluetooth channels based on I/O completion ports."
+  },
+  {
+    "name": "cmark",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tcl-cmark",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://github.com/apnadkarni/tcl-cmark/releases"
+      }
+    ],
+    "tags": ["markdown"],
+    "description": "Tcl bindings to the cmark-gfm Github Flavoured CommonMark/Markdown library."
+  },
+  {
+    "name": "xtal",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tcl-xtal",
+        "web": "https://tarray.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["programming-language"],
+    "description": "Language layered on Tcl geared towards vector, list and table processing."
+  },
+  {
+    "name": "tarray",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tarray",
+        "web": "https://tarray.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["programming-language", "vector-processing", "data-structure"],
+    "description": "Implementation of fast operation on vectors and tables of native types."
+  },
+  {
+    "name": "tclcsv",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tclcsv",
+        "web": "https://tclcsv.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://sourceforge.net/projects/tclcsv/files/"
+      }
+    ],
+    "tags": ["csv", "parsing", "widget"],
+    "description": "Commands for parsing, writing and displaying CSV data."
+  },
+  {
+    "name": "promise",
+    "sources": [
+      {
+        "url": "https://github.com/apnadkarni/tcl-promise",
+        "web": "https://tcl-promise.magicsplat.com",
+        "method": "git",
+        "extension": true,
+        "author": "Ashok P. Nadkarni",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/tcl-promise/files/"
+      }
+    ],
+    "tags": ["promise", "concurrent-programming"],
+    "description": "Tcl implementation of the promise abstraction for concurrent programming."
+  },
+  {
     "name": "SpiceGenTcl",
     "sources": [
       {
