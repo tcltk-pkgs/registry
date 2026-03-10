@@ -2682,5 +2682,63 @@
     ],
     "tags": ["tooltip", "tk", "gui"],
     "description": "Tcl/Tk package of tooltip and balloon"
+  },
+  {
+    "name": "nacl",
+    "sources": [
+      {
+        "url": "https://github.com/aschoepe/nacl",
+        "method": "git",
+        "web": "https://tcl.sowaswie.de/nacl",
+        "author": "Alexander Schoepe",
+        "license": "BSD-3 license"
+      }
+    ],
+    "tags": ["cryptography", "networking"],
+    "description": "Networking and Cryptography library for Tcl."
+  },
+  {
+    "name": "ooxml",
+    "sources": [
+      {
+        "url": "https://github.com/aschoepe/ooxml",
+        "method": "git",
+        "web": "https://tcl.sowaswie.de/ooxml",
+        "author": "Alexander Schoepe",
+        "license": "BSD-3 license"
+      }
+    ],
+    "tags": ["tcloo", "xml", "tcl-binding", "xlsx", "openxml"],
+    "description": "ECMA-376 Office Open XML File Formats - for Tcl."
+  },
+  {
+    "name": "tzint",
+    "sources": [
+      {
+        "url": "https://github.com/aschoepe/tzint",
+        "method": "git",
+        "extension": true,
+        "web": "https://tcl.sowaswie.de/tzint",
+        "author": "Alexander Schoepe",
+        "license": "BSD-3 license"
+      }
+    ],
+    "tags": ["barcode", "tcl-binding", "libzint", "encoding"],
+    "description": "Tcl package for libzint barcode encoding library."
+  },
+  {
+    "name": "tclcrc",
+    "sources": [
+      {
+        "url": "https://github.com/aschoepe/tclcrc",
+        "method": "git",
+        "extension": true,
+        "web": "https://fossil.sowaswie.de/tclcrc",
+        "author": "Alexander Schoepe",
+        "license": "BSD-3 license"
+      }
+    ],
+    "tags": ["algorithms", "tcl-binding", "encoding"],
+    "description": "crc64ecma for Tcl."
   }
 ]
