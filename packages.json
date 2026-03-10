@@ -2740,5 +2740,187 @@
     ],
     "tags": ["algorithms", "tcl-binding", "encoding"],
     "description": "crc64ecma for Tcl."
+  },
+  {
+    "name": "rl_json",
+    "sources": [
+      {
+        "url": "https://github.com/RubyLane/rl_json",
+        "method": "git",
+        "extension": true,
+        "author": "Ruby Lane",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["json", "tcl-binding", "parser", "generator"],
+    "description": "Extends Tcl with a json value type and a command to manipulate json values directly."
+  },
+  {
+    "name": "parse_args",
+    "sources": [
+      {
+        "url": "https://github.com/RubyLane/parse_args",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["parser", "pattern-matching", "tcl-binding", "arguments"],
+    "description": "A fast argument parser based on the patterns established by core Tcl commands like 'lsort', 'lsearch', 'glob', 'regex', etc."
+  },
+  {
+    "name": "jitc",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/jitc",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["jit", "tcl-binding", "c-compiler"],
+    "description": "Just In Time C for Tcl, implementing c-as-a-value compilation and automatic memory management."
+  },
+  {
+    "name": "tcl-s2n",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/tcl-s2n",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Unlicense",
+        "artifacts": "https://github.com/cyanogilvie/tcl-s2n/releases"
+      }
+    ],
+    "tags": ["tls", "driver"],
+    "description": "Stack a TLS protocol driver on any Tcl channel that supports read and write, using the s2n TLS implementation."
+  },
+  {
+    "name": "tcl-lambdaric",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/tcl-lambdaric",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["lambda", "aws"],
+    "description": "Tcl runtime for AWS Lambda"
+  },
+  {
+    "name": "tcl-tomcrypt",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/tcl-tomcrypt",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Unlicense",
+        "artifacts": "https://github.com/cyanogilvie/tcl-tomcrypt/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "libtomcrypt", "library"],
+    "description": "Tcl wrapper for the libtomcrypt library (partial)."
+  },
+  {
+    "name": "reuri",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/reuri",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/cyanogilvie/reuri/releases"
+      }
+    ],
+    "tags": ["uri-manipulation"],
+    "description": "High performance URI manipulation package for Tcl."
+  },
+  {
+    "name": "dedup",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/dedup",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tcl-obj", "tcl-stubs","tcl-binding"],
+    "description": "Tcl_Obj deduplication API exposed via Stubs for other extensions to us."
+  },
+  {
+    "name": "tcc4tcl",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/tcc4tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "LGPL-2.1"
+      },
+      {
+        "url": "https://github.com/rkeene/tcc4tcl",
+        "method": "git",
+        "extension": true,
+        "web": "https://chiselapp.com/user/rkeene/repository/tcc4tcl/",
+        "author": "rkeene",
+        "license": "LGPL-2.1"
+      }
+    ],
+    "tags": ["c-compiler", "tcl-binding", "jit"],
+    "description": "Compile c code just-in-time to memory in a Tcl script."
+  },
+  {
+    "name": "unix_sockets",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/unix_sockets",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/cyanogilvie/unix_sockets/releases"
+      }
+    ],
+    "tags": ["unix-socket", "unix-domain-socket", "tcl-socket"],
+    "description": "unix domain socket support for Tcl."
+  },
+  {
+    "name": "type",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/type",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": [
+      "tcl-objtype" , "custom-tcl-binding", "tcl-extension"],
+    "description": "Allow custom Tcl_ObjTypes to be defined and used in Tcl scripts."
+  },
+  {
+    "name": "hash",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/hash",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/cyanogilvie/hash/releases"
+      }
+    ],
+    "tags": ["hash", "algorithm", "md5", "sha256", "sha384", "sha512", "areion"],
+    "description": "Tcl package providing various hash functions: MD5, SHA256, SHA384, SHA512, Areion."
   }
 ]
