@@ -1,6 +1,6 @@
 # Tcl/Tk Packages Registry
 <div align="center">
-  <img src="assets/packages.svg" alt="description" width="55%" height="55%">
+  <img src="assets/packages.svg" alt="description" width="60%" height="60%">
 </div>
 
 Central registry of third-party packages and extensions for `Tcl/Tk`.
