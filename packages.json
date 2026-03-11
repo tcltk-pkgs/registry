@@ -2922,5 +2922,76 @@
     ],
     "tags": ["hash", "algorithm", "md5", "sha256", "sha384", "sha512", "areion"],
     "description": "Tcl package providing various hash functions: MD5, SHA256, SHA384, SHA512, Areion."
+  },
+  {
+    "name": "tossl",
+    "sources": [
+      {
+        "url": "https://github.com/vicmay/ToSSL",
+        "method": "git",
+        "extension": true,
+        "author": "vicmay",
+        "license": "Apache-2.0",
+        "artifacts": "https://github.com/vicmay/ToSSL/releases"
+      }
+    ],
+    "tags": ["openssl", "tcl-binding"],
+    "description": "OpenSSL package for Tcl 8.6+"
+  },
+  {
+    "name": "cbor",
+    "sources": [
+      {
+        "url": "https://github.com/vicmay/CBOR",
+        "method": "git",
+        "author": "vicmay",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/vicmay/CBOR/releases"
+      }
+    ],
+    "tags": ["cbor", "encoding", "decoding"],
+    "description": "Pure Tcl CBOR (Concise Binary Object Representation) implementation"
+  },
+  {
+    "name": "ratatui",
+    "sources": [
+      {
+        "url": "https://github.com/vicmay/RATATUI",
+        "method": "git",
+        "extension": true,
+        "author": "vicmay",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["terminal", "tui"],
+    "description": "Tcl wrapper around the RUST's RATATUI library."
+  },
+  {
+    "name": "tclgumbo",
+    "sources": [
+      {
+        "url": "https://github.com/vicmay/GUMBO",
+        "method": "git",
+        "extension": true,
+        "author": "vicmay",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["html", "parser", "gumbo"],
+    "description": "Tcl implementation of Google's HTML parser aka Gumbo."
+  },
+  {
+    "name": "tclcurl",
+    "sources": [
+      {
+        "url": "https://github.com/vicmay/TCL-CURL",
+        "method": "git",
+        "extension": true,
+        "author": "vicmay",
+        "license": "curl License"
+      }
+    ],
+    "tags": ["libcurl", "websocket", "http"],
+    "description": "CURL for Tcl."
   }
 ]
