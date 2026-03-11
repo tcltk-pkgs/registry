@@ -2993,5 +2993,212 @@
     ],
     "tags": ["libcurl", "websocket", "http"],
     "description": "CURL for Tcl."
+  },
+  {
+    "name": "ukaz",
+    "sources": [
+      {
+        "url": "https://github.com/auriocus/ukaz",
+        "method": "git",
+        "author": "Christian Gollwitzer",
+        "license": "MIT",
+        "artifacts": "https://github.com/vicmay/ukaz/releases"
+      }
+    ],
+    "tags": ["graph", "tk"],
+    "description": "Graph widget in pure Tcl/Tk"
+  },
+  {
+    "name": "VecTcl",
+    "sources": [
+      {
+        "url": "https://github.com/auriocus/VecTcl",
+        "method": "git",
+        "extension": true,
+        "web": "http://auriocus.github.io/VecTcl",
+        "author": "Christian Gollwitzer",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/auriocus/VecTcl/releases"
+      }
+    ],
+    "tags": ["linearalgebra", "array", "vector", "matrix"],
+    "description": "Numeric array and linear algebra extension for Tcl"
+  },
+  {
+    "name": "PhotoResize",
+    "sources": [
+      {
+        "url": "https://github.com/auriocus/PhotoResize",
+        "method": "git",
+        "extension": true,
+        "author": "Christian Gollwitzer",
+        "license": "MIT",
+        "artifacts": "https://github.com/auriocus/PhotoResize/releases"
+      }
+    ],
+    "tags": ["image-processing", "photo"],
+    "description": "A single-purpose extension for Tcl to resize/resample photo images"
+  },
+  {
+    "name": "twebserver",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/twebserver",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/twebserver/releases"
+      }
+    ],
+    "tags": ["http-server", "https", "http","webserver"],
+    "description": "Tcl Web Server (HTTP & HTTPS) Extension"
+  },
+  {
+    "name": "tconfig",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tconfig",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tconfig/releases"
+      }
+    ],
+    "tags": ["encrypted", "configuration-management"],
+    "description": "Secure and encrypted storage of configuration files for Tcl."
+  },
+  {
+    "name": "tink-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tink-tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tink-tcl/releases"
+      }
+    ],
+    "tags": ["cryptographic", "tink"],
+    "description": "Tcl bindings for Tink, a multi-language, cross-platform library that provides cryptographic APIs."
+  },
+  {
+    "name": "bcrypt-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/bcrypt-tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/bcrypt-tcl/releases"
+      }
+    ],
+    "tags": ["bcrypt", "password-hashing"],
+    "description": "Tcl module for bcrypt, a password-hashing function."
+  },
+  {
+    "name": "trequests",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/trequests",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT"
+      }
+    ],
+    "tags": [ "http", "https", "curl"],
+    "description": "curl-based http/https client extension for Tcl"
+  },
+  {
+    "name": "valkey-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/valkey-tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/valkey-tcl/releases"
+      }
+    ],
+    "tags": ["libvalkey"],
+    "description": "Tcl/C extension that provides an interface to the Valkey store."
+  },
+  {
+    "name": "thtml",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/thtml",
+        "method": "git",
+        "web": "",
+        "author": "Neofytos Dimitriou",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["html-templating", "html"],
+    "description": "HTML Templating Engine for Tcl and twebserver."
+  },
+  {
+    "name": "tjson",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tjson",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tjson/releases"
+      }
+    ],
+    "tags": ["json", "parser"],
+    "description": "Tcl/C extension for parsing, manipulating, and querying JSON"
+  },
+  {
+    "name": "tqrcodegen",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tqrcodegen",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tqrcodegen/releases"
+      }
+    ],
+    "tags": ["svg", "qr-code"],
+    "description": "Tcl/C extension for generating QR codes as SVG images"
+  },
+  {
+    "name": "tbert",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tbert",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["bert-vector-embeddings", "language-modeling"],
+    "description": "Tcl/C extension for computing BERT vector embeddings"
+  },
+  {
+    "name": "snappy-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/snappy-tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/snappy-tcl/releases"
+      }
+    ],
+    "tags": ["snappy", "compression"],
+    "description": "Tcl module for the snappy google library, a fast compressor / decompressor."
   }
 ]
