@@ -2126,7 +2126,6 @@
         "url": "https://github.com/apnadkarni/ruff",
         "web": "https://ruff.magicsplat.com",
         "method": "git",
-        "extension": true,
         "author": "Ashok P. Nadkarni",
         "license": "BSD-2-Clause",
         "artifacts": "https://sourceforge.net/projects/magicsplat/files/ruff/"
@@ -2219,7 +2218,6 @@
         "url": "https://github.com/apnadkarni/tcl-promise",
         "web": "https://tcl-promise.magicsplat.com",
         "method": "git",
-        "extension": true,
         "author": "Ashok P. Nadkarni",
         "license": "BSD-2-Clause",
         "artifacts": "https://sourceforge.net/projects/tcl-promise/files/"
