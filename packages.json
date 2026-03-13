@@ -3313,5 +3313,29 @@
     ],
     "tags": ["web", "charts"],
     "description": "Tcl wrapper around Apache ECharts."
+  },
+  {
+    "name": "tsb",
+    "sources": [
+      {
+        "url": "https://androwish.org/home/dir?name=undroid/tsb",
+        "author": "Christian Werner",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["javascript", "notebook", "jupyter"],
+    "description": "Taygete Scrap Book - a poor man's clone of Jupyter Notebook"
+  },
+  {
+    "name": "twv",
+    "sources": [
+      {
+        "url": "https://androwish.org/home/dir?name=undroid/twv",
+        "author": "Christian Werner",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["webview", "ui", "html5", "js-bindings"],
+    "description": "Tcl extension that provides API for the webview library"
   }
 ]
