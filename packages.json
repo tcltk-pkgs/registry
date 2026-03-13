@@ -2869,7 +2869,7 @@
         "method": "git",
         "extension": true,
         "web": "https://chiselapp.com/user/rkeene/repository/tcc4tcl/",
-        "author": "rkeene",
+        "author": "Roy Keene",
         "license": "LGPL-2.1"
       }
     ],
@@ -3406,5 +3406,223 @@
     ],
     "tags": ["perlin", "algorithm", "math", "noise", "3d"],
     "description": "Fast binary implementation of 3D Perlin noise."
+  },
+  {
+    "name": "tclfpdf",
+    "sources": [
+      {
+        "url": "https://github.com/lamuzzachiodi/tclfpdf",
+        "method": "git",
+        "author": "Luis Alejandro Muzzachiodi",
+        "license": "LGPL",
+        "artifacts": "https://github.com/lamuzzachiodi/tclfpdf/releases"
+      }
+    ],
+    "tags": ["pdf", "tcl", "pdf-generation"],
+    "description": "Port of tFPDF (PHP) by Ian Back and Tycho Veltmeijer (modified version of FPDF by Olivier Plathey) to Tcl."
+  },
+  {
+    "name": "tcl-duktape",
+    "sources": [
+      {
+        "url": "https://github.com/dbohdan/tcl-duktape",
+        "method": "git",
+        "extension": true,
+        "web": "https://wiki.tcl-lang.org/page/tcl-duktape",
+        "author": "D. Bohdan",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["duktape", "javascript-interpreter"],
+    "description": "Tcl bindings for Duktape, an embedded JavaScript interpreter"
+  },
+  {
+    "name": "jsonschema",
+    "sources": [
+      {
+        "url": "https://github.com/piotr-karas/jsonschema",
+        "method": "git",
+        "author": "piotr-karas",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["json", "schema", "validation"],
+    "description": "JSON schema validator for Tcl"
+  },
+  {
+    "name": "getopt.tcl",
+    "sources": [
+      {
+        "url": "https://github.com/lego12239/getopt.tcl",
+        "method": "git",
+        "author": "lego12239",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["parser", "command-line"],
+    "description": "A Tcl package for parsing command line options (support short options bundling)"
+  },
+  {
+    "name": "htmltmpl.tcl",
+    "sources": [
+      {
+        "url": "https://github.com/lego12239/htmltmpl.tcl",
+        "method": "git",
+        "author": "lego12239",
+        "license": "LGPL-3.0"
+      }
+    ],
+    "tags": ["template", "html"],
+    "description": "A text template engine similar to perl HTML::Template"
+  },
+  {
+    "name": "tkdnd",
+    "sources": [
+      {
+        "url": "https://github.com/petasis/tkdnd",
+        "method": "git",
+        "extension": true,
+        "web": "https://sourceforge.net/projects/tkdnd/",
+        "author": "Georgios Petasis",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/petasis/tkdnd/releases"
+      }
+    ],
+    "tags": ["drag-and-drop", "tk-extension"],
+    "description": "TkDND is an extension that adds native drag & drop capabilities to the Tk toolkit"
+  },
+  {
+    "name": "db2tcl",
+    "sources": [
+      {
+        "url": "https://github.com/memmertoIBM/db2tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Matthew Emmerton",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["db2", "database"],
+    "description": "TCL language interface to Db2 databases."
+  },
+  {
+    "name": "steenrod",
+    "sources": [
+      {
+        "url": "https://github.com/cnassau/steenrod",
+        "method": "git",
+        "extension": true,
+        "author": "Christian Nassau",
+        "license": "GPL-2.0",
+        "artifacts": "https://github.com/cnassau/steenrod/releases"
+      }
+    ],
+    "tags": ["algebra", "steenrod"],
+    "description": "Tcl library for Steenrod algebra computations"
+  },
+  {
+    "name": "tcltls",
+    "sources": [
+      {
+        "url": "https://github.com/rkeene/TclTLS",
+        "method": "git",
+        "extension": true,
+        "web": "https://core.tcl-lang.org/tcltls/",
+        "author": "Roy Keene",
+        "license": "Tcl/Tk License"
+      },
+      {
+        "url": "https://github.com/bohagan1/TclTLS",
+        "method": "git",
+        "extension": true,
+        "web": "https://core.tcl-lang.org/tcltls/home",
+        "author": "Brian O'Hagan",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://core.tcl-lang.org/tcltls/wiki/Download"
+      }
+    ],
+    "tags": ["tls","security"],
+    "description": "TLS support for Tcl applications"
+  },
+  {
+    "name": "tclspotify",
+    "sources": [
+      {
+        "url": "https://github.com/chpock/tclspotify",
+        "method": "git",
+        "author": "Kostiantyn Kushnir",
+        "license": "GPL-3.0"
+      }
+    ],
+    "tags": ["api", "spotify"],
+    "description": "Spotify Web API for Tcl"
+  },
+  {
+    "name": "Rtcl",
+    "sources": [
+      {
+        "url": "https://github.com/mattadams/Rtcl",
+        "method": "git",
+        "extension": true,
+        "author": "Matt Adams",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["r-language", "statistical-computing", "librtcl"],
+    "description": "Tcl extension embedding 'R' Project for Statistical Computing (librtcl)"
+  },
+  {
+    "name": "t2ws",
+    "sources": [
+      {
+        "url": "https://github.com/Drolla/t2ws",
+        "method": "git",
+        "author": "Andreas Drollinger",
+        "license": "MIT",
+        "artifacts": "https://github.com/Drolla/t2ws/releases"
+      }
+    ],
+    "tags": ["web-server", "http"],
+    "description": "T2WS - Tiny Tcl Web Server"
+  },
+  {
+    "name": "tclradclient",
+    "sources": [
+      {
+        "url": "https://github.com/oleg-derevenetz/tclradclient",
+        "method": "git",
+        "author": "Oleg Derevenetz",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["radius", "client", "authentication"],
+    "description": "RADIUS client library written in pure Tcl"
+  },
+  {
+    "name": "mqtt",
+    "sources": [
+      {
+        "url": "https://github.com/efrecon/mqtt",
+        "method": "git",
+        "author": "Emmanuel Frecon",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["mqtt", "protocol"],
+    "description": "MQTT client implementation in modern Tcl"
+  },
+  {
+    "name": "tclobjc",
+    "sources": [
+      {
+        "url": "https://github.com/iverg/TclObjC",
+        "method": "git",
+        "extension": true,
+        "author": "Igor Viarheichyk",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["objective-c", "cocoa"],
+    "description": "Tcl bindings to Objective C and Cocoa"
   }
 ]
