@@ -3331,11 +3331,80 @@
     "sources": [
       {
         "url": "https://androwish.org/home/dir?name=undroid/twv",
+        "extension": true,
         "author": "Christian Werner",
         "license": "Unlicense"
       }
     ],
     "tags": ["webview", "ui", "html5", "js-bindings"],
     "description": "Tcl extension that provides API for the webview library"
+  },
+  {
+    "name": "zoom-canvas",
+    "sources": [
+      {
+        "url": "https://wiki.tcl-lang.org/page/zoom-canvas",
+        "author": "Aldo Buratti",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/zoom-canvas"
+      }
+    ],
+    "tags": ["canvas-widget", "zoom", "tk"],
+    "description": "Canvas with zoom support."
+  },
+  {
+    "name": "glyphs",
+    "sources": [
+      {
+        "url": "https://wiki.tcl-lang.org/page/glyphs",
+        "author": "Aldo Buratti",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/Glyphs"
+      }
+    ],
+    "tags": ["font", "truetype", "tcl"],
+    "description": "Tcl library for digging into TrueType font-files."
+  },
+  {
+    "name": "tclmupdf",
+    "sources": [
+      {
+        "url": "https://wiki.tcl-lang.org/page/tclmupdf",
+        "extension": true,
+        "author": "Aldo Buratti",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/tclMuPDF-2.x"
+      }
+    ],
+    "tags": ["pdf", "mupdf", "tcl", "rendering"],
+    "description": "tclMuPDF is a porting of the MuPDF framework (fast and high-quality rendering of PDF pages)."
+  },
+  {
+    "name": "blend2d",
+    "sources": [
+      {
+        "url": "https://wiki.tcl-lang.org/page/Blend2d",
+        "extension": true,
+        "author": "Aldo Buratti",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/tclBlend2d"
+      }
+    ],
+    "tags": ["blend2d", "image", "graphics"],
+    "description": "Tcl meets Blend2d (high performance 2D vector graphics engine)."
+  },
+  {
+    "name": "perlin",
+    "sources": [
+      {
+        "url": "https://wiki.tcl-lang.org/page/Perlin",
+        "extension": true,
+        "author": "Aldo Buratti",
+        "license": "BSD-2-Clause",
+        "artifacts": "https://sourceforge.net/projects/irrational-numbers/files"
+      }
+    ],
+    "tags": ["perlin", "algorithm", "math", "noise", "3d"],
+    "description": "Fast binary implementation of 3D Perlin noise."
   }
 ]
