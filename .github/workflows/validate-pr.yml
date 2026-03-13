@@ -30,15 +30,15 @@ jobs:
             if has("name") | not then "Package #\($i): missing name" else empty end,
             if has("sources") | not then "Package #\($i): missing sources" else empty end,
             ((.sources // []) | to_entries[] |
-              if (.value | has("url") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing url" else empty end,
-              if (.value | has("method") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing method" else empty end
+              if (.value | has("url") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing url" else empty end
             )
           ' packages.json)
 
-          # Warnings (artifacts)
+          # Warnings (method + artifacts)
           warnings=$(jq -r '
             . as $pkg | range(length) as $i | $pkg[$i] |
             ((.sources // []) | to_entries[] |
+              if (.value | has("method") | not) then "Package #\($pkg[$i].name // $i): source #\(.key) missing method (optional)" else empty end,
               if (.value | has("artifacts")) then
                 if (.value.artifacts | test("\\.(zip|tar\\.gz|tgz|tar\\.bz2|tbz|tar\\.xz|txz|7z|rar|exe|msi|dmg|pkg|deb|rpm|AppImage|snap|flatpak)([?#].*)?$"; "i")) then
                   "Package #\($pkg[$i].name // $i): artifacts appears to be a direct download link (should be a release page URL)"
