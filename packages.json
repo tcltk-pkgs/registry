@@ -2227,7 +2227,7 @@
     "description": "Tcl implementation of the promise abstraction for concurrent programming."
   },
   {
-    "name": "SpiceGenTcl",
+    "name": "spicegentcl",
     "sources": [
       {
         "url": "https://github.com/georgtree/SpiceGenTcl",
@@ -2242,7 +2242,7 @@
     "description": "Package provides Tcl interface to different SPICE and SPICE-like simulator, Ngspice, Xyce, etc"
   },
   {
-    "name": "NgspiceTclBridge",
+    "name": "ngspicetclbridge",
     "sources": [
       {
         "url": "https://github.com/georgtree/NgspiceTclBridge",
@@ -2346,7 +2346,7 @@
     "description": "GNU readline for interactive Tcl shells"
   },
   {
-    "name": "Pgtcl",
+    "name": "pgtcl",
     "sources": [
       {
         "url": "https://github.com/flightaware/Pgtcl",
@@ -2570,7 +2570,7 @@
     "description": "Tcl debugging tools"
   },
   {
-    "name": "Tin",
+    "name": "tin",
     "sources": [
       {
         "url": "https://github.com/ambaker1/Tin",
@@ -3007,7 +3007,7 @@
     "description": "Graph widget in pure Tcl/Tk"
   },
   {
-    "name": "VecTcl",
+    "name": "vectcl",
     "sources": [
       {
         "url": "https://github.com/auriocus/VecTcl",
@@ -3023,7 +3023,7 @@
     "description": "Numeric array and linear algebra extension for Tcl"
   },
   {
-    "name": "PhotoResize",
+    "name": "photoresize",
     "sources": [
       {
         "url": "https://github.com/auriocus/PhotoResize",
