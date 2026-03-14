@@ -3654,5 +3654,94 @@
     ],
     "tags": ["oracle", "database", "odpi-c"],
     "description": "Tcl 9 extension that re‑implements Oratcl on top of ODPI‑C"
+  },
+  {
+    "name": "la",
+    "sources": [
+      {
+        "url": "http://www.hume.com/la/",
+        "author": "Edward C. Hume",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["math", "vector", "matrix", "linear-algebra"],
+    "description": "Tcl procedures for the manipulation of vectors and matrices."
+  },
+  {
+    "name": "scrollutil",
+    "sources": [
+      {
+        "url": "https://www.nemethi.de/scrollutil/scrollutil.html",
+        "author": "Dr. Csaba Nemethi",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://www.nemethi.de"
+      }
+    ],
+    "tags": ["mega-widget", "scrolling", "notebook", "tile"],
+    "description": "Scrolling mega-widgets library providing scrollarea, scrollsync, scrollableframe with mouse wheel and touchpad support."
+  },
+  {
+    "name": "wcb",
+    "sources": [
+      {
+        "url": "https://www.nemethi.de/wcb/wcb.html",
+        "author": "Dr. Csaba Nemethi",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://www.nemethi.de"
+      }
+    ],
+    "tags": ["callback", "validation", "widget", "entry"],
+    "description": "Widget callback package for associating before/after commands to Tk widget operations like insert, delete, select with input validation support."
+  },
+  {
+    "name": "mentry",
+    "sources": [
+      {
+        "url": "https://www.nemethi.de/mentry/mentry.html",
+        "author": "Dr. Csaba Nemethi",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://www.nemethi.de"
+      }
+    ],
+    "tags": ["mega-widget", "entry", "date", "time"],
+    "description": "Multi-entry mega-widget with multiple entry fields separated by labels. Supports date/time, fixed-point numbers, IP/IPv6 addresses, and phone numbers."
+  },
+  {
+    "name": "tablelist",
+    "sources": [
+      {
+        "url": "https://www.nemethi.de/tablelist/tablelist.html",
+        "author": "Dr. Csaba Nemethi",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://www.nemethi.de"
+      }
+    ],
+    "tags": ["mega-widget", "table", "tree"],
+    "description": "Multi-column listbox and tree mega-widget with resizable columns, interactive sorting, cell editing, and embedded images/windows support."
+  },
+  {
+    "name": "tsw",
+    "sources": [
+      {
+        "url": "https://www.nemethi.de/tsw/tsw.html",
+        "author": "Dr. Csaba Nemethi",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://www.nemethi.de"
+      }
+    ],
+    "tags": ["mega-widget", "toggle", "switch"],
+    "description": "Modern toggle switch mega-widget with horizontal trough and circular slider for two-state on/off control."
+  },
+  {
+    "name": "tdom",
+    "sources": [
+      {
+        "url": "https://tdom.org/index.html",
+        "author": "Rolf Ade",
+        "license": "Mozilla Public License 2.0"
+      }
+    ],
+    "tags": ["xml", "dom", "xpath", "xslt", "json"],
+    "description": "XML/DOM/XPath/XSLT/JSON implementation for Tcl with C-based parser, DOM tree building, validation, and HTML5 support."
   }
 ]
