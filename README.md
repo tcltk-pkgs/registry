@@ -66,7 +66,7 @@ Submit a PR adding your package to packages.json. The registry is automatically 
       "url": "https://core.tcl-lang.org/mypackage",
       "method": "fossil",
       "author": "Tcl Community",
-      "license": "BSD-3-Clause"
+      "license": "MIT"
     }
   ],
   "tags": ["official", "library", "core"],
@@ -75,7 +75,8 @@ Submit a PR adding your package to packages.json. The registry is automatically 
 ```
 
 > [!NOTE]  
-> The `web` field is optional and points to documentation if different from the repository `URL`.
+> The `web` field is optional and points to documentation if different from the repository `url`.  
+> The `method` field is optional, used only if the `url` is a GitHub repository or a Fossil repository.
 
 ## My Package is incorrectly listed
 
