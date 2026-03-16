@@ -3736,7 +3736,8 @@
     "name": "tdom",
     "sources": [
       {
-        "url": "https://tdom.org/index.html",
+        "url": "https://core.tcl-lang.org/tdom/dir?ci=tip",
+        "method": "fossil",
         "author": "Rolf Ade",
         "license": "Mozilla Public License 2.0"
       }
