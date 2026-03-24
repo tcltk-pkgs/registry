@@ -3749,7 +3749,7 @@
     "name": "tcl-blake3",
     "sources": [
       {
-        "web": "https://sr.ht/~fgaz/tcl-blake3"
+        "web": "https://sr.ht/~fgaz/tcl-blake3",
         "url": "https://git.sr.ht/~fgaz/tcl-blake3",
         "method": "git",
         "author": "Francesco Gazzetta",
