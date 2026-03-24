@@ -3744,5 +3744,27 @@
     ],
     "tags": ["xml", "dom", "xpath", "xslt", "json"],
     "description": "XML/DOM/XPath/XSLT/JSON implementation for Tcl with C-based parser, DOM tree building, validation, and HTML5 support."
+  },
+  {
+    "name": "tcl-blake3",
+    "sources": [
+      {
+        "web": "https://sr.ht/~fgaz/tcl-blake3",
+        "url": "https://git.sr.ht/~fgaz/tcl-blake3",
+        "method": "git",
+        "author": "Francesco Gazzetta",
+        "extension": true,
+        "license": "MIT"
+      },
+      {
+        "url": "https://codeberg.org/fgaz/tcl-blake3.git",
+        "method": "git",
+        "author": "Francesco Gazzetta",
+        "extension": true,
+        "license": "MIT"
+      }
+    ],
+    "tags": ["blake3", "crypto", "hash", "algorithm"],
+    "description": "BLAKE3 hashing through libblake3"
   }
 ]
