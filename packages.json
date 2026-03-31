@@ -3896,5 +3896,19 @@
     ],
     "tags": ["diagrams", "chord", "sheets"],
     "description": "Writing chord sheets from lyrics and chord diagrams using Tcl."
+  },
+  {
+    "name": "tkgl",
+    "sources": [
+      {
+        "url": "https://github.com/3-manifolds/TkGL",
+        "method": "git",
+        "author": "3-manifolds",
+        "extension": true,
+        "license": "BSD-3 license"
+      }
+    ],
+    "tags": ["3d", "opengl", "tk", "surface", "drawing"],
+    "description": "An OpenGL drawing surface for Tk."
   }
 ]
