@@ -39,7 +39,7 @@ proc to_huddle {val type} {
 }
 
 proc parse_github_repo {url} {
-    if {[regexp {github\.com/([^/]+/[^/.]+)} $url -> repo]} {
+    if {[regexp {github\.com/([^/]+/[^/]+)} $url -> repo]} {
         return [string trimright $repo "/"]
     }
     return ""
