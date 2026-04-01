@@ -3910,5 +3910,691 @@
     ],
     "tags": ["3d", "opengl", "tk", "surface", "drawing"],
     "description": "An OpenGL drawing surface for Tk."
+  },
+  {
+    "name": "autoscroll",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/autoscroll&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/autoscroll/autoscroll.md",
+        "author": "Kevin B. Kenny",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "scrollbar", "tk"],
+    "description": "Provides for a scrollbar to automatically mapped and unmapped as needed."
+  },
+  {
+    "name": "canvas::drag",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_drag.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "drag", "interaction", "tk"],
+    "description": "Manage the dragging of canvas items or item groups"
+  },
+  {
+    "name": "canvas::edit::circle",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_ecircle.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "edit", "circle", "drawing", "tk"],
+    "description": "Editing a circle on a canvas"
+  },
+  {
+    "name": "canvas::edit::points",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_epoints.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "edit", "points", "drawing", "tk"],
+    "description": "Editing a cloud of points on a canvas"
+  },
+  {
+    "name": "canvas::edit::polyline",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_epolyline.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "edit", "polyline", "drawing", "tk"],
+    "description": "Editing a polyline on a canvas"
+  },
+  {
+    "name": "canvas::edit::quadrilateral",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_equad.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "edit", "quadrilateral", "drawing", "tk"],
+    "description": "Editing a quadrilateral on a canvas"
+  },
+  {
+    "name": "canvas::edit::rectangle",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_erectangle.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "edit", "rectangle", "drawing", "tk"],
+    "description": "Editing a rectangle on a canvas"
+  },
+  {
+    "name": "canvas::gradient",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_gradient.md",
+        "author": "Jarek Lewandowski",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "gradient", "background", "tk"],
+    "description": "Canvas with a gradient background"
+  },
+  {
+    "name": "canvas::highlight",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_highlight.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "highlight", "selection", "tk"],
+    "description": "Manage the highlighting of canvas items or item groups"
+  },
+  {
+    "name": "canvas::mvg",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_mvg.md",
+        "author": "olf-Dieter Busch",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "mvg", "imagemagick", "export", "tk"],
+    "description": "Canvas to ImageMagick MVG vector format"
+  },
+  {
+    "name": "canvas::pdf",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_pdf.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "pdf", "export", "tk"],
+    "description": "Canvas to PDF"
+  },
+  {
+    "name": "canvas::snap",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_snap.md",
+        "author": "George Petasis",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "snapshot", "image", "photo", "tk"],
+    "description": "Canvas snapshot to Tk photo image"
+  },
+  {
+    "name": "canvas::sqmap",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_sqmap.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "map", "tiles", "background", "tk"],
+    "description": "Canvas with map background based on square tiles"
+  },
+  {
+    "name": "canvas::tag",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_tags.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "tags", "management", "tk"],
+    "description": "Easier management of the tags on canvas items or item groups"
+  },
+  {
+    "name": "canvas::track::lines",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_trlines.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "rubberband", "lines", "drawing", "tk"],
+    "description": "Manage a group of rubber band lines"
+  },
+  {
+    "name": "canvas::zoom",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/canvas&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/canvas/canvas_zoom.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "zoom", "map", "navigation", "tk"],
+    "description": "Zoom control for canvas::sqmap"
+  },
+  {
+    "name": "chatwidget",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/chatwidget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/chatwidget/chatwidget.md",
+        "author": "Pat Thoyts",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "chat", "irc", "widget", "ui", "tk"],
+    "description": "Provides a multi-paned view suitable for display of chat room or irc channel information."
+  },
+  {
+    "name": "controlwidget",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/controlwidget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/controlwidget/controlwidget.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "control", "widget", "numerical", "display", "tk"],
+    "description": "Collection of widgets for displaying and controlling numerical values."
+  },
+  {
+    "name": "crosshair",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/crosshair&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/crosshair/crosshair.md",
+        "author": "Frank Gover",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "canvas", "crosshair", "measurement", "tk"],
+    "description": "Crosshairs for Tk canvas."
+  },
+  {
+    "name": "ctext",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/ctext&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/ctext/ctext.md",
+        "author": "George Peter Staplin",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "text", "syntax", "highlighting", "widget", "tk"],
+    "description": "Ctext a text widget with highlighting support."
+  },
+  {
+    "name": "cursor",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/cursor&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/cursor/cursor.md",
+        "author": "Jeffrey Hobbs",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "cursor", "mouse", "data", "tk"],
+    "description": "Procedures to handle CURSOR data."
+  },
+  {
+    "name": "datefield",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/datefield&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/datefield/datefield.md",
+        "author": "Keith Vetter",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "date", "entry", "widget", "tk"],
+    "description": "Tk datefield widget."
+  },
+  {
+    "name": "diagram",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/diagrams&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/diagrams/diagrams.md",
+        "author": "Andreas Kupries",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "diagram", "drawing", "graphics", "tk"],
+    "description": "Diagram drawing."
+  },
+  {
+    "name": "getstring",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/getstring&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/getstring/tk_getString.md",
+        "author": "Aaron Faupell",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "dialog", "string", "input", "tk"],
+    "description": "A string dialog."
+  },
+  {
+    "name": "history",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/history&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/history/tklib_history.md",
+        "author": "MeshParts",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "entry", "history", "input", "tk"],
+    "description": "Provides a history for Entry widgets."
+  },
+  {
+    "name": "ico",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/ico&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/ico/ico.md",
+        "author": "ActiveState",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "icon", "windows", "ico", "image", "tk"],
+    "description": "Reading and writing Win32 icons."
+  },
+  {
+    "name": "ipentry",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/ipentry&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/ipentry/ipentry.md",
+        "author": "Pat Thoyts",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "ip", "address", "entry", "widget", "network", "tk"],
+    "description": "An IP address entry widget."
+  },
+  {
+    "name": "khim",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/khim&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/khim/khim.md",
+        "author": "Kevin B. Kenny",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "i18n", "keyboard", "input", "international", "tk"],
+    "description": "Provides key bindings for entering international characters on a keyboard that does not support them."
+  },
+  {
+    "name": "map",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/map&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/map/map_overview.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "map", "geo", "track", "table", "display", "widget", "gps", "tk"],
+    "description": "Overview of the packages in the Map module"
+  },
+  {
+    "name": "menubar",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/menubar&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/menubar/menubar.md",
+        "author": "Tom Krehbiel",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "menu", "menubar", "widget", "ui", "tk"],
+    "description": "Creates an instance of the menubar Class."
+  },
+  {
+    "name": "notifywindow",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/notifywindow&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/notifywindow/notifywindow.md",
+        "author": "Kevin Walzer",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "notification", "alert", "window", "widget", "tk"],
+    "description": "Provides unobtrusive window for alerts/notifications from Tk applications."
+  },
+  {
+    "name": "ntext",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/ntext&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/ntext/ntext.md",
+        "author": "Keith Nash",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "text", "bindings", "alternative", "widget", "tk"],
+    "description": "Alternative Bindings for the Text Widget."
+  },
+  {
+    "name": "persistentselection",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/persistentSelection&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/persistentSelection/persistentSelection.md",
+        "author": "Keith Nash",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "selection", "clipboard", "primary", "tk"],
+    "description": "Enhanced PRIMARY selection."
+  },
+  {
+    "name": "plotchart",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/plotchart&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/plotchart/plotchart.md",
+        "author": "Arjen Markus",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "plot", "chart", "graph", "visualization", "tk"],
+    "description": "Simple plotting and charting package."
+  },
+  {
+    "name": "swaplist",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/swaplist&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/swaplist/swaplist.md",
+        "author": "Aaron Faupell",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "dialog", "list", "swap", "selection", "tk"],
+    "description": "A dialog which allows a user to move options between two lists."
+  },
+  {
+    "name": "canvaslabel",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tkpiechart&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tkpiechart/canvaslabel.md",
+        "author": "Jean-Luc Fontaine",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "piechart", "canvas", "label", "widget", "tk"],
+    "description": "tkpiechart canvas label class."
+  },
+  {
+    "name": "pie",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tkpiechart&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tkpiechart/pie.md",
+        "author": "Jean-Luc Fontaine",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "piechart", "chart", "canvas", "2d", "3d", "tk"],
+    "description": "2D or 3D pie chart object in a canvas"
+  },
+  {
+    "name": "pieboxlabeler",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tkpiechart&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tkpiechart/pieboxlabeler.md",
+        "author": "Jean-Luc Fontaine",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "piechart", "label", "box", "canvas", "tk"],
+    "description": "tkpiechart pie box style labeler class"
+  },
+  {
+    "name": "pieperipherallabeler",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tkpiechart&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tkpiechart/pieperipherallabeler.md",
+        "author": "Jean-Luc Fontaine",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "piechart", "label", "peripheral", "canvas", "tk"],
+    "description": "tkpiechart pie peripheral style labeler class"
+  },
+  {
+    "name": "tipstack",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tooltip&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tooltip/tipstack.md",
+        "author": "ActiveState",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "tooltip", "stacked", "ui", "tk"],
+    "description": "Stacked tooltips."
+  },
+  {
+    "name": "tooltip",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tooltip&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tooltip/tooltip.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "tooltip", "help", "ui", "tk"],
+    "description": "Tooltip management."
+  },
+  {
+    "name": "widget",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widget/widget.md",
+        "author": "Jeffrey Hobbs",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "megawidget", "widget", "framework", "tk"],
+    "description": "Megawidget bundle."
+  },
+  {
+    "name": "widget::calendar",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widget/widget_calendar.md",
+        "author": "Rüdiger Härtel",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "megawidget", "calendar", "date", "widget", "tk"],
+    "description": "Calendar Megawidget."
+  },
+  {
+    "name": "widget::dateentry",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widget/widget_dateentry.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "megawidget", "date", "entry", "widget", "tk"],
+    "description": "Date Entry Megawidget."
+  },
+  {
+    "name": "widget::toolbar",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widget&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widget/widget_toolbar.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "megawidget", "toolbar", "widget", "ui", "tk"],
+    "description": "Toolbar Megawidget."
+  },
+  {
+    "name": "widget::listentry",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetl&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widgetl/widget_listentry.md",
+        "author": "ActiveState",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "widget", "list", "entry", "megawidget", "tk"],
+    "description": "widget::listentry widget."
+  },
+  {
+    "name": "widget::listsimple",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetl&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widgetl/widget_listsimple.md",
+        "author": "ActiveState",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "widget", "list", "simple", "megawidget", "tk"],
+    "description": "widget::listsimple widget"
+  },
+  {
+    "name": "widgetplus",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetPlus&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widgetPlus/widgetPlus.md",
+        "author": "Keith Nash",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "widget", "entry", "spinbox", "combobox", "undo", "redo", "tk"],
+    "description": "Enhanced Entry, Spinbox, and Combobox Widgets with Undo/Redo and other useful features."
+  },
+  {
+    "name": "widget::validator",
+    "sources": [
+      {
+        "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetv&ci=trunk",
+        "method": "fossil",
+        "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widget_validator/widget_validator.md",
+        "author": "Tklib Contributors",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["tklib", "widget", "validator", "validation", "behavior", "tk"],
+    "description": "widget::validator behaviour."
   }
 ]
