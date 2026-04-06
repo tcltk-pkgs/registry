@@ -1,5 +1,5 @@
 package require huddle
-package require json
+package require huddle::json
 
 set INPUT_FILE  "packages.json"
 set OUTPUT_FILE "metadata/packages-meta.json"
@@ -327,13 +327,24 @@ proc load_existing_dates {} {
         close $fh
 
         catch {
-            set old_packages [::json::json2dict $data]
-            foreach pkg $old_packages {
-                if {[dict exists $pkg name] && [dict exists $pkg sources]} {
-                    set name [dict get $pkg name]
-                    set srcs [dict get $pkg sources]
-                    if {[llength $srcs] > 0 && [dict exists [lindex $srcs 0] added_at]} {
-                        set existing_dates($name) [dict get [lindex $srcs 0] added_at]
+            set root [huddle::json2huddle $data]
+            set old_packages [huddle get_stripped $root]
+            
+            # Skip header (first element)
+            set pkg_list [lrange $old_packages 1 end]
+            
+            foreach pkg $pkg_list {
+                set name [huddle get_stripped $pkg name]
+                if {$name ne ""} {
+                    set srcs [huddle get_stripped $pkg sources]
+                    if {[llength $srcs] > 0} {
+                        set first_src [lindex $srcs 0]
+                        if {[catch {huddle get_stripped $first_src added_at} added]} {
+                            set added ""
+                        }
+                        if {$added ne ""} {
+                            set existing_dates($name) $added
+                        }
                     }
                 }
             }
@@ -392,11 +403,14 @@ proc main {} {
         set has_old_file 1
 
         catch {
-            set old_data [::json::json2dict $old_content]
+            set root [huddle::json2huddle $old_content]
+            set old_data [huddle get_stripped $root]
             if {[llength $old_data] > 0} {
                 set header [lindex $old_data 0]
-                if {[dict exists $header version]} {
-                    set current_version [dict get $header version]
+                if {[catch {dict get $header version} v]} {
+                    set current_version 0
+                } else {
+                    set current_version $v
                 }
             }
         }
@@ -408,18 +422,20 @@ proc main {} {
     set data [read $fh]
     close $fh
 
-    set packages [::json::json2dict $data]
+    set root [huddle::json2huddle $data]
+    set total [llength [huddle get_stripped $root]]
     set huddle_packages {}
 
     set idx 0
-    set total [llength $packages]
     set new_count 0
 
     puts "Processing $total packages..."
 
-    foreach pkg $packages {
+    for {set i 0} {$i < $total} {incr i} {
+        set pkg [huddle get $root $i]
         incr idx
-        set name [dict get $pkg name]
+        
+        set name [huddle get_stripped $pkg name]
         puts "\[$idx/$total\] Processing: $name"
 
         # Handle package addition date
@@ -439,10 +455,15 @@ proc main {} {
         }
 
         set enriched_sources {}
-        
-        foreach src [dict get $pkg sources] {
-            set url [dict get $src url]
-            set method [expr {[dict exists $src method] ? [dict get $src method] : ""}]
+        set sources_root [huddle get $pkg sources]
+        set nb_sources [llength [huddle get_stripped $sources_root]]
+
+        for {set j 0} {$j < $nb_sources} {incr j} {
+            set src [huddle get $sources_root $j]
+            
+            set url [huddle get_stripped $src url]
+            set method ""
+            catch {set method [huddle get_stripped $src method]}
 
             puts "  - Checking source: $url (Method: $method)"
 
@@ -467,7 +488,25 @@ proc main {} {
 
             # Build huddle source for final JSON output
             set h_src [huddle create]
-            dict for {k v} $src { huddle append h_src $k [to_huddle $v str] }
+
+            set src_keys [huddle keys $src]
+            foreach k $src_keys {
+                set h_val [huddle get $src $k]  ;# Objet huddle
+                set ktype [huddle type $h_val]
+                set v_stripped [huddle get_stripped $h_val]
+                
+                if {$k eq "author"} {
+                    if {$ktype eq "list"} {
+                        huddle append h_src $k $h_val
+                    } else {
+                        huddle append h_src $k [huddle string $v_stripped]
+                    }
+                } elseif {$ktype eq "list"} {
+                    huddle append h_src $k $h_val
+                } else {
+                    huddle append h_src $k [huddle string $v_stripped]
+                }
+            }
 
             dict for {k v} $meta {
                 if {$k in {reachable archived}} {
@@ -488,7 +527,7 @@ proc main {} {
         huddle append h_pkg name [to_huddle $name str]
 
         set desc ""
-        if {[dict exists $pkg description]} { set desc [dict get $pkg description] }
+        catch {set desc [huddle get_stripped $pkg description]}
         huddle append h_pkg description [to_huddle $desc str]
 
         set h_srcs [huddle list]
@@ -496,8 +535,13 @@ proc main {} {
         huddle append h_pkg sources $h_srcs
 
         set h_tags [huddle list]
-        if {[dict exists $pkg tags]} {
-            foreach t [dict get $pkg tags] { huddle append h_tags [to_huddle $t str] }
+        catch {
+            set tags_root [huddle get $pkg tags]
+            set nb_tags [llength [huddle get_stripped $tags_root]]
+            for {set k 0} {$k < $nb_tags} {incr k} {
+                set t [huddle get $tags_root $k]
+                huddle append h_tags [huddle string [huddle get_stripped $t]]
+            }
         }
         huddle append h_pkg tags $h_tags
 
