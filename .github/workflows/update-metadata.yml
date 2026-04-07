@@ -30,33 +30,33 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Tcl script handles comparison logic and decides whether to 
+          # Tcl script handles comparison logic and decides whether to
           # keep the old version or update to new version
           tclsh metadata/generate_meta.tcl
 
       - name: Commit and push if changed
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
           # Check if there are actual changes to commit
           if git diff --quiet HEAD metadata/packages-meta.json; then
             echo "✓ No changes to commit"
             exit 0
           fi
-          
+
+          BACKUP_NAME="backup/metadata-$(date +%Y%m%d-%H%M%S)-${{ github.run_id }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Create a backup branch from the current state of the master branch
+          git branch $BACKUP_NAME
+          git push origin $BACKUP_NAME
+
+          echo "✓ Backup created: $BACKUP_NAME"
+          echo "backup_branch=$BACKUP_NAME" >> $GITHUB_OUTPUT
+
           # Extract version and date for commit message
           VERSION=$(jq -r '.[0].version' metadata/packages-meta.json)
           DATE=$(jq -r '.[0].generated_at' metadata/packages-meta.json | cut -d'T' -f1)
-          
-          git add metadata/packages-meta.json
-          git commit -m "Update metadata v${VERSION} (${DATE})" || echo "No changes to commit"
-          git push
 
-      # - name: Purge jsDelivr cache
-      #   # Only run if previous steps succeeded
-      #   if: success()
-      #   run: |
-      #     REPO="${{ github.repository }}"
-      #     echo "Purging jsDelivr cache for $REPO..."
-      #     curl -s "https://purge.jsdelivr.net/gh/${REPO}@master/metadata/packages-meta.json" | jq -r '.status' || echo "Purge request sent"
+          git add metadata/packages-meta.json
+          git commit -m "Update metadata v${VERSION} (${DATE})"
+          git push
