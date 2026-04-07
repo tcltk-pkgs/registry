@@ -4688,7 +4688,6 @@
       {
         "url": "https://github.com/tcltk-depot/tcl-debugger",
         "method": "git",
-        "extension": null,
         "author": ["Forward Folio LLC", "Scriptics Corp."],
         "license": "Unlicense"
       }
