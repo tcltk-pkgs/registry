@@ -335,16 +335,13 @@ proc load_existing_dates {} {
             set pkg_list [lrange $old_packages 1 end]
             
             foreach pkg $pkg_list {
-                set name [huddle get_stripped $pkg name]
+                set name [dict get $pkg name]
                 if {$name ne ""} {
-                    set srcs [huddle get_stripped $pkg sources]
+                    set srcs [dict get $pkg sources]
                     if {[llength $srcs] > 0} {
                         set first_src [lindex $srcs 0]
-                        if {[catch {huddle get_stripped $first_src added_at} added]} {
-                            set added ""
-                        }
-                        if {$added ne ""} {
-                            set existing_dates($name) $added
+                        if {[dict exists $first_src added_at]} {
+                            set existing_dates($name) [dict get $first_src added_at]
                         }
                     }
                 }
