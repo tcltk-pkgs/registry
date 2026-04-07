@@ -1,5 +1,6 @@
 package require huddle
 package require huddle::json
+package require json
 
 set INPUT_FILE  "packages.json"
 set OUTPUT_FILE "metadata/packages-meta.json"
