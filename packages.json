@@ -846,7 +846,7 @@
         "url": "https://core.tcl-lang.org/tcllib/dir?name=modules/htmlparse&ci=trunk",
         "method": "fossil",
         "web": "https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/tcllib/files/modules/htmlparse/htmlparse.md",
-        "author": "ActiveState",
+        "author": "ActiveState Software Inc.",
         "license": "Tcl/Tk License"
       }
     ],
@@ -4268,7 +4268,7 @@
         "url": "https://core.tcl-lang.org/tklib/dir?name=modules/ico&ci=trunk",
         "method": "fossil",
         "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/ico/ico.md",
-        "author": "ActiveState",
+        "author": "ActiveState Software Inc.",
         "license": "Tcl/Tk License"
       }
     ],
@@ -4464,7 +4464,7 @@
         "url": "https://core.tcl-lang.org/tklib/dir?name=modules/tooltip&ci=trunk",
         "method": "fossil",
         "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/tooltip/tipstack.md",
-        "author": "ActiveState",
+        "author": "ActiveState Software Inc.",
         "license": "Tcl/Tk License"
       }
     ],
@@ -4548,7 +4548,7 @@
         "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetl&ci=trunk",
         "method": "fossil",
         "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widgetl/widget_listentry.md",
-        "author": "ActiveState",
+        "author": "ActiveState Software Inc.",
         "license": "Tcl/Tk License"
       }
     ],
@@ -4562,7 +4562,7 @@
         "url": "https://core.tcl-lang.org/tklib/dir?name=modules/widgetl&ci=trunk",
         "method": "fossil",
         "web": "https://core.tcl-lang.org/tklib/doc/trunk/embedded/md/tklib/files/modules/widgetl/widget_listsimple.md",
-        "author": "ActiveState",
+        "author": "ActiveState Software Inc.",
         "license": "Tcl/Tk License"
       }
     ],
