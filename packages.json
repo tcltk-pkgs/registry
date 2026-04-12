@@ -2736,7 +2736,7 @@
         "license": "BSD-3 license"
       }
     ],
-    "tags": ["algorithms", "tcl-binding", "encoding"],
+    "tags": ["algorithm", "tcl-binding", "encoding"],
     "description": "crc64ecma for Tcl."
   },
   {
@@ -4779,5 +4779,107 @@
     ],
     "tags": ["debugger", "unix-system-calls", "data-structure"],
     "description": "Extension with additional tools and system interfaces."
+  },
+  {
+    "name": "tclmcairo",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclmcairo",
+        "method": "git",
+        "extension": true,
+        "author": "gregnix",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["tcl", "cairo", "2d", "graphics", "image"],
+    "description": "A lightweight Cairo binding for Tcl — no Tk required."
+  },
+  {
+    "name": "tclpdfium",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclpdfium",
+        "method": "git",
+        "extension": true,
+        "author": "gregnix",
+        "license": "BSD-2-Clause"
+      }
+    ],
+    "tags": ["pdf", "libpdfium", "pdf-rendering", "tcl"],
+    "description": "Tcl/Tk binding for PDFium — Google's PDF rendering engine"
+  },
+  {
+    "name": "filewatch",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/filewatch",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/cyanogilvie/filewatch/releases"
+      }
+    ],
+    "tags": ["filesystem", "linux", "inotify"],
+    "description": "Tcl package to receive filesystem events from the Linux kernel"
+  },
+  {
+    "name": "sockopt",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/sockopt",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/cyanogilvie/sockopt/releases"
+      }
+    ],
+    "tags": ["tcl-socket", "posix", "setsockopt", "getsockopt"],
+    "description": "Provides script access to setsockopt and getsockopt for Tcl socket channels"
+  },
+  {
+    "name": "tclsevenzip",
+    "sources": [
+      {
+        "url": "https://github.com/ooa64/tclsevenzip",
+        "method": "git",
+        "extension": true,
+        "author": "Oleh Oliinyk",
+        "license": "LGPL-2.1",
+        "artifacts": "https://github.com/ooa64/tclsevenzip/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "7zip", "archive", "compression", "decompression"],
+    "description": "Tcl binding to the 7zip dynamic library"
+  },
+  {
+    "name": "tcldbf2",
+    "sources": [
+      {
+        "url": "https://github.com/ooa64/tcldbf2",
+        "method": "git",
+        "extension": true,
+        "author": "Oleh Oliinyk",
+        "license": "Unlicense",
+        "web": "https://github.com/ooa64/tcldbf2/blob/main/doc/tcldbf.md",
+        "artifacts": "https://github.com/ooa64/tcldbf2/releases"
+      }
+    ],
+    "tags": ["database", "tcl-binding", "dbase-parser"],
+    "description": "Tcl package for accessing dbase files."
+  },
+  {
+    "name": "tcl-escpos",
+    "sources": [
+      {
+        "url": "https://github.com/bef/tcl-escpos",
+        "method": "git",
+        "author": "Ben Fuhrmannek",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["esc/pos", "printer"],
+    "description": "Tcl library for ESC/POS compatible receipt printers"
   }
 ]
