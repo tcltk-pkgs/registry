@@ -4880,5 +4880,72 @@
     ],
     "tags": ["esc/pos", "printer"],
     "description": "Tcl library for ESC/POS compatible receipt printers"
+  },
+  {
+    "name": "net",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/net",
+        "method": "git",
+        "author": "rauleli",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["socket", "client", "server", "network"],
+    "description": "Simple Tcl wrapper around socket and fileevent for non-blocking client connections."
+  },
+  {
+    "name": "sqlk",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/sqlk",
+        "method": "git",
+        "author": "rauleli",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["sqlite", "parser", "database"],
+    "description": "keyed list on sqlite"
+  },
+  {
+    "name": "tclembedding",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/tclembedding",
+        "method": "git",
+        "extension": true,
+        "author": "Tcl-Embedding Contributors",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["onnx", "rag", "database", "mysql"],
+    "description": "High-performance Tcl extension for local vector embeddings via ONNX Runtime, optimized for RAG and MySQL."
+  },
+  {
+    "name": "tclllama",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/tclllama",
+        "method": "git",
+        "extension": true,
+        "author": "Tcl-Llama Contributors",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["language-modeling", "llm"],
+    "description": "Bring LLMs to Tcl. A native C++ extension to run Llama.cpp models directly from Tcl scripts."
+  },
+  {
+    "name": "totp",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/totp",
+        "method": "git",
+        "author": "rauleli",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["crypto", "authentication"],
+    "description": "Time-based One-Time Password (TOTP) library for Tcl - RFC 6238 implementation."
   }
 ]
