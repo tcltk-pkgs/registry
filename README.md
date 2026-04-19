@@ -99,7 +99,9 @@ The registry format draws inspiration from modern package registries
 
 ## See Also
 
-**[Tcl-Related-Link](https://github.com/ray2501/Tcl-Related-Link)** — An exhaustive, well-organized collection of Tcl/Tk links including books, tools, extensions, and language bindings. A must-bookmark for any Tcl developer.
+**[Tcl-Related-Link](https://github.com/ray2501/Tcl-Related-Link)** — An exhaustive, well-organized collection of Tcl/Tk links including books, tools, extensions, and language bindings. A must-bookmark for any Tcl developer.   
+**[Andreas Kupries' Tcl/Tk repository mirror](https://akupries.tclers.tk/hoard/tcl/projects_byname.html)** — A personal mirror maintained by Andreas Kupries, a Tcl Core Team member, Andreas is notably one of the main authors of Tcllib.  
+**[Public Tcl Package Repository](https://tclrepo.daidze.org/)** — A community-driven public repository offering a curated collection of Tcl packages, open to contributions and collaboration.
 
 ## License
 
