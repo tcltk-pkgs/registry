@@ -206,7 +206,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "parsing", "bibliography"],
+    "tags": ["tcllib", "parser", "bibliography"],
     "description": "Parse bibtex files"
   },
   {
@@ -304,7 +304,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "ipc", "communication"],
+    "tags": ["tcllib", "ipc"],
     "description": "A remote communication facility for Tcl"
   },
   {
@@ -318,7 +318,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "control", "flow"],
+    "tags": ["tcllib", "control"],
     "description": "Procedures for control flow structures"
   },
   {
@@ -444,7 +444,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "csv", "parsing"],
+    "tags": ["tcllib", "csv", "parser"],
     "description": "Procedures to handle CSV data"
   },
   {
@@ -556,7 +556,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "network", "dns"],
+    "tags": ["tcllib", "network"],
     "description": "Tcl Domain Name Service Client"
   },
   {
@@ -920,7 +920,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "network", "ldap", "directory"],
+    "tags": ["tcllib", "network", "directory"],
     "description": "LDAP client"
   },
   {
@@ -934,7 +934,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "logging", "debug"],
+    "tags": ["tcllib", "logging", "debugging"],
     "description": "Procedures to log messages of libraries and applications"
   },
   {
@@ -1004,7 +1004,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "statistics", "descriptive", "probability", "analysis"],
+    "tags": ["tcllib", "math", "statistics", "probability", "analysis"],
     "description": "Basic statistical functions and procedures"
   },
   {
@@ -1032,7 +1032,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "calculus", "integration", "romberg", "numerical-analysis"],
+    "tags": ["tcllib", "math", "calculus", "integration", "numerical"],
     "description": "Romberg integration"
   },
   {
@@ -1074,7 +1074,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "combinatorics", "combinatorial", "permutations", "factorial"],
+    "tags": ["tcllib", "math", "combinatorics", "permutations", "factorial"],
     "description": "Combinatorial functions in the Tcl Math Library"
   },
   {
@@ -1088,7 +1088,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "complex", "numbers", "imaginary", "arithmetic"],
+    "tags": ["tcllib", "math", "complex", "numbers", "arithmetic"],
     "description": "Straightforward complex number package"
   },
   {
@@ -1102,7 +1102,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "constants", "pi", "physics", "values"],
+    "tags": ["tcllib", "math", "constants", "physics", "values"],
     "description": "Mathematical and numerical constants"
   },
   {
@@ -1130,7 +1130,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "exact", "real", "arithmetic", "precision", "computation"],
+    "tags": ["tcllib", "math", "exact", "real", "arithmetic", "precision"],
     "description": "Exact Real Arithmetic"
   },
   {
@@ -1144,7 +1144,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "figurate", "numbers", "polygonal", "number-theory"],
+    "tags": ["tcllib", "math", "numbers", "number-theory"],
     "description": "Evaluate figurate numbers"
   },
   {
@@ -1172,7 +1172,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "fourier", "transform", "fft", "dft", "signal-processing"],
+    "tags": ["tcllib", "math", "transform", "signal-processing"],
     "description": "Discrete and fast fourier transforms"
   },
   {
@@ -1186,7 +1186,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "fuzzy", "floating-point", "comparison", "tolerance"],
+    "tags": ["tcllib", "math", "floating-point", "comparison", "tolerance"],
     "description": "Fuzzy comparison of floating-point numbers"
   },
   {
@@ -1312,7 +1312,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "optimization", "probabilistic"],
+    "tags": ["tcllib", "math", "optimization", "probability"],
     "description": "Probabilistic optimisation methods"
   },
   {
@@ -1354,7 +1354,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "roman", "numerals", "conversion", "ancient"],
+    "tags": ["tcllib", "math", "numerals", "conversion", "ancient"],
     "description": "Tools for creating and manipulating roman numerals"
   },
   {
@@ -1382,7 +1382,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "math", "trigonometric", "hyperbolic", "sin", "cos", "tan"],
+    "tags": ["tcllib", "math", "trigonometric", "hyperbolic"],
     "description": "Trigonometric and hyperbolic functions"
   },
   {
@@ -1410,7 +1410,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "crypto", "password"],
+    "tags": ["tcllib", "crypto", "password-hashing"],
     "description": "MD5-based password encryption"
   },
   {
@@ -1452,7 +1452,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "time", "ntp", "network"],
+    "tags": ["tcllib", "time", "network"],
     "description": "Tcl Time Service Client"
   },
   {
@@ -1494,7 +1494,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "crypto", "hash", "sha1"],
+    "tags": ["tcllib", "crypto", "hash"],
     "description": "SHA1 Message-Digest Algorithm"
   },
   {
@@ -1760,7 +1760,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcllib", "web", "uri", "url"],
+    "tags": ["tcllib", "web", "uri"],
     "description": "URI utilities"
   },
   {
@@ -1888,7 +1888,7 @@
         "artifacts": "https://github.com/ray2501/tcl.snappy/releases"
       }
     ],
-    "tags": ["snappy", "compression", "decompression"],
+    "tags": ["snappy", "compression"],
     "description": "Tcl wrapper for snappy library"
   },
   {
@@ -1918,7 +1918,7 @@
         "artifacts": "https://github.com/ray2501/tcljsonnet/releases"
       }
     ],
-    "tags": ["json", "Jsonnet", "schema", "structure"],
+    "tags": ["json", "schema", "structure"],
     "description": "Tcl wrapper for Jsonnet library"
   },
   {
@@ -1933,7 +1933,7 @@
         "artifacts": "https://github.com/ray2501/tcl-leveldb/releases"
       }
     ],
-    "tags": ["tcl-binding", "leveldb", "db-api" , "database"],
+    "tags": ["tcl-binding", "db-api", "database"],
     "description": "The Tcl interface to the LevelDB"
   },
   {
@@ -1978,7 +1978,7 @@
         "artifacts": "https://github.com/ray2501/tcl-opencc/releases"
       }
     ],
-    "tags": ["opencc", "library"],
+    "tags": ["chinese-language", "conversion"],
     "description": "Tcl bindings for OpenCC (libopencc)"
   },
   {
@@ -2023,7 +2023,7 @@
         "artifacts": "https://github.com/ray2501/tcl-stbimage/releases"
       }
     ],
-    "tags": ["image-processing", "tcl-binding", "stb"],
+    "tags": ["image-processing", "tcl-binding"],
     "description": "Tcl extension for stb_image"
   },
   {
@@ -2038,7 +2038,7 @@
         "artifacts": "https://github.com/ray2501/tclusb/releases"
       }
     ],
-    "tags": ["libusb", "tcl-binding","usb"],
+    "tags": ["tcl-binding", "usb"],
     "description": "List USB devices in Tcl via libusb"
   },
   {
@@ -2131,7 +2131,7 @@
         "artifacts": "https://sourceforge.net/projects/magicsplat/files/ruff/"
       }
     ],
-    "tags": ["documentation-tools", "literate-programming"],
+    "tags": ["documentation", "literate-programming"],
     "description": "Documentation generator for Tcl programs."
   },
   {
@@ -2192,7 +2192,7 @@
         "license": "BSD-2-Clause"
       }
     ],
-    "tags": ["programming-language", "vector-processing", "data-structure"],
+    "tags": ["programming-language", "vector", "data-structure"],
     "description": "Implementation of fast operation on vectors and tables of native types."
   },
   {
@@ -2208,7 +2208,7 @@
         "artifacts": "https://sourceforge.net/projects/tclcsv/files/"
       }
     ],
-    "tags": ["csv", "parsing", "widget"],
+    "tags": ["csv", "parser", "widget"],
     "description": "Commands for parsing, writing and displaying CSV data."
   },
   {
@@ -2238,7 +2238,7 @@
         "artifacts": "https://github.com/georgtree/SpiceGenTcl/releases"
       }
     ],
-    "tags": ["spice","ngspice", "simulator"],
+    "tags": ["spice", "ngspice", "simulator"],
     "description": "Package provides Tcl interface to different SPICE and SPICE-like simulator, Ngspice, Xyce, etc"
   },
   {
@@ -2268,7 +2268,7 @@
         "license": "LGPL-2.1"
       }
     ],
-    "tags": [ "measure", "extension"],
+    "tags": ["measure", "extension"],
     "description": "Tcl C extension provides equivalent of `measure` command in SPICE and SPICE-like simulators to vector data processing."
   },
   {
@@ -2297,7 +2297,7 @@
         "artifacts": "https://github.com/georgtree/argparse/releases"
       }
     ],
-    "tags": ["preprocessor", "argument"],
+    "tags": ["preprocessor", "arguments"],
     "description": "Argument preprocessor for Tcl"
   },
   {
@@ -2312,7 +2312,7 @@
         "license": "LGPL-2.1"
       }
     ],
-    "tags": ["c-interpolation", "tcl-binding", "wrapper", "swig"],
+    "tags": ["c-interpolation", "tcl-binding"],
     "description": "Tcl wrapper for C interpolation routines"
   },
   {
@@ -2342,7 +2342,7 @@
         "artifacts": "https://github.com/flightaware/tclreadline/releases"
       }
     ],
-    "tags": ["readline", "interactive"],
+    "tags": ["interactive"],
     "description": "GNU readline for interactive Tcl shells"
   },
   {
@@ -2358,7 +2358,7 @@
         "artifacts": "https://github.com/flightaware/Pgtcl/releases"
       }
     ],
-    "tags": ["postgresql", "pgtcl", "database"],
+    "tags": ["postgresql", "database"],
     "description": "Tcl client side interface to PostgreSQL (libpgtcl)"
   },
   {
@@ -2373,7 +2373,7 @@
         "artifacts": "https://github.com/flightaware/kafkatcl/releases"
       }
     ],
-    "tags": ["kafka", "message"],
+    "tags": ["message"],
     "description": "Tcl interface to the Apache Kafka distributed messaging system"
   },
   {
@@ -2388,7 +2388,7 @@
         "artifacts": "https://github.com/flightaware/tclsass/releases"
       }
     ],
-    "tags": ["sass", "lib"],
+    "tags": ["sass", "css", "web"],
     "description": "Tcl interface to the libsass library"
   },
   {
@@ -2403,7 +2403,7 @@
         "artifacts": "https://github.com/flightaware/speedbag/releases"
       }
     ],
-    "tags": ["c-binding", "tcl-parser", "tsv-parser" , "array"],
+    "tags": ["c-binding", "tcl-parser", "tsv-parser", "array"],
     "description": "A package for providing accelerated C-based routines for TSV parsing into an array"
   },
   {
@@ -2433,7 +2433,7 @@
         "artifacts": "https://github.com/flightaware/socketservertcl/releases"
       }
     ],
-    "tags": ["networking", "tcl-socket", "flingfd", "ancillary"],
+    "tags": ["network", "tcl-socket"],
     "description": "Basic socketserver support in Tcl inspired by libancillary"
   },
   {
@@ -2448,7 +2448,7 @@
         "artifacts": "https://github.com/flightaware/zookeepertcl/releases"
       }
     ],
-    "tags": ["apache","zookeeper"],
+    "tags": ["apache", "zookeeper"],
     "description": "Tcl interface to Apache zookeeper distributed coordination system"
   },
   {
@@ -2462,7 +2462,7 @@
         "license": "BSD-3-Clause"
       }
     ],
-    "tags": ["javascript", "spidermonkey", "tcl-binding", "js"],
+    "tags": ["javascript", "tcl-binding"],
     "description": "Tcl extension to execute JavaScript using the SpiderMonkey Javascript interpreter"
   },
   {
@@ -2491,7 +2491,7 @@
         "artifacts": "https://github.com/flightaware/casstcl/releases"
       }
     ],
-    "tags": ["cassandra", "database"],
+    "tags": ["database"],
     "description": "Tcl language interface to the Cassandra database"
   },
   {
@@ -2537,7 +2537,7 @@
         "artifacts": "https://github.com/flightaware/tcllauncher/releases"
       }
     ],
-    "tags": ["launcher", "server-oriented"],
+    "tags": ["launcher", "server"],
     "description": "This is tcllauncher, a launcher program for Tcl applications."
   },
   {
@@ -2594,7 +2594,7 @@
         "artifacts": "https://github.com/ambaker1/ooida/releases"
       }
     ],
-    "tags": ["incremental", "analysis", "parser", "oo", "ida"],
+    "tags": ["incremental", "analysis", "parser", "oo"],
     "description": "Object-Oriented Incremental Dynamic Analysis"
   },
   {
@@ -2608,7 +2608,7 @@
         "artifacts": "https://github.com/ambaker1/ndlist/releases"
       }
     ],
-    "tags": ["tcl-tensor-library", "tensor-operations", "tensor-math"],
+    "tags": ["tensor"],
     "description": "Tcl tensors"
   },
   {
@@ -2622,7 +2622,7 @@
         "artifacts": "https://github.com/ambaker1/vutil/releases"
       }
     ],
-    "tags": ["variable-manipulation", "variable-management", "tcloo"],
+    "tags": ["variable", "tcloo"],
     "description": "Advanced variable utilities for Tcl"
   },
   {
@@ -2692,7 +2692,7 @@
         "license": "BSD-3 license"
       }
     ],
-    "tags": ["cryptography", "networking"],
+    "tags": ["crypto", "network"],
     "description": "Networking and Cryptography library for Tcl."
   },
   {
@@ -2721,7 +2721,7 @@
         "license": "BSD-3 license"
       }
     ],
-    "tags": ["barcode", "tcl-binding", "libzint", "encoding"],
+    "tags": ["barcode", "tcl-binding", "encoding"],
     "description": "Tcl package for libzint barcode encoding library."
   },
   {
@@ -2822,7 +2822,7 @@
         "artifacts": "https://github.com/cyanogilvie/tcl-tomcrypt/releases"
       }
     ],
-    "tags": ["tcl-binding", "libtomcrypt", "library"],
+    "tags": ["tcl-binding", "crypto", "encryption"],
     "description": "Tcl wrapper for the libtomcrypt library (partial)."
   },
   {
@@ -2837,7 +2837,7 @@
         "artifacts": "https://github.com/cyanogilvie/reuri/releases"
       }
     ],
-    "tags": ["uri-manipulation"],
+    "tags": ["uri"],
     "description": "High performance URI manipulation package for Tcl."
   },
   {
@@ -2851,7 +2851,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tcl-obj", "tcl-stubs","tcl-binding"],
+    "tags": ["tcl-obj", "tcl-stubs", "tcl-binding"],
     "description": "Tcl_Obj deduplication API exposed via Stubs for other extensions to us."
   },
   {
@@ -2888,7 +2888,7 @@
         "artifacts": "https://github.com/cyanogilvie/unix_sockets/releases"
       }
     ],
-    "tags": ["unix-socket", "unix-domain-socket", "tcl-socket"],
+    "tags": ["unix-socket", "tcl-socket"],
     "description": "unix domain socket support for Tcl."
   },
   {
@@ -2902,8 +2902,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": [
-      "tcl-objtype" , "custom-tcl-binding", "tcl-extension"],
+    "tags": ["tcl-objtype", "custom-tcl-binding", "tcl-extension"],
     "description": "Allow custom Tcl_ObjTypes to be defined and used in Tcl scripts."
   },
   {
@@ -2947,7 +2946,7 @@
         "artifacts": "https://github.com/vicmay/CBOR/releases"
       }
     ],
-    "tags": ["cbor", "encoding", "decoding"],
+    "tags": ["cbor", "encoding"],
     "description": "Pure Tcl CBOR (Concise Binary Object Representation) implementation"
   },
   {
@@ -2975,7 +2974,7 @@
         "license": "Apache-2.0"
       }
     ],
-    "tags": ["html", "parser", "gumbo"],
+    "tags": ["html", "parser"],
     "description": "Tcl implementation of Google's HTML parser aka Gumbo."
   },
   {
@@ -2989,7 +2988,7 @@
         "license": "curl License"
       }
     ],
-    "tags": ["libcurl", "websocket", "http"],
+    "tags": ["websocket", "http"],
     "description": "CURL for Tcl."
   },
   {
@@ -3019,7 +3018,7 @@
         "artifacts": "https://github.com/auriocus/VecTcl/releases"
       }
     ],
-    "tags": ["linearalgebra", "array", "vector", "matrix"],
+    "tags": ["linear-algebra", "array", "vector", "matrix"],
     "description": "Numeric array and linear algebra extension for Tcl"
   },
   {
@@ -3049,7 +3048,7 @@
         "artifacts": "https://github.com/jerily/twebserver/releases"
       }
     ],
-    "tags": ["http-server", "https", "http","webserver"],
+    "tags": ["web-server", "http"],
     "description": "Tcl Web Server (HTTP & HTTPS) Extension"
   },
   {
@@ -3079,7 +3078,7 @@
         "artifacts": "https://github.com/jerily/tink-tcl/releases"
       }
     ],
-    "tags": ["cryptographic", "tink"],
+    "tags": ["crypto"],
     "description": "Tcl bindings for Tink, a multi-language, cross-platform library that provides cryptographic APIs."
   },
   {
@@ -3108,7 +3107,7 @@
         "license": "MIT"
       }
     ],
-    "tags": [ "http", "https", "curl"],
+    "tags": ["http", "curl"],
     "description": "curl-based http/https client extension for Tcl"
   },
   {
@@ -3123,7 +3122,7 @@
         "artifacts": "https://github.com/jerily/valkey-tcl/releases"
       }
     ],
-    "tags": ["libvalkey"],
+    "tags": ["unix-socket", "tls"],
     "description": "Tcl/C extension that provides an interface to the Valkey store."
   },
   {
@@ -3212,7 +3211,7 @@
         "artifacts": "https://github.com/nico-robert/pix/releases"
       }
     ],
-    "tags": ["nim", "image", "graphics", "tk"],
+    "tags": ["image", "graphics", "tk"],
     "description": "Tcl/Tk wrapper around Pixie, a full-featured 2D graphics library written in Nim."
   },
   {
@@ -3226,7 +3225,7 @@
         "artifacts": "https://github.com/nico-robert/tresvg/releases"
       }
     ],
-    "tags": ["svg", "image", "ffi-bindings", "critcl", "resvg"],
+    "tags": ["svg", "image", "ffi", "svg"],
     "description": "Tcl wrapper around resvg, a library for rendering SVG images."
   },
   {
@@ -3269,7 +3268,7 @@
         "artifacts": "https://github.com/nico-robert/tcl-miniz/releases"
       }
     ],
-    "tags": ["zip", "compression", "archive", "zlib", "ffi-bindings"],
+    "tags": ["zip", "compression", "archive", "zlib", "ffi"],
     "description": "Tcl bindings for miniz."
   },
   {
@@ -3283,7 +3282,7 @@
         "artifacts": "https://github.com/nico-robert/magic/releases"
       }
     ],
-    "tags": ["filesystem", "libmagic", "ffi-bindings"],
+    "tags": ["filesystem", "ffi"],
     "description": "Tcl bindings for libmagic."
   },
   {
@@ -3297,7 +3296,7 @@
         "artifacts": "https://github.com/nico-robert/haru/releases"
       }
     ],
-    "tags": ["pdf", "libharu", "ffi-bindings"],
+    "tags": ["pdf", "ffi"],
     "description": "Tcl bindings for the libharu library."
   },
   {
@@ -3311,7 +3310,7 @@
         "artifacts": "https://github.com/nico-robert/ticklecharts/releases"
       }
     ],
-    "tags": ["web", "charts"],
+    "tags": ["web", "chart"],
     "description": "Tcl wrapper around Apache ECharts."
   },
   {
@@ -3336,7 +3335,7 @@
         "license": "Unlicense"
       }
     ],
-    "tags": ["webview", "ui", "html5", "js-bindings", "tk"],
+    "tags": ["webview", "ui", "html5", "javascript", "tk"],
     "description": "Tcl extension that provides API for the webview library"
   },
   {
@@ -3376,7 +3375,7 @@
         "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/tclMuPDF-2.x"
       }
     ],
-    "tags": ["pdf", "mupdf", "tcl", "rendering"],
+    "tags": ["pdf", "tcl", "rendering"],
     "description": "tclMuPDF is a porting of the MuPDF framework (fast and high-quality rendering of PDF pages)."
   },
   {
@@ -3390,7 +3389,7 @@
         "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/tclBlend2d"
       }
     ],
-    "tags": ["blend2d", "image", "graphics", "tk"],
+    "tags": ["image", "graphics", "tk"],
     "description": "Tcl meets Blend2d (high performance 2D vector graphics engine)."
   },
   {
@@ -3433,7 +3432,7 @@
         "license": "MIT"
       }
     ],
-    "tags": ["duktape", "javascript-interpreter"],
+    "tags": ["javascript"],
     "description": "Tcl bindings for Duktape, an embedded JavaScript interpreter"
   },
   {
@@ -3554,7 +3553,7 @@
         "license": "GPL-3.0"
       }
     ],
-    "tags": ["api", "spotify"],
+    "tags": ["api"],
     "description": "Spotify Web API for Tcl"
   },
   {
@@ -3568,7 +3567,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["r-language", "statistical-computing", "librtcl"],
+    "tags": ["r-language", "statistics"],
     "description": "Tcl extension embedding 'R' Project for Statistical Computing (librtcl)"
   },
   {
@@ -3652,7 +3651,7 @@
         "artifacts": "https://github.com/bagnongithub/oratcl/releases"
       }
     ],
-    "tags": ["oracle", "database", "odpi-c"],
+    "tags": ["oracle", "database"],
     "description": "Tcl 9 extension that re‑implements Oratcl on top of ODPI‑C"
   },
   {
@@ -3677,7 +3676,7 @@
         "artifacts": "https://www.nemethi.de"
       }
     ],
-    "tags": ["mega-widget", "scrolling", "notebook", "tile", "tk"],
+    "tags": ["megawidget", "scrolling", "notebook", "tk"],
     "description": "Scrolling mega-widgets library providing scrollarea, scrollsync, scrollableframe with mouse wheel and touchpad support."
   },
   {
@@ -3703,7 +3702,7 @@
         "artifacts": "https://www.nemethi.de"
       }
     ],
-    "tags": ["mega-widget", "entry", "date", "time", "tk"],
+    "tags": ["megawidget", "entry", "date", "time", "tk"],
     "description": "Multi-entry mega-widget with multiple entry fields separated by labels. Supports date/time, fixed-point numbers, IP/IPv6 addresses, and phone numbers."
   },
   {
@@ -3716,7 +3715,7 @@
         "artifacts": "https://www.nemethi.de"
       }
     ],
-    "tags": ["mega-widget", "table", "tree", "tk"],
+    "tags": ["megawidget", "table", "tree", "tk"],
     "description": "Multi-column listbox and tree mega-widget with resizable columns, interactive sorting, cell editing, and embedded images/windows support."
   },
   {
@@ -3729,7 +3728,7 @@
         "artifacts": "https://www.nemethi.de"
       }
     ],
-    "tags": ["mega-widget", "toggle", "switch"],
+    "tags": ["megawidget", "toggle", "switch"],
     "description": "Modern toggle switch mega-widget with horizontal trough and circular slider for two-state on/off control."
   },
   {
@@ -3779,7 +3778,7 @@
         "license": "BSD-3 license"
       }
     ],
-    "tags": ["c-code", "tcl-binding", "runtime"],
+    "tags": ["c-code", "tcl-binding"],
     "description": "Critcl lets you easily embed C code in Tcl."
   },
   {
@@ -3865,7 +3864,7 @@
         "artifacts": "https://github.com/mittelmark/citer/releases"
       }
     ],
-    "tags": ["tcl", "bibliographies", "bibtex"],
+    "tags": ["tcl", "bibliography", "bibtex"],
     "description": "Tcl package to create bibliographies using Bibtex files."
   },
   {
@@ -4034,7 +4033,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "highlight", "selection", "tk"],
+    "tags": ["tklib", "canvas", "selection", "tk"],
     "description": "Manage the highlighting of canvas items or item groups"
   },
   {
@@ -4048,7 +4047,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "mvg", "imagemagick", "export", "tk"],
+    "tags": ["tklib", "canvas", "imagemagick", "export", "tk"],
     "description": "Canvas to ImageMagick MVG vector format"
   },
   {
@@ -4090,7 +4089,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "map", "tiles", "background", "tk"],
+    "tags": ["tklib", "canvas", "map", "background", "tk"],
     "description": "Canvas with map background based on square tiles"
   },
   {
@@ -4104,7 +4103,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "tags", "management", "tk"],
+    "tags": ["tklib", "canvas", "tags", "tk"],
     "description": "Easier management of the tags on canvas items or item groups"
   },
   {
@@ -4118,7 +4117,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "rubberband", "lines", "drawing", "tk"],
+    "tags": ["tklib", "canvas", "lines", "drawing", "tk"],
     "description": "Manage a group of rubber band lines"
   },
   {
@@ -4174,7 +4173,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "canvas", "crosshair", "measurement", "tk"],
+    "tags": ["tklib", "canvas", "measurement", "tk"],
     "description": "Crosshairs for Tk canvas."
   },
   {
@@ -4202,7 +4201,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "cursor", "mouse", "data", "tk"],
+    "tags": ["tklib", "cursor", "tk"],
     "description": "Procedures to handle CURSOR data."
   },
   {
@@ -4272,7 +4271,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "icon", "windows", "ico", "image", "tk"],
+    "tags": ["tklib", "icon", "windows", "image", "tk"],
     "description": "Reading and writing Win32 icons."
   },
   {
@@ -4328,7 +4327,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "menu", "menubar", "widget", "ui", "tk"],
+    "tags": ["tklib", "menu", "widget", "ui", "tk"],
     "description": "Creates an instance of the menubar Class."
   },
   {
@@ -4468,7 +4467,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "tooltip", "stacked", "ui", "tk"],
+    "tags": ["tklib", "tooltip", "ui", "tk"],
     "description": "Stacked tooltips."
   },
   {
@@ -4594,7 +4593,7 @@
         "license": "Tcl/Tk License"
       }
     ],
-    "tags": ["tklib", "widget", "validator", "validation", "behavior", "tk"],
+    "tags": ["tklib", "widget", "validator", "validation", "tk"],
     "description": "widget::validator behaviour."
   },
   {
@@ -4636,7 +4635,7 @@
         "license": "BSD-3-Clause"
       }
     ],
-    "tags": ["curses", "text-ui", "TUI"],
+    "tags": ["curses", "tui"],
     "description": "Ncurses-based text UI extension for Tcl closely modelled on Tk"
   },
   {
@@ -4665,7 +4664,7 @@
         "license": "BSD-3-Clause"
       }
     ],
-    "tags": ["byte-code", "loader"],
+    "tags": ["bytecode", "loader"],
     "description": "Commands to source Tcl byte code generated by the tclcompiler package"
   },
   {
@@ -4679,7 +4678,7 @@
         "license": "BSD-3-Clause"
       }
     ],
-    "tags": ["byte-code", "compiler"],
+    "tags": ["bytecode", "compiler"],
     "description": "Compile Tcl scripts into the Tcl's internal byte code form."
   },
   {
@@ -4749,7 +4748,7 @@
         "license": "BSD-2-Clause"
       }
     ],
-    "tags": ["instrumentation", "VISA"],
+    "tags": ["instrumentation", "visa"],
     "description": "Tcl binding to VISA (Virtual Instrument Software Architecture) API."
   },
   {
@@ -4805,7 +4804,7 @@
         "license": "BSD-2-Clause"
       }
     ],
-    "tags": ["pdf", "libpdfium", "pdf-rendering", "tcl"],
+    "tags": ["pdf", "pdf-rendering", "tcl"],
     "description": "Tcl/Tk binding for PDFium — Google's PDF rendering engine"
   },
   {
@@ -4835,7 +4834,7 @@
         "artifacts": "https://github.com/cyanogilvie/sockopt/releases"
       }
     ],
-    "tags": ["tcl-socket", "posix", "setsockopt", "getsockopt"],
+    "tags": ["tcl-socket", "posix"],
     "description": "Provides script access to setsockopt and getsockopt for Tcl socket channels"
   },
   {
@@ -4850,7 +4849,7 @@
         "artifacts": "https://github.com/ooa64/tclsevenzip/releases"
       }
     ],
-    "tags": ["tcl-binding", "7zip", "archive", "compression", "decompression"],
+    "tags": ["tcl-binding", "7zip", "archive", "compression"],
     "description": "Tcl binding to the 7zip dynamic library"
   },
   {
