@@ -2637,7 +2637,7 @@
         "artifacts": "https://github.com/aplsimple/hl_tcl/releases"
       }
     ],
-    "tags": ["syntaxhighlighter", "tcl", "tk"],
+    "tags": ["syntaxhighlighter", "tk"],
     "description": "Syntax highlighter of Tcl/Tk code"
   },
   {
@@ -3361,7 +3361,7 @@
         "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/Glyphs"
       }
     ],
-    "tags": ["font", "truetype", "tcl"],
+    "tags": ["font", "truetype"],
     "description": "Tcl library for digging into TrueType font-files."
   },
   {
@@ -3375,7 +3375,7 @@
         "artifacts": "https://sourceforge.net/projects/irrational-numbers/files/tclMuPDF-2.x"
       }
     ],
-    "tags": ["pdf", "tcl", "rendering"],
+    "tags": ["pdf", "rendering"],
     "description": "tclMuPDF is a porting of the MuPDF framework (fast and high-quality rendering of PDF pages)."
   },
   {
@@ -3417,7 +3417,7 @@
         "artifacts": "https://github.com/lamuzzachiodi/tclfpdf/releases"
       }
     ],
-    "tags": ["pdf", "tcl", "pdf-generation"],
+    "tags": ["pdf", "pdf-generation"],
     "description": "Port of tFPDF (PHP) by Ian Back and Tycho Veltmeijer (modified version of FPDF by Olivier Plathey) to Tcl."
   },
   {
@@ -3849,7 +3849,7 @@
         "artifacts": "https://github.com/mittelmark/tsvg/releases"
       }
     ],
-    "tags": ["tcl", "svg"],
+    "tags": ["svg"],
     "description": "Tcl package to create SVG files easily."
   },
   {
@@ -3864,7 +3864,7 @@
         "artifacts": "https://github.com/mittelmark/citer/releases"
       }
     ],
-    "tags": ["tcl", "bibliography", "bibtex"],
+    "tags": ["bibliography", "bibtex"],
     "description": "Tcl package to create bibliographies using Bibtex files."
   },
   {
@@ -4790,7 +4790,7 @@
         "license": "BSD-2-Clause"
       }
     ],
-    "tags": ["tcl", "cairo", "2d", "graphics", "image"],
+    "tags": ["cairo", "2d", "graphics", "image"],
     "description": "A lightweight Cairo binding for Tcl — no Tk required."
   },
   {
@@ -4804,7 +4804,7 @@
         "license": "BSD-2-Clause"
       }
     ],
-    "tags": ["pdf", "pdf-rendering", "tcl"],
+    "tags": ["pdf", "pdf-rendering"],
     "description": "Tcl/Tk binding for PDFium — Google's PDF rendering engine"
   },
   {
