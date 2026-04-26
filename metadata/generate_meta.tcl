@@ -154,38 +154,20 @@ proc process_fossil {url} {
     set base [string trimright $base "/"]
 
     set module_path ""
-    if {[regexp {[?&]name=([^&]+)} $url -> p]} { set module_path $p }
+    if {[regexp {[?&]name=([^&]+)} $url -> p]} {set module_path $p}
 
-    set meta [dict create last_commit {} last_commit_sha {} last_tag "" last_release_date ""]
+    set meta [dict create last_commit {} last_commit_sha {} last_tag "" \
+        last_release_date "" latest_release "none"]
 
-    set api_url "$base/json/timeline?type=ci&limit=$MAX_COMMITS"
-    if {$module_path ne ""} { append api_url "&p=$module_path" }
-
-    set r [http_get $api_url "json"]
-
-    if {[dict get $r code] == 200} {
-        set json [dict get $r json]
-        if {[dict exists $json payload] && [dict exists $json payload timeline]} {
-            set tl [dict get $json payload timeline]
-            foreach entry $tl {
-                set ts [expr {[dict exists $entry timestamp] ? [dict get $entry timestamp] : [dict get $entry mtime]}]
-                dict lappend meta last_commit $ts
-                dict lappend meta last_commit_sha [string range [dict get $entry uuid] 0 9]
-            }
-        }
-    }
-
+    # Github mirror check, prioritize if available for better metadata.
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
         set gh [fetch_github_data $mirror $module_path]
 
-        if {[llength [dict get $meta last_commit]] == 0} {
-            dict set meta last_commit [dict get $gh last_commit]
-            dict set meta last_commit_sha [dict get $gh last_commit_sha]
-        }
-
-        dict set meta archived [dict get $gh archived]
-        dict set meta latest_release [dict get $gh latest_release]
+        dict set meta last_commit       [dict get $gh last_commit]
+        dict set meta last_commit_sha   [dict get $gh last_commit_sha]
+        dict set meta archived          [dict get $gh archived]
+        dict set meta latest_release    [dict get $gh latest_release]
         dict set meta last_release_date [dict get $gh last_release_date]
 
         catch {
@@ -202,6 +184,70 @@ proc process_fossil {url} {
                 set tag_date [string map {T " " Z ""} $tag_date]
                 dict set meta last_release_date $tag_date
             }
+        }
+
+        dict set fossil_cache $url $meta
+        return $meta
+    }
+
+    # 2. Fossil JSON API
+    set api_url "$base/json/timeline/checkin?limit=$MAX_COMMITS"
+    if {$module_path ne ""} {append api_url "&p=$module_path"}
+    set r [http_get $api_url "json"]
+    if {[dict get $r code] == 200} {
+        set json [dict get $r json]
+        if {[dict exists $json payload] && [dict exists $json payload timeline]} {
+            foreach entry [dict get $json payload timeline] {
+                set ts [expr {[dict exists $entry timestamp] \
+                              ? [dict get $entry timestamp] \
+                              : [dict get $entry mtime]}]
+
+                set date [clock format [expr {int($ts)}] \
+                          -format "%Y-%m-%d %H:%M:%S" -gmt 1]
+                dict lappend meta last_commit     $date
+                dict lappend meta last_commit_sha [string range [dict get $entry uuid] 0 9]
+            }
+        }
+        set tag_r [http_get "$base/json/tag/list" "json"]
+        if {[dict get $tag_r code] == 200} {
+            catch {
+                set tag_list [dict get [dict get $tag_r json] payload]
+                set latest_tag [get_latest_tag $tag_list]
+                dict set meta last_tag $latest_tag
+                dict set meta latest_release [expr {$latest_tag ne "" ? $latest_tag : "none"}]
+            }
+        }
+    } else {
+        # 3.  Fossil JSON not available, fallback RSS.
+        set rss_url "$base/timeline.rss?n=$MAX_COMMITS&y=ci"
+        set rss_r [http_get $rss_url]
+
+        if {[dict get $rss_r code] == 200} {
+            set body [dict get $rss_r body]
+            foreach item [regexp -all -inline {<item>.*?</item>} $body] {
+                if {[regexp {<pubDate>(.*?)</pubDate>} $item -> pub_date] &&
+                    [regexp {/info/([0-9a-f]{10,})} $item -> uuid]} {
+                    catch {
+                        set epoch [clock scan $pub_date]
+                        set date  [clock format $epoch -format "%Y-%m-%d %H:%M:%S" -gmt 1]
+                        dict lappend meta last_commit $date
+                        dict lappend meta last_commit_sha [string range $uuid 0 9]
+                    }
+                }
+            }
+        }
+        set tag_page [http_get "$base/taglist"]
+        if {[dict get $tag_page code] == 200} {
+            set tag_list {}
+            foreach line [split [dict get $tag_page body] "\n"] {
+                if {[regexp {/info/[^"]+">([^<]+)</a>} $line -> tag]} {
+                    if {[regexp {\d} $tag]} { lappend tag_list $tag }
+                }
+            }
+
+            set latest_tag [get_latest_tag $tag_list]
+            dict set meta last_tag $latest_tag
+            dict set meta latest_release [expr {$latest_tag ne "" ? $latest_tag : "none"}]
         }
     }
 
