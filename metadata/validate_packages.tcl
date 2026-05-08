@@ -82,7 +82,7 @@ foreach pkg $packages {
         
         foreach src $srcs {
             if {![dict exists $src url] || [dict get $src url] eq ""} {
-                lappend errors "$pkg_name: source #$src_idx missing required 'url'"
+                lappend errors "$pkg_name: source '$src_idx' missing required 'url'"
             } else {
                 set url [dict get $src url]
                 if {[info exists seen_urls($url)]} {
@@ -96,7 +96,7 @@ foreach pkg $packages {
 
             if {![dict exists $src method] || [dict get $src method] eq ""} {
                 if {$is_new} {
-                    lappend new_warnings "$pkg_name: source #$src_idx missing 'method' (optional but recommended)"
+                    lappend new_warnings "$pkg_name: source '$src_idx' missing 'method' (optional but recommended)"
                 }
             }
 
