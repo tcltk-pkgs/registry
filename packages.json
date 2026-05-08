@@ -4947,5 +4947,64 @@
     ],
     "tags": ["crypto", "authentication"],
     "description": "Time-based One-Time Password (TOTP) library for Tcl - RFC 6238 implementation."
+  },
+  {
+    "name": "resolve",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/resolve",
+        "method": "git",
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["name-resolution", "posix", "dns"],
+    "description": "Advanced name resolution for Tcl scripts."
+  },
+  {
+    "name": "pdf4tcl",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/pdf4tcl",
+        "method": "git",
+        "author": "gregnix",
+        "license": "Tcl/Tk License"
+      },
+      {
+        "url": "https://pdf4tcl.sourceforge.net",
+        "author": ["Peter Spjuth", "Yaroslav Schekin", "Frank Richter", "Jens Pönisch"],
+        "web": "https://pdf4tcl.sourceforge.net/pdf4tcl.html",
+        "artifacts": "https://sourceforge.net/projects/pdf4tcl/files",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["pdf", "pdf-generation"],
+    "description": "A tcl package for generating pdf files."
+  },
+  {
+    "name": "tfast",
+    "sources": [
+      {
+        "url": "https://github.com/mobilemindtech/tfast",
+        "method": "git",
+        "author": "Ricardo Bocchi",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["web", "framework", "http"],
+    "description": "Tcl Web Framework."
+  },
+  {
+    "name": "fork",
+    "sources": [
+      {
+        "url": "https://github.com/rauleli/fork",
+        "method": "git",
+        "author": "rauleli",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["tclx", "posix"],
+    "description": "Tcl Process Management Library - Structured fork/pipe handling for TclX."
   }
 ]
