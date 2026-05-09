@@ -52,14 +52,14 @@ set idx 0
 array set seen_names {}
 
 foreach pkg $packages {
-    set pkg_name "Package #$idx"
+    set pkg_name "Package $idx"
     set is_new 1
     
     if {[dict exists $pkg name]} {
         set pkg_name [dict get $pkg name]
 
         if {[info exists seen_names($pkg_name)]} {
-            lappend errors "Duplicate package name: '$pkg_name' (appears at index #$seen_names($pkg_name) and #$idx)"
+            lappend errors "Duplicate package name: '$pkg_name' (appears at index '$seen_names($pkg_name)' and '$idx')"
         } else {
             set seen_names($pkg_name) $idx
         }
