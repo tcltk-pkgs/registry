@@ -4786,7 +4786,7 @@
         "url": "https://github.com/gregnix/tclmcairo",
         "method": "git",
         "extension": true,
-        "author": "gregnix",
+        "author": "Gregor Ebbing",
         "license": "BSD-2-Clause"
       }
     ],
@@ -4800,7 +4800,7 @@
         "url": "https://github.com/gregnix/tclpdfium",
         "method": "git",
         "extension": true,
-        "author": "gregnix",
+        "author": "Gregor Ebbing",
         "license": "BSD-2-Clause"
       }
     ],
@@ -4954,6 +4954,7 @@
       {
         "url": "https://github.com/cyanogilvie/resolve",
         "method": "git",
+        "extension": true,
         "author": "Cyan Ogilvie",
         "license": "Tcl/Tk License"
       }
@@ -4967,7 +4968,7 @@
       {
         "url": "https://github.com/gregnix/pdf4tcl",
         "method": "git",
-        "author": "gregnix",
+        "author": "Gregor Ebbing",
         "license": "Tcl/Tk License"
       },
       {
