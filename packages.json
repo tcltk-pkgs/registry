@@ -5007,5 +5007,145 @@
     ],
     "tags": ["tclx", "posix"],
     "description": "Tcl Process Management Library - Structured fork/pipe handling for TclX."
+  },
+  {
+    "name": "tclcurl-ng",
+    "sources": [
+      {
+        "url": "https://github.com/mxmanghi/tclcurl-ng",
+        "method": "git",
+        "extension": true,
+        "author": "Massimo Manghi",
+        "license": "BSD",
+        "artifacts": "https://github.com/mxmanghi/tclcurl-ng/releases"
+      }
+    ],
+    "tags": ["curl", "http"],
+    "description": "TclCurl package to provide Curl support in Tcl."
+  },
+  {
+    "name": "tcl-syslog",
+    "sources": [
+      {
+        "url": "https://github.com/mxmanghi/tcl-syslog",
+        "method": "git",
+        "extension": true,
+        "author": "Massimo Manghi",
+        "license": "GPL-3.0",
+        "artifacts": "https://github.com/mxmanghi/tcl-syslog/releases"
+      }
+    ],
+    "tags": ["unix", "syslog"],
+    "description": "Tcl interface to Unix syslog facility."
+  },
+  {
+    "name": "voo",
+    "sources": [
+      {
+        "url": "https://github.com/aaraujo-main/voo",
+        "method": "git",
+        "author": "Alan Araujo",
+        "license": "MIT",
+        "artifacts": "https://github.com/aaraujo-main/voo/releases"
+      }
+    ],
+    "tags": ["oo", "framework"],
+    "description": "VOO is a lightweight OO framework that composes classes from Tcl's native data structures — lists and dictionaries — rather than introducing additional framework infrastructure. VOO objects are plain Tcl lists with automatic memory management through copy-on-write semantics, eliminating the destructor burden inherent in TclOO and Itcl."
+  },
+  {
+    "name": "mdstack",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/mdstack",
+        "method": "git",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["markdown", "parser"],
+    "description": "Markdown processing stack for Tcl/Tk with parsing, rendering and viewer components."
+  },
+  {
+    "name": "tcllitehtml",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tcllitehtml",
+        "method": "git",
+        "extension": true,
+        "author": "Gregor Ebbing",
+        "license": "BSD"
+      }
+    ],
+    "tags": ["html", "css", "tk"],
+    "description": "HTML/CSS Widget for Tcl/Tk."
+  },
+  {
+    "name": "Gtk4Tcl",
+    "sources": [
+      {
+        "url": "https://github.com/wjgiddings/Gtk4Tcl",
+        "method": "git",
+        "extension": true,
+        "author": "William Giddings",
+        "license": "GPLv3+",
+        "artifacts": "https://github.com/wjgiddings/Gtk4Tcl/releases"
+      }
+    ],
+    "tags": ["gtk4", "gui"],
+    "description": "Gtk4Tcl is a modern, premium Tcl extension for GTK4 using a fast FFI bridge. It offers a Tcl-friendly API with declarative widget creation, reactive MVC data binding, GtkBuilder XML export, custom widgets, and high-performance canvas/OpenGL graphics pipelines. Perfect for building elegant, responsive cross-platform GTK4 desktop applications."
+  },
+  {
+    "name": "chantricks",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/chantricks",
+        "method": "git",
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["channel", "io"],
+    "description": "Tcl channel utilities."
+  },
+  {
+    "name": "names",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/names",
+        "method": "git",
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["naming", "identifier"],
+    "description": "Name generator for Tcl."
+  },
+  {
+    "name": "aws-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/aws-tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Cyan Ogilvie",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["aws", "sdk"],
+    "description": "AWS SDK for Tcl, generated from botocore. Mirrors the AWS CLI. Uses standard AWS CLI configuration (profiles, credentials, region, endpoints)."
+  },
+  {
+    "name": "tclmtls",
+    "sources": [
+      {
+        "url": "https://github.com/chpock/tclmtls",
+        "method": "git",
+        "extension": true,
+        "author": "Kostiantyn Kushnir",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["ssl", "tls"],
+    "description": "tclmtls package to provide SSL/TLS support in Tcl."
   }
 ]
