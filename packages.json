@@ -5080,6 +5080,19 @@
     "description": "HTML/CSS Widget for Tcl/Tk."
   },
   {
+    "name": "ruledtext",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/ruledtext",
+        "method": "git",
+        "author": "Gregor Ebbing",
+        "license": "BSD"
+      }
+    ],
+    "tags": ["pdf", "text", "tk", "widget"],
+    "description": "Notebook paper-style text widgets with horizontal lines, vertical lines, margins, presets, and PDF export."
+  },
+  {
     "name": "Gtk4Tcl",
     "sources": [
       {
