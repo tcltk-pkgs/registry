@@ -5066,6 +5066,19 @@
     "description": "Markdown processing stack for Tcl/Tk with parsing, rendering and viewer components."
   },
   {
+    "name": "docir",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/docir",
+        "method": "git",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["markdown", "parser", "renderer", "documentation"],
+    "description": "Intermediate representation for document format conversion."
+  },
+  {
     "name": "tcllitehtml",
     "sources": [
       {
