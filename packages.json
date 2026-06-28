@@ -5099,11 +5099,37 @@
         "url": "https://github.com/gregnix/ruledtext",
         "method": "git",
         "author": "Gregor Ebbing",
-        "license": "BSD"
+        "license": "MIT"
       }
     ],
     "tags": ["pdf", "text", "tk", "widget"],
     "description": "Notebook paper-style text widgets with horizontal lines, vertical lines, margins, presets, and PDF export."
+  },
+  {
+    "name": "tclutils",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["parser", "encoder", "filter", "utilities"],
+    "description": "Collection of small, pure-Tcl utility modules — coreutils-style text filters, data-format parsers/encoders, binary and checksum helpers, and a few document/PIM helpers."
+  },
+  {
+    "name": "tkutils",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["parser", "encoder", "filter", "utilities"],
+    "description": "Expansive collection of Tcl/Tk GUI widgets."
   },
   {
     "name": "Gtk4Tcl",
