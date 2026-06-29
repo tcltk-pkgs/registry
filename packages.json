@@ -5106,17 +5106,1124 @@
     "description": "Notebook paper-style text widgets with horizontal lines, vertical lines, margins, presets, and PDF export."
   },
   {
-    "name": "tclutils",
+    "name": "tclutils::common",
     "sources": [
       {
         "url": "https://github.com/gregnix/tclutils",
         "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/common.md",
         "author": "Gregor Ebbing",
         "license": "MIT"
       }
     ],
-    "tags": ["parser", "encoder", "filter", "utilities"],
-    "description": "Collection of small, pure-Tcl utility modules — coreutils-style text filters, data-format parsers/encoders, binary and checksum helpers, and a few document/PIM helpers."
+    "tags": ["tclutils", "internal", "shared", "io", "parsing"],
+    "description": "Shared internal library providing file I/O helpers, text splitting, option parsing, and common utility functions used throughout tclutils."
+  },
+  {
+    "name": "tclutils::tucat",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucat.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'cat' utility with optional line numbering for text and files."
+  },
+  {
+    "name": "tclutils::tutac",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutac.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'tac' utility for reversing the order of lines while preserving trailing newlines."
+  },
+  {
+    "name": "tclutils::turev",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/turev.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters", "unicode"],
+    "description": "Pure Tcl implementation of the Unix 'rev' utility for reversing characters in each line with Unicode support."
+  },
+  {
+    "name": "tclutils::tunl",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tunl.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters", "numbering"],
+    "description": "Pure Tcl implementation of the Unix 'nl' utility supporting configurable line numbering styles, formatting, and increments."
+  },
+  {
+    "name": "tclutils::tuseq",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuseq.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "generator", "math"],
+    "description": "Pure Tcl implementation of the Unix 'seq' utility for generating numeric sequences with integer or floating-point increments."
+  },
+  {
+    "name": "tclutils::tuhead",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuhead.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'head' utility for reading the first lines of text streams and files."
+  },
+  {
+    "name": "tclutils::tutail",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutail.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'tail' utility for reading the last lines of text streams and files."
+  },
+  {
+    "name": "tclutils::tuwc",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuwc.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "metrics"],
+    "description": "Pure Tcl implementation of the Unix 'wc' utility for counting lines, words, characters, and bytes."
+  },
+  {
+    "name": "tclutils::tusort",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusort.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "sorting"],
+    "description": "Pure Tcl implementation of the Unix 'sort' utility built on Tcl's native lsort command."
+  },
+  {
+    "name": "tclutils::tutsort",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutsort.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "algorithm", "sorting"],
+    "description": "Pure Tcl implementation of the Unix 'tsort' utility for performing topological sorting with cycle detection."
+  },
+  {
+    "name": "tclutils::tuuniq",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuuniq.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'uniq' utility for filtering adjacent duplicate lines and counting occurrences."
+  },
+  {
+    "name": "tclutils::tucut",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucut.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'cut' utility for extracting fields or character ranges from delimited text."
+  },
+  {
+    "name": "tclutils::tupaste",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupaste.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting"],
+    "description": "Pure Tcl implementation of the Unix 'paste' utility for merging text lines from multiple files or streams."
+  },
+  {
+    "name": "tclutils::tujoin",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tujoin.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "relational"],
+    "description": "Pure Tcl implementation of the Unix 'join' utility for combining sorted text files on matching fields."
+  },
+  {
+    "name": "tclutils::tucomm",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucomm.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "diff"],
+    "description": "Pure Tcl implementation of the Unix 'comm' utility for comparing sorted text files and reporting unique or shared lines."
+  },
+  {
+    "name": "tclutils::tusplit",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusplit.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'split' utility for splitting files by line count or byte size."
+  },
+  {
+    "name": "tclutils::tucsplit",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucsplit.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters", "regex"],
+    "description": "Pure Tcl implementation of the Unix 'csplit' utility for splitting text files using regular expression or pattern matches."
+  },
+  {
+    "name": "tclutils::tufold",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tufold.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting"],
+    "description": "Pure Tcl implementation of the Unix 'fold' utility for wrapping text to a specified output width."
+  },
+  {
+    "name": "tclutils::tuexpand",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuexpand.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting"],
+    "description": "Pure Tcl implementation of the Unix 'expand' and unexpand utilities for converting between tabs and spaces."
+  },
+  {
+    "name": "tclutils::tushuf",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tushuf.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "random"],
+    "description": "Pure Tcl implementation of the Unix 'shuf' utility for randomly shuffling lines with deterministic seed support."
+  },
+  {
+    "name": "tclutils::tucolumn",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucolumn.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting", "layout"],
+    "description": "Pure Tcl implementation of the Unix 'column' utility for aligning delimited tables and formatting text into columns."
+  },
+  {
+    "name": "tclutils::tupr",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupr.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting"],
+    "description": "Pure Tcl implementation of the Unix 'pr' utility for paginating text with configurable headers, columns, and line numbering."
+  },
+  {
+    "name": "tclutils::tutr",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutr.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'tr' utility for translating, deleting, and squeezing characters in text streams."
+  },
+  {
+    "name": "tclutils::tused",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tused.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "filters", "regex"],
+    "description": "Pure Tcl implementation of a sed-compatible stream editor supporting substitutions, line selection, deletion, and basic editing commands."
+  },
+  {
+    "name": "tclutils::tugrep",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tugrep.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "search", "filters"],
+    "description": "Pure Tcl implementation of the Unix 'grep' utility supporting regular expressions, fixed strings, and configurable context output."
+  },
+  {
+    "name": "tclutils::tuawk",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuawk.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "processing", "filters", "awk"],
+    "description": "Pure Tcl awk-style text processor executing Tcl expressions and scripts for record- and field-based data processing."
+  },
+  {
+    "name": "tclutils::tuxargs",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuxargs.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "execution"],
+    "description": "Pure Tcl implementation of the Unix 'xargs' utility for building and executing commands from standard input."
+  },
+  {
+    "name": "tclutils::tufmt",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tufmt.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "formatting"],
+    "description": "Pure Tcl implementation of the Unix 'fmt' utility for reflowing paragraphs while preserving indentation."
+  },
+  {
+    "name": "tclutils::tucmp",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucmp.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "coreutils", "diff"],
+    "description": "Pure Tcl implementation of the Unix 'cmp' utility for comparing binary files and reporting the first detected difference."
+  },
+  {
+    "name": "tclutils::tudiff",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tudiff.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "diff", "lcs"],
+    "description": "Pure Tcl implementation of the Unix 'diff' utility supporting unified, context, normal, and directory comparisons."
+  },
+  {
+    "name": "tclutils::tupatch",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupatch.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "coreutils", "diff", "patch"],
+    "description": "Pure Tcl implementation of the Unix 'patch' utility for applying unified diff patches to text files."
+  },
+  {
+    "name": "tclutils::tubin",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tubin.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "parser", "packer", "stream"],
+    "description": "Pure Tcl binary utility library providing readers, writers, packing, unpacking, and sequential access to binary data."
+  },
+  {
+    "name": "tclutils::tuhexdump",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuhexdump.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "coreutils", "hex", "layout"],
+    "description": "Pure Tcl implementation of the Unix 'hexdump' utility for displaying binary data in hexadecimal and ASCII formats."
+  },
+  {
+    "name": "tclutils::tuod",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuod.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "coreutils", "hex", "layout"],
+    "description": "Pure Tcl implementation of the Unix 'od' utility for displaying binary data in octal, hexadecimal, decimal, and character formats."
+  },
+  {
+    "name": "tclutils::tuhexedit",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuhexedit.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "patch", "search", "fileutils"],
+    "description": "Pure Tcl utility for inspecting, searching, modifying, and patching binary files and byte streams."
+  },
+  {
+    "name": "tclutils::tubase64",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tubase64.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "encoding", "binary", "data-format"],
+    "description": "Pure Tcl Base64 encoder and decoder for strings, binary data, and files."
+  },
+  {
+    "name": "tclutils::tucrc",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucrc.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "cryptography", "checksum", "zlib"],
+    "description": "Pure Tcl checksum library providing CRC-32 and Adler-32 algorithms compatible with zlib."
+  },
+  {
+    "name": "tclutils::tuhash",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuhash.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "cryptography", "hash", "sha256", "md5"],
+    "description": "Pure Tcl cryptographic hash library providing SHA-256, SHA-1, and MD5 hashing for strings and files."
+  },
+  {
+    "name": "tclutils::tustrings",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tustrings.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "coreutils", "text", "extraction"],
+    "description": "Pure Tcl implementation of the Unix 'strings' utility for extracting printable text from binary files."
+  },
+  {
+    "name": "tclutils::tuiconv",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuiconv.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "encoding", "charset"],
+    "description": "Pure Tcl character encoding conversion library supporting Tcl encodings for strings and files."
+  },
+  {
+    "name": "tclutils::tucode",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucode.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "encoding", "text"],
+    "description": "Pure Tcl text encoding utilities for escaping, unescaping, and converting textual representations."
+  },
+  {
+    "name": "tclutils::tubase32",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tubase32.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "encoding", "binary", "data-format", "rfc4648"],
+    "description": "Pure Tcl data format encoder and decoder supporting RFC 4648 compliant Base32 and Base32hex schemas."
+  },
+  {
+    "name": "tclutils::tuimage",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuimage.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "graphics", "metadata", "mime"],
+    "description": "Pure Tcl image header parsing tool extracting encoding format, MIME type, and spatial dimensions from bytes or Data URIs."
+  },
+  {
+    "name": "tclutils::tupng",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupng.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "graphics", "png", "encoding"],
+    "description": "Pure Tcl PNG encoding engine generating Indexed, RGB, RGBA, and Grayscale image streams utilizing core zlib compression layers."
+  },
+  {
+    "name": "tclutils::tupngdraw",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupngdraw.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "png", "toolkit"],
+    "description": "Immediate-mode 2D graphics buffer engine managing anti-aliased vector geometric shapes, fills, strokes, and bitmap text blocks."
+  },
+  {
+    "name": "tclutils::tutablepng",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutablepng.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "png", "layout"],
+    "description": "Tabular layout raster renderer converting data rows into heavily styled PNG tables built directly onto canvas views."
+  },
+  {
+    "name": "tclutils::tumonthpng",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tumonthpng.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "png", "calendar"],
+    "description": "Renders chronological month, quarter, or year calendar matrices directly to styled PNG canvas sheets using customizable themes."
+  },
+  {
+    "name": "tclutils::tucodepng",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucodepng.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "png", "charset"],
+    "description": "Renders structural character-code matrices and codepage lookup sheets into visual PNG grids based on tucode datasets."
+  },
+  {
+    "name": "tclutils::tucolor",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucolor.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "color", "x11", "rgb", "conversion"],
+    "description": "Pure Tcl, GUI-free named-color database and conversion utility resolving color names, hex strings, and RGB/HSV triples using embedded CSS3/X11 specifications."
+  },
+  {
+    "name": "tclutils::tupngpad",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupngpad.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "png", "tool", "sprites"],
+    "description": "Image asset normalization utility to trim transparent boundaries, scale, pad, or flatten canvas elements into uniform dimensions."
+  },
+  {
+    "name": "tclutils::tusvg",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusvg.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "svg", "vector"],
+    "description": "Pure Tcl standalone vector SVG generator orchestrating paths, text elements, and linear/radial gradients, embedding an icon toolkit."
+  },
+  {
+    "name": "tclutils::tucsv",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucsv.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "csv", "data-format", "text"],
+    "description": "Pure Tcl CSV parser and writer supporting quoted fields, configurable delimiters, and file or string processing."
+  },
+  {
+    "name": "tclutils::tujson",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tujson.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "json", "serialization", "data-format"],
+    "description": "Pure Tcl JSON parser and serializer supporting objects, arrays, and native Tcl data structures."
+  },
+  {
+    "name": "tclutils::tuxml",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuxml.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "xml", "serialization", "data-format"],
+    "description": "Pure Tcl XML parser and writer supporting structured documents and element-based processing."
+  },
+  {
+    "name": "tclutils::tusqlite",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusqlite.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "sql", "sqlite", "helper"],
+    "description": "NULL-safe helper wrapper translating database handle outcomes directly into lists of key-value dictionaries and safe identifier tokens."
+  },
+  {
+    "name": "tclutils::tummdb",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tummdb.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "binary", "geolocation", "mmdb"],
+    "description": "Pure Tcl binary data format reader optimized to extract geolocation metadata entries from MaxMind DB (.mmdb) datasets."
+  },
+  {
+    "name": "tclutils::tufile",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tufile.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "magic", "mime", "fileutils"],
+    "description": "File header magic-signature inspector tracing type flags and evaluating file extensions against mismatch matrices."
+  },
+  {
+    "name": "tclutils::tufind",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tufind.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "fileutils", "crawler", "find"],
+    "description": "Portable filesystem tree iterator and discovery utility designed to locate directory hierarchy elements dynamically."
+  },
+  {
+    "name": "tclutils::tustat",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tustat.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "fileutils", "metadata"],
+    "description": "File stat layout utility aggregating and formatting filesystem descriptor records into structured key-value maps."
+  },
+  {
+    "name": "tclutils::tutee",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tutee.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "io", "fileutils"],
+    "description": "Tee-like output writing stream helper duplicating data payloads across multiple independent file channels."
+  },
+  {
+    "name": "tclutils::tuterm",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuterm.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "terminal", "ansi", "formatting"],
+    "description": "ANSI terminal styling toolkit providing SGR text attributes, 16/256/truecolor support, an ANSI sequence stripper, and Windows VT-mode initialization honoring NO_COLOR."
+  },
+  {
+    "name": "tclutils::tupath",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupath.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "path", "fileutils"],
+    "description": "Filesystem path tracking toolkit providing lexical cleanup routines, relative offset paths, and common root path evaluations."
+  },
+  {
+    "name": "tclutils::tusize",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusize.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "metrics", "fileutils"],
+    "description": "Recursive directory size calculator translating raw total byte metrics into human-readable notation formats."
+  },
+  {
+    "name": "tclutils::tuopen",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuopen.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "execution", "fileutils"],
+    "description": "Cross-platform execution router opening targeted URLs or files through default platform application handlers."
+  },
+  {
+    "name": "tclutils::tufuzzy",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tufuzzy.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "metrics", "string", "fuzzy"],
+    "description": "String metrics engine computing Levenshtein character edit distances, substring variance, sequence similarities, and subsequence matrices."
+  },
+  {
+    "name": "tclutils::tuagrep",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuagrep.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "search", "filters", "fuzzy"],
+    "description": "Approximate grep filtering engine utilizing tufuzzy matching metrics to process patterned string lines."
+  },
+  {
+    "name": "tclutils::tunotes",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tunotes.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "pim", "notes", "json"],
+    "description": "Value-based hierarchical note storage suite tracking note records, cascade deletions, and native tujson persistence layers."
+  },
+  {
+    "name": "tclutils::tuical",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuical.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "icalendar", "rfc5545", "calendar"],
+    "description": "RFC 5545 compliant recursive iCalendar framework driving structured reading, component tree navigation, and calendar folding actions."
+  },
+  {
+    "name": "tclutils::tuini",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuini.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "ini", "configuration", "data-format"],
+    "description": "Pure Tcl INI file parser and writer supporting sections, keys, values, and configuration management."
+  },
+  {
+    "name": "tclutils::tuvcard",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuvcard.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "vcard", "rfc6350", "pim"],
+    "description": "RFC 6350 and RFC 2426 compliant vCard contact registry reader and writer enforcing structured text row folding constraints."
+  },
+  {
+    "name": "tclutils::tuldif",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuldif.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "ldif", "rfc2849", "pim"],
+    "description": "RFC 2849 compliant LDIF directory metadata framework processing continuation-line unfolding and base64 text strings via tubase64."
+  },
+  {
+    "name": "tclutils::tubookmark",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tubookmark.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "html", "browser", "pim"],
+    "description": "Netscape HTML bookmark file parsing and serialization tool managing folder blocks and descriptor tags via tuxml primitives."
+  },
+  {
+    "name": "tclutils::tumd",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tumd.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "markdown", "html", "helper"],
+    "description": "Markdown utility subset converting CommonMark text segments into structural HTML rows, parsing table-of-content grids, and frontmatter hooks."
+  },
+  {
+    "name": "tclutils::tupdf",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupdf.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "binary", "pdf", "inspector"],
+    "description": "Read-only PDF structure scan helper executing ZUGFeRD and Factur-X file metadata identification heuristics."
+  },
+  {
+    "name": "tclutils::tuodf",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuodf.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "data-format", "odf", "document", "helper"],
+    "description": "Minimal document toolkit handling core creation and reading cycles over simple ODT flat text document objects."
+  },
+  {
+    "name": "tclutils::tucal",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tucal.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "calendar", "generator"],
+    "description": "Cal-like calendar text block generator outputting styled matrices tracking localized month, year, and ISO week counts."
+  },
+  {
+    "name": "tclutils::tudate",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tudate.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "time", "date", "helper"],
+    "description": "Flexible tracking toolkit extending clock logic for advanced date formatting, interval math calculations, and human relative intervals."
+  },
+  {
+    "name": "tclutils::tuurl",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuurl.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "encoding", "url", "web"],
+    "description": "Pure Tcl URL encoding and decoding utilities for strings, query parameters, and URI components."
+  },
+  {
+    "name": "tclutils::tuuuid",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuuuid.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "text", "cryptography", "uuid", "generator"],
+    "description": "UUID structural token generator backing version 4 and version 7 identifier compilation alongside system validation predicates."
   },
   {
     "name": "tkutils",
