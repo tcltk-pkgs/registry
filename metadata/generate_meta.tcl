@@ -49,9 +49,14 @@ proc parse_github_repo {url} {
 proc http_get {url {type "raw"} {retry 2}} {
     global env TIMEOUT
 
-    set hdrs [list -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28"]
-    if {[info exists env(GITHUB_TOKEN)]} {
-        lappend hdrs -H "Authorization: Bearer $env(GITHUB_TOKEN)"
+    set hdrs {}
+
+    if {[string match "*api.github.com*" $url]} {
+        lappend hdrs -H "Accept: application/vnd.github+json"
+        lappend hdrs -H "X-GitHub-Api-Version: 2022-11-28"
+        if {[info exists env(GITHUB_TOKEN)]} {
+            lappend hdrs -H "Authorization: Bearer $env(GITHUB_TOKEN)"
+        }
     }
 
     set cmd [list curl -s -L --no-keepalive --max-time $TIMEOUT {*}$hdrs -w "\n%{http_code}" $url]
@@ -64,8 +69,8 @@ proc http_get {url {type "raw"} {retry 2}} {
     set code [string trim [lindex $lines end]]
     set body [string trim [join [lrange $lines 0 end-1] "\n"]]
 
-    if {$code in {502 503} && $retry > 0} {
-        after 1000
+    if {$code in {502 503 429} && $retry > 0} {
+        after 1500
         return [http_get $url $type [expr {$retry - 1}]]
     }
 
@@ -469,6 +474,7 @@ proc main {} {
     set root [huddle::json2huddle $data]
     set total [llength [huddle get_stripped $root]]
     set huddle_packages {}
+    set reachability_cache [dict create]
 
     set idx 0
     set new_count 0
@@ -511,9 +517,16 @@ proc main {} {
 
             puts "  - Checking source: $url (Method: $method)"
 
-            set check [http_get $url]
-            set code [dict get $check code]
-            set reachable [expr {$code >= 200 && $code < 400}]
+            if {[dict exists $reachability_cache $url]} {
+                set reachable [dict get $reachability_cache $url]
+                set code "CACHED"
+            } else {
+                set check [http_get $url]
+                set code [dict get $check code]
+                set reachable [expr {$code >= 200 && $code < 400}]
+
+                dict set reachability_cache $url $reachable
+            }
 
             set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit {} last_tag "" last_commit_sha {}]
 
