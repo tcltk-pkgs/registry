@@ -6917,12 +6917,881 @@
       {
         "url": "https://github.com/gregnix/tkutils",
         "method": "git",
+        "web": "https://github.com/gregnix/tkutils/blob/main/README.md",
         "author": "Gregor Ebbing",
         "license": "MIT"
       }
     ],
-    "tags": ["parser", "encoder", "filter", "utilities"],
+    "tags": ["tkutils", "tk", "parser", "encoder", "filter", "utilities"],
     "description": "Expansive collection of Tcl/Tk GUI widgets."
+  },
+  {
+    "name": "tkutils::tkuaction",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuaction.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ui", "helper"],
+    "description": "Tk action abstraction: define a UI action once and keep any number of registered widgets in sync."
+  },
+  {
+    "name": "tkutils::tkuballoon",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuballoon.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "tooltip", "ui"],
+    "description": "Tk balloon tooltip widget attaching hover-delay popups to any widget."
+  },
+  {
+    "name": "tkutils::tkubase64",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkubase64.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "encoding", "binary"],
+    "description": "Tk Base64 encode/decode panel widget built on tclutils::tubase64."
+  },
+  {
+    "name": "tkutils::tkubind",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkubind.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "keybinding", "input"],
+    "description": "Tk platform-aware keyboard and mouse binding helper with an edit-widget focus guard."
+  },
+  {
+    "name": "tkutils::tkucal",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkucal.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "calendar", "date"],
+    "description": "Tk calendar view widget built on tclutils::tucal with month navigation and optional week numbers."
+  },
+  {
+    "name": "tkutils::tkucanvaspng",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkucanvaspng.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "canvas", "graphics", "png"],
+    "description": "Tk canvas-to-PNG exporter built on tclutils::tupngdraw."
+  },
+  {
+    "name": "tkutils::tkucontextmenu",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkucontextmenu.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "menu", "ui"],
+    "description": "Tk declarative right-click context menu widget with command, check, radio, cascade and icon support."
+  },
+  {
+    "name": "tkutils::tkucsv",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkucsv.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "csv", "data-format"],
+    "description": "Tk CSV table viewer built on tclutils::tucsv."
+  },
+  {
+    "name": "tkutils::tkudateentry",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkudateentry.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "date", "input"],
+    "description": "Tk date entry widget with a drop-down calendar picker and ISO date accessors."
+  },
+  {
+    "name": "tkutils::tkudavaccount",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkudavaccount.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "http", "webdav", "caldav", "carddav"],
+    "description": "Tk DAV account form widget with a Test Connection button built on tclutils::tudav."
+  },
+  {
+    "name": "tkutils::tkudavbrowser",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkudavbrowser.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "http", "webdav", "caldav", "carddav"],
+    "description": "Tk CalDAV/CardDAV server navigation pane built on tclutils::tudav."
+  },
+  {
+    "name": "tkutils::tkudialog",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkudialog.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "dialog", "ui"],
+    "description": "Tk dialog builder with selectable and copyable message text, replacing tk_messageBox."
+  },
+  {
+    "name": "tkutils::tkudiff",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkudiff.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "diff", "text"],
+    "description": "Tk line diff viewer built on tclutils::tudiff."
+  },
+  {
+    "name": "tkutils::tkueditor",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkueditor.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "text", "editor"],
+    "description": "Tk text editor widget with encoding-aware file I/O, search and replace, optional toolbar and status bar."
+  },
+  {
+    "name": "tkutils::tkufiletree",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkufiletree.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "filesystem", "fileutils"],
+    "description": "Tk lazy file-system tree widget built on tkutils::tkutree with on-demand expansion and glob filtering."
+  },
+  {
+    "name": "tkutils::tkufilterbar",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkufilterbar.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "search", "filters"],
+    "description": "Tk per-column filter bar widget for spreadsheet-style multi-column filtering."
+  },
+  {
+    "name": "tkutils::tkuform",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuform.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "form", "input"],
+    "description": "Tk declarative form widget building labelled input forms from a field spec."
+  },
+  {
+    "name": "tkutils::tkufuzzy",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkufuzzy.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "search", "fuzzy"],
+    "description": "Tk incremental fuzzy filter widget built on tclutils::tufuzzy."
+  },
+  {
+    "name": "tkutils::tkuhexedit",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuhexedit.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "binary", "hex"],
+    "description": "Tk hex viewer and editor widget for binary file inspection and small length-preserving patches."
+  },
+  {
+    "name": "tkutils::tkuical",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuical.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "calendar", "icalendar", "data-format"],
+    "description": "Tk iCalendar VEVENT viewer and editor widget built on tclutils::tuical."
+  },
+  {
+    "name": "tkutils::tkuicon",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuicon.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "graphics", "svg", "icon"],
+    "description": "Tk SVG and PNG icon loader with a built-in icon set generated via tclutils::tusvg."
+  },
+  {
+    "name": "tkutils::tkuimage",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuimage.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "graphics", "image"],
+    "description": "Tk image helper and scrollable zoomable viewer widget with optional imgtools acceleration."
+  },
+  {
+    "name": "tkutils::tkuini",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuini.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ini", "configuration"],
+    "description": "Tk two-pane INI viewer and editor widget built on tclutils::tuini."
+  },
+  {
+    "name": "tkutils::tkujson",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkujson.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "json", "data-format"],
+    "description": "Tk JSON tree viewer widget built on tclutils::tujson."
+  },
+  {
+    "name": "tkutils::tkukeynav",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkukeynav.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "input", "helper"],
+    "description": "Tk keyboard focus navigation helper with Tab traversal and Return-to-next-field form ergonomics."
+  },
+  {
+    "name": "tkutils::tkulabeled",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkulabeled.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "input", "helper"],
+    "description": "Tk labeled input composite combining a label with an entry, combo, spin, check or text control."
+  },
+  {
+    "name": "tkutils::tkulayoutcanvas",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkulayoutcanvas.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "canvas", "layout"],
+    "description": "Tk visual block layout designer on a canvas with millimetre grid snap and a properties panel."
+  },
+  {
+    "name": "tkutils::tkuldif",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuldif.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ldif", "data-format", "pim"],
+    "description": "Tk LDIF entry viewer and editor widget built on tclutils::tuldif."
+  },
+  {
+    "name": "tkutils::tkuload",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuload.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ui", "helper"],
+    "description": "Tk loader building a live widget tree from a tkudesigner .tkd layout file."
+  },
+  {
+    "name": "tkutils::tkumarquee",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkumarquee.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "canvas", "input"],
+    "description": "Tk rubber-band marquee selection helper for drag-to-select regions on a canvas."
+  },
+  {
+    "name": "tkutils::tkumd",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkumd.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "markdown", "text"],
+    "description": "Tk Markdown outline viewer widget built on tclutils::tumd."
+  },
+  {
+    "name": "tkutils::tkumdview",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkumdview.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "markdown", "text"],
+    "description": "Tk Markdown viewer widget built on tclutils::tumd with a headings outline and rendered HTML preview."
+  },
+  {
+    "name": "tkutils::tkumonthcanvas",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkumonthcanvas.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "calendar", "canvas"],
+    "description": "Tk canvas calendar toolkit drawing month, quarter and year views via the tical library."
+  },
+  {
+    "name": "tkutils::tkunotes",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkunotes.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "pim", "data-format"],
+    "description": "Tk hierarchical notes widget with a tree, title/tags/content editor and JSON persistence."
+  },
+  {
+    "name": "tkutils::tkunumentry",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkunumentry.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "input", "numbers"],
+    "description": "Tk numeric entry widget with input validation, fixed decimals and optional min/max clamping."
+  },
+  {
+    "name": "tkutils::tkupdfinspect",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkupdfinspect.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "pdf", "binary"],
+    "description": "Tk read-only PDF structure inspector widget built on tclutils::tupdf."
+  },
+  {
+    "name": "tkutils::tkurender",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkurender.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ui", "rendering"],
+    "description": "Tk shared render engine for tkudesigner and tkuload with a widget catalogue and live ttk render pipeline."
+  },
+  {
+    "name": "tkutils::tkuscrolledframe",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuscrolledframe.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "layout", "scroll"],
+    "description": "Tk scrollable frame container wrapping scrollutil with horizontal and vertical scroll support."
+  },
+  {
+    "name": "tkutils::tkusearchbar",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkusearchbar.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "search", "input"],
+    "description": "Tk search bar widget with a debounced callback, clear button and optional filter drop-down."
+  },
+  {
+    "name": "tkutils::tkusqlite",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkusqlite.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "database", "sqlite"],
+    "description": "Tk SQLite table browser widget."
+  },
+  {
+    "name": "tkutils::tkustatus",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkustatus.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ui", "helper"],
+    "description": "Tk status bar widget with a main message, named fields, a progress bar and a flash message."
+  },
+  {
+    "name": "tkutils::tkustrings",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkustrings.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "binary", "text"],
+    "description": "Tk printable-strings viewer widget built on tclutils::tustrings."
+  },
+  {
+    "name": "tkutils::tkutablelist",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutablelist.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "megawidget"],
+    "description": "Tk multi-column table widget built on Tablelist with sorting, editing, hierarchy and a footer row."
+  },
+  {
+    "name": "tkutils::tkutags",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutags.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "input", "ui"],
+    "description": "Tk tag editor widget showing tags as removable chips with an input for adding new ones."
+  },
+  {
+    "name": "tkutils::tkutical",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutical.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "calendar", "icalendar"],
+    "description": "Tk month and week calendar widget wrapping the tical library with day selection and holiday support."
+  },
+  {
+    "name": "tkutils::tkutimeentry",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutimeentry.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "input", "time"],
+    "description": "Tk time entry widget with hour and minute spinboxes and an optional seconds spinbox."
+  },
+  {
+    "name": "tkutils::tkutlclip",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlclip.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "clipboard"],
+    "description": "Tk tablelist clipboard helper copying rows as TSV or CSV."
+  },
+  {
+    "name": "tkutils::tkutlfind",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlfind.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "search"],
+    "description": "Tk tablelist incremental find helper with cell highlighting and next/prev stepping."
+  },
+  {
+    "name": "tkutils::tkutlfmt",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlfmt.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "formatting"],
+    "description": "Tk tablelist per-column display formatter for numbers, currencies, percentages and dates."
+  },
+  {
+    "name": "tkutils::tkutlfooter",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlfooter.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "helper"],
+    "description": "Tk tablelist synced footer row with auto-sum and auto-aggregate support."
+  },
+  {
+    "name": "tkutils::tkutlsort",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlsort.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "sorting"],
+    "description": "Tk tablelist type-aware column sort configurator supporting text, numeric and currency values."
+  },
+  {
+    "name": "tkutils::tkutlstate",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutlstate.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "helper"],
+    "description": "Tk tablelist column layout persistence helper saving and restoring widths, order and sort state."
+  },
+  {
+    "name": "tkutils::tkutltools",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutltools.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "megawidget"],
+    "description": "Tk umbrella package loading the full tablelist extension family."
+  },
+  {
+    "name": "tkutils::tkutltree",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutltree.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "table", "tree"],
+    "description": "Tk tablelist nested data converter with round-trip fromData/toData and free column mapping."
+  },
+  {
+    "name": "tkutils::tkutodo",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutodo.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "calendar", "icalendar", "pim"],
+    "description": "Tk VTODO task-list widget built on tclutils::tuical with toggleable done state."
+  },
+  {
+    "name": "tkutils::tkutoolbar",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutoolbar.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "ui", "toolbar"],
+    "description": "Tk toolbar widget with buttons, toggles, dropdowns, separators and theme-native styling."
+  },
+  {
+    "name": "tkutils::tkutree",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkutree.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "tree", "ui"],
+    "description": "Tk thin ttk::treeview wrapper for hierarchical data with optional columns and scrollbar."
+  },
+  {
+    "name": "tkutils::tkuvalidate",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuvalidate.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "validation", "input"],
+    "description": "Tk inline validation feedback widget for entries and combos using tclutils::tuvalidate predicates."
+  },
+  {
+    "name": "tkutils::tkuvcard",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuvcard.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "pim", "vcard", "data-format"],
+    "description": "Tk vCard contact viewer and editor widget built on tclutils::tuvcard with an optional photo pane."
+  },
+  {
+    "name": "tkutils::tkuwheel",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuwheel.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "scroll", "input"],
+    "description": "Tk mouse-wheel redirect helper forwarding wheel events to a scrollable target widget."
+  },
+  {
+    "name": "tkutils::tkuxml",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuxml.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "xml", "data-format"],
+    "description": "Tk XML tree viewer widget parsed by tDOM."
+  },
+  {
+    "name": "tkutils::tkuzip",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tkutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tkutils/tree/main/docs/tkuzip.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tkutils", "tk", "widget", "archive", "zip"],
+    "description": "Tk ZIP archive browser widget built on tclutils::tuzip."
   },
   {
     "name": "Gtk4Tcl",
