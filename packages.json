@@ -5705,7 +5705,7 @@
       }
     ],
     "tags": ["tclutils", "encoding", "binary", "data-format", "rfc4648"],
-    "description": "Pure Tcl data format encoder and decoder supporting RFC 4648 compliant Base32 and Base32hex schemas."
+    "description": "Pure Tcl Base32 and Base32hex encoder and decoder compatible with RFC 4648."
   },
   {
     "name": "tclutils::tuimage",
@@ -5719,7 +5719,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "graphics", "metadata", "mime"],
-    "description": "Pure Tcl image header parsing tool extracting encoding format, MIME type, and spatial dimensions from bytes or Data URIs."
+    "description": "Pure Tcl image metadata reader for detecting image formats, MIME types, and dimensions from files or byte streams."
   },
   {
     "name": "tclutils::tupng",
@@ -5733,7 +5733,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "graphics", "png", "encoding"],
-    "description": "Pure Tcl PNG encoding engine generating Indexed, RGB, RGBA, and Grayscale image streams utilizing core zlib compression layers."
+    "description": "Pure Tcl PNG encoder and decoder supporting indexed, grayscale, RGB, and RGBA images." 
   },
   {
     "name": "tclutils::tupngdraw",
@@ -5747,7 +5747,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "toolkit"],
-    "description": "Immediate-mode 2D graphics buffer engine managing anti-aliased vector geometric shapes, fills, strokes, and bitmap text blocks."
+    "description": "Pure Tcl 2D drawing library for creating PNG images with shapes, text, colors, and antialiased rendering."
   },
   {
     "name": "tclutils::tutablepng",
@@ -5761,7 +5761,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "layout"],
-    "description": "Tabular layout raster renderer converting data rows into heavily styled PNG tables built directly onto canvas views."
+    "description": "Pure Tcl table renderer for generating styled PNG tables from rows, columns, and formatted cell content."
   },
   {
     "name": "tclutils::tumonthpng",
@@ -5789,7 +5789,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "charset"],
-    "description": "Renders structural character-code matrices and codepage lookup sheets into visual PNG grids based on tucode datasets."
+    "description": "Pure Tcl renderer for generating character code tables and code page reference charts as PNG images."
   },
   {
     "name": "tclutils::tucolor",
@@ -5803,7 +5803,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "color", "x11", "rgb", "conversion"],
-    "description": "Pure Tcl, GUI-free named-color database and conversion utility resolving color names, hex strings, and RGB/HSV triples using embedded CSS3/X11 specifications."
+    "description": "Pure Tcl color library providing CSS and X11 color names, RGB and HSV conversion, and color lookup utilities."
   },
   {
     "name": "tclutils::tupngpad",
@@ -5817,7 +5817,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "png", "tool", "sprites"],
-    "description": "Image asset normalization utility to trim transparent boundaries, scale, pad, or flatten canvas elements into uniform dimensions."
+    "description": "Pure Tcl PNG utility for trimming, padding, aligning, and normalizing images to a common canvas size."
   },
   {
     "name": "tclutils::tusvg",
@@ -5831,7 +5831,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "svg", "vector"],
-    "description": "Pure Tcl standalone vector SVG generator orchestrating paths, text elements, and linear/radial gradients, embedding an icon toolkit."
+    "description": "Pure Tcl SVG generation library for creating vector graphics with shapes, paths, text, gradients, and reusable definitions."
   },
   {
     "name": "tclutils::tucsv",
@@ -5914,8 +5914,8 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "binary", "magic", "mime", "fileutils"],
-    "description": "File header magic-signature inspector tracing type flags and evaluating file extensions against mismatch matrices."
+    "tags": ["tclutils", "system", "file", "mime", "magic"],
+    "description": "Pure Tcl file type detection library using configurable file signatures, MIME types, and filename extensions." 
   },
   {
     "name": "tclutils::tufind",
@@ -5928,8 +5928,8 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "text", "fileutils", "crawler", "find"],
-    "description": "Portable filesystem tree iterator and discovery utility designed to locate directory hierarchy elements dynamically."
+    "tags": ["tclutils", "system", "filesystem", "search", "coreutils"],
+    "description": "Pure Tcl file finder supporting recursive searches, pattern matching, size filters, and modification time filtering."
   },
   {
     "name": "tclutils::tustat",
@@ -6224,6 +6224,272 @@
     ],
     "tags": ["tclutils", "text", "cryptography", "uuid", "generator"],
     "description": "UUID structural token generator backing version 4 and version 7 identifier compilation alongside system validation predicates."
+  },
+  {
+    "name": "tclutils::tudiagram",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tudiagram.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "rendering", "diagram", "graphics", "renderer"],
+    "description": "Pure Tcl diagram layout and rendering library for node-edge graphs, clusters, and connectors with SVG and PNG output."
+  },
+  {
+    "name": "tclutils::tuflow",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuflow.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "rendering", "diagram", "mermaid", "facade"],
+    "description": "Pure Tcl Mermaid renderer that detects diagram types and dispatches them to the appropriate parser and SVG or PNG renderer."
+  },
+  {
+    "name": "tclutils::tudeploy",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tudeploy.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "internal", "runtime", "package", "helper"],
+    "description": "Pure Tcl deployment helper for locating module roots, loading packages, and resolving bundled application resources."
+  },
+  {
+    "name": "tclutils::tupkgfinder",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupkgfinder.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "internal", "introspection", "helper"],
+    "description": "Pure Tcl package inspection utility for locating installed packages, module paths, versions, and shadowed installations."
+  },
+  {
+    "name": "tclutils::tuappinfo",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuappinfo.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "system", "info", "report", "helper"],
+    "description": "Pure Tcl system information utility reporting runtime, operating system, environment, and loaded package information."
+  },
+  {
+    "name": "tclutils::tupie",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupie.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid", "pie"],
+    "description": "Pure Tcl renderer for Mermaid pie charts with SVG and PNG output, configurable legends, labels, and styling."
+  },
+  {
+    "name": "tclutils::tugantt",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tugantt.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid", "gantt"],
+    "description": "Pure Tcl renderer for Mermaid Gantt charts with task scheduling, milestones, dependencies, and time-axis layout."
+  },
+  {
+    "name": "tclutils::tusequence",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusequence.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid"],
+    "description": "Pure Tcl renderer for Mermaid sequence diagrams supporting participants, messages, activations, loops, and grouped interactions."
+  },
+  {
+    "name": "tclutils::tukanban",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tukanban.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid", "kanban"],
+    "description": "Pure Tcl renderer for Mermaid Kanban boards supporting columns, cards, priorities, metadata, and automatic layout."
+  },
+  {
+    "name": "tclutils::tulayout",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tulayout.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "layout", "geometry", "page", "formatting"],
+    "description": "Pure Tcl page layout library providing millimetre-based geometry, block positioning, sizing, and document layout helpers."
+  },
+  {
+    "name": "tclutils::tupacket",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tupacket.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid"],
+    "description": "Pure Tcl renderer for Mermaid packet-beta diagrams displaying packet layouts, bit fields, and protocol structures."
+  },
+  {
+    "name": "tclutils::tumindmap",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tumindmap.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid", "mindmap"],
+    "description": "Pure Tcl renderer for Mermaid mind maps supporting hierarchical topics, branches, icons, and automatic layout."
+  },
+  {
+    "name": "tclutils::tusankey",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tusankey.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "graphics", "rendering", "mermaid", "sankey"],
+    "description": "Pure Tcl renderer for Mermaid sankey-beta diagrams showing weighted flows between connected nodes."
+  },
+  {
+    "name": "tclutils::tustate",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tustate.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid"],
+    "description": "Pure Tcl parser converting Mermaid stateDiagram definitions into tudiagram models for SVG and PNG rendering."
+  },
+  {
+    "name": "tclutils::tuer",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuer.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid"],
+    "description": "Pure Tcl parser converting Mermaid erDiagram definitions into tudiagram models with crow's-foot cardinality support."
+  },
+  {
+    "name": "tclutils::tuclass",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuclass.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid"],
+    "description": "Pure Tcl parser converting Mermaid classDiagram definitions into tudiagram models for native rendering."
+  },
+  {
+    "name": "tclutils::turequirement",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/turequirement.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid"],
+    "description": "Pure Tcl parser converting Mermaid requirementDiagram definitions into tudiagram models for native rendering."
+  },
+  {
+    "name": "tclutils::tuc4",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tuc4.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid", "c4"],
+    "description": "Pure Tcl parser converting Mermaid C4 diagrams into tudiagram models for SVG and PNG rendering."
+  },
+  {
+    "name": "tclutils::tugit",
+    "sources": [
+      {
+        "url": "https://github.com/gregnix/tclutils",
+        "method": "git",
+        "web": "https://github.com/gregnix/tclutils/tree/main/docs/tugit.md",
+        "author": "Gregor Ebbing",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["tclutils", "diagram", "parser", "mermaid", "gitgraph"],
+    "description": "Pure Tcl parser converting Mermaid gitGraph diagrams into tudiagram models while preserving commit and merge topology."
   },
   {
     "name": "tkutils",
