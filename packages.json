@@ -5326,7 +5326,7 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "encoding", "text"],
+    "tags": ["tclutils", "charset", "text"],
     "description": "Pure Tcl text encoding utilities for escaping, unescaping, and converting textual representations."
   },
   {
@@ -5452,7 +5452,7 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "system", "time", "date", "helper"],
+    "tags": ["tclutils", "system", "time", "date", "helper", "calendar"],
     "description": "Pure Tcl date utility library built on the core clock command, providing flexible parsing, ISO formatting, calendar arithmetic, and human-readable relative phrases."
   },
   {
@@ -5606,7 +5606,7 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "system", "file", "mime", "magic"],
+    "tags": ["tclutils", "system", "fileutils", "mime", "magic"],
     "description": "Pure Tcl file type detection library using configurable file signatures, MIME types, and filename extensions."
   },
   {
@@ -5620,7 +5620,7 @@
         "license": "MIT"
       }
     ],
-    "tags": ["tclutils", "system", "filesystem", "search", "coreutils"],
+    "tags": ["tclutils", "system", "fileutils", "search", "coreutils"],
     "description": "Pure Tcl file finder supporting recursive searches, pattern matching, size filters, and modification time filtering."
   },
   {
