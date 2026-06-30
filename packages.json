@@ -5159,7 +5159,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid architecture-beta diagrams into tudiagram models for native rendering."
+    "description": "Pure Tcl parser converting Mermaid architecture diagrams into tudiagram models for native rendering."
   },
   {
     "name": "tclutils::tuawk",
@@ -5229,7 +5229,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid block-beta diagrams into tudiagram models for native rendering."
+    "description": "Pure Tcl parser converting Mermaid block diagrams into tudiagram models for native rendering."
   },
   {
     "name": "tclutils::tubookmark",
@@ -6153,7 +6153,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid packet-beta diagrams displaying packet layouts, bit fields, and protocol structures."
+    "description": "Pure Tcl renderer for Mermaid packet diagrams displaying packet layouts, bit fields, and protocol structures."
   },
   {
     "name": "tclutils::tupagespec",
@@ -6335,7 +6335,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid radar-beta charts producing polar spider plots with configurable axes in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid radar charts producing polar spider plots with configurable axes in SVG and PNG output."
   },
   {
     "name": "tclutils::turegistry",
@@ -6405,7 +6405,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "sankey"],
-    "description": "Pure Tcl renderer for Mermaid sankey-beta diagrams showing weighted flows between connected nodes."
+    "description": "Pure Tcl renderer for Mermaid sankey diagrams showing weighted flows between connected nodes."
   },
   {
     "name": "tclutils::tused",
@@ -6727,7 +6727,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid treemap-beta diagrams producing squarified, area-proportional nested rectangles in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid treemap diagrams producing squarified, area-proportional nested rectangles in SVG and PNG output."
   },
   {
     "name": "tclutils::tutsort",
@@ -6867,7 +6867,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid xychart-beta bar and line charts with axes and gridlines in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid xychart bar and line charts with axes and gridlines in SVG and PNG output."
   },
   {
     "name": "tclutils::tuzip",
