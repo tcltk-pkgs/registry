@@ -5105,6 +5105,20 @@
     "tags": ["pdf", "text", "tk", "widget"],
     "description": "Notebook paper-style text widgets with horizontal lines, vertical lines, margins, presets, and PDF export."
   },
+{
+  "name": "tclutils",
+  "sources": [
+    {
+      "url": "https://github.com/gregnix/tclutils",
+      "method": "git",
+      "web": "https://github.com/gregnix/tclutils/blob/main/README.md",
+      "author": "Gregor Ebbing",
+      "license": "MIT"
+    }
+  ],
+  "tags": ["tclutils", "modules", "utilities", "collection"],
+  "description": "A pure-Tcl collection of small, self-contained utility modules in Tcl module (.tm) format, each module loads independently with its own package name, tests and documentation."
+  },
   {
     "name": "tclutils::common",
     "sources": [
