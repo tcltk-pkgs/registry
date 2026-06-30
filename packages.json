@@ -7794,7 +7794,7 @@
     "description": "Tk ZIP archive browser widget built on tclutils::tuzip."
   },
   {
-    "name": "Gtk4Tcl",
+    "name": "gtk4tcl",
     "sources": [
       {
         "url": "https://github.com/wjgiddings/Gtk4Tcl",
