@@ -5117,7 +5117,7 @@
       }
     ],
     "tags": ["tclutils", "internal", "shared", "io", "parsing"],
-    "description": "Shared internal library providing file I/O helpers, text splitting, option parsing, and common utility functions used throughout tclutils."
+    "description": "Shared internal library providing file I/O, text splitting and option parsing utilities used throughout tclutils."
   },
   {
     "name": "tclutils::tuagrep",
@@ -5131,7 +5131,7 @@
       }
     ],
     "tags": ["tclutils", "text", "search", "filters", "fuzzy"],
-    "description": "Approximate grep filtering engine utilizing tufuzzy matching metrics to process patterned string lines."
+    "description": "Pure Tcl approximate grep filter built on tclutils::tufuzzy."
   },
   {
     "name": "tclutils::tuappinfo",
@@ -5145,7 +5145,7 @@
       }
     ],
     "tags": ["tclutils", "system", "info", "report", "helper"],
-    "description": "Pure Tcl system information utility reporting runtime, operating system, environment, and loaded package information."
+    "description": "Pure Tcl system information utility reporting runtime, OS, environment and loaded package data."
   },
   {
     "name": "tclutils::tuarchitecture",
@@ -5159,7 +5159,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid architecture diagrams into tudiagram models for native rendering."
+    "description": "Pure Tcl parser for Mermaid architecture diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tuawk",
@@ -5173,7 +5173,7 @@
       }
     ],
     "tags": ["tclutils", "text", "processing", "filters", "awk"],
-    "description": "Pure Tcl awk-style text processor executing Tcl expressions and scripts for record- and field-based data processing."
+    "description": "Pure Tcl awk-style text processor for record and field-based data processing."
   },
   {
     "name": "tclutils::tubase32",
@@ -5201,7 +5201,7 @@
       }
     ],
     "tags": ["tclutils", "encoding", "binary", "data-format"],
-    "description": "Pure Tcl Base64 encoder and decoder for strings, binary data, and files."
+    "description": "Pure Tcl Base64 encoder and decoder for strings, binary data and files."
   },
   {
     "name": "tclutils::tubin",
@@ -5215,7 +5215,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "parser", "packer", "stream"],
-    "description": "Pure Tcl binary utility library providing readers, writers, packing, unpacking, and sequential access to binary data."
+    "description": "Pure Tcl binary data library for reading, writing, packing and unpacking binary streams."
   },
   {
     "name": "tclutils::tublock",
@@ -5229,7 +5229,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid block diagrams into tudiagram models for native rendering."
+    "description": "Pure Tcl parser for Mermaid block diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tubookmark",
@@ -5243,7 +5243,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "html", "browser", "pim"],
-    "description": "Pure Tcl reader and writer for the Netscape HTML bookmark file format, handling folder hierarchy and tags via tuxml."
+    "description": "Pure Tcl reader and writer for the Netscape HTML bookmark file format."
   },
   {
     "name": "tclutils::tuc4",
@@ -5257,7 +5257,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid", "c4"],
-    "description": "Pure Tcl parser converting Mermaid C4 diagrams into tudiagram models for SVG and PNG rendering."
+    "description": "Pure Tcl parser for Mermaid C4 diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tucal",
@@ -5271,7 +5271,7 @@
       }
     ],
     "tags": ["tclutils", "text", "calendar", "generator"],
-    "description": "Pure Tcl implementation of the Unix 'cal' utility for generating calendar text output."
+    "description": "Pure Tcl implementation of the Unix 'cal' utility."
   },
   {
     "name": "tclutils::tucat",
@@ -5285,7 +5285,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'cat' utility with optional line numbering for text and files."
+    "description": "Pure Tcl implementation of the Unix 'cat' utility with optional line numbering."
   },
   {
     "name": "tclutils::tuclass",
@@ -5299,7 +5299,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid classDiagram definitions into tudiagram models for native rendering."
+    "description": "Pure Tcl parser for Mermaid class diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tucmp",
@@ -5313,7 +5313,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "coreutils", "diff"],
-    "description": "Pure Tcl implementation of the Unix 'cmp' utility for comparing binary files and reporting the first detected difference."
+    "description": "Pure Tcl implementation of the Unix 'cmp' utility for binary file comparison."
   },
   {
     "name": "tclutils::tucode",
@@ -5327,7 +5327,7 @@
       }
     ],
     "tags": ["tclutils", "charset", "text"],
-    "description": "Pure Tcl text encoding utilities for escaping, unescaping, and converting textual representations."
+    "description": "Pure Tcl text encoding utilities for escaping, unescaping and converting textual representations."
   },
   {
     "name": "tclutils::tucodepng",
@@ -5341,7 +5341,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "charset"],
-    "description": "Pure Tcl renderer for generating character code tables and code page reference charts as PNG images."
+    "description": "Pure Tcl renderer generating character code tables and code page charts as PNG images."
   },
   {
     "name": "tclutils::tucolor",
@@ -5355,7 +5355,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "color", "x11", "rgb", "conversion"],
-    "description": "Pure Tcl color library providing CSS and X11 color names, RGB and HSV conversion, and color lookup utilities."
+    "description": "Pure Tcl color library with CSS and X11 color names, RGB and HSV conversion."
   },
   {
     "name": "tclutils::tucolumn",
@@ -5369,7 +5369,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting", "layout"],
-    "description": "Pure Tcl implementation of the Unix 'column' utility for aligning delimited tables and formatting text into columns."
+    "description": "Pure Tcl implementation of the Unix 'column' utility for aligning delimited text into columns."
   },
   {
     "name": "tclutils::tucomm",
@@ -5383,7 +5383,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "diff"],
-    "description": "Pure Tcl implementation of the Unix 'comm' utility for comparing sorted text files and reporting unique or shared lines."
+    "description": "Pure Tcl implementation of the Unix 'comm' utility for comparing sorted text files."
   },
   {
     "name": "tclutils::tucrc",
@@ -5397,7 +5397,7 @@
       }
     ],
     "tags": ["tclutils", "cryptography", "checksum", "zlib"],
-    "description": "Pure Tcl checksum library providing CRC-32 and Adler-32 algorithms compatible with zlib."
+    "description": "Pure Tcl checksum library providing CRC-32 and Adler-32 compatible with zlib."
   },
   {
     "name": "tclutils::tucsplit",
@@ -5411,7 +5411,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters", "regex"],
-    "description": "Pure Tcl implementation of the Unix 'csplit' utility for splitting text files using regular expression or pattern matches."
+    "description": "Pure Tcl implementation of the Unix 'csplit' utility for splitting files by pattern."
   },
   {
     "name": "tclutils::tucsv",
@@ -5425,7 +5425,7 @@
       }
     ],
     "tags": ["tclutils", "csv", "data-format", "text"],
-    "description": "Pure Tcl CSV parser and writer supporting quoted fields, configurable delimiters, and file or string processing."
+    "description": "Pure Tcl CSV parser and writer with quoted fields and configurable delimiters."
   },
   {
     "name": "tclutils::tucut",
@@ -5439,7 +5439,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'cut' utility for extracting fields or character ranges from delimited text."
+    "description": "Pure Tcl implementation of the Unix 'cut' utility for extracting fields from delimited text."
   },
   {
     "name": "tclutils::tudate",
@@ -5453,7 +5453,7 @@
       }
     ],
     "tags": ["tclutils", "system", "time", "date", "helper", "calendar"],
-    "description": "Pure Tcl date utility library built on the core clock command, providing flexible parsing, ISO formatting, calendar arithmetic, and human-readable relative phrases."
+    "description": "Pure Tcl date utility library for parsing, formatting and calendar arithmetic."
   },
   {
     "name": "tclutils::tudav",
@@ -5467,7 +5467,7 @@
       }
     ],
     "tags": ["tclutils", "http", "webdav", "caldav", "carddav"],
-    "description": "Pure Tcl WebDAV, CardDAV, and CalDAV client supporting PROPFIND, REPORT, GET, PUT, and DELETE over HTTP and HTTPS."
+    "description": "Pure Tcl WebDAV, CardDAV and CalDAV client over HTTP and HTTPS."
   },
   {
     "name": "tclutils::tudeploy",
@@ -5481,7 +5481,7 @@
       }
     ],
     "tags": ["tclutils", "internal", "runtime", "package", "helper"],
-    "description": "Pure Tcl deployment helper for locating module roots, loading packages, and resolving bundled application resources."
+    "description": "Pure Tcl deployment helper for locating module roots and resolving bundled application resources."
   },
   {
     "name": "tclutils::tudiagram",
@@ -5495,7 +5495,7 @@
       }
     ],
     "tags": ["tclutils", "rendering", "diagram", "graphics", "renderer"],
-    "description": "Pure Tcl diagram layout and rendering library for node-edge graphs, clusters, and connectors with SVG and PNG output."
+    "description": "Pure Tcl diagram layout and rendering library for node-edge graphs with SVG and PNG output."
   },
   {
     "name": "tclutils::tudict",
@@ -5509,7 +5509,7 @@
       }
     ],
     "tags": ["tclutils", "data-structure", "dict", "helper"],
-    "description": "Pure Tcl dict utility library providing nested defaults, path flattening, deep merging, and key-value inversion beyond the core dict command."
+    "description": "Pure Tcl dict utility library with nested defaults, deep merging and key-value inversion."
   },
   {
     "name": "tclutils::tudiff",
@@ -5523,7 +5523,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "diff", "lcs"],
-    "description": "Pure Tcl implementation of the Unix 'diff' utility supporting unified, context, normal, and directory comparisons."
+    "description": "Pure Tcl implementation of the Unix 'diff' utility with unified, context and normal output."
   },
   {
     "name": "tclutils::tuer",
@@ -5537,7 +5537,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid erDiagram definitions into tudiagram models with crow's-foot cardinality support."
+    "description": "Pure Tcl parser for Mermaid ER diagrams with crow's-foot cardinality built on tudiagram."
   },
   {
     "name": "tclutils::tuevent",
@@ -5551,7 +5551,7 @@
       }
     ],
     "tags": ["tclutils", "events", "pubsub", "messaging"],
-    "description": "Pure Tcl publish/subscribe event bus for creating independent buses, subscribing command prefixes to named events, and emitting events with arguments."
+    "description": "Pure Tcl publish/subscribe event bus."
   },
   {
     "name": "tclutils::tuexe",
@@ -5565,7 +5565,7 @@
       }
     ],
     "tags": ["tclutils", "system", "execution", "path"],
-    "description": "Pure Tcl executable locator searching bundled vendor directories and the system PATH for candidate binary names across platforms."
+    "description": "Pure Tcl executable locator searching vendor directories and the system PATH."
   },
   {
     "name": "tclutils::tuexpand",
@@ -5579,7 +5579,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting"],
-    "description": "Pure Tcl implementation of the Unix 'expand' and unexpand utilities for converting between tabs and spaces."
+    "description": "Pure Tcl implementation of the Unix 'expand' and 'unexpand' utilities."
   },
   {
     "name": "tclutils::tufetch",
@@ -5593,7 +5593,7 @@
       }
     ],
     "tags": ["tclutils", "http", "client"],
-    "description": "Pure Tcl HTTP and HTTPS client for fetching URLs into memory or downloading to file, with automatic fallback to curl or wget."
+    "description": "Pure Tcl HTTP and HTTPS client with automatic fallback to curl or wget."
   },
   {
     "name": "tclutils::tufile",
@@ -5607,7 +5607,7 @@
       }
     ],
     "tags": ["tclutils", "system", "fileutils", "mime", "magic"],
-    "description": "Pure Tcl file type detection library using configurable file signatures, MIME types, and filename extensions."
+    "description": "Pure Tcl file type detection library using MIME types, magic signatures and extensions."
   },
   {
     "name": "tclutils::tufind",
@@ -5621,7 +5621,7 @@
       }
     ],
     "tags": ["tclutils", "system", "fileutils", "search", "coreutils"],
-    "description": "Pure Tcl file finder supporting recursive searches, pattern matching, size filters, and modification time filtering."
+    "description": "Pure Tcl implementation of the Unix 'find' utility with pattern, size and time filters."
   },
   {
     "name": "tclutils::tuflow",
@@ -5635,7 +5635,7 @@
       }
     ],
     "tags": ["tclutils", "rendering", "diagram", "mermaid", "facade"],
-    "description": "Pure Tcl Mermaid renderer that detects diagram types and dispatches them to the appropriate parser and SVG or PNG renderer."
+    "description": "Pure Tcl Mermaid dispatcher detecting diagram types and routing to the appropriate renderer."
   },
   {
     "name": "tclutils::tufmt",
@@ -5649,7 +5649,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting"],
-    "description": "Pure Tcl implementation of the Unix 'fmt' utility for reflowing paragraphs while preserving indentation."
+    "description": "Pure Tcl implementation of the Unix 'fmt' utility for paragraph reflowing."
   },
   {
     "name": "tclutils::tufold",
@@ -5663,7 +5663,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting"],
-    "description": "Pure Tcl implementation of the Unix 'fold' utility for wrapping text to a specified output width."
+    "description": "Pure Tcl implementation of the Unix 'fold' utility for wrapping text to a given width."
   },
   {
     "name": "tclutils::tufuzzy",
@@ -5677,7 +5677,7 @@
       }
     ],
     "tags": ["tclutils", "text", "metrics", "string", "fuzzy"],
-    "description": "String metrics engine computing Levenshtein character edit distances, substring variance, sequence similarities, and subsequence matrices."
+    "description": "Pure Tcl string similarity library computing Levenshtein, substring and subsequence metrics."
   },
   {
     "name": "tclutils::tugantt",
@@ -5691,7 +5691,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "gantt"],
-    "description": "Pure Tcl renderer for Mermaid Gantt charts with task scheduling, milestones, dependencies, and time-axis layout."
+    "description": "Pure Tcl renderer for Mermaid Gantt charts with tasks, milestones and time-axis layout."
   },
   {
     "name": "tclutils::tugit",
@@ -5705,7 +5705,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid", "gitgraph"],
-    "description": "Pure Tcl parser converting Mermaid gitGraph diagrams into tudiagram models while preserving commit and merge topology."
+    "description": "Pure Tcl parser for Mermaid gitGraph diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tugrep",
@@ -5719,7 +5719,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "search", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'grep' utility supporting regular expressions, fixed strings, and configurable context output."
+    "description": "Pure Tcl implementation of the Unix 'grep' utility with regex, fixed string and context output."
   },
   {
     "name": "tclutils::tuhash",
@@ -5733,7 +5733,7 @@
       }
     ],
     "tags": ["tclutils", "cryptography", "hash", "sha256", "md5"],
-    "description": "Pure Tcl cryptographic hash library providing SHA-256, SHA-1, and MD5 hashing for strings and files."
+    "description": "Pure Tcl cryptographic hash library providing SHA-256, SHA-1 and MD5 for strings and files."
   },
   {
     "name": "tclutils::tuhead",
@@ -5747,7 +5747,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'head' utility for reading the first lines of text streams and files."
+    "description": "Pure Tcl implementation of the Unix 'head' utility."
   },
   {
     "name": "tclutils::tuhexdump",
@@ -5761,7 +5761,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "coreutils", "hex", "layout"],
-    "description": "Pure Tcl implementation of the Unix 'hexdump' utility for displaying binary data in hexadecimal and ASCII formats."
+    "description": "Pure Tcl implementation of the Unix 'hexdump' utility."
   },
   {
     "name": "tclutils::tuhexedit",
@@ -5775,7 +5775,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "patch", "search", "fileutils"],
-    "description": "Pure Tcl utility for inspecting, searching, modifying, and patching binary files and byte streams."
+    "description": "Pure Tcl binary file inspector and patcher."
   },
   {
     "name": "tclutils::tuholiday",
@@ -5789,7 +5789,7 @@
       }
     ],
     "tags": ["tclutils", "calendar", "date", "holidays"],
-    "description": "Pure Tcl calculator for German public holidays, computing Easter Sunday and the nationwide statutory holidays for a given year."
+    "description": "Pure Tcl calculator for German public holidays."
   },
   {
     "name": "tclutils::tuical",
@@ -5803,7 +5803,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "icalendar", "rfc5545", "calendar"],
-    "description": "RFC 5545 compliant recursive iCalendar framework driving structured reading, component tree navigation, and calendar folding actions."
+    "description": "Pure Tcl iCalendar (RFC 5545) parser, component navigator and serializer."
   },
   {
     "name": "tclutils::tuiconv",
@@ -5817,7 +5817,7 @@
       }
     ],
     "tags": ["tclutils", "text", "encoding", "charset"],
-    "description": "Pure Tcl character encoding conversion library supporting Tcl encodings for strings and files."
+    "description": "Pure Tcl character encoding conversion library for strings and files."
   },
   {
     "name": "tclutils::tuimage",
@@ -5831,7 +5831,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "graphics", "metadata", "mime"],
-    "description": "Pure Tcl image metadata reader for detecting image formats, MIME types, and dimensions from files or byte streams."
+    "description": "Pure Tcl image metadata reader detecting format, MIME type and dimensions."
   },
   {
     "name": "tclutils::tuini",
@@ -5845,7 +5845,7 @@
       }
     ],
     "tags": ["tclutils", "ini", "configuration", "data-format"],
-    "description": "Pure Tcl INI file parser and writer supporting sections, keys, values, and configuration management."
+    "description": "Pure Tcl INI file parser and writer."
   },
   {
     "name": "tclutils::tujoin",
@@ -5859,7 +5859,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "relational"],
-    "description": "Pure Tcl implementation of the Unix 'join' utility for combining sorted text files on matching fields."
+    "description": "Pure Tcl implementation of the Unix 'join' utility."
   },
   {
     "name": "tclutils::tujourney",
@@ -5873,7 +5873,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid user journey diagrams with task scoring, section bands, and actor legends in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid user journey diagrams."
   },
   {
     "name": "tclutils::tujson",
@@ -5901,7 +5901,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "kanban"],
-    "description": "Pure Tcl renderer for Mermaid Kanban boards supporting columns, cards, priorities, metadata, and automatic layout."
+    "description": "Pure Tcl renderer for Mermaid Kanban boards."
   },
   {
     "name": "tclutils::tulayout",
@@ -5915,7 +5915,7 @@
       }
     ],
     "tags": ["tclutils", "layout", "geometry", "page", "formatting"],
-    "description": "Pure Tcl page layout library providing millimetre-based geometry, block positioning, sizing, and document layout helpers."
+    "description": "Pure Tcl page layout library for millimetre-based block positioning and document geometry."
   },
   {
     "name": "tclutils::tuldif",
@@ -5929,7 +5929,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "ldif", "rfc2849", "pim"],
-    "description": "Pure Tcl LDIF (RFC 2849) reader and writer supporting continuation-line unfolding and base64-encoded attribute values via tubase64."
+    "description": "Pure Tcl LDIF (RFC 2849) reader and writer."
   },
   {
     "name": "tclutils::tulist",
@@ -5943,7 +5943,7 @@
       }
     ],
     "tags": ["tclutils", "data-structure", "list", "functional", "helper"],
-    "description": "Pure Tcl functional list utility library providing map, filter, reduce, zip, chunk, and aggregation helpers beyond the core list commands."
+    "description": "Pure Tcl functional list utility library with map, filter, reduce, zip and aggregation."
   },
   {
     "name": "tclutils::tulog",
@@ -5957,7 +5957,7 @@
       }
     ],
     "tags": ["tclutils", "logging", "diagnostics"],
-    "description": "Pure Tcl leveled logger providing debug, info, warn, and error severities with configurable channel, prefix, and timestamp output."
+    "description": "Pure Tcl leveled logger with configurable channel, prefix and timestamp."
   },
   {
     "name": "tclutils::tumath",
@@ -5971,7 +5971,7 @@
       }
     ],
     "tags": ["tclutils", "math", "numeric", "helper"],
-    "description": "Pure Tcl numeric utility library providing clamp, range checks, percentage, sign, GCD, LCM, factorial, and rounding helpers."
+    "description": "Pure Tcl numeric utility library with clamp, GCD, LCM, factorial and rounding helpers."
   },
   {
     "name": "tclutils::tumd",
@@ -5985,7 +5985,7 @@
       }
     ],
     "tags": ["tclutils", "text", "markdown", "html", "helper"],
-    "description": "Pure Tcl Markdown utility library providing a CommonMark subset for HTML conversion, heading extraction, table-of-contents generation, and front matter splitting."
+    "description": "Pure Tcl Markdown library for HTML conversion, heading extraction and table-of-contents generation."
   },
   {
     "name": "tclutils::tumindmap",
@@ -5999,7 +5999,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "mindmap"],
-    "description": "Pure Tcl renderer for Mermaid mind maps supporting hierarchical topics, branches, icons, and automatic layout."
+    "description": "Pure Tcl renderer for Mermaid mind maps."
   },
   {
     "name": "tclutils::tummdb",
@@ -6013,7 +6013,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "binary", "geolocation", "mmdb"],
-    "description": "Pure Tcl binary data format reader optimized to extract geolocation metadata entries from MaxMind DB (.mmdb) datasets."
+    "description": "Pure Tcl reader for MaxMind DB (.mmdb) binary geolocation datasets."
   },
   {
     "name": "tclutils::tumonthpng",
@@ -6027,7 +6027,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "calendar"],
-    "description": "Renders chronological month, quarter, or year calendar matrices directly to styled PNG canvas sheets using customizable themes."
+    "description": "Pure Tcl renderer producing month, quarter or year calendar grids as PNG images."
   },
   {
     "name": "tclutils::tunl",
@@ -6041,7 +6041,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters", "numbering"],
-    "description": "Pure Tcl implementation of the Unix 'nl' utility supporting configurable line numbering styles, formatting, and increments."
+    "description": "Pure Tcl implementation of the Unix 'nl' utility with configurable line numbering styles."
   },
   {
     "name": "tclutils::tunotes",
@@ -6055,7 +6055,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "pim", "notes", "json"],
-    "description": "Value-based hierarchical note storage suite tracking note records, cascade deletions, and native tujson persistence layers."
+    "description": "Pure Tcl hierarchical note store with cascade deletion and JSON persistence."
   },
   {
     "name": "tclutils::tunum",
@@ -6069,7 +6069,7 @@
       }
     ],
     "tags": ["tclutils", "text", "parsing", "locale", "numbers"],
-    "description": "Pure Tcl parser for human-formatted numbers handling thousands grouping, locale decimal marks, and currency symbols."
+    "description": "Pure Tcl parser for human-formatted numbers with locale decimal marks and currency symbols."
   },
   {
     "name": "tclutils::tunumany",
@@ -6083,7 +6083,7 @@
       }
     ],
     "tags": ["tclutils", "text", "parsing", "numbers", "dispatcher"],
-    "description": "Pure Tcl number parsing dispatcher routing locale-formatted and SI/IEC unit notation strings to the appropriate backend parser."
+    "description": "Pure Tcl number parsing dispatcher for locale-formatted and SI/IEC unit notation strings."
   },
   {
     "name": "tclutils::tunumfmt",
@@ -6097,7 +6097,7 @@
       }
     ],
     "tags": ["tclutils", "formatting", "numbers", "si", "iec"],
-    "description": "Pure Tcl human-readable number formatter converting between raw values and SI or IEC unit notation, similar to the Unix 'numfmt' utility."
+    "description": "Pure Tcl number formatter for SI and IEC unit notation, similar to the Unix 'numfmt' utility."
   },
   {
     "name": "tclutils::tuod",
@@ -6111,7 +6111,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "coreutils", "hex", "layout"],
-    "description": "Pure Tcl implementation of the Unix 'od' utility for displaying binary data in octal, hexadecimal, decimal, and character formats."
+    "description": "Pure Tcl implementation of the Unix 'od' utility."
   },
   {
     "name": "tclutils::tuodf",
@@ -6125,7 +6125,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "odf", "document", "helper"],
-    "description": "Pure Tcl library for creating and reading simple paragraph-based OpenDocument Text (.odt) files."
+    "description": "Pure Tcl reader and writer for simple OpenDocument Text (.odt) files."
   },
   {
     "name": "tclutils::tuopen",
@@ -6139,7 +6139,7 @@
       }
     ],
     "tags": ["tclutils", "system", "execution", "fileutils"],
-    "description": "Cross-platform execution router opening targeted URLs or files through default platform application handlers."
+    "description": "Cross-platform helper opening URLs and files via the default platform application handler."
   },
   {
     "name": "tclutils::tupacket",
@@ -6153,7 +6153,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid packet diagrams displaying packet layouts, bit fields, and protocol structures."
+    "description": "Pure Tcl renderer for Mermaid packet and protocol structure diagrams."
   },
   {
     "name": "tclutils::tupagespec",
@@ -6167,7 +6167,7 @@
       }
     ],
     "tags": ["tclutils", "text", "parsing", "pages"],
-    "description": "Pure Tcl parser for page-range specifications, converting human range strings into page lists and compacting page lists back into ranges."
+    "description": "Pure Tcl parser and compactor for human page-range specifications."
   },
   {
     "name": "tclutils::tupaste",
@@ -6181,7 +6181,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting"],
-    "description": "Pure Tcl implementation of the Unix 'paste' utility for merging text lines from multiple files or streams."
+    "description": "Pure Tcl implementation of the Unix 'paste' utility."
   },
   {
     "name": "tclutils::tupatch",
@@ -6195,7 +6195,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "diff", "patch"],
-    "description": "Pure Tcl implementation of the Unix 'patch' utility for applying unified diff patches to text files."
+    "description": "Pure Tcl implementation of the Unix 'patch' utility for applying unified diff patches."
   },
   {
     "name": "tclutils::tupath",
@@ -6209,7 +6209,7 @@
       }
     ],
     "tags": ["tclutils", "system", "path", "fileutils"],
-    "description": "Pure Tcl path utility library providing lexical cleanup, relative path computation, and common-root resolution around the core file command."
+    "description": "Pure Tcl path utility library for lexical cleanup, relative paths and common-root resolution."
   },
   {
     "name": "tclutils::tupdf",
@@ -6223,7 +6223,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "pdf", "inspector"],
-    "description": "Pure Tcl read-only PDF structure inspector reporting header version, object ids, page markers, trailer text, and metadata."
+    "description": "Pure Tcl read-only PDF structure inspector."
   },
   {
     "name": "tclutils::tupie",
@@ -6237,7 +6237,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "pie"],
-    "description": "Pure Tcl renderer for Mermaid pie charts with SVG and PNG output, configurable legends, labels, and styling."
+    "description": "Pure Tcl renderer for Mermaid pie charts."
   },
   {
     "name": "tclutils::tupkgfinder",
@@ -6251,7 +6251,7 @@
       }
     ],
     "tags": ["tclutils", "internal", "introspection", "helper"],
-    "description": "Pure Tcl package inspection utility for locating installed packages, module paths, versions, and shadowed installations."
+    "description": "Pure Tcl package inspector for locating installed packages, versions and shadowed installations."
   },
   {
     "name": "tclutils::tupng",
@@ -6265,7 +6265,7 @@
       }
     ],
     "tags": ["tclutils", "binary", "graphics", "png", "encoding"],
-    "description": "Pure Tcl PNG encoder and decoder supporting indexed, grayscale, RGB, and RGBA images."
+    "description": "Pure Tcl PNG encoder and decoder for indexed, grayscale, RGB and RGBA images."
   },
   {
     "name": "tclutils::tupngdraw",
@@ -6279,7 +6279,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "png", "toolkit"],
-    "description": "Pure Tcl 2D drawing library for creating PNG images with shapes, text, colors, and antialiased rendering."
+    "description": "Pure Tcl 2D drawing library generating PNG images with shapes, text and antialiased rendering."
   },
   {
     "name": "tclutils::tupngpad",
@@ -6293,7 +6293,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "png", "tool", "sprites"],
-    "description": "Pure Tcl PNG utility for trimming, padding, aligning, and normalizing images to a common canvas size."
+    "description": "Pure Tcl PNG utility for trimming, padding and normalizing images to a common canvas size."
   },
   {
     "name": "tclutils::tupr",
@@ -6307,7 +6307,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "formatting"],
-    "description": "Pure Tcl implementation of the Unix 'pr' utility for paginating text with configurable headers, columns, and line numbering."
+    "description": "Pure Tcl implementation of the Unix 'pr' utility for paginating and formatting text."
   },
   {
     "name": "tclutils::tuquadrant",
@@ -6321,7 +6321,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid quadrant charts plotting normalised data points across four tinted quadrants in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid quadrant charts."
   },
   {
     "name": "tclutils::turadar",
@@ -6335,7 +6335,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid radar charts producing polar spider plots with configurable axes in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid radar charts."
   },
   {
     "name": "tclutils::turegistry",
@@ -6349,7 +6349,7 @@
       }
     ],
     "tags": ["tclutils", "data-structure", "registry", "helper"],
-    "description": "Pure Tcl keyed value registry providing a simple service-locator style store with required-get and default-value lookups."
+    "description": "Pure Tcl service-locator style key-value registry."
   },
   {
     "name": "tclutils::turequirement",
@@ -6363,7 +6363,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid requirementDiagram definitions into tudiagram models for native rendering."
+    "description": "Pure Tcl parser for Mermaid requirement diagrams built on tudiagram."
   },
   {
     "name": "tclutils::turev",
@@ -6377,7 +6377,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters", "unicode"],
-    "description": "Pure Tcl implementation of the Unix 'rev' utility for reversing characters in each line with Unicode support."
+    "description": "Pure Tcl implementation of the Unix 'rev' utility with Unicode support."
   },
   {
     "name": "tclutils::turrule",
@@ -6391,7 +6391,7 @@
       }
     ],
     "tags": ["tclutils", "calendar", "icalendar", "rfc5545", "recurrence"],
-    "description": "Pure Tcl expander for iCalendar RRULE recurrence rules, generating concrete occurrence dates from daily, weekly, monthly, and yearly patterns."
+    "description": "Pure Tcl expander for iCalendar RRULE recurrence rules."
   },
   {
     "name": "tclutils::tusankey",
@@ -6405,7 +6405,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid", "sankey"],
-    "description": "Pure Tcl renderer for Mermaid sankey diagrams showing weighted flows between connected nodes."
+    "description": "Pure Tcl renderer for Mermaid sankey diagrams."
   },
   {
     "name": "tclutils::tused",
@@ -6419,7 +6419,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters", "regex"],
-    "description": "Pure Tcl implementation of a sed-compatible stream editor supporting substitutions, line selection, deletion, and basic editing commands."
+    "description": "Pure Tcl sed-compatible stream editor with substitutions, line selection and deletion."
   },
   {
     "name": "tclutils::tuseq",
@@ -6433,7 +6433,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "generator", "math"],
-    "description": "Pure Tcl implementation of the Unix 'seq' utility for generating numeric sequences with integer or floating-point increments."
+    "description": "Pure Tcl implementation of the Unix 'seq' utility."
   },
   {
     "name": "tclutils::tusequence",
@@ -6447,7 +6447,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid sequence diagrams supporting participants, messages, activations, loops, and grouped interactions."
+    "description": "Pure Tcl renderer for Mermaid sequence diagrams."
   },
   {
     "name": "tclutils::tushuf",
@@ -6461,7 +6461,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "random"],
-    "description": "Pure Tcl implementation of the Unix 'shuf' utility for randomly shuffling lines with deterministic seed support."
+    "description": "Pure Tcl implementation of the Unix 'shuf' utility with optional seed support."
   },
   {
     "name": "tclutils::tusize",
@@ -6475,7 +6475,7 @@
       }
     ],
     "tags": ["tclutils", "system", "metrics", "fileutils"],
-    "description": "Pure Tcl implementation of the Unix 'du' utility for computing recursive directory sizes with human-readable formatting."
+    "description": "Pure Tcl implementation of the Unix 'du' utility with human-readable output."
   },
   {
     "name": "tclutils::tusort",
@@ -6489,7 +6489,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "sorting"],
-    "description": "Pure Tcl implementation of the Unix 'sort' utility built on Tcl's native lsort command."
+    "description": "Pure Tcl implementation of the Unix 'sort' utility."
   },
   {
     "name": "tclutils::tusparql",
@@ -6503,7 +6503,7 @@
       }
     ],
     "tags": ["tclutils", "http", "sparql", "client"],
-    "description": "Pure Tcl SPARQL client composing HTTP transport, URL encoding, and JSON parsing to run SELECT and ASK queries against SPARQL endpoints."
+    "description": "Pure Tcl SPARQL client for SELECT and ASK queries over HTTP."
   },
   {
     "name": "tclutils::tusplit",
@@ -6517,7 +6517,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'split' utility for splitting files by line count or byte size."
+    "description": "Pure Tcl implementation of the Unix 'split' utility by line count or byte size."
   },
   {
     "name": "tclutils::tusqlite",
@@ -6531,7 +6531,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "sql", "sqlite", "helper"],
-    "description": "Pure Tcl NULL-safe wrapper around an existing sqlite3 database handle, returning query results as key-value dictionaries and providing safe identifier quoting."
+    "description": "Pure Tcl NULL-safe wrapper around an sqlite3 database handle returning results as dicts."
   },
   {
     "name": "tclutils::tustat",
@@ -6545,7 +6545,7 @@
       }
     ],
     "tags": ["tclutils", "system", "fileutils", "metadata"],
-    "description": "Pure Tcl wrapper around 'file stat' providing structured, formatted file metadata."
+    "description": "Pure Tcl wrapper around 'file stat' providing structured file metadata."
   },
   {
     "name": "tclutils::tustate",
@@ -6559,7 +6559,7 @@
       }
     ],
     "tags": ["tclutils", "diagram", "parser", "mermaid"],
-    "description": "Pure Tcl parser converting Mermaid stateDiagram definitions into tudiagram models for SVG and PNG rendering."
+    "description": "Pure Tcl parser for Mermaid state diagrams built on tudiagram."
   },
   {
     "name": "tclutils::tustr",
@@ -6573,7 +6573,7 @@
       }
     ],
     "tags": ["tclutils", "text", "string", "helper"],
-    "description": "Pure Tcl string utility library providing padding, truncation, case conversion, slugification, and prefix/suffix helpers beyond the core string commands."
+    "description": "Pure Tcl string utility library with padding, truncation, case conversion and slugification."
   },
   {
     "name": "tclutils::tustrings",
@@ -6601,7 +6601,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "svg", "vector"],
-    "description": "Pure Tcl SVG generation library for creating vector graphics with shapes, paths, text, gradients, and reusable definitions."
+    "description": "Pure Tcl SVG generation library for shapes, paths, text, gradients and reusable definitions."
   },
   {
     "name": "tclutils::tutable",
@@ -6615,7 +6615,7 @@
       }
     ],
     "tags": ["tclutils", "text", "formatting", "table"],
-    "description": "Pure Tcl text table renderer supporting Markdown pipe-table and ASCII box styles with per-column alignment."
+    "description": "Pure Tcl text table renderer supporting Markdown pipe-table and ASCII box styles."
   },
   {
     "name": "tclutils::tutablepng",
@@ -6643,7 +6643,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'tac' utility for reversing the order of lines while preserving trailing newlines."
+    "description": "Pure Tcl implementation of the Unix 'tac' utility."
   },
   {
     "name": "tclutils::tutail",
@@ -6657,7 +6657,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'tail' utility for reading the last lines of text streams and files."
+    "description": "Pure Tcl implementation of the Unix 'tail' utility."
   },
   {
     "name": "tclutils::tutee",
@@ -6671,7 +6671,7 @@
       }
     ],
     "tags": ["tclutils", "text", "io", "fileutils"],
-    "description": "Pure Tcl implementation of the Unix 'tee' utility for duplicating output across multiple file channels."
+    "description": "Pure Tcl implementation of the Unix 'tee' utility."
   },
   {
     "name": "tclutils::tuterm",
@@ -6685,7 +6685,7 @@
       }
     ],
     "tags": ["tclutils", "text", "terminal", "ansi", "formatting"],
-    "description": "ANSI terminal styling toolkit providing SGR text attributes, 16/256/truecolor support, an ANSI sequence stripper, and Windows VT-mode initialization honoring NO_COLOR."
+    "description": "Pure Tcl ANSI terminal styling library with SGR attributes, 256-color and truecolor support."
   },
   {
     "name": "tclutils::tutimeline",
@@ -6699,7 +6699,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid timeline diagrams displaying periods, stacked events, and section bands in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid timeline diagrams."
   },
   {
     "name": "tclutils::tutr",
@@ -6713,7 +6713,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'tr' utility for translating, deleting, and squeezing characters in text streams."
+    "description": "Pure Tcl implementation of the Unix 'tr' utility."
   },
   {
     "name": "tclutils::tutreemap",
@@ -6727,7 +6727,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid treemap diagrams producing squarified, area-proportional nested rectangles in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid treemap diagrams."
   },
   {
     "name": "tclutils::tutsort",
@@ -6741,7 +6741,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "algorithm", "sorting"],
-    "description": "Pure Tcl implementation of the Unix 'tsort' utility for performing topological sorting with cycle detection."
+    "description": "Pure Tcl implementation of the Unix 'tsort' utility with cycle detection."
   },
   {
     "name": "tclutils::tuuniq",
@@ -6755,7 +6755,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "filters"],
-    "description": "Pure Tcl implementation of the Unix 'uniq' utility for filtering adjacent duplicate lines and counting occurrences."
+    "description": "Pure Tcl implementation of the Unix 'uniq' utility."
   },
   {
     "name": "tclutils::tuurl",
@@ -6769,7 +6769,7 @@
       }
     ],
     "tags": ["tclutils", "encoding", "url", "web"],
-    "description": "Pure Tcl URL encoding and decoding utilities for strings, query parameters, and URI components."
+    "description": "Pure Tcl URL encoder and decoder for strings, query parameters and URI components."
   },
   {
     "name": "tclutils::tuuuid",
@@ -6783,7 +6783,7 @@
       }
     ],
     "tags": ["tclutils", "text", "cryptography", "uuid", "generator"],
-    "description": "Pure Tcl UUID generator and inspector supporting version 4 (random) and version 7 (time-ordered) identifiers per RFC 9562."
+    "description": "Pure Tcl UUID generator supporting version 4 (random) and version 7 (time-ordered) per RFC 9562."
   },
   {
     "name": "tclutils::tuvalidate",
@@ -6797,7 +6797,7 @@
       }
     ],
     "tags": ["tclutils", "validation", "text", "helper"],
-    "description": "Pure Tcl validation library providing boolean predicates for email, URL, IPv4, port, alpha, numeric, length, and pattern checks."
+    "description": "Pure Tcl validation library with boolean predicates for email, URL, IPv4, port and pattern checks."
   },
   {
     "name": "tclutils::tuvcard",
@@ -6811,7 +6811,7 @@
       }
     ],
     "tags": ["tclutils", "data-format", "vcard", "rfc6350", "pim"],
-    "description": "Pure Tcl vCard (RFC 6350 / RFC 2426) reader and writer supporting parsing, serialization, and 75-character line folding."
+    "description": "Pure Tcl vCard (RFC 6350) reader and writer."
   },
   {
     "name": "tclutils::tuwc",
@@ -6825,7 +6825,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "metrics"],
-    "description": "Pure Tcl implementation of the Unix 'wc' utility for counting lines, words, characters, and bytes."
+    "description": "Pure Tcl implementation of the Unix 'wc' utility."
   },
   {
     "name": "tclutils::tuxargs",
@@ -6839,7 +6839,7 @@
       }
     ],
     "tags": ["tclutils", "text", "coreutils", "execution"],
-    "description": "Pure Tcl implementation of the Unix 'xargs' utility for building and executing commands from standard input."
+    "description": "Pure Tcl implementation of the Unix 'xargs' utility."
   },
   {
     "name": "tclutils::tuxml",
@@ -6853,7 +6853,7 @@
       }
     ],
     "tags": ["tclutils", "xml", "serialization", "data-format"],
-    "description": "Pure Tcl XML parser and writer supporting structured documents and element-based processing."
+    "description": "Pure Tcl XML parser and writer for structured documents."
   },
   {
     "name": "tclutils::tuxychart",
@@ -6867,7 +6867,7 @@
       }
     ],
     "tags": ["tclutils", "graphics", "rendering", "mermaid"],
-    "description": "Pure Tcl renderer for Mermaid xychart bar and line charts with axes and gridlines in SVG and PNG output."
+    "description": "Pure Tcl renderer for Mermaid XY bar and line charts."
   },
   {
     "name": "tclutils::tuzip",
@@ -6881,7 +6881,7 @@
       }
     ],
     "tags": ["tclutils", "archive", "zip", "compression"],
-    "description": "Pure Tcl ZIP archive library for listing, reading, extracting, and creating ZIP entries with stored or deflated compression."
+    "description": "Pure Tcl ZIP archive library for listing, reading, extracting and creating entries."
   },
   {
     "name": "tclutils::tuzipfs",
@@ -6895,7 +6895,7 @@
       }
     ],
     "tags": ["tclutils", "archive", "zip", "filesystem", "zipfs"],
-    "description": "Pure Tcl convenience wrapper around Tcl 9's zipfs facility for mounting, listing, and reading files inside ZIP archives."
+    "description": "Pure Tcl convenience wrapper around Tcl 9's zipfs facility for mounting and reading ZIP archives."
   },
   {
     "name": "tkutils",
