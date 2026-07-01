@@ -218,7 +218,7 @@ proc pick_highest_version {paths} {
     set best_v ""
     foreach p $paths {
         set fname [file tail $p]
-        if {![regexp {-([0-9.]+)\.(?:tcl|tm)$} $fname -> v]} {continue}
+        if {![regexp "--" {-([0-9.]+)\.(?:tcl|tm)$} $fname -> v]} {continue}
         if {$best eq "" || [version_compare $v $best_v] > 0} {
             set best   $p
             set best_v $v
