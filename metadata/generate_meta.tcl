@@ -213,10 +213,20 @@ proc get_repo_tree {repo branch} {
     return $paths
 }
 
-proc find_module_file {repo branch modname} {
+proc find_module_file {repo branch modname {dir_filter ""}} {
     if {$modname eq ""} { return "" }
 
     set paths [get_repo_tree $repo $branch]
+    if {$dir_filter ne ""} {
+        set filtered {}
+        foreach p $paths {
+            if {[string match "${dir_filter}/*" $p]} {
+                lappend filtered $p
+            }
+        }
+        set paths $filtered
+    }
+
     set qmod [string map {. {\.} - {\-}} $modname]
 
     set exact {}
@@ -241,11 +251,12 @@ proc find_module_file {repo branch modname} {
     return {}
 }
 
-proc process_fossil {url} {
+proc process_fossil {url {modname ""}} {
     global FOSSIL_MIRRORS fossil_cache MAX_COMMITS
 
-    if {[dict exists $fossil_cache $url]} {
-        return [dict get $fossil_cache $url]
+    set cache_key "${url}:${modname}"
+    if {[dict exists $fossil_cache $cache_key]} {
+        return [dict get $fossil_cache $cache_key]
     }
 
     set base [lindex [split $url ?] 0]
@@ -256,8 +267,10 @@ proc process_fossil {url} {
     }
     set base [string trimright $base "/"]
 
-    set module_path ""
-    if {[regexp {[?&]name=([^&]+)} $url -> p]} {set module_path $p}
+    set dir_path ""
+    if {[regexp {[?&]name=([^&]+)} $url -> p]} {
+        set dir_path $p
+    }
 
     set meta [dict create last_commit {} last_commit_sha {} last_tag "" \
         last_release_date "" latest_release "none"]
@@ -265,7 +278,22 @@ proc process_fossil {url} {
     # Github mirror check, prioritize if available for better metadata.
     if {[info exists FOSSIL_MIRRORS($base)]} {
         set mirror $FOSSIL_MIRRORS($base)
-        set gh [fetch_github_data $mirror $module_path]
+
+        set target_path $dir_path
+        set repo [parse_github_repo $mirror]
+        if {$modname ne "" && $repo ne ""} {
+            set info   [ensure_repo_info $repo]
+            set branch [dict get $info default_branch]
+            set found  [find_module_file $repo $branch $modname $dir_path]
+            if {$found ne ""} {
+                set target_path $found
+                puts "    -> Module file found: $target_path (targeted history)"
+            } else {
+                puts "    -> No file found for '$modname' in $dir_path, using directory history"
+            }
+        }
+
+        set gh [fetch_github_data $mirror $target_path]
 
         dict set meta last_commit       [dict get $gh last_commit]
         dict set meta last_commit_sha   [dict get $gh last_commit_sha]
@@ -289,13 +317,15 @@ proc process_fossil {url} {
             }
         }
 
-        dict set fossil_cache $url $meta
+        dict set fossil_cache $cache_key $meta
         return $meta
     }
 
     # 2. Fossil JSON API
     set api_url "$base/json/timeline/checkin?limit=$MAX_COMMITS"
-    if {$module_path ne ""} {append api_url "&p=$module_path"}
+    if {$dir_path ne ""} {
+        append api_url "&p=$dir_path"
+    }
     set r [http_get $api_url "json"]
     if {[dict get $r code] == 200} {
         set json [dict get $r json]
@@ -354,7 +384,7 @@ proc process_fossil {url} {
         }
     }
 
-    dict set fossil_cache $url $meta
+    dict set fossil_cache $cache_key $meta
     return $meta
 }
 
@@ -675,15 +705,10 @@ proc main {} {
             set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit {} last_tag "" last_commit_sha {}]
 
             if {$reachable} {
+                set modname [parse_module_name $name]
                 if {$method eq "fossil"} {
-                    set meta [dict merge $meta [process_fossil $url]]
+                    set meta [dict merge $meta [process_fossil $url $modname]]
                 } elseif {$method eq "git"} {
-                    # Target the specific module file instead of the whole repo
-                    # whenever the package name denotes a submodule (e.g.
-                    # "tclutils::tuagrep" -> "tuagrep"). This is independent
-                    # of source order, so it works no matter how packages.json
-                    # is ordered.
-                    set modname [parse_module_name $name]
                     set meta [dict merge $meta [process_git $url $modname]]
                 }
             } else {
