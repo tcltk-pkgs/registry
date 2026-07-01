@@ -213,6 +213,60 @@ proc get_repo_tree {repo branch} {
     return $paths
 }
 
+proc pick_highest_version {paths} {
+    set best   ""
+    set best_v ""
+    foreach p $paths {
+        set fname [file tail $p]
+        if {![regexp {-([0-9.]+)\.(?:tcl|tm)$} $fname -> v]} {continue}
+        if {$best eq "" || [version_compare $v $best_v] > 0} {
+            set best   $p
+            set best_v $v
+        }
+    }
+    return $best
+}
+
+proc select_module_path {paths modname} {
+    if {$modname eq ""} { return "" }
+
+    set qmod [string map {. {\.} - {\-}} $modname]
+
+    set tm_versioned  {}
+    set tm_plain      {}
+    set tcl_versioned {}
+    set tcl_plain     {}
+
+    foreach p $paths {
+        set fname [file tail $p]
+        if {[regexp -nocase "^${qmod}\\.tm\$" $fname]} {
+            lappend tm_plain $p
+        } elseif {[regexp -nocase "^${qmod}-\[0-9.\]+\\.tm\$" $fname]} {
+            lappend tm_versioned $p
+        } elseif {[regexp -nocase "^${qmod}\\.tcl\$" $fname]} {
+            lappend tcl_plain $p
+        } elseif {[regexp -nocase "^${qmod}-\[0-9.\]+\\.tcl\$" $fname]} {
+            lappend tcl_versioned $p
+        }
+    }
+
+    # Priority: versioned .tm, then plain .tm, then versioned .tcl, then plain .tcl.
+    if {[llength $tm_versioned] > 0} {
+        return [pick_highest_version $tm_versioned]
+    }
+    if {[llength $tm_plain] > 0} {
+        return [lindex $tm_plain 0]
+    }
+    if {[llength $tcl_versioned] > 0} {
+        return [pick_highest_version $tcl_versioned]
+    }
+    if {[llength $tcl_plain] > 0} {
+        return [lindex $tcl_plain 0]
+    }
+
+    return {}
+}
+
 proc find_module_file {repo branch modname {dir_filter ""}} {
     if {$modname eq ""} { return "" }
 
@@ -227,28 +281,7 @@ proc find_module_file {repo branch modname {dir_filter ""}} {
         set paths $filtered
     }
 
-    set qmod [string map {. {\.} - {\-}} $modname]
-
-    set exact {}
-    set versioned {}
-
-    foreach p $paths {
-        set fname [file tail $p]
-        if {[regexp -nocase "^${qmod}\\.(tcl|tm)\$" $fname]} {
-            lappend exact $p
-        } elseif {[regexp -nocase "^${qmod}-\[0-9.\]+\\.(tcl|tm)\$" $fname]} {
-            lappend versioned $p
-        }
-    }
-
-    if {[llength $exact] > 0} {
-        return [lindex $exact 0]
-    }
-    if {[llength $versioned] > 0} {
-        return [lindex [lsort $versioned] end]
-    }
-
-    return {}
+    return [select_module_path $paths $modname]
 }
 
 proc process_fossil {url {modname ""}} {
@@ -451,17 +484,7 @@ proc process_git {url {modname ""}} {
         if {$modname ne ""} {
             catch {
                 set all_files [exec git -C $tmp ls-tree -r --name-only HEAD]
-                set qmod [string map {. {\.} - {\-}} $modname]
-                foreach p [split $all_files "\n"] {
-                    set fname [file tail $p]
-                    if {
-                        [regexp -nocase "^${qmod}\\.(tcl|tm)\$" $fname] ||
-                        [regexp -nocase "^${qmod}-\[0-9.\]+\\.(tcl|tm)\$" $fname]
-                    } {
-                        set module_path $p
-                        break
-                    }
-                }
+                set module_path [select_module_path [split $all_files "\n"] $modname]
             }
             if {$module_path ne ""} {
                 puts "    -> Module file found: $module_path (targeted history)"
