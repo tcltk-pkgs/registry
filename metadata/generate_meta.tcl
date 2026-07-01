@@ -15,6 +15,7 @@ array set FOSSIL_MIRRORS {
 }
 
 set github_cache [dict create]
+set github_tree_cache [dict create]
 set fossil_cache [dict create]
 array set existing_dates {}
 
@@ -44,6 +45,26 @@ proc parse_github_repo {url} {
         return [string trimright $repo "/"]
     }
     return ""
+}
+
+proc parse_module_name {name} {
+    set idx [string last "::" $name]
+    if {$idx >= 0} {
+        return [string range $name $idx+2 end]
+    }
+    return ""
+}
+
+proc http_url_encode {s} {
+    set out ""
+    foreach c [split $s ""] {
+        if {[string match {[A-Za-z0-9./_-]} $c]} {
+            append out $c
+        } else {
+            append out [format %%%02X [scan $c %c]]
+        }
+    }
+    return $out
 }
 
 proc http_get {url {type "raw"} {retry 2}} {
@@ -82,65 +103,142 @@ proc http_get {url {type "raw"} {retry 2}} {
     return [dict create code $code body $body json $json]
 }
 
-proc fetch_github_data {url {module_path ""}} {
+proc ensure_repo_info {repo} {
+    global github_cache
+
+    if {[dict exists $github_cache $repo]} {
+        return [dict get $github_cache $repo]
+    }
+
+    set info [dict create archived 0 latest_release "none" last_release_date "" default_branch "main"]
+
+    set r [http_get "https://api.github.com/repos/$repo" "json"]
+    if {[dict get $r code] == 200} {
+        set json [dict get $r json]
+        if {[dict exists $json archived]} {
+            dict set info archived [dict get $json archived]
+        }
+        if {[dict exists $json default_branch]} {
+            dict set info default_branch [dict get $json default_branch]
+        }
+    }
+
+    set r_rel [http_get "https://api.github.com/repos/$repo/releases/latest" "json"]
+    if {[dict get $r_rel code] == 200} {
+        set json [dict get $r_rel json]
+        if {[dict exists $json tag_name]} {
+            dict set info latest_release [dict get $json tag_name]
+        }
+        if {[dict exists $json published_at]} {
+            set pub_date [dict get $json published_at]
+            set pub_date [string map {T " " Z ""} $pub_date]
+            dict set info last_release_date $pub_date
+        }
+    }
+
+    dict set github_cache $repo $info
+    return $info
+}
+
+proc fetch_commits {repo module_path} {
     global github_cache MAX_COMMITS
-    set repo [parse_github_repo $url]
-    if {$repo eq ""} { return {} }
 
     set commit_key "${repo}:${module_path}"
 
-    if {![dict exists $github_cache $repo]} {
-        set info [dict create archived 0 latest_release "none" last_release_date ""]
-
-        set r [http_get "https://api.github.com/repos/$repo" "json"]
-
-        if {[dict get $r code] == 200} {
-            set json [dict get $r json]
-            if {[dict exists $json archived]} {
-                dict set info archived [dict get $json archived]
-            }
-        }
-
-        set r_rel [http_get "https://api.github.com/repos/$repo/releases/latest" "json"]
-        if {[dict get $r_rel code] == 200} {
-            set json [dict get $r_rel json]
-            if {[dict exists $json tag_name]} {
-                dict set info latest_release [dict get $json tag_name]
-            }
-            if {[dict exists $json published_at]} {
-                set pub_date [dict get $json published_at]
-                set pub_date [string map {T " " Z ""} $pub_date]
-                dict set info last_release_date $pub_date
-            }
-        }
-        dict set github_cache $repo $info
+    if {[dict exists $github_cache $commit_key]} {
+        return [dict get $github_cache $commit_key]
     }
 
-    if {![dict exists $github_cache $commit_key]} {
-        set cdata [dict create last_commit {} last_commit_sha {}]
+    set cdata [dict create last_commit {} last_commit_sha {}]
 
-        set api_url "https://api.github.com/repos/$repo/commits?per_page=$MAX_COMMITS"
-        if {$module_path ne ""} { append api_url "&path=$module_path" }
+    set api_url "https://api.github.com/repos/$repo/commits?per_page=$MAX_COMMITS"
+    if {$module_path ne ""} { append api_url "&path=[http_url_encode $module_path]" }
 
-        set r [http_get $api_url "json"]
+    set r [http_get $api_url "json"]
 
-        if {[dict get $r code] == 200} {
-            set commits [dict get $r json]
-            if {[llength $commits] > 0} {
-                foreach c $commits {
-                    if {[dict exists $c sha] && [dict exists $c commit committer date]} {
-                        set sha [string range [dict get $c sha] 0 6]
-                        set date [string map {T " " Z ""} [dict get $c commit committer date]]
-                        dict lappend cdata last_commit_sha $sha
-                        dict lappend cdata last_commit $date
-                    }
+    if {[dict get $r code] == 200} {
+        set commits [dict get $r json]
+        if {[llength $commits] > 0} {
+            foreach c $commits {
+                if {[dict exists $c sha] && [dict exists $c commit committer date]} {
+                    set sha [string range [dict get $c sha] 0 6]
+                    set date [string map {T " " Z ""} [dict get $c commit committer date]]
+                    dict lappend cdata last_commit_sha $sha
+                    dict lappend cdata last_commit $date
                 }
             }
         }
-        dict set github_cache $commit_key $cdata
     }
 
-    return [dict merge [dict get $github_cache $repo] [dict get $github_cache $commit_key]]
+    dict set github_cache $commit_key $cdata
+    return $cdata
+}
+
+proc fetch_github_data {url {module_path ""}} {
+    set repo [parse_github_repo $url]
+    if {$repo eq ""} { return {} }
+
+    set info  [ensure_repo_info $repo]
+    set cdata [fetch_commits $repo $module_path]
+
+    return [dict merge $info $cdata]
+}
+
+proc get_repo_tree {repo branch} {
+    global github_tree_cache
+
+    if {[dict exists $github_tree_cache $repo]} {
+        return [dict get $github_tree_cache $repo]
+    }
+
+    set paths {}
+    set r [http_get "https://api.github.com/repos/$repo/git/trees/[http_url_encode $branch]?recursive=1" "json"]
+
+    if {[dict get $r code] == 200} {
+        set json [dict get $r json]
+        if {[dict exists $json tree]} {
+            foreach entry [dict get $json tree] {
+                if {
+                    [dict exists $entry type] &&
+                    [dict get $entry type] eq "blob" &&
+                    [dict exists $entry path]
+                } {
+                    lappend paths [dict get $entry path]
+                }
+            }
+        }
+    }
+
+    dict set github_tree_cache $repo $paths
+    return $paths
+}
+
+proc find_module_file {repo branch modname} {
+    if {$modname eq ""} { return "" }
+
+    set paths [get_repo_tree $repo $branch]
+    set qmod [string map {. {\.} - {\-}} $modname]
+
+    set exact {}
+    set versioned {}
+
+    foreach p $paths {
+        set fname [file tail $p]
+        if {[regexp -nocase "^${qmod}\\.(tcl|tm)\$" $fname]} {
+            lappend exact $p
+        } elseif {[regexp -nocase "^${qmod}-\[0-9.\]+\\.(tcl|tm)\$" $fname]} {
+            lappend versioned $p
+        }
+    }
+
+    if {[llength $exact] > 0} {
+        return [lindex $exact 0]
+    }
+    if {[llength $versioned] > 0} {
+        return [lindex [lsort $versioned] end]
+    }
+
+    return {}
 }
 
 proc process_fossil {url} {
@@ -260,12 +358,24 @@ proc process_fossil {url} {
     return $meta
 }
 
-proc process_git {url} {
+proc process_git {url {modname ""}} {
     global env MAX_COMMITS
     set repo [parse_github_repo $url]
 
     if {$repo ne ""} {
-        set meta [fetch_github_data $url]
+        set module_path ""
+        if {$modname ne ""} {
+            set info   [ensure_repo_info $repo]
+            set branch [dict get $info default_branch]
+            set module_path [find_module_file $repo $branch $modname]
+            if {$module_path ne ""} {
+                puts "    -> Module file found: $module_path (targeted history)"
+            } else {
+                puts "    -> No file found for '$modname', using full repo history"
+            }
+        }
+
+        set meta [fetch_github_data $url $module_path]
         dict set meta last_tag [dict get $meta latest_release]
 
         if {[dict get $meta last_tag] eq ""} {
@@ -297,10 +407,44 @@ proc process_git {url} {
     set meta [dict create last_commit {} last_commit_sha {} last_tag "" last_release_date ""]
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
-    try {
-        exec git clone --depth $MAX_COMMITS --filter=blob:none --no-checkout $url $tmp 2>@1
+    set clone_depth $MAX_COMMITS
+    if {$modname ne ""} { set clone_depth "" }
 
-        set log_output [exec git -C $tmp log -$MAX_COMMITS --format=%ci|%h 2>@1]
+    try {
+        if {$clone_depth ne ""} {
+            exec git clone --depth $clone_depth --filter=blob:none --no-checkout $url $tmp 2>@1
+        } else {
+            exec git clone --filter=blob:none --no-checkout $url $tmp 2>@1
+        }
+
+        set module_path ""
+        if {$modname ne ""} {
+            catch {
+                set all_files [exec git -C $tmp ls-tree -r --name-only HEAD]
+                set qmod [string map {. {\.} - {\-}} $modname]
+                foreach p [split $all_files "\n"] {
+                    set fname [file tail $p]
+                    if {
+                        [regexp -nocase "^${qmod}\\.(tcl|tm)\$" $fname] ||
+                        [regexp -nocase "^${qmod}-\[0-9.\]+\\.(tcl|tm)\$" $fname]
+                    } {
+                        set module_path $p
+                        break
+                    }
+                }
+            }
+            if {$module_path ne ""} {
+                puts "    -> Module file found: $module_path (targeted history)"
+            } else {
+                puts "    -> No file found for '$modname', using full repo history"
+            }
+        }
+
+        set log_cmd [list git -C $tmp log -$MAX_COMMITS --format=%ci|%h]
+        if {$module_path ne ""} {
+            lappend log_cmd -- $module_path
+        }
+        set log_output [exec {*}$log_cmd 2>@1]
 
         if {[string trim $log_output] ne ""} {
             foreach line [split $log_output "\n"] {
@@ -534,7 +678,13 @@ proc main {} {
                 if {$method eq "fossil"} {
                     set meta [dict merge $meta [process_fossil $url]]
                 } elseif {$method eq "git"} {
-                    set meta [dict merge $meta [process_git $url]]
+                    # Target the specific module file instead of the whole repo
+                    # whenever the package name denotes a submodule (e.g.
+                    # "tclutils::tuagrep" -> "tuagrep"). This is independent
+                    # of source order, so it works no matter how packages.json
+                    # is ordered.
+                    set modname [parse_module_name $name]
+                    set meta [dict merge $meta [process_git $url $modname]]
                 }
             } else {
                 puts "    ! Source unreachable (HTTP $code)"
