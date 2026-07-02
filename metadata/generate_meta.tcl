@@ -36,7 +36,10 @@ proc to_huddle {val type} {
         }
         return $hlist
     }
-    if {$val eq ""} { return [huddle string ""] }
+    if {$val eq ""} {
+        return [huddle string ""]
+    }
+
     return [huddle string $val]
 }
 
@@ -44,7 +47,8 @@ proc parse_github_repo {url} {
     if {[regexp {github\.com/([^/]+/[^/]+)} $url -> repo]} {
         return [string trimright $repo "/"]
     }
-    return ""
+
+    return {}
 }
 
 proc parse_module_name {name} {
@@ -52,7 +56,8 @@ proc parse_module_name {name} {
     if {$idx >= 0} {
         return [string range $name $idx+2 end]
     }
-    return ""
+
+    return {}
 }
 
 proc http_url_encode {s} {
@@ -137,6 +142,7 @@ proc ensure_repo_info {repo} {
     }
 
     dict set github_cache $repo $info
+
     return $info
 }
 
@@ -171,6 +177,7 @@ proc fetch_commits {repo module_path} {
     }
 
     dict set github_cache $commit_key $cdata
+
     return $cdata
 }
 
@@ -210,6 +217,7 @@ proc get_repo_tree {repo branch} {
     }
 
     dict set github_tree_cache $repo $paths
+
     return $paths
 }
 
@@ -224,6 +232,7 @@ proc pick_highest_version {paths} {
             set best_v $v
         }
     }
+
     return $best
 }
 
@@ -338,7 +347,9 @@ proc process_fossil {url {modname ""}} {
             set raw_tags [exec git ls-remote --tags --refs $mirror]
             set tag_list {}
             foreach line [split $raw_tags "\n"] {
-                if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
+                if {[regexp {refs/tags/(.*)} $line -> t]} {
+                    lappend tag_list $t
+                }
             }
             set latest_tag [get_latest_tag $tag_list]
             dict set meta last_tag $latest_tag
@@ -364,9 +375,11 @@ proc process_fossil {url {modname ""}} {
         set json [dict get $r json]
         if {[dict exists $json payload] && [dict exists $json payload timeline]} {
             foreach entry [dict get $json payload timeline] {
-                set ts [expr {[dict exists $entry timestamp] \
-                              ? [dict get $entry timestamp] \
-                              : [dict get $entry mtime]}]
+                set ts [expr {
+                    [dict exists $entry timestamp]
+                    ? [dict get $entry timestamp]
+                    : [dict get $entry mtime]
+                }]
 
                 set date [clock format [expr {int($ts)}] \
                           -format "%Y-%m-%d %H:%M:%S" -gmt 1]
@@ -407,7 +420,9 @@ proc process_fossil {url {modname ""}} {
             set tag_list {}
             foreach line [split [dict get $tag_page body] "\n"] {
                 if {[regexp {/info/[^"]+">([^<]+)</a>} $line -> tag]} {
-                    if {[regexp {\d} $tag]} { lappend tag_list $tag }
+                    if {[regexp {\d} $tag]} {
+                        lappend tag_list $tag
+                    }
                 }
             }
 
@@ -418,6 +433,7 @@ proc process_fossil {url {modname ""}} {
     }
 
     dict set fossil_cache $cache_key $meta
+
     return $meta
 }
 
@@ -446,7 +462,9 @@ proc process_git {url {modname ""}} {
                 set raw_tags [exec git ls-remote --tags --refs $url]
                 set tag_list {}
                 foreach line [split $raw_tags "\n"] {
-                    if {[regexp {refs/tags/(.*)} $line -> t]} { lappend tag_list $t }
+                    if {[regexp {refs/tags/(.*)} $line -> t]} {
+                        lappend tag_list $t
+                    }
                 }
                 set latest_tag [get_latest_tag $tag_list]
                 dict set meta last_tag $latest_tag
@@ -471,7 +489,9 @@ proc process_git {url {modname ""}} {
     set tmp [file join [expr {[info exists env(TMPDIR)] ? $env(TMPDIR) : "/tmp"}] "git-[expr {int(rand()*10000)}]"]
 
     set clone_depth $MAX_COMMITS
-    if {$modname ne ""} { set clone_depth "" }
+    if {$modname ne ""} {
+        set clone_depth ""
+    }
 
     try {
         if {$clone_depth ne ""} {
@@ -536,9 +556,14 @@ proc get_latest_tag {tag_list} {
     foreach tag $tag_list {
         set tag [string trim $tag]
         if {$tag eq "" || [lsearch -nocase $skip $tag] >= 0} continue
-        if {[regexp {\d} $tag]} { lappend filtered $tag }
+        if {[regexp {\d} $tag]} {
+            lappend filtered $tag
+        }
     }
-    if {[llength $filtered] == 0} { return "" }
+    if {[llength $filtered] == 0} {
+        return {}
+    }
+
     return [lindex [lsort -command version_compare $filtered] end]
 }
 
@@ -549,9 +574,10 @@ proc version_compare {a b} {
     for {set i 0} {$i < $len} {incr i} {
         set va [expr {$i < [llength $na] ? [lindex $na $i] : 0}]
         set vb [expr {$i < [llength $nb] ? [lindex $nb $i] : 0}]
-        if {$va < $vb} { return -1 }
-        if {$va > $vb} { return  1 }
+        if {$va < $vb} {return -1}
+        if {$va > $vb} {return  1}
     }
+
     return 0
 }
 
@@ -561,10 +587,13 @@ proc get_package_add_date {name input_file} {
         set cmd [list git log --first-parent --format=%aI --diff-filter=A -S $pattern --reverse -- $input_file]
         if {![catch {exec -ignorestderr {*}$cmd} result]} {
             set result [string trim $result]
-            if {$result ne ""} { return [lindex [split $result "\n"] 0] }
+            if {$result ne ""} {
+                return [lindex [split $result "\n"] 0]
+            }
         }
     }
-    return ""
+
+    return {}
 }
 
 proc load_existing_dates {} {
