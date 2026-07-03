@@ -5105,7 +5105,7 @@
     "tags": ["pdf", "text", "tk", "widget"],
     "description": "Notebook paper-style text widgets with horizontal lines, vertical lines, margins, presets, and PDF export."
   },
-{
+  {
   "name": "tclutils",
   "sources": [
     {
@@ -7861,5 +7861,49 @@
     ],
     "tags": ["ssl", "tls"],
     "description": "tclmtls package to provide SSL/TLS support in Tcl."
+  },
+  {
+    "name": "std.tcl",
+    "sources": [
+      {
+        "url": "https://github.com/aaraujo-main/std.tcl",
+        "method": "git",
+        "extension": true,
+        "author": "Alan Araujo",
+        "license": "MIT",
+        "artifacts": "https://github.com/aaraujo-main/std.tcl/releases"
+      }
+    ],
+    "tags": ["tcl-binding", "cpp-stdlib"],
+    "description": "A C++17 Tcl extension that exposes standard C++ library APIs—including containers and threading—as a native Tcl package."
+  },
+  {
+    "name": "extral",
+    "sources": [
+      {
+        "url": "https://github.com/derijkp/Extral",
+        "method": "git",
+        "extension": true,
+        "author": "Peter De Rijk",
+        "license": "BSD",
+        "artifacts": "https://github.com/derijkp/Extral/releases"
+      }
+    ],
+    "tags": ["utilities", "list-manipulation", "string-manipulation"],
+    "description": "Extra commands for Tcl"
+  },
+  {
+    "name": "nats-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/Kazmirchuk/nats-tcl",
+        "method": "git",
+        "author": "Petro Kazmirchuk",
+        "license": "Apache-2.0",
+        "artifacts": "https://github.com/Kazmirchuk/nats-tcl/releases"
+      }
+    ],
+    "tags": ["nats", "messaging", "mqtt"],
+    "description": "NATS client library for Tcl applications"
   }
 ]
