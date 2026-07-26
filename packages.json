@@ -7905,5 +7905,95 @@
     ],
     "tags": ["nats", "messaging", "mqtt"],
     "description": "NATS client library for Tcl applications"
+  },
+  {
+    "name": "dbif",
+    "sources": [
+      {
+        "url": "https://chiselapp.com/user/schelte/repository/dbif",
+        "method": "fossil",
+        "extension": true,
+        "web": "https://chiselapp.com/user/schelte/repository/dbif/wiki?name=Manual+page",
+        "author": "Schelte Bron",
+        "license": "ISC",
+        "artifacts": "https://chiselapp.com/user/schelte/repository/dbif/download"
+      }
+    ],
+    "tags": ["messaging", "dbus", "ipc", "signal"],
+    "description": "Application layer around the Tcl D-Bus library."
+  },
+  {
+    "name": "dbus",
+    "sources": [
+      {
+        "url": "https://chiselapp.com/user/schelte/repository/dbus",
+        "method": "fossil",
+        "extension": true,
+        "web": "https://chiselapp.com/user/schelte/repository/dbus/wiki?name=Manual+page",
+        "author": "Schelte Bron",
+        "license": "ISC",
+        "artifacts": "https://chiselapp.com/user/schelte/repository/dbus/download"
+      }
+    ],
+    "tags": ["messaging", "dbus", "ipc", "service"],
+    "description": "Tcl library for interacting with the DBus message buses."
+  },
+  {
+    "name": "tkpsvg",
+    "sources": [
+      {
+        "url": "https://androwish.org/home/dir?name=jni/tkpsvg",
+        "extension": true,
+        "author": "Christian Werner",
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["svg", "tk", "image", "plutosvg", "plutovg"],
+    "description": "Support to deal with documents in SVG format from Tcl/Tk."
+  },
+  {
+    "name": "tcludp",
+    "sources": [
+      {
+        "url": "https://github.com/bohagan1/TclUDP",
+        "method": "git",
+        "extension": true,
+        "web": "https://core.tcl-lang.org/tcludp/home",
+        "author": "Brian O'Hagan",
+        "license": "MIT",
+        "artifacts": "https://github.com/bohagan1/TclUDP/releases"
+      }
+    ],
+    "tags": ["udp", "socket"],
+    "description": "This package provides UDP sockets for Tcl. It supports unicast and multicast addresses."
+  },
+  {
+    "name": "tktable",
+    "sources": [
+      {
+        "url": "https://github.com/bohagan1/tktable",
+        "method": "git",
+        "extension": true,
+        "author": "Brian O'Hagan",
+        "license": "Tcl/Tk License",
+        "artifacts": "https://github.com/bohagan1/TkTable/releases"
+      }
+    ],
+    "tags": ["tk", "table"],
+    "description": "TkTable is a table/matrix widget extension to Tcl/Tk."
+  },
+  {
+    "name": "mongreldb-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/visorcraft/MongrelDB-Tcl",
+        "method": "git",
+        "author": "visorcraft",
+        "license": "Apache-2.0",
+        "artifacts": "https://github.com/visorcraft/MongrelDB-Tcl/releases"
+      }
+    ],
+    "tags": ["mongreldb", "sql"],
+    "description": "Pure Tcl client for MongrelDB - embedded and server database with SQL, vector search, full-text search, and AI-native retrieval."
   }
 ]
