@@ -7995,5 +7995,34 @@
     ],
     "tags": ["mongreldb", "sql"],
     "description": "Pure Tcl client for MongrelDB - embedded and server database with SQL, vector search, full-text search, and AI-native retrieval."
+  },
+  {
+    "name": "tclpdf",
+    "sources": [
+      {
+        "url": "https://fossil.sowaswie.de/tclpdf",
+        "method": "fossil",
+        "author": "Alexander Schoepe",
+        "license": "MIT",
+        "artifacts": "https://fossil.sowaswie.de/tclpdf/uv/download.html"
+      }
+    ],
+    "tags": ["pdf"],
+    "description": "PDF generation for Tcl."
+  },
+  {
+    "name": "rbc",
+    "sources": [
+      {
+        "url": "https://github.com/georgtree/rbc-tk9",
+        "method": "git",
+        "extension": true,
+        "author": "George Yashin",
+        "license": "BSD-3-Clause + SMLNJ",
+        "web": "https://georgtree.github.io/rbc-tk9/"
+      }
+    ],
+    "tags": ["tk", "chart", "vector", "visualization"],
+    "description": "Tk extension providing chart, graph, and vector components for data visualization."
   }
 ]
