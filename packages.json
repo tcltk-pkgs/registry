@@ -8024,5 +8024,18 @@
     ],
     "tags": ["tk", "chart", "vector", "visualization"],
     "description": "Tk extension providing chart, graph, and vector components for data visualization."
+  },
+  {
+    "name": "jwt",
+    "sources": [
+      {
+        "url": "https://fossil.sowaswie.de/jwt",
+        "method": "fossil",
+        "author": "Alexander Schoepe",
+        "license": "BSD-3-Clause"
+      }
+    ],
+    "tags": ["json", "authentication"],
+    "description": "Tcl extension for signing and verification of JSON Web Tokens."
   }
 ]
