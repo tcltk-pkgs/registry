@@ -3788,7 +3788,7 @@
         "url": "https://www.tcl3d.org/cawt",
         "web": "https://www.tcl3d.org/cawt/download/CawtReference.html",
         "author": "Paul Obermeier",
-        "license": "BSD-3 license",
+        "license": "BSD-3-Clause",
         "artifacts": "https://www.tcl3d.org/cawt/download.html"
       }
     ],
@@ -3802,12 +3802,12 @@
         "url": "https://www.tcl3d.org/mawt",
         "web": "https://www.tcl3d.org/mawt/download/MawtReference.html",
         "author": "Paul Obermeier",
-        "license": "BSD-3 license",
+        "license": "BSD-3-Clause",
         "artifacts": "https://www.tcl3d.org/mawt/download.html"
       }
     ],
     "tags": ["movie", "ffmpeg", "automation"],
-    "description": "A a Tcl package based on FFmpeg. It provides high level procedures for movie automation with Tcl."
+    "description": "A Tcl package based on FFmpeg. It provides high level procedures for movie automation with Tcl."
   },
   {
     "name": "pawt",
@@ -3816,12 +3816,54 @@
         "url": "https://www.tcl3d.org/pawt",
         "web": "https://www.tcl3d.org/pawt/download/PawtReference.html",
         "author": "Paul Obermeier",
-        "license": "BSD-3 license",
+        "license": "BSD-3-Clause",
         "artifacts": "https://www.tcl3d.org/pawt/download.html"
       }
     ],
     "tags": ["image", "metadata", "dict"],
     "description": "A high-level Tcl interface for handling images with byte, short, int, float or double pixel values."
+  },
+  {
+    "name": "poImg",
+    "sources": [
+      {
+        "url": "https://www.tcl3d.org/poPkgs/poImg.html",
+        "web": "https://www.tcl3d.org/poPkgs/poImgMan.html",
+        "author": "Paul Obermeier",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://www.tcl3d.org/poPkgs/poImg.html"
+      }
+    ],
+    "tags": ["image", "image-processing"],
+    "description": "A Tcl/Tk package for image processing."
+  },
+  {
+    "name": "Tcl3D",
+    "sources": [
+      {
+        "url": "https://www.tcl3d.org/",
+        "web": "https://www.tcl3d.org/documentation.html",
+        "author": "Paul Obermeier",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://sourceforge.net/projects/tcl3d/files/Official%20Releases/"
+      }
+    ],
+    "tags": ["tcl-binding", "3d", "widget"],
+    "description": "Tcl3D offers the 3D functionality of OpenGL and other 3D libraries at the Tcl scripting level."
+  },
+  {
+    "name": "Img",
+    "sources": [
+      {
+        "url": "https://tkimg.sourceforge.net/",
+        "web": "https://tkimg.sourceforge.net/RefMan/toc.html",
+        "author": "Img Contributors",
+        "license": "BSD-3-Clause",
+        "artifacts": "https://sourceforge.net/projects/tkimg/files/tkimg/"
+      }
+    ],
+    "tags": ["image", "photo"],
+    "description": "Img is a collection of format handlers for the Tk photo image type."
   },
   {
     "name": "hyperhelp",
