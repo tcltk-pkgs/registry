@@ -3824,7 +3824,7 @@
     "description": "A high-level Tcl interface for handling images with byte, short, int, float or double pixel values."
   },
   {
-    "name": "poImg",
+    "name": "poimg",
     "sources": [
       {
         "url": "https://www.tcl3d.org/poPkgs/poImg.html",
@@ -3838,7 +3838,7 @@
     "description": "A Tcl/Tk package for image processing."
   },
   {
-    "name": "Tcl3D",
+    "name": "tcl3d",
     "sources": [
       {
         "url": "https://www.tcl3d.org/",
@@ -3852,12 +3852,12 @@
     "description": "Tcl3D offers the 3D functionality of OpenGL and other 3D libraries at the Tcl scripting level."
   },
   {
-    "name": "Img",
+    "name": "img",
     "sources": [
       {
         "url": "https://tkimg.sourceforge.net/",
         "web": "https://tkimg.sourceforge.net/RefMan/toc.html",
-        "author": "Img Contributors",
+        "author": ["Jan Nijtmans", "Andreas Kupries", "Paul Obermeier"],
         "license": "BSD-3-Clause",
         "artifacts": "https://sourceforge.net/projects/tkimg/files/tkimg/"
       }
