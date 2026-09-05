@@ -8079,5 +8079,57 @@
     ],
     "tags": ["json", "authentication"],
     "description": "Tcl extension for signing and verification of JSON Web Tokens."
-  }
+  },
+  {
+  "name": "altkey",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/altkey",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "application", "tool"],
+  "description": "A command line tool for for calculating keyboard accelerators (e.g., for menu options or dialog labels)."
+},
+{
+  "name": "clop",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/clop",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "module", "parser", "command line"],
+  "description": "The clop module supports Tcl command line option parsing for non-proprietary Unix systems."
+},
+{
+  "name": "diff2-tcl",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/diff2-tcl",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "module", "diff", "tool"],
+  "description": "A diff module for Tcl based on a simplified version of Python's difflib."
+},
+{
+  "name": "store",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/store",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "tk", "application", "gui", "tool"],
+  "description": "An easy-to-use and simple alternative to a version control system."
+}
 ]
