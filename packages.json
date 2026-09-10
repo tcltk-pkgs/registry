@@ -8131,5 +8131,18 @@
   ],
   "tags": ["tcl", "tk", "application", "gui", "tool"],
   "description": "An easy-to-use and simple alternative to a version control system."
-}
+},
+  {
+    "name": "frostlake",
+    "sources": [
+      {
+        "url": "https://github.com/Frostlake-DB/frostlake-tcl",
+        "method": "git",
+        "author": "mlorek",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["database", "sql", "tdbc", "client", "http", "snowflake"],
+    "description": "Pure-Tcl client and TDBC driver for Frostlake, an embeddable SQL engine that emulates Snowflake"
+  }
 ]
