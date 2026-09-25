@@ -8144,5 +8144,19 @@
     ],
     "tags": ["database", "sql", "tdbc", "client", "http", "snowflake"],
     "description": "Pure-Tcl client and TDBC driver for Frostlake, an embeddable SQL engine that emulates Snowflake"
+  },
+  {
+    "name": "keynub_licdongle",
+    "sources": [
+      {
+        "url": "https://github.com/AB-KeyNub/KeyNub-SDK",
+        "method": "git",
+        "web": "https://github.com/AB-KeyNub/KeyNub-SDK/tree/master/bindings/tcl",
+        "author": "KeyNub",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["license", "dongle", "copy protection", "usb", "hardware", "cffi"],
+    "description": "Pure-Tcl client for KeyNub USB license dongles: genuineness check, license records, hardware counters and dongle-bound encryption"
   }
 ]
