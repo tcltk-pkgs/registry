@@ -787,6 +787,8 @@ proc main {} {
                     }
                 } elseif {$ktype eq "list"} {
                     huddle append h_src $k $h_val
+                } elseif {$ktype eq "boolean"} {
+                    huddle append h_src $k [huddle boolean $v_stripped]
                 } else {
                     huddle append h_src $k [huddle string $v_stripped]
                 }
