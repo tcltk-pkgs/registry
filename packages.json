@@ -8160,5 +8160,18 @@
   ],
   "tags": ["license", "dongle", "copy protection", "usb", "hardware", "cffi"],
   "description": "Pure-Tcl client for KeyNub USB license dongles: genuineness check, license records, hardware counters and dongle-bound encryption"
+},
+{
+  "name": "mied",
+  "sources": [
+    {
+      "url": "https://github.com/KikyTokamuro/mied",
+      "method": "git",
+      "author": "Daniil Arkhangelsky (Kiky Tokamuro)",
+      "license": "MIT"
+    }
+  ],
+  "tags": ["tcl", "tk", "tklib", "application", "editor"],
+  "description": "Distraction-free multi-document text editor built on Tcl/Tk"
 }
 ]
