@@ -8109,6 +8109,19 @@
   "description": "A diff module for Tcl based on a simplified version of Python's difflib."
 },
 {
+  "name": "mdi",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/mdi",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "module", "mdi", "gui"],
+  "description": "MDI (Multiple Document Interface) module for Tcl/Tk."
+},
+{
   "name": "frostlake",
   "sources": [
     {
