@@ -8122,6 +8122,19 @@
   "description": "MDI (Multiple Document Interface) module for Tcl/Tk."
 },
 {
+  "name": "flowrow",
+  "sources": [
+    {
+      "url": "https://github.com/mark-summerfield/flowrow",
+      "method": "git",
+      "author": "Mark Summerfield",
+      "license": "GPL-3"
+    }
+  ],
+  "tags": ["tcl", "module", "toolbar", "gui"],
+  "description": "A Tcl/Tk 9 module for creating and managing toolbars that automatically adapts to the application’s width."
+},
+{
   "name": "frostlake",
   "sources": [
     {
