@@ -2944,10 +2944,18 @@
         "author": "vicmay",
         "license": "Tcl/Tk License",
         "artifacts": "https://github.com/vicmay/CBOR/releases"
+      },
+      {
+        "url": "https://github.com/cyanogilvie/cbor",
+        "method": "git",
+        "author": "Cyan Ogilvie",
+        "license": "Tcl/Tk License",
+        "extension": true,
+        "artifacts": "https://github.com/cyanogilvie/cbor/releases"
       }
     ],
     "tags": ["cbor", "encoding"],
-    "description": "Pure Tcl CBOR (Concise Binary Object Representation) implementation"
+    "description": "Tcl CBOR (Concise Binary Object Representation) implementation"
   },
   {
     "name": "ratatui",
@@ -8082,83 +8090,138 @@
     "tags": ["json", "authentication"],
     "description": "Tcl extension for signing and verification of JSON Web Tokens."
   },
-{
-  "name": "clop",
-  "sources": [
-    {
-      "url": "https://github.com/mark-summerfield/clop",
-      "method": "git",
-      "author": "Mark Summerfield",
-      "license": "GPL-3"
-    }
-  ],
-  "tags": ["tcl", "module", "parser", "command line"],
-  "description": "The clop module supports Tcl command line option parsing for non-proprietary Unix systems."
-},
-{
-  "name": "diff2-tcl",
-  "sources": [
-    {
-      "url": "https://github.com/mark-summerfield/diff2-tcl",
-      "method": "git",
-      "author": "Mark Summerfield",
-      "license": "GPL-3"
-    }
-  ],
-  "tags": ["tcl", "module", "diff", "tool"],
-  "description": "A diff module for Tcl based on a simplified version of Python's difflib."
-},
-{
-  "name": "mdi",
-  "sources": [
-    {
-      "url": "https://github.com/mark-summerfield/mdi",
-      "method": "git",
-      "author": "Mark Summerfield",
-      "license": "GPL-3"
-    }
-  ],
-  "tags": ["tcl", "module", "mdi", "gui"],
-  "description": "MDI (Multiple Document Interface) module for Tcl/Tk."
-},
-{
-  "name": "flowrow",
-  "sources": [
-    {
-      "url": "https://github.com/mark-summerfield/flowrow",
-      "method": "git",
-      "author": "Mark Summerfield",
-      "license": "GPL-3"
-    }
-  ],
-  "tags": ["tcl", "module", "toolbar", "gui"],
-  "description": "A Tcl/Tk 9 module for creating and managing toolbars that automatically adapts to the application’s width."
-},
-{
-  "name": "frostlake",
-  "sources": [
-    {
-      "url": "https://github.com/Frostlake-DB/frostlake-tcl",
-      "method": "git",
-      "author": "mlorek",
-      "license": "Apache-2.0"
-    }
-  ],
-  "tags": ["database", "sql", "tdbc", "client", "http", "snowflake"],
-  "description": "Pure-Tcl client and TDBC driver for Frostlake, an embeddable SQL engine that emulates Snowflake"
-},
-{
-  "name": "keynub_licdongle",
-  "sources": [
-    {
-      "url": "https://github.com/AB-KeyNub/KeyNub-SDK",
-      "method": "git",
-      "web": "https://github.com/AB-KeyNub/KeyNub-SDK/tree/master/bindings/tcl",
-      "author": "KeyNub",
-      "license": "Apache-2.0"
-    }
-  ],
-  "tags": ["license", "dongle", "copy protection", "usb", "hardware", "cffi"],
-  "description": "Pure-Tcl client for KeyNub USB license dongles: genuineness check, license records, hardware counters and dongle-bound encryption"
-}
+  {
+    "name": "clop",
+    "sources": [
+      {
+        "url": "https://github.com/mark-summerfield/clop",
+        "method": "git",
+        "author": "Mark Summerfield",
+        "license": "GPL-3"
+      }
+    ],
+    "tags": ["tcl", "module", "parser", "command line"],
+    "description": "The clop module supports Tcl command line option parsing for non-proprietary Unix systems."
+  },
+  {
+    "name": "diff2-tcl",
+    "sources": [
+      {
+        "url": "https://github.com/mark-summerfield/diff2-tcl",
+        "method": "git",
+        "author": "Mark Summerfield",
+        "license": "GPL-3"
+      }
+    ],
+    "tags": ["tcl", "module", "diff", "tool"],
+    "description": "A diff module for Tcl based on a simplified version of Python's difflib."
+  },
+  {
+    "name": "mdi",
+    "sources": [
+      {
+        "url": "https://github.com/mark-summerfield/mdi",
+        "method": "git",
+        "author": "Mark Summerfield",
+        "license": "GPL-3"
+      }
+    ],
+    "tags": ["tcl", "module", "mdi", "gui"],
+    "description": "MDI (Multiple Document Interface) module for Tcl/Tk."
+  },
+  {
+    "name": "flowrow",
+    "sources": [
+      {
+        "url": "https://github.com/mark-summerfield/flowrow",
+        "method": "git",
+        "author": "Mark Summerfield",
+        "license": "GPL-3"
+      }
+    ],
+    "tags": ["tcl", "module", "toolbar", "gui"],
+    "description": "A Tcl/Tk 9 module for creating and managing toolbars that automatically adapts to the application’s width."
+  },
+  {
+    "name": "frostlake",
+    "sources": [
+      {
+        "url": "https://github.com/Frostlake-DB/frostlake-tcl",
+        "method": "git",
+        "author": "mlorek",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["database", "sql", "tdbc", "client", "http", "snowflake"],
+    "description": "Pure-Tcl client and TDBC driver for Frostlake, an embeddable SQL engine that emulates Snowflake"
+  },
+  {
+    "name": "keynub_licdongle",
+    "sources": [
+      {
+        "url": "https://github.com/AB-KeyNub/KeyNub-SDK",
+        "method": "git",
+        "web": "https://github.com/AB-KeyNub/KeyNub-SDK/tree/master/bindings/tcl",
+        "author": "KeyNub",
+        "license": "Apache-2.0"
+      }
+    ],
+    "tags": ["license", "dongle", "copy protection", "usb", "hardware", "cffi"],
+    "description": "Pure-Tcl client for KeyNub USB license dongles: genuineness check, license records, hardware counters and dongle-bound encryption"
+  },
+  {
+    "name": "implot.tk",
+    "sources": [
+      {
+        "url": "https://github.com/nico-robert/implot.tk",
+        "method": "git",
+        "author": "Nicolas Robert",
+        "extension": true,
+        "license": "MIT",
+        "artifacts": "https://github.com/nico-robert/implot.tk/releases"
+      }
+    ],
+    "tags": ["tk", "chart", "opengl"],
+    "description": "A wrapper for the ImPlot and ImPlot3D libraries."
+  },
+  {
+    "name": "tklitehtml",
+    "sources": [
+      {
+        "url": "https://github.com/starseeker/tklitehtml",
+        "method": "git",
+        "extension": true,
+        "author": "Clifford Yapp",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["tk", "html"],
+    "description": "Tcl/Tk widget for litehtml."
+  },
+  {
+    "name": "myme",
+    "sources": [
+      {
+        "url": "https://github.com/cyanogilvie/myme",
+        "method": "git",
+        "author": [
+          "Marshall T. Rose",
+          "Brent Welch",
+          "Sandeep Tamhankar",
+          "Dan Kuchler",
+          "Eric Melski",
+          "Jeff Hobbs",
+          "Andreas Kupries",
+          "David Welton",
+          "Pat Thoyts",
+          "Benjamin Riefenstahl",
+          "Poor Yorick",
+          "Cyan Ogilvie"
+        ],
+        "license": "Tcl/Tk License"
+      }
+    ],
+    "tags": ["email", "mime", "internet"],
+    "description": "Self-contained, RFC-compliant fork of tcllib's mime package for Tcl 8.6/9."
+  }
 ]
