@@ -33,7 +33,7 @@ Submit a PR adding your package to packages.json. The registry is automatically 
 | `sources[].artifacts`  | string          | This specifies the URL where the built releases, tarballs, or binaries are hosted. (optional) |
 | `sources[].author`     | string \| array | Package author(s). Single name as string, or multiple as array of strings (`["author1" , "author2", "..."]`) |
 | `sources[].extension`  | boolean         | `true` if this is a compiled (C/C++/etc...) extension (requires build or binaries), `false` or omit for pure Tcl scripts (optional) |
-| `sources[].license`    | string          | SPDX license identifier             |
+| `sources[].license`    | string \| array | Single SPDX license identifier or multiple as array of strings (`["license1" , "license2", "..."]`) |
 | `tags`                 | array           | Keywords for categorization         |
 | `description`          | string          | Short description                   |
 
