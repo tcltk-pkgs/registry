@@ -8287,5 +8287,18 @@
     ],
     "tags": ["bit-array", "bitwise", "data-structure"],
     "description": "Fast bit arrays in Tcl."
+  },
+  {
+    "name": "tclzmq",
+    "sources": [
+      {
+        "url": "https://github.com/mpcjanssen/tclzmq",
+        "method": "git",
+        "author": "Mark Janssen",
+        "license": "Unlicense"
+      }
+    ],
+    "tags": ["protocols", "zeromq"],
+    "description": "Pure Tcl implementation of ZeroMQ."
   }
 ]
