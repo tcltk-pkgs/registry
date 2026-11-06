@@ -8367,7 +8367,7 @@
         "method": "git",
         "extension": true,
         "author": "Neofytos Dimitriou",
-        "license": "Unlicense",
+        "license": "MIT",
         "artifacts": "https://github.com/jerily/topenapi/releases"
       }
     ],
