@@ -8300,5 +8300,78 @@
     ],
     "tags": ["protocols", "zeromq"],
     "description": "Pure Tcl implementation of ZeroMQ."
+  },
+  {
+    "name": "tomltcl",
+    "sources": [
+      {
+        "url": "https://github.com/avohra25/tomltcl",
+        "method": "git",
+        "author": "Aryan Vohra",
+        "license": "MIT"
+      }
+    ],
+    "tags": ["toml", "parser", "encoder"],
+    "description": "Pure Tcl TOML 1.0.0 parser and encoder."
+  },
+  {
+    "name": "ttrigrams",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/ttrigrams",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/ttrigrams/releases"
+      }
+    ],
+    "tags": ["trigram", "search", "string-matching", "fuzzy-search"],
+    "description": "Trigram substring search and typo suggestions for C and Tcl."
+  },
+  {
+    "name": "ttrie",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/ttrie",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/ttrie/releases"
+      }
+    ],
+    "tags": ["trie", "search", "string-matching", "fuzzy-search", "distance-search"],
+    "description": "String trie with exact and edit-distance search for C and Tcl."
+  },
+  {
+    "name": "tpathexp",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tpathexp",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "Unlicense",
+        "artifacts": "https://github.com/jerily/tpathexp/releases"
+      }
+    ],
+    "tags": ["http", "validation", "routing", "path-matching", "aws-lambda"],
+    "description": "Tcl/C extension for compiled path matching and HTTP route dispatch, including AWS Lambda event adapters."
+  },
+  {
+    "name": "topenapi",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/topenapi",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "Unlicense",
+        "artifacts": "https://github.com/jerily/topenapi/releases"
+      }
+    ],
+    "tags": ["openapi", "validation", "http"],
+    "description": "OpenAPI request validation for Tcl and C, with a native twebserver adapter."
   }
 ]
