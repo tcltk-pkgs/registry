@@ -19,6 +19,7 @@ set github_tree_cache [dict create]
 set fossil_cache [dict create]
 set tag_cache [dict create]
 array set existing_dates {}
+array set existing_unreach {}
 
 proc to_huddle {val type} {
     if {$type eq "bool"} {
@@ -692,7 +693,7 @@ proc get_package_add_date {name input_file} {
 }
 
 proc load_existing_dates {} {
-    global OUTPUT_FILE existing_dates
+    global OUTPUT_FILE existing_dates existing_unreach
 
     if {[file exists $OUTPUT_FILE]} {
         set fh [open $OUTPUT_FILE r]
@@ -714,6 +715,11 @@ proc load_existing_dates {} {
                         set first_src [lindex $srcs 0]
                         if {[dict exists $first_src added_at]} {
                             set existing_dates($name) [dict get $first_src added_at]
+                        }
+                        foreach s $srcs {
+                            if {[dict exists $s unreachable_since] && [dict get $s unreachable_since] ne ""} {
+                                set existing_unreach([dict get $s url]) [dict get $s unreachable_since]
+                            }
                         }
                     }
                 }
@@ -757,7 +763,7 @@ proc compare_json_files {old_file new_file} {
 }
 
 proc main {} {
-    global INPUT_FILE OUTPUT_FILE existing_dates MAX_COMMITS
+    global INPUT_FILE OUTPUT_FILE existing_dates MAX_COMMITS existing_unreach
 
     load_existing_dates
 
@@ -796,6 +802,7 @@ proc main {} {
     set total [llength [huddle get_stripped $root]]
     set huddle_packages {}
     set reachability_cache [dict create]
+    set since_cache [dict create]
 
     set idx 0
     set new_count 0
@@ -840,16 +847,35 @@ proc main {} {
 
             if {[dict exists $reachability_cache $url]} {
                 set reachable [dict get $reachability_cache $url]
+                set since     [dict get $since_cache $url]
                 set code "CACHED"
             } else {
                 set check [http_get $url]
                 set code [dict get $check code]
                 set reachable [expr {$code >= 200 && $code < 400}]
-
                 dict set reachability_cache $url $reachable
+
+                # Track first failure date. 403/429 are inconclusive (bot protection,
+                # rate limit): never start the counter on them, keep any previous state.
+                set since ""
+                if {!$reachable} {
+                    if {[info exists existing_unreach($url)]} {
+                        set since $existing_unreach($url)
+                    } elseif {$code ni {403 429}} {
+                        set since [clock format [clock seconds] -format %Y-%m-%d -gmt 1]
+                    }
+                }
+                dict set since_cache $url $since
             }
 
-            set meta [dict create reachable $reachable archived 0 latest_release "none" last_commit {} last_tag "" last_commit_sha {}]
+            set meta [dict create \
+                reachable $reachable \
+                archived 0 \
+                latest_release "none" \
+                last_commit {} \
+                last_tag "" \
+                last_commit_sha {} \
+            ]
 
             if {$reachable} {
                 set modname [parse_module_name $name]
@@ -860,6 +886,10 @@ proc main {} {
                 }
             } else {
                 puts "    ! Source unreachable (HTTP $code)"
+            }
+
+            if {$since ne ""} {
+                dict set meta unreachable_since $since
             }
 
             set nb_commits [llength [dict get $meta last_commit]]
