@@ -8373,5 +8373,64 @@
     ],
     "tags": ["openapi", "validation", "http"],
     "description": "OpenAPI request validation for Tcl and C, with a native twebserver adapter."
+  },
+  {
+    "name": "overrides",
+    "sources": [
+      {
+        "url": "https://github.com/Dechcaudron/overrides",
+        "method": "git",
+        "author": "Héctor Barreras Almarcha",
+        "license": "MIT",
+        "artifacts": "https://github.com/Dechcaudron/overrides/releases"
+      }
+    ],
+    "tags": ["override", "command", "alias"],
+    "description": "A Tcl package to temporarily override arbitrary commands in a safe and idiomatic way."
+  },
+  {
+    "name": "tkd2dcanvas",
+    "sources": [
+      {
+        "url": "https://github.com/Smart-Space/tkd2dcanvas",
+        "method": "git",
+        "extension": true,
+        "author": "Smart-Space",
+        "license": "LGPL-3.0-or-later",
+        "artifacts": "https://github.com/Smart-Space/tkd2dcanvas/releases"
+      }
+    ],
+    "tags": ["tk", "canvas", "d2d", "gdi"],
+    "description": "D2D backend and gdi(antialias) backend for tkinter Canvas, and also for Tcl/Tk Canvas."
+  },
+  {
+    "name": "tgit2",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tgit2",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tgit2/releases"
+      }
+    ],
+    "tags": ["git", "libgit2", "cloning"],
+    "description": "Git repository cloning for Tcl using libgit2."
+  },
+  {
+    "name": "tyaml",
+    "sources": [
+      {
+        "url": "https://github.com/jerily/tyaml",
+        "method": "git",
+        "extension": true,
+        "author": "Neofytos Dimitriou",
+        "license": "MIT",
+        "artifacts": "https://github.com/jerily/tyaml/releases"
+      }
+    ],
+    "tags": ["yaml", "json", "libfyaml"],
+    "description": "Tcl bindings for libfyaml with typed values and document handles."
   }
 ]
