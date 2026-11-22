@@ -889,12 +889,17 @@ proc main {} {
             }
 
             # Auto-detect artifacts: GitHub release published after the entry was added
-            if {$reachable && "artifacts" ni [huddle keys $src] && $method eq "git"} {
-                set gh_repo [parse_github_repo $url]
-                if {$gh_repo ne "" && [dict get $meta latest_release] ne "none"} {
-                    dict set meta artifacts "https://github.com/$gh_repo/releases"
-                }
+        if {
+            $reachable && 
+            "artifacts" ni [huddle keys $src] && 
+            $method eq "git" && 
+            [string match -nocase "https://github.com/*" $url]
+        } {
+            set gh_repo [parse_github_repo $url]
+            if {$gh_repo ne "" && [dict get $meta latest_release] ne "none"} {
+                dict set meta artifacts "https://github.com/$gh_repo/releases"
             }
+        }
 
             if {$since ne ""} {
                 dict set meta unreachable_since $since
